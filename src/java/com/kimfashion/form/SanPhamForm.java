@@ -1,6 +1,8 @@
 package com.kimfashion.form;
 
+import com.kimfashion.dao.HinhAnhDAO;
 import com.kimfashion.dao.SanPhamDAO;
+import com.kimfashion.dto.HinhAnh;
 import com.kimfashion.dto.SanPham;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -256,6 +258,9 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     }
     public List<SanPham> getListSPCungLoai(){
         return new SanPhamDAO().getSanPhamCungLoai(maLoaiSP, maSP);
+    }
+    public List<HinhAnh> getListHinhAnh(){
+        return new HinhAnhDAO().getAllHinhAnhByMaSP(maSP);
     }
 
     public String getTenThuongHieu() {

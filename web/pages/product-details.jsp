@@ -40,19 +40,21 @@
                         <div class="row">
                             <!-- PRODUCT PREVIEW -->
                             <div class="col-xs-12 col-sm-4">
-
                                 <div class="product-preview">
                                     <div class="big-image">
-                                        <a href="images/product/women/skirt/1.jpg" data-toggle="lightbox">
-                                            <img src="images/product/women/skirt/1.jpg" alt="" />
+                                        <a href="<bean:write name="SanPhamForm" property="hinhAnh"/>" data-toggle="lightbox">
+                                            <img src="<bean:write name="SanPhamForm" property="hinhAnh"/>" alt="<bean:write name="SanPhamForm" property="tenSP"/>" />
                                         </a>
                                     </div>
                                     <ul class="thumbs unstyled clearfix">
-                                        <li><a href="images/product/women/skirt/1.jpg"><img src="images/product/women/skirt/1.jpg" alt="" /></a></li>
-                                        <li><a href="images/product/women/skirt/2.jpg"><img src="images/product/women/skirt/2.jpg" alt="" /></a></li>
+                                        <logic:iterate id="hinhAnh" name="SanPhamForm" property="listHinhAnh">
+                                            <li><a href="<bean:write name="hinhAnh" property="duongDan"/>">
+                                                    <img src="<bean:write name="hinhAnh" property="duongDan"/>" alt="" />
+                                                </a>
+                                            </li>
+                                        </logic:iterate>
                                     </ul>
                                 </div>
-
                             </div>
                             <div class="space40 visible-xs"></div>
 
@@ -128,7 +130,7 @@
                                                     <a href="cart.do" class="btn btn-default btn-lg btn-round add-to-cart">Thêm vào giỏ</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">+ So sánh</a>
+                                                    <a href="compare.do">+ So sánh</a>
                                                 </li>
                                             </ul>
 
@@ -166,9 +168,9 @@
                                     <logic:iterate id="sanPham" name="SanPhamForm" property="listSPCungLoai">
                                         <div class="product" data-product-id="<bean:write name="sanPham" property="maSP"/>">
                                             <div class="entry-media">
-                                                <img data-src="<bean:write  name="sanPham" property="hinhAnh" />" alt="" class="lazyOwl thumb" />
+                                                <img data-src="<bean:write name="sanPham" property="hinhAnh" />" alt="" class="lazyOwl thumb" />
                                                 <div class="hover">
-                                                    <a href="#" class="entry-url"></a>
+                                                    <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>" class="entry-url"></a>
                                                     <ul class="icons unstyled">
                                                         <logic:equal name="sanPham" property="dangKM" value="true">
                                                             <li>
@@ -181,28 +183,42 @@
                                                             </li>
                                                         </logic:equal>   
                                                         <li>
-                                                            <a href="images/product/women/basic/p01.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+                                                            <a href="<bean:write name="sanPham" property="hinhAnh"/>" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
+                                                            <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
                                                         </li>
                                                     </ul>
                                                     <div class="rate-bar">
-                                                        <input type="range" value="4.5" step="0.5" id="backing1" />
-                                                        <div class="rateit" data-rateit-backingfld="#backing1" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
+                                                        <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
+                                                        <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="entry-main">
                                                 <h5 class="entry-title">
-                                                    <a href="#">Inceptos orci hac libero</a>
+                                                    <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>"><bean:write name="sanPham" property="tenSP"/></a>
                                                 </h5>
                                                 <div class="entry-price">
-                                                    <s class="entry-discount">$ 350.00</s>
-                                                    <strong class="accent-color price">$ 250.00</strong>
+                                                    <logic:equal name="sanPham" property="dangKM" value="true">
+                                                        <s class="entry-discount">
+                                                            <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                            VND
+                                                        </s>
+                                                        <strong class="accent-color price">
+                                                            <fmt:formatNumber value="${SanPhamForm.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
+                                                            VND
+                                                        </strong>
+                                                    </logic:equal>
+                                                    <logic:equal name="sanPham" property="sanPhamMoi" value="true">
+                                                        <strong class="price">
+                                                            <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                            VND
+                                                        </strong>
+                                                    </logic:equal>
                                                 </div>
                                                 <div class="entry-links clearfix">
-                                                    <a href="#" class="pull-left m-r">+ So sánh</a>
+                                                    <a href="#" class="pull-center">+ So sánh</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -196,12 +196,12 @@ public class SanPhamDAO {
                 + " FROM tbl_sanpham a"
                 + " LEFT JOIN `tbl_hinhanh` b ON a.MaSP = b.MaSP"
                 + " LEFT JOIN `tbl_thuonghieu` c ON a.`MaThuongHieu` = c.`MaThuongHieu`"
-                + " WHERE a.`DaAn`= FALSE AND a.`MaSP` = ?";
+                + " WHERE a.`DaAn`= FALSE AND a.`MaSP` = ? AND b.`AnhChinh` = TRUE";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maSP);
             rs = stm.executeQuery();
-
+            
             if (rs.next()) {
                 sp = new SanPham();
                 sp.setMaSP(rs.getInt("MaSP"));

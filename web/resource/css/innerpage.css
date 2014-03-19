@@ -255,8 +255,8 @@
 }
 .product-preview .thumbs > li > a {
 	display: block;
-	width: 84px;
-	height: 84px;
+	width: 65px;
+	height: 65px;
 	border: 3px solid #919191;
 	border-radius: 50%;
 	overflow: hidden;
