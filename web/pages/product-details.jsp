@@ -26,7 +26,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="/KimFashion">Trang chủ</a></li>
-                            <li><a href="/products.do">Sản phẩm</a></li>
+                            <li><a href="products.do">Sản phẩm</a></li>
                             <li class="active">Chi tiết sản phẩm</li>
                         </ul>
                     </div>
@@ -69,9 +69,21 @@
                                     </header>
                                     <article class="entry-content">
                                         <figure>
-                                            <span class="entry-price inline-middle"> 
-                                                <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                VND
+                                            <span class="entry-price inline-middle">
+                                                <logic:equal name="SanPhamForm" property="dangKM" value="true">
+                                                    <s class="entry-discount">
+                                                        <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                        VND
+                                                    </s>
+                                                    <strong class="accent-color price">
+                                                        <fmt:formatNumber value="${SanPhamForm.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
+                                                        VND
+                                                    </strong>
+                                                </logic:equal>
+                                                <logic:notEqual name="SanPhamForm" property="dangKM" value="true">
+                                                    <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                    VND
+                                                </logic:notEqual>
                                             </span>
                                             <div class="rate-bar inline-middle">
                                                 <input type="range" value="4.5" step="0.5" id="backing0" />
@@ -115,7 +127,7 @@
                                                         <select>
                                                             <option>-- Hãy chọn size --</option>
                                                             <logic:iterate id="size" name="SanPhamForm" property="listSize">
-                                                            <option value="<bean:write name="size" property="maSize"/>"><bean:write name="size" property="tenSize"/></option>
+                                                                <option value="<bean:write name="size" property="maSize"/>"><bean:write name="size" property="tenSize"/></option>
                                                             </logic:iterate>
                                                         </select>
                                                     </div>
@@ -196,22 +208,24 @@
                                                 </div>
                                                 <div class="entry-main">
                                                     <h5 class="entry-title">
-                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>"><bean:write name="sanPham" property="tenSP"/></a>
+                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>">
+                                                            <bean:write name="sanPham" property="tenSP"/>
+                                                        </a>
                                                     </h5>
                                                     <div class="entry-price">
                                                         <logic:equal name="sanPham" property="dangKM" value="true">
                                                             <s class="entry-discount">
-                                                                <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </s>
                                                             <strong class="accent-color price">
-                                                                <fmt:formatNumber value="${SanPhamForm.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
+                                                                <fmt:formatNumber value="${sanPham.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </strong>
                                                         </logic:equal>
                                                         <logic:equal name="sanPham" property="sanPhamMoi" value="true">
                                                             <strong class="price">
-                                                                <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </strong>
                                                         </logic:equal>

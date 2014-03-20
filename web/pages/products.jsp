@@ -1,4 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
+<%@taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
+<%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -295,83 +299,75 @@
                                         </div>
                                     </header>
                                     <!-- PRODUCT LAYOUT -->
-                                    <div class="products-layout grid m-t-b add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
+                                    <div class="products-layout grid m-t-b add-cart" data-product=".product" 
+                                         data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" 
+                                         data-url=".entry-title > a" data-price=".entry-price > .price">
 
-                                        <div class="product" data-product-id="1" data-category="women|women-jeans|women-skirt" data-brand="brand1" data-price="250" data-colors="red|blue|black|white" data-size="S|M|L">
-                                            <div class="entry-media">
-                                                <img data-src="images/product/women/skirt/1.jpg" alt="" class="lazyLoad thumb" />
-                                                <div class="hover">
-                                                    <a href="product-details.do" class="entry-url"></a>
-                                                    <ul class="icons unstyled">
-                                                        <li>
-                                                            <div class="circle ribbon ribbon-sale">Sale</div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="images/product/women/skirt/1.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="rate-bar">
-                                                        <input type="range" value="4.5" step="0.5" id="backing1" />
-                                                        <div class="rateit" data-rateit-backingfld="#backing1" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
+                                        <logic:iterate id="sanPham" name="SanPhamForm" property="listSanPham">
+                                            <div class="product" data-product-id="<bean:write name="sanPham" property="maSP"/>" 
+                                                 data-category="women|women-jeans|women-skirt" data-brand="brand1" data-price="250" 
+                                                 data-colors="red|blue|black|white" data-size="S|M|L">
+                                                <div class="entry-media">
+                                                    <img data-src="<bean:write name="sanPham" property="hinhAnh"/>" alt="" class="lazyLoad thumb" />
+                                                    <div class="hover">
+                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>" class="entry-url"></a>
+                                                        <ul class="icons unstyled">
+                                                            <logic:equal name="sanPham" property="dangKM" value="true">
+                                                                <li>
+                                                                    <div class="circle ribbon ribbon-sale">Sale</div>
+                                                                </li>
+                                                            </logic:equal>
+                                                            <logic:equal name="sanPham" property="sanPhamMoi" value="true">
+                                                                <li>
+                                                                    <div class="circle ribbon ribbon-new">New</div>
+                                                                </li>
+                                                            </logic:equal> 
+                                                            <li>
+                                                                <a href="<bean:write name="sanPham" property="hinhAnh"/>" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="rate-bar">
+                                                            <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
+                                                            <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="entry-main">
+                                                    <h5 class="entry-title">
+                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>">
+                                                            <bean:write name="sanPham" property="tenSP"/>
+                                                        </a>
+                                                    </h5>
+                                                    <div class="entry-description visible-list">
+                                                        <p>Sed ornare cras donec litora integer curabitur orci, at nullam aliquam libero nam himenaeos, amet massa amet ut ipsum viverra mauris rhoncus neque aenean rhoncus gravida orci facilisis quis dui consectetur.</p>
+                                                    </div>
+                                                    <div class="entry-price">
+                                                        <logic:equal name="sanPham" property="dangKM" value="true">
+                                                            <s class="entry-discount">
+                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                VND
+                                                            </s>
+                                                            <strong class="accent-color price">
+                                                                <fmt:formatNumber value="${sanPham.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
+                                                                VND
+                                                            </strong>
+                                                        </logic:equal>
+                                                        <logic:equal name="sanPham" property="sanPhamMoi" value="true">
+                                                            <strong class="price">
+                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                VND
+                                                            </strong>
+                                                        </logic:equal>
+                                                    </div>
+                                                    <div class="entry-links clearfix">
+                                                        <a href="#" class="pull-center">+ So sánh</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="entry-main">
-                                                <h5 class="entry-title">
-                                                    <a href="product-details.do">Inceptos orci hac libero</a>
-                                                </h5>
-                                                <div class="entry-description visible-list">
-                                                    <p>Sed ornare cras donec litora integer curabitur orci, at nullam aliquam libero nam himenaeos, amet massa amet ut ipsum viverra mauris rhoncus neque aenean rhoncus gravida orci facilisis quis dui consectetur.</p>
-                                                </div>
-                                                <div class="entry-price">
-                                                    <s class="entry-discount">$ 350.00</s>
-                                                    <strong class="accent-color price">$ 250.00</strong>
-                                                    <a href="#" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ hàng</a>
-                                                </div>
-                                                <div class="entry-links clearfix">
-                                                    <a href="Compare.aspx" class="pull-center">+ Thêm vào để so sánh</a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="product" data-product-id="2" data-category="women|women-accessories|women-basics|women-legging|new" data-brand="brand2" data-price="450" data-colors="red|green|black|white|silver" data-size="XS|S|M">
-                                            <div class="entry-media">
-                                                <img data-src="images/product/women/accessories/p10.jpg" alt="" class="lazyLoad thumb" />
-                                                <div class="hover">
-                                                    <a href="product-details.do" class="entry-url"></a>
-                                                    <ul class="icons unstyled">
-                                                        <li>
-                                                            <a href="images/product/women/accessories/p10.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="rate-bar">
-                                                        <input type="range" value="4" step="0.5" id="backing2" />
-                                                        <div class="rateit" data-rateit-backingfld="#backing2" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="entry-main">
-                                                <h5 class="entry-title">
-                                                    <a href="product-details.do">Inceptos orci hac libero</a>
-                                                </h5>
-                                                <div class="entry-description visible-list">
-                                                    <p>Sed ornare cras donec litora integer curabitur orci, at nullam aliquam libero nam himenaeos, amet massa amet ut ipsum viverra mauris rhoncus neque aenean rhoncus gravida orci facilisis quis dui consectetur.</p>
-                                                </div>
-                                                <div class="entry-price">
-                                                    <strong class="price">$ 350.00</strong>
-                                                    <a href="#" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ hàng</a>
-                                                </div>
-                                                <div class="entry-links clearfix">
-                                                    <a href="Compare.aspx" class="pull-center">+ Thêm vào để so sánh</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </logic:iterate>
                                     </div>
                                 </section>
                             </section>

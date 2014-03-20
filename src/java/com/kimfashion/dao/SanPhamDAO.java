@@ -21,7 +21,10 @@ public class SanPhamDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement("SELECT * FROM tbl_sanpham");
+            stm = conn.prepareStatement("SELECT a.*, b.`DuongDan` AS HinhAnh FROM tbl_sanpham a"
+                    + " LEFT JOIN `tbl_hinhanh` b"
+                    + " ON a.MaSP = b.MaSP"
+                    + " WHERE a.`DaAn`= FALSE AND b.`AnhChinh` = TRUE");
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -201,7 +204,7 @@ public class SanPhamDAO {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maSP);
             rs = stm.executeQuery();
-            
+
             if (rs.next()) {
                 sp = new SanPham();
                 sp.setMaSP(rs.getInt("MaSP"));
