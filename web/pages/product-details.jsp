@@ -48,7 +48,8 @@
                                     </div>
                                     <ul class="thumbs unstyled clearfix">
                                         <logic:iterate id="hinhAnh" name="SanPhamForm" property="listHinhAnh">
-                                            <li><a href="<bean:write name="hinhAnh" property="duongDan"/>">
+                                            <li>
+                                                <a href="<bean:write name="hinhAnh" property="duongDan"/>">
                                                     <img src="<bean:write name="hinhAnh" property="duongDan"/>" alt="" />
                                                 </a>
                                             </li>
@@ -98,26 +99,21 @@
 
                                             <figcaption class="m-b-sm">
                                                 <h5 class="subheader uppercase">Mô tả:</h5>
-                                                <p><bean:write name="SanPhamForm" property="moTa"/></p>
+                                                <p><bean:write name="SanPhamForm" property="moTa" filter="false"/></p>
                                             </figcaption>
 
                                             <div class="row">
-                                                <div class="col-xs-12 col-sm-6">
+                                                <div class="col-xs-12 col-sm-12">
                                                     <h5 class="subheader uppercase">Màu sắc:</h5>
-                                                    <div class="inline-middle styled-dd">
-                                                        <select>
-                                                            <option>-- Please Select --</option>
-                                                            <option value="Black">Black</option>
-                                                            <option value="Aubergine">Aubergine</option>
-                                                        </select>
-                                                    </div>
+                                                    <p><bean:write name="SanPhamForm" property="mauSac" filter="false"/></p>
                                                 </div>
-                                                <div class="space30 visible-xs"></div>
-                                                <div class="col-xs-12 col-sm-6">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12">
                                                     <h5 class="subheader uppercase">Size:</h5>
                                                     <div class="inline-middle styled-dd">
                                                         <select>
-                                                            <option>-- Please Select --</option>
+                                                            <option>-- Hãy chọn size --</option>
                                                             <option value="xs">X-Small</option>
                                                             <option value="s">Small</option>
                                                         </select>
@@ -146,84 +142,87 @@
                 <section class="section featured visible-items-4">
                     <div class="container">
                         <div class="row">
-                            <header class="section-header clearfix col-sm-offset-3 col-sm-6">
-                                <h3 class="section-title">Sản phẩm cùng loại</h3>
-                                <p class="section-teaser">Lựa chọn các sản phẩm cùng loại</p>
-                            </header>
-
-                            <div class="clearfix"></div>
-
                             <!-- BEGIN CAROUSEL -->
-                            <div id="featured-products" class="add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
-                                <div class="owl-controls clickable top">
-                                    <div class="owl-buttons">
-                                        <div class="owl-prev"><i class="iconfont-angle-left"></i></div>
-                                        <div class="owl-next"><i class="iconfont-angle-right"></i></div>
+                            <div id="featured-products" class="add-cart" data-product=".product" data-thumbnail=".entry-media .thumb"
+                                 data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
+                                <logic:notEmpty name="SanPhamForm" property="listSPCungLoai">
+
+                                    <header class="section-header clearfix col-sm-offset-3 col-sm-6">
+                                        <h3 class="section-title">Sản phẩm cùng loại</h3>
+                                        <p class="section-teaser">Lựa chọn các sản phẩm cùng loại</p>
+                                    </header>
+
+                                    <div class="clearfix"></div>
+                                    <div class="owl-controls clickable top">
+                                        <div class="owl-buttons">
+                                            <div class="owl-prev"><i class="iconfont-angle-left"></i></div>
+                                            <div class="owl-next"><i class="iconfont-angle-right"></i></div>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="owl-carousel owl-theme" data-visible-items="4" 
-                                     data-navigation="true" data-lazyload="true">
+                                    <div class="owl-carousel owl-theme" data-visible-items="4" 
+                                         data-navigation="true" data-lazyload="true">
 
-                                    <logic:iterate id="sanPham" name="SanPhamForm" property="listSPCungLoai">
-                                        <div class="product" data-product-id="<bean:write name="sanPham" property="maSP"/>">
-                                            <div class="entry-media">
-                                                <img data-src="<bean:write name="sanPham" property="hinhAnh" />" alt="" class="lazyOwl thumb" />
-                                                <div class="hover">
-                                                    <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>" class="entry-url"></a>
-                                                    <ul class="icons unstyled">
-                                                        <logic:equal name="sanPham" property="dangKM" value="true">
+                                        <logic:iterate id="sanPham" name="SanPhamForm" property="listSPCungLoai">
+                                            <div class="product" data-product-id="<bean:write name="sanPham" property="maSP"/>">
+                                                <div class="entry-media">
+                                                    <img data-src="<bean:write name="sanPham" property="hinhAnh" />" alt="" class="lazyOwl thumb" />
+                                                    <div class="hover">
+                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>" class="entry-url"></a>
+                                                        <ul class="icons unstyled">
+                                                            <logic:equal name="sanPham" property="dangKM" value="true">
+                                                                <li>
+                                                                    <div class="circle ribbon ribbon-sale">Sale</div>
+                                                                </li>
+                                                            </logic:equal>
+                                                            <logic:equal name="sanPham" property="sanPhamMoi" value="true">
+                                                                <li>
+                                                                    <div class="circle ribbon ribbon-new">New</div>
+                                                                </li>
+                                                            </logic:equal>   
                                                             <li>
-                                                                <div class="circle ribbon ribbon-sale">Sale</div>
+                                                                <a href="<bean:write name="sanPham" property="hinhAnh"/>" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
                                                             </li>
+                                                            <li>
+                                                                <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="rate-bar">
+                                                            <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
+                                                            <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="entry-main">
+                                                    <h5 class="entry-title">
+                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>"><bean:write name="sanPham" property="tenSP"/></a>
+                                                    </h5>
+                                                    <div class="entry-price">
+                                                        <logic:equal name="sanPham" property="dangKM" value="true">
+                                                            <s class="entry-discount">
+                                                                <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                VND
+                                                            </s>
+                                                            <strong class="accent-color price">
+                                                                <fmt:formatNumber value="${SanPhamForm.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
+                                                                VND
+                                                            </strong>
                                                         </logic:equal>
                                                         <logic:equal name="sanPham" property="sanPhamMoi" value="true">
-                                                            <li>
-                                                                <div class="circle ribbon ribbon-new">New</div>
-                                                            </li>
-                                                        </logic:equal>   
-                                                        <li>
-                                                            <a href="<bean:write name="sanPham" property="hinhAnh"/>" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="rate-bar">
-                                                        <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
-                                                        <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
+                                                            <strong class="price">
+                                                                <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                VND
+                                                            </strong>
+                                                        </logic:equal>
+                                                    </div>
+                                                    <div class="entry-links clearfix">
+                                                        <a href="#" class="pull-center">+ So sánh</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="entry-main">
-                                                <h5 class="entry-title">
-                                                    <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>"><bean:write name="sanPham" property="tenSP"/></a>
-                                                </h5>
-                                                <div class="entry-price">
-                                                    <logic:equal name="sanPham" property="dangKM" value="true">
-                                                        <s class="entry-discount">
-                                                            <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                            VND
-                                                        </s>
-                                                        <strong class="accent-color price">
-                                                            <fmt:formatNumber value="${SanPhamForm.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
-                                                            VND
-                                                        </strong>
-                                                    </logic:equal>
-                                                    <logic:equal name="sanPham" property="sanPhamMoi" value="true">
-                                                        <strong class="price">
-                                                            <fmt:formatNumber value="${SanPhamForm.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                            VND
-                                                        </strong>
-                                                    </logic:equal>
-                                                </div>
-                                                <div class="entry-links clearfix">
-                                                    <a href="#" class="pull-center">+ So sánh</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </logic:iterate>
-                                </div>
+                                        </logic:iterate>
+                                    </div>
+                                </logic:notEmpty>
                             </div>
                         </div>
                     </div>
