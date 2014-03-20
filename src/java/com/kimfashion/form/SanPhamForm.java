@@ -2,8 +2,13 @@ package com.kimfashion.form;
 
 import com.kimfashion.dao.HinhAnhDAO;
 import com.kimfashion.dao.SanPhamDAO;
+import com.kimfashion.dao.SanPhamSizeDAO;
+import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dto.HinhAnh;
 import com.kimfashion.dto.SanPham;
+import com.kimfashion.dto.SanPhamSize;
+import com.kimfashion.dto.Size;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -261,6 +266,17 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     }
     public List<HinhAnh> getListHinhAnh(){
         return new HinhAnhDAO().getAllHinhAnhByMaSP(maSP);
+    }
+    public List<Size> getListSize(){
+        List<Size> list = new ArrayList<Size>();
+        List<SanPhamSize> listSPSize = new SanPhamSizeDAO().getAllSizeBySanPham(maSP);
+        SizeDAO sizeDAO = new SizeDAO();
+        
+        for (SanPhamSize sanPhamSize : listSPSize) {
+            Size s = sizeDAO.getSizeByMaSize(sanPhamSize.getMaSize());
+            list.add(s);
+        }
+        return list;
     }
 
     public String getTenThuongHieu() {

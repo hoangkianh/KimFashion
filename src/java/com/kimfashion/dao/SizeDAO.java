@@ -49,7 +49,7 @@ public class SizeDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareCall("SELECT * FROM tbl_size WHERE MaSize=?");
+            stm = conn.prepareStatement("SELECT * FROM tbl_size WHERE MaSize=?");
             stm.setInt(1, maSize);
             rs = stm.executeQuery();
 

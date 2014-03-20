@@ -114,8 +114,9 @@
                                                     <div class="inline-middle styled-dd">
                                                         <select>
                                                             <option>-- Hãy chọn size --</option>
-                                                            <option value="xs">X-Small</option>
-                                                            <option value="s">Small</option>
+                                                            <logic:iterate id="size" name="SanPhamForm" property="listSize">
+                                                            <option value="<bean:write name="size" property="maSize"/>"><bean:write name="size" property="tenSize"/></option>
+                                                            </logic:iterate>
                                                         </select>
                                                     </div>
                                                 </div>
