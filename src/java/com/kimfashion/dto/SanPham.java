@@ -1,10 +1,17 @@
 package com.kimfashion.dto;
 
+import com.kimfashion.dao.LoaiSPDAO;
+import com.kimfashion.dao.SanPhamSizeDAO;
+import com.kimfashion.dao.SizeDAO;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author KimHue
  */
 public class SanPham {
+
     private int maSP;
     private String code;
     private String tenSP;
@@ -24,7 +31,6 @@ public class SanPham {
     private String mauSac;
     private String hinhAnh;
     private String tenThuongHieu;
-    
 
     public String getHinhAnh() {
         return hinhAnh;
@@ -177,5 +183,53 @@ public class SanPham {
     public void setTenThuongHieu(String tenThuongHieu) {
         this.tenThuongHieu = tenThuongHieu;
     }
+
+    public List<Size> getListSize() {
+        List<Size> list = new ArrayList<Size>();
+        List<SanPhamSize> listSPSize = new SanPhamSizeDAO().getAllSizeBySanPham(maSP);
+        SizeDAO sizeDAO = new SizeDAO();
+
+        for (SanPhamSize sanPhamSize : listSPSize) {
+            Size s = sizeDAO.getSizeByMaSize(sanPhamSize.getMaSize());
+            list.add(s);
+        }
+        return list;
+    }
+
+    /**
+     * Lấy ra list size để sử dụng trong javascript
+     *
+     * @return chuỗi size. VD: S|M|L|XL|
+     */
+    public String getListSizeString() {
+        String str = "";
+        for (Size size : getListSize()) {
+            str += size.getTenSize() + "|";
+        }
+        return str;
+    }
+
+    /**
+     * Lấy ra màu sắc để sử dụng trong javascript
+     * Thay dấu , thành |
+     * @return chuỗi màu sắc. VD: xanh lá|tím|hồng
+     */
+    public String getListMauSacString() {
+        String str = mauSac.replace(",", "|");
+        return str;
+    }
     
+    /**
+     * lấy ra chuỗi mã loại để sử dụng trong javascript
+     * 
+     * @return  mã loại cha|mã loại con. VD: 1|12
+     */
+    public String getListMaLoai() {
+        String str = "";
+        LoaiSP loaiSP = new LoaiSPDAO().getLoaiSPByMaLoai(maLoaiSP);
+        if (loaiSP != null) {
+            str += loaiSP.getMaLoaiCha() + "|" + loaiSP.getMaLoai();
+        }
+        return str;
+    }
 }

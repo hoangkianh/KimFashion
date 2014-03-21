@@ -107,13 +107,13 @@
                             <a href="#">Thời trang nữ</a>
                             <div class="mega-menu" data-col-lg="12" data-col-md="12">
                                 <div class="row">
-                                    <jsp:useBean id="form" class="com.kimfashion.form.LoaiSPForm"></jsp:useBean>
-                                    <logic:iterate id="loaiSPCha" collection="${form.listLoaiSPCha}">
+                                    <jsp:useBean id="loaiSPForm" class="com.kimfashion.form.LoaiSPForm"></jsp:useBean>
+                                    <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">
                                         <logic:equal name="loaiSPCha" property="gioiTinh" value="true">
                                             <div class="col-md-3">
                                                 <h4 class="menu-title">${loaiSPCha.tenLoai}</h4>
                                                 <ul class="mega-sub">
-                                                    <logic:iterate id="loaiSPCon" collection="${form.listLoaiSPCon}">
+                                                    <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
                                                                 <html:link action="products" paramId="id" paramName="loaiSPCon" paramProperty="maLoai">
@@ -133,12 +133,12 @@
                             <a href="#">Thời trang nam</a>
                             <div class="mega-menu" data-col-lg="12" data-col-md="12">
                                 <div class="row">
-                                    <logic:iterate id="loaiSPCha" collection="${form.listLoaiSPCha}">
+                                    <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">
                                         <logic:equal name="loaiSPCha" property="gioiTinh" value="false">
                                             <div class="col-md-3">
                                                 <h4 class="menu-title">${loaiSPCha.tenLoai}</h4>
                                                 <ul class="mega-sub">
-                                                    <logic:iterate id="loaiSPCon" collection="${form.listLoaiSPCon}">
+                                                    <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
                                                                 <html:link action="products" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
@@ -171,12 +171,12 @@
                             <li>
                                 <a href="javsacript:void(0);">Thời trang nữ</a>
                                 <ul class="dl-submenu">
-                                    <logic:iterate id="loaiSPCha" collection="${form.listLoaiSPCha}">
+                                    <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">
                                         <logic:equal name="loaiSPCha" property="gioiTinh" value="true">
                                             <li>
                                                 <a href="#">${loaiSPCha.tenLoai}</a>
                                                 <ul class="dl-submenu">
-                                                    <logic:iterate id="loaiSPCon" collection="${form.listLoaiSPCon}">
+                                                    <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
                                                                 <html:link action="products" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
@@ -194,12 +194,12 @@
                             <li>
                                 <a href="javsacript:void(0);">Thời trang nam</a>
                                 <ul class="dl-submenu">
-                                    <logic:iterate id="loaiSPCha" collection="${form.listLoaiSPCha}">
+                                    <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">
                                         <logic:equal name="loaiSPCha" property="gioiTinh" value="false">
                                             <li>
                                                 <a href="#">${loaiSPCha.tenLoai}</a>
                                                 <ul class="dl-submenu">
-                                                    <logic:iterate id="loaiSPCon" collection="${form.listLoaiSPCon}">
+                                                    <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
                                                                 <html:link action="products" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">

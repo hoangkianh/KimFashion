@@ -7,7 +7,6 @@ package com.kimfashion.dao;
 
 import com.kimfashion.dto.LoaiSP;
 import com.kimfashion.utils.DBUtils;
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
