@@ -224,7 +224,7 @@
                                                             </strong>
                                                         </logic:equal>
                                                         <logic:equal name="sanPham" property="sanPhamMoi" value="true">
-                                                            <strong class="price">
+                                                            <strong class="price accent-color">
                                                                 <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </strong>

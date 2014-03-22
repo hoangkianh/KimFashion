@@ -128,7 +128,7 @@
                                                     <a href="product-details.do?id=${sp.maSP}">${sp.tenSP}</a>
                                                 </h5>
                                                 <div class="entry-price">
-                                                    <strong class="price">
+                                                    <strong class="price accent-color">
                                                         <fmt:formatNumber value="${sp.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                         VND
                                                     </strong>

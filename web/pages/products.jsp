@@ -190,47 +190,46 @@
                                         </div>
                                     </section>
 
-                                    <!-- BEST SELLERS -->
+                                    <!-- SP BÁN CHẠY -->
                                     <section class="side-section bg-white">
                                         <header class="side-section-header">
                                             <h3 class="side-section-title">bán chạy</h3>
                                         </header>
                                         <div class="side-section-content">
                                             <ul class="product-medialist li-m-t unstyled clearfix">
-                                                <li>
-                                                    <div class="item clearfix">
-                                                        <a href="images/product/women/basic/p01.jpg" data-toggle="lightbox" class="entry-thumbnail">
-                                                            <img src="images/product/women/basic/p01.jpg" alt="Inceptos orci hac libero" />
-                                                        </a>
-                                                        <h5 class="entry-title"><a href="product-details.do">Tên sản phẩm</a></h5>
-                                                        <s class="entry-discount m-r-sm"><span class="text-sm">$ 350.00</span></s>
-                                                        <span class="entry-price accent-color">$ 250.00</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item clearfix">
-                                                        <a href="images/product/women/basic/p02.jpg" data-toggle="lightbox" class="entry-thumbnail">
-                                                            <img src="images/product/women/basic/p02.jpg" alt="Inceptos orci hac libero" />
-                                                        </a>
-                                                        <h5 class="entry-title"><a href="product-details.do">Tên sản phẩm</a></h5>
-                                                        <span class="entry-price">$ 350.00</span>
-                                                    </div>
-                                                </li>
+                                                <logic:iterate id="sanPham" name="SanPhamForm" property="listSPBanChay">
+                                                    <li>
+                                                        <div class="item clearfix">
+                                                            <a href="<bean:write name="sanPham" property="hinhAnh"/>" data-toggle="lightbox" class="entry-thumbnail">
+                                                                <img src="<bean:write name="sanPham" property="hinhAnh"/>" alt="" />
+                                                            </a>
+                                                            <h5 class="entry-title">
+                                                                <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>">
+                                                                    <bean:write name="sanPham" property="tenSP"/>
+                                                                </a>
+                                                            </h5>
+                                                            <logic:equal name="sanPham" property="dangKM" value="true">
+                                                                <s class="entry-discount">
+                                                                    <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                    VND
+                                                                </s>
+                                                                <strong class="accent-color price">
+                                                                    <fmt:formatNumber value="${sanPham.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
+                                                                    VND
+                                                                </strong>
+                                                            </logic:equal>
+                                                            <logic:notEqual name="sanPham" property="dangKM" value="true">
+                                                                <strong class="price accent-color">
+                                                                    <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
+                                                                    VND
+                                                                </strong>
+                                                            </logic:notEqual>
+                                                        </div>
+                                                    </li>
+                                                </logic:iterate>
                                             </ul>
                                         </div>
                                     </section>
-
-                                    <!-- PROMO -->
-                                    <div class="promo inverse-background" style="background: url('images/collection/Barn-Dress-Girl_t.jpg') no-repeat; background-size: auto 100%;">
-                                        <div class="inner text-center np">
-                                            <div class="ribbon">
-                                                <h6 class="nmb">New Arrivals</h6>
-                                                <h5 class="text-semibold uppercase nmb">Leather Fashion</h5>
-                                                <div class="space10"></div>
-                                                <a href="Products.aspx" class="with-icon prepend-icon"><i class="iconfont-caret-right"></i><span> Shop Now</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </section>
                             </aside>
 
@@ -324,7 +323,9 @@
                                                         </a>
                                                     </h5>
                                                     <div class="entry-description visible-list">
-                                                        <p>Sed ornare cras donec litora integer curabitur orci, at nullam aliquam libero nam himenaeos, amet massa amet ut ipsum viverra mauris rhoncus neque aenean rhoncus gravida orci facilisis quis dui consectetur.</p>
+                                                        <p>
+                                                            <bean:write name="sanPham" property="moTa" filter="false"/>
+                                                        </p>
                                                     </div>
                                                     <div class="entry-price">
                                                         <logic:equal name="sanPham" property="dangKM" value="true">
@@ -337,12 +338,12 @@
                                                                 VND
                                                             </strong>
                                                         </logic:equal>
-                                                        <logic:equal name="sanPham" property="sanPhamMoi" value="true">
-                                                            <strong class="price">
+                                                         <logic:notEqual name="sanPham" property="dangKM" value="true">
+                                                            <strong class="price accent-color">
                                                                 <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </strong>
-                                                        </logic:equal>
+                                                        </logic:notEqual>
                                                         <a href="#" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ</a>
                                                     </div>
                                                     <div class="entry-links clearfix">
