@@ -249,7 +249,7 @@
                                                     <span class="inline-middle m-r-sm text-xs">Hiển thị</span>
                                                     <div class="inline-middle styled-dd">
                                                         <select>
-                                                            <option value="9">9</option>
+                                                            <option value="9">5</option>
                                                             <option value="12">12</option>
                                                             <option value="24">24</option>
                                                             <option value="36">36</option>

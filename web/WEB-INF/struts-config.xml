@@ -28,10 +28,11 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/" name="LoaiSPForm" path="/GetAllLoaiSanPham" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false"/>
         <!--======================= 
         Admin
         ======================= -->
+        <action path="/admin" forward="/admin/dashboard.jsp"/>
+        <action input="/" name="LoaiSPForm" path="/GetAllLoaiSanPham" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false"/>
         
         
         <!-- =======================

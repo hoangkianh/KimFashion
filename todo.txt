@@ -1,0 +1,43 @@
+22 - 3 - 2014
+############
+Front-end
+các trang còn lại
+
+5. trong trang chi tiết sp :
+    - cần hiện loại sản phẩm
+    - gắn link vào thương hiệu và loại sp
+        vd: <a href="">MILAROS</a> --> khi user click vào link sẽ hiện ra trang category hoặc trang thương hiệu
+
+    - rating chưa làm
+
+1. trang hiển thị sản phẩm theo category - giống products.jsp
+2. trang hiển thị sản phẩm trong bộ sưu tập - giống products.jsp
+3. các trang cần tạo mới giao diện: compare, contact, success
+4. các trang kế thừa lại: checkout, cart, contact
+
+--> trang contact sẽ send mail
+
+6. ---- ĐĂNG NHẬP , ĐĂNG KÝ ----
+
+############
+- trong admin:
+    1. trang dashboard: có hiện chart ở ngoài + các số liệu (giống blackpoints)
+        + column chart (hiển thị số sản phẩm - theo loại sp; theo thương hiệu)
+        + donut chart (hiển thị % SP theo các tiêu chí trên)
+        + line chart (hiển thị doanh thu trong tháng)
+    2. tạo nav bar menu - có dropdown (mỗi dòng tương ứng với 1 mục trong menu)
+    các trang này đều có giao diện tương tự blackpoints
+        + Sản phẩm
+            - quản lý sản phẩm
+                * list
+                * new
+                * edit
+                * delete
+            - phân loại sản phẩm (tức là quản lý loại sp)
+        + Đơn hàng
+            - Tất cả
+            - đơn hàng đã thanh toán
+            - đơn hàng chưa thanh toán
+
+   3. riêng với trang add new sp cần cài thêm plugin http://jhollingworth.github.io/bootstrap-wysihtml5/
+        
