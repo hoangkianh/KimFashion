@@ -25,7 +25,7 @@
                             <img src="images/slider/Street-Fashion.jpg" alt="" />
                         </li>
                         <li style="background: #fa6f57;">
-                            <img src="images/slider/transparent.png" alt="" />
+                            <img src="images/slider/Street-Fashion.jpg" alt="" />
                         </li>
                         <li>
                             <img src="images/slider/3303349658_cfaebb811f_o.jpg" alt="" />

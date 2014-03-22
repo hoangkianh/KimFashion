@@ -48,24 +48,6 @@
                                         Giỏ hàng đang trống. Hãy quay lại chọn <a href="Products.aspx">sản phẩm</a>.
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <a class="entry-thumbnail" href="images/product/women/legging/p05.jpg" data-toggle="lightbox">
-                                            <img src="images/product/women/legging/p05.jpg" alt="" />
-                                        </a>
-                                        <a class="entry-title" href="Products.aspx">Tên sản phẩm</a>
-                                    </td>
-                                    <td><span class="unit-price">$350.00</span></td>
-                                    <td>
-                                        <div class="qty-btn-group">
-                                            <button type="button" class="down"><i class="iconfont-caret-down inline-middle"></i></button>
-                                            <input type="text" value="1" />
-                                            <button type="button" class="up"><i class="iconfont-caret-up inline-middle"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="hidden-xs"><strong class="text-bold row-total">$350.00</strong></td>
-                                    <td class="hidden-xs"><button type="button" class="close" aria-hidden="true">×</button></td>
-                                </tr>
                             </tbody>
                         </table>
 
