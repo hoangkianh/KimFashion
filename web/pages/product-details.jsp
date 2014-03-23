@@ -93,7 +93,7 @@
                                                     </logic:notEqual>
                                                 </span>
                                                 <div class="rate-bar inline-middle">
-                                                    <input type="range" value="4.5" step="0.5" id="backing0" />
+                                                    <input type="range" value="<bean:write name="SanPhamForm" property="xepHang"/>" step="0.5" id="backing0" />
                                                     <div class="rateit" data-rateit-backingfld="#backing0" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
                                                 </div>
                                                 <span class="entry-review-count inline-middle">
@@ -206,10 +206,6 @@
                                                                 <a href="#" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
                                                             </li>
                                                         </ul>
-                                                        <div class="rate-bar">
-                                                            <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
-                                                            <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="entry-main">

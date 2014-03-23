@@ -4,8 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
-            <file>file:/F:/GitHub/KimFashion/web/admin/dashboard.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/todo.txt</file>
+            <file>file:/F:/GitHub/KimFashion/web/resource/js/products.js</file>
+            <file>file:/F:/GitHub/KimFashion/web/resource/js/paging.js</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/products.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/service/SanPhamService.java</file>
         </group>
     </open-files>
 </project-private>

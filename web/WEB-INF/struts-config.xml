@@ -46,11 +46,12 @@
             <forward name="GetChiTietSPOK" path="/pages/product-details.jsp"/>
             <forward name="GetChiTietSPNotOK" path="/error.do"/>
         </action>
-        <action input="/" name="SanPhamForm" path="/products" scope="session" type="com.kimfashion.struts.GetAllProducts" validate="false">
+<!--        <action input="/" name="SanPhamForm" path="/products" scope="session" type="com.kimfashion.struts.GetAllProducts" validate="false">
             <forward name="GetSanPhamOK" path="/pages/products.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do"/>
-        </action>
+        </action>-->
 
+        <action path="/products" forward="/pages/products.jsp"/>
         <action path="/error" forward="/pages/error.jsp"/>
         <action path="/checkout" forward="/pages/checkout.jsp"/>
         <action path="/contact" forward="/pages/contact.jsp"/>

@@ -3,6 +3,7 @@
 <%@taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -92,8 +93,8 @@
                                                 </logic:iterate>
                                             </ul>
                                         </div>
-
                                     </section>
+
                                     <!-- PRODUCT FILTER -->
                                     <section class="side-section bg-white">
                                         <header class="side-section-header">
@@ -104,7 +105,7 @@
                                         <div id="filter-by-price" class="side-section-content">
                                             <h4 class="side-section-subheader">theo giá</h4>
                                             <div class="range-slider-container">
-                                                <div class="range-slider" data-min="0" data-max="2000" data-step="10" data-currency="$"></div>
+                                                <div class="range-slider" data-min="0" data-max="1000000" data-step="100000" data-currency="VND"></div>
                                                 <div class="range-slider-value clearfix">
                                                     <span>Giá: &ensp;</span>
                                                     <span class="min"></span>
@@ -237,41 +238,18 @@
                                 <section class="products-wrapper">
                                     <header class="products-header">
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-6 center-xs">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 center-xs">
                                                 <!-- KIỂU HIỂN THỊ -->
                                                 <ul class="unstyled inline-li li-m-r-l-sm pull-left">
                                                     <li><a class="round-icon active" href="#" data-toggle="tooltip" data-layout="grid" data-title="Xem dạng lưới"><i class="iconfont-th"></i></a></li>
                                                     <li><a class="round-icon" href="#" data-toggle="tooltip" data-layout="list" data-title="Xem dạng danh sách"><i class="iconfont-list"></i></a></li>
                                                 </ul>
 
-                                                <!-- Số lượng sản phẩm cần hiển thị -->
-                                                <div class="pull-right m-l-lg">
-                                                    <span class="inline-middle m-r-sm text-xs">Hiển thị</span>
-                                                    <div class="inline-middle styled-dd">
-                                                        <select>
-                                                            <option value="9">5</option>
-                                                            <option value="12">12</option>
-                                                            <option value="24">24</option>
-                                                            <option value="36">36</option>
-                                                        </select>
-                                                    </div>
-                                                    <span class="inline-middle m-r-sm text-xs">sản phẩm</span>
+                                                <!-- PHÂN TRANG -->
+                                                <div class="m-l-lg">
+                                                    <ul class="paginator li-m-r-l pull-right">
+                                                    </ul>
                                                 </div>
-                                            </div>
-
-                                            <div class="space30 visible-xs"></div>
-
-                                            <!-- Phân trang -->
-                                            <div class="col-xs-12 col-sm-12 col-md-6 center-xs">
-                                                <ul class="paginator li-m-r-l pull-right">
-                                                    <li><a class="round-icon" href="#" data-toggle="tooltip" data-title="Trước"><i class="iconfont-angle-left"></i></a></li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a class="round-icon" href="#" data-toggle="tooltip" data-title="Tiếp"><i class="iconfont-angle-right"></i></a></li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </header>
@@ -280,78 +258,6 @@
                                     <div class="products-layout grid m-t-b add-cart" data-product=".product" 
                                          data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" 
                                          data-url=".entry-title > a" data-price=".entry-price > .price">
-
-                                        <logic:iterate id="sanPham" name="SanPhamForm" property="listSanPham">
-                                            <div class="product" data-product-id="<bean:write name="sanPham" property="maSP"/>" 
-                                                 data-category="<bean:write name="sanPham" property="listMaLoai"/>"
-                                                 data-brand="th<bean:write name="sanPham" property="maThuongHieu"/>"
-                                                 data-price="<bean:write name="sanPham" property="giaBan"/>" 
-                                                 data-colors="<bean:write name="sanPham" property="listMauSacString"/>"
-                                                 data-size="<bean:write name="sanPham" property="listSizeString"/>">
-                                                <div class="entry-media">
-                                                    <img data-src="<bean:write name="sanPham" property="hinhAnh"/>" alt="" class="lazyLoad thumb" />
-                                                    <div class="hover">
-                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>" class="entry-url"></a>
-                                                        <ul class="icons unstyled">
-                                                            <logic:equal name="sanPham" property="dangKM" value="true">
-                                                                <li>
-                                                                    <div class="circle ribbon ribbon-sale">Sale</div>
-                                                                </li>
-                                                            </logic:equal>
-                                                            <logic:equal name="sanPham" property="sanPhamMoi" value="true">
-                                                                <li>
-                                                                    <div class="circle ribbon ribbon-new">New</div>
-                                                                </li>
-                                                            </logic:equal> 
-                                                            <li>
-                                                                <a href="<bean:write name="sanPham" property="hinhAnh"/>" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="rate-bar">
-                                                            <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
-                                                            <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="entry-main">
-                                                    <h5 class="entry-title">
-                                                        <a href="product-details.do?id=<bean:write name="sanPham" property="maSP"/>">
-                                                            <bean:write name="sanPham" property="tenSP"/>
-                                                        </a>
-                                                    </h5>
-                                                    <div class="entry-description visible-list">
-                                                        <p>
-                                                            <bean:write name="sanPham" property="moTa" filter="false"/>
-                                                        </p>
-                                                    </div>
-                                                    <div class="entry-price">
-                                                        <logic:equal name="sanPham" property="dangKM" value="true">
-                                                            <s class="entry-discount">
-                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                                VND
-                                                            </s>
-                                                            <strong class="accent-color price">
-                                                                <fmt:formatNumber value="${sanPham.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
-                                                                VND
-                                                            </strong>
-                                                        </logic:equal>
-                                                         <logic:notEqual name="sanPham" property="dangKM" value="true">
-                                                            <strong class="price accent-color">
-                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                                VND
-                                                            </strong>
-                                                        </logic:notEqual>
-                                                        <a href="#" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ</a>
-                                                    </div>
-                                                    <div class="entry-links clearfix">
-                                                        <a href="#" class="pull-center">+ So sánh</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </logic:iterate>
                                     </div>
                                 </section>
                             </section>
@@ -363,6 +269,39 @@
         <%@include file="../include/footer.jsp" %>
         <script src="resource/js/jquery.nouislider.js"></script>
         <script src="resource/js/jquery.isotope.min.js"></script>
+        <script type="text/javascript">
+            function loadData(page) {
+                $.ajax({
+                    type: "GET",
+                    url: "service/sanpham/getSanPham/" + page,
+                    async: false,
+                    success: function(msg) {
+                        $('.products-layout').html(msg);
+                    }
+                });
+            }
+            loadData(1);
+
+            function chuyenTrang(page) {
+                loadData(page);
+            }
+
+            function trangTruoc() {
+                var page = parseInt($('.paginator li .accent-color').attr('id'));
+                if (page > 1) {
+                    loadData(page - 1);
+                }
+            }
+            
+            function trangTiep() {
+                var page = parseInt($('.paginator li .accent-color').attr('id'));
+                var max = parseInt($('.paginator li').length) - 2;
+                
+                if (page < max) {
+                    loadData(page + 1);
+                }
+            }
+        </script>
         <script src="resource/js/products.js"></script>
     </body>
 </html>

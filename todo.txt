@@ -41,3 +41,11 @@ các trang còn lại
 
    3. riêng với trang add new sp cần cài thêm plugin http://jhollingworth.github.io/bootstrap-wysihtml5/
         
+
+23-3-2014
+- fix lại nút add to cart trong trang chi tiết sp
+- fix bug trong trang cart.do (format lại số tiền, cập nhật tổng tiền, vvv...)
+
+24-3-2014:
+- phân trang
+- đang có bug khi chuyển layout, filter ở trang thứ 2 trở đi

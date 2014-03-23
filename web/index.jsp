@@ -117,10 +117,6 @@
                                                             <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
                                                         </li>
                                                     </ul>
-                                                    <div class="rate-bar">
-                                                        <input type="range" value="${sp.xepHang}" step="0.5" id="backing${sp.maSP}" />
-                                                        <div class="rateit" data-rateit-backingfld="#backing${sp.maSP}" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="entry-main">
@@ -187,10 +183,6 @@
                                                             <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
                                                         </li>
                                                     </ul>
-                                                    <div class="rate-bar">
-                                                        <input type="range" value="${sp.xepHang}" step="0.5" id="backing${sp.maSP}" />
-                                                        <div class="rateit" data-rateit-backingfld="#backing${sp.maSP}" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="entry-main">

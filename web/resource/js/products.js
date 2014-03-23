@@ -1,5 +1,4 @@
 jQuery(function($) {
-
     /*
      | ----------------------------------------------------------------------------------
      | Shopping cart - Remove Row on click Close button
@@ -149,6 +148,49 @@ jQuery(function($) {
      | Setup Product Grid Layout
      | ----------------------------------------------------------------------------------
      */
+    function phanTrang() {
+        $.ajax({
+            type: "GET",
+            url: "service/sanpham/phanTrang",
+            async: false,
+            success: function(msg) {
+                $('.paginator').html(msg);
+            }
+        });
+    }
+    phanTrang();
+
+    $('.page').click(function() {
+        setupProduct();
+        $('.paginator li .accent-color').removeClass('accent-color');
+        $(this).addClass('accent-color');
+        return false;
+    });
+
+    $('.prev').click(function() {
+        setupProduct();
+        var p = $('.paginator li .accent-color');
+        var trangMoi = p.parent().prev().children();
+        if (trangMoi.hasClass('page'))
+        {
+            p.removeClass('accent-color');
+            trangMoi.addClass('accent-color');
+        }
+        return false;
+    });
+    
+    $('.next').click(function() {
+        setupProduct();
+        var p = $('.paginator li .accent-color');
+        var trangMoi = p.parent().next().children();
+        if (trangMoi.hasClass('page'))
+        {
+            p.removeClass('accent-color');
+            trangMoi.addClass('accent-color');
+        }
+        return false;
+    });
+
     var $product_layout = $('.products-layout');
 
     function setupProduct() {
@@ -333,8 +375,8 @@ jQuery(function($) {
             slide: function() {
                 var values = $(this).val();
 
-                $this.siblings('.range-slider-value').find('> .min').text(configs['currency'] + values[0]);
-                $this.siblings('.range-slider-value').find('> .max').text(configs['currency'] + values[1]);
+                $this.siblings('.range-slider-value').find('> .min').text(formatNumber(values[0]) + ' ' + configs['currency']);
+                $this.siblings('.range-slider-value').find('> .max').text(formatNumber(values[1]) + ' ' + configs['currency']);
             },
             serialization: {
                 to: ['min-price', 'max-price'],
@@ -345,8 +387,8 @@ jQuery(function($) {
             priceSlider($(this).val());
         });
 
-        $this.siblings('.range-slider-value').find('> .min').text(configs['currency'] + $this.val()[0]);
-        $this.siblings('.range-slider-value').find('> .max').text(configs['currency'] + $this.val()[1]);
+        $this.siblings('.range-slider-value').find('> .min').text(formatNumber($this.val()[0]) + ' ' + configs['currency']);
+        $this.siblings('.range-slider-value').find('> .max').text(formatNumber($this.val()[1]) + ' ' + configs['currency']);
     });
 
 });
