@@ -33,18 +33,18 @@ public class SanPhamService {
         int tongsoSP = listAllSanpham.size();
         int soTrang = (int) Math.ceil(tongsoSP / (soSPTren1Trang * 1.0));
 
-        html += "<li><a class='round-icon prev' onclick='trangTruoc()' href='javascript:void(0)' data-toggle='tooltip' data-title='Trước'><i class='iconfont-angle-left'></i></a></li>";
+        html += "<li><a class='round-icon prev' onclick='trangTruoc()' href='#' data-toggle='tooltip' data-title='Trước'><i class='iconfont-angle-left'></i></a></li>";
                 
         if (true) {
             
         }
-        html += "<li><a href='javascript:void(0)' onclick='chuyenTrang(this.id)' class='page accent-color' id='1'>1</a></li>";
+        html += "<li><a href='#' onclick='chuyenTrang(this.id)' class='page accent-color' id='1'>1</a></li>";
 
         for (int i = 1; i < soTrang; i++) {
-            html += "<li><a href='javascript:void(0)' onclick='chuyenTrang(this.id)' class='page' id='" + (i + 1) + "'>" + (i + 1) + "</a></li>";
+            html += "<li><a href='#' onclick='chuyenTrang(this.id)' class='page' id='" + (i + 1) + "'>" + (i + 1) + "</a></li>";
         }
 
-        html += "<li><a class='round-icon next' onclick='trangTiep()' href='javascript:void(0)' data-toggle='tooltip' data-title='Tiếp'><i class='iconfont-angle-right'></i></a></li>";
+        html += "<li><a class='round-icon next' onclick='trangTiep()' href='#' data-toggle='tooltip' data-title='Tiếp'><i class='iconfont-angle-right'></i></a></li>";
 
         return html;
     }

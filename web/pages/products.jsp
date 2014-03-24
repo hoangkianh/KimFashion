@@ -292,11 +292,11 @@
                     loadData(page - 1);
                 }
             }
-            
+
             function trangTiep() {
                 var page = parseInt($('.paginator li .accent-color').attr('id'));
                 var max = parseInt($('.paginator li').length) - 2;
-                
+
                 if (page < max) {
                     loadData(page + 1);
                 }

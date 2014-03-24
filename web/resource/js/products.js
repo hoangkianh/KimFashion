@@ -38,7 +38,7 @@ jQuery(function($) {
 
     function output_cookie()
     {
-        var cookie = $.cookie('cart');
+        var cookie = $.cookie('gioHang');
         if (cookie === undefined)
             return;
         cookie = $.parseJSON(cookie);
@@ -160,6 +160,8 @@ jQuery(function($) {
     }
     phanTrang();
 
+    var $product_layout = $('.products-layout');
+
     $('.page').click(function() {
         setupProduct();
         $('.paginator li .accent-color').removeClass('accent-color');
@@ -178,7 +180,7 @@ jQuery(function($) {
         }
         return false;
     });
-    
+
     $('.next').click(function() {
         setupProduct();
         var p = $('.paginator li .accent-color');
@@ -191,7 +193,6 @@ jQuery(function($) {
         return false;
     });
 
-    var $product_layout = $('.products-layout');
 
     function setupProduct() {
         var itemW = 270,
@@ -199,14 +200,16 @@ jQuery(function($) {
 
         x = parseInt(productW / itemW);
         var new_itemW = parseInt(productW / x).toString() + 'px';
-        if (x == 1)
+        if (x === 1)
         {
             new_itemW = '100%';
         }
         $product_layout.find('.product').each(function() {
-            var $this = $(this), added_classes = '';
+            var $this = $(this);
 
-            $this = (!$this.parent().hasClass('mix-item')) ? $this.wrap('<div class="mix-item ' + added_classes + '" />').parent() : $this.parent();
+            $this = (!$this.parent().hasClass('mix-item')) ?
+                    $this.wrap('<div class="mix-item" />').parent()
+                    : $this.parent();
             $this.children().css('visibility', 'visible');
 
             var $lazyLoad = $this.find('.lazyLoad');
@@ -230,27 +233,27 @@ jQuery(function($) {
         });
     }
 
+
     if ($product_layout.length)
     {
         setupProduct();
-
-        $product_layout.imagesLoaded(function() {
-            $product_layout.isotope({
-                itemSelector: '.mix-item'
-            });
-        });
-
-        $(window).smartresize(function() {
-            setupProduct();
-        });
     }
 
 
-    $('[data-layout="list"], [data-layout="grid"]').on('click', function(e) {
-        e.preventDefault();
-        $product_layout.toggleClass('grid').toggleClass('list').isotope('reLayout');
+    $('[data-layout="list"]').click(function() {
+        $product_layout.removeClass('grid').addClass('list').isotope('reLayout');
+        return false;
+    });
+
+    $('[data-layout="grid"]').click(function() {
+        $product_layout.addClass('grid').removeClass('list').isotope('reLayout');
+        return false;
+    });
+
+    $('[data-layout="list"], [data-layout="grid"]').click(function() {
         $(this).closest('ul').find('.active').removeClass('active');
         $(this).addClass('active');
+        return false;
     });
 
 
