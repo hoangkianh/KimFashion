@@ -1,26 +1,34 @@
 jQuery(function($) {
+    // cookie được tạo trong trang minified.js (dòng 3530 - 3537): 
     /*
      | ----------------------------------------------------------------------------------
-     | Shopping cart - Remove Row on click Close button
+     | xóa sản phẩm trong giỏ hàng, sản phẩm được xóa khỏi cookie
      | ----------------------------------------------------------------------------------
      */
     $(document).on('click', '.tbl-cart .close', function() {
         $(this).closest('tr').fadeOut(500, function() {
             $(this).remove();
             update_cart_total();
-
             if ($('.tbl-cart tbody tr:not(.empty-cart)').length == 0)
             {
                 $('.tbl-cart .empty-cart').removeClass('hide');
             }
         });
-
+    });
+    
+    /*
+     | ----------------------------------------------------------------------------------
+     | xóa sản phẩm trong giỏ hàng trên header
+     | ----------------------------------------------------------------------------------
+     */
+    $(document).on("click", "#sub-cart .close", function() {
+        var id = $(this).closest(".item").data("product-id");
     });
 
 
     /*
      | ----------------------------------------------------------------------------------
-     | Shopping cart - Fetch Cookie data and display cart items
+     | Hiển thị sản phẩm trong cookie
      | ----------------------------------------------------------------------------------
      */
     function formatNumber(nStr)
@@ -38,7 +46,7 @@ jQuery(function($) {
 
     function output_cookie()
     {
-        var cookie = $.cookie('gioHang');
+        var cookie = $.cookie('cart');
         if (cookie === undefined)
             return;
         cookie = $.parseJSON(cookie);
@@ -65,7 +73,7 @@ jQuery(function($) {
 								</div> \
 							</td> \
 							<td class="hidden-xs"><strong class="text-bold row-total">' + formatNumber(temp) + ' VND</strong></td> \
-							<td class="hidden-xs"><button type="button" class="close" aria-hidden="true">×</button></td> \
+							<td class="hidden-xs"><div class="item" data-product-id="' + cookie[x].id + '"><button type="button" class="close" aria-hidden="true">×</button></div></td> \
 						</tr>');
 
             $new.appendTo($('.tbl-cart tbody'));
@@ -81,7 +89,7 @@ jQuery(function($) {
 
     /*
      | ----------------------------------------------------------------------------------
-     | Shopping cart - QTY
+     | cập nhật số lượng
      | ----------------------------------------------------------------------------------
      */
     $('.qty-btn-group button').on('click', function() {
@@ -108,7 +116,7 @@ jQuery(function($) {
 
     /*
      | ----------------------------------------------------------------------------------
-     | Shopping cart - Update Total & Sub Total
+     | cập nhật tổng tiền
      | ----------------------------------------------------------------------------------
      */
     function update_cart_total()

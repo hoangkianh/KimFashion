@@ -84,7 +84,7 @@ public class SanPhamService {
 
             html += "<div class='entry-main'>"
                     + "<h5 class='entry-title'>"
-                    + "<a href='product-details.do?id=" + sanPham.getMaSP() + "/>'>" + sanPham.getTenSP()
+                    + "<a href='product-details.do?id=" + sanPham.getMaSP() + "'>" + sanPham.getTenSP()
                     + "</a></h5>"
                     + "<div class='entry-description visible-list'>"
                     + "<p>" + sanPham.getMoTa() + "</p></div>";

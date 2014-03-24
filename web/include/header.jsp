@@ -84,7 +84,7 @@
                     <nav id="tiny-menu" class="clearfix">
                         <ul class="user-menu">
                             <li><a href="cart.do">Giỏ hàng</a></li>
-                            <li><a href="/checkout.do">Thanh toán</a></li>
+                            <li><a href="checkout.do">Thanh toán</a></li>
                             <li><a href="#">Đăng xuất</a></li>
                         </ul>
                     </nav>

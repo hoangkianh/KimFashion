@@ -3620,19 +3620,6 @@ jQuery(function(e) {
         }
     }
 
-//    function o(t) {
-//        e.ajax({
-//            url: "cart.php",
-//            type: "post",
-//            data: "data=" + encodeURIComponent(JSON.stringify(t)),
-//            dataType: "json",
-//            beforeSend: function () { },
-//            sucess: function (e) {
-//                s(t)
-//            }
-//        })
-//    }
-
     e(document).on("click", ".add-to-cart", function(t) {
         t.preventDefault();
         var n = e(this),
@@ -3684,6 +3671,9 @@ jQuery(function(e) {
         i(o);
         s();
     });
+    ////////////////////////////
+    // xóa 1 sản phẩm khỏi cookie (ở giỏ hàng trên header)
+    ////////////////////////////
     e(document).on("click", "#sub-cart .close", function() {
         var i = e(this),
                 o = i.closest(".item"),
@@ -3697,10 +3687,30 @@ jQuery(function(e) {
         }
         n(cookie);
         o.parent().fadeOut(400, function() {
-            s()
+            s();
         })
     });
-    s()
+    //////////////////////////////////
+    // xóa sản phẩm ở bảng trong trang giỏ hàng
+    //////////////////////////////////
+    e(document).on('click', '.tbl-cart .close', function() {
+        var i = e(this),
+                o = i.closest(".item"),
+                u = o.data("product-id");
+        // xóa khỏi cookie
+        cookie = t();
+        cookie = r(cookie);
+        for (var a in cookie) {
+            if (cookie[a].id == u) {
+                cookie.splice(a, 1)
+            }
+        }
+        n(cookie);
+        o.parent().fadeOut(400, function() {
+            s();
+        });
+    });
+    s();
 });
 var scrnW, scrnH;
 jQuery(function(e) {
