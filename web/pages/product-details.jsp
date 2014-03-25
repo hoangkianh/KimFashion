@@ -103,7 +103,7 @@
                                                     <li>
                                                         <span class="key">Thương hiệu:</span>
                                                         <span class="value">
-                                                            <bean:write name="SanPhamForm" property="tenThuongHieu"/>
+                                                            <a href="brand.do?id=<bean:write name="SanPhamForm" property="maThuongHieu" />"><bean:write name="SanPhamForm" property="tenThuongHieu"/></a>
                                                         </span>
                                                     </li>
                                                     <li>

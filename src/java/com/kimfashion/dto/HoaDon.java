@@ -1,10 +1,12 @@
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author KimHue
  */
-public class HoaDon {
+public class HoaDon implements Serializable {
     private int maHD;
     private String ngayLapHD;
     private String ngayGiaoHang;

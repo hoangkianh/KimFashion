@@ -6,11 +6,13 @@
 
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kim Hue
  */
-public class ThuongHieu {
+public class ThuongHieu implements Serializable {
     private int maThuongHieu;
     private String tenThuongHieu;
 

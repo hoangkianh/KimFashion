@@ -49,3 +49,9 @@ các trang còn lại
 24-3-2014:
 - phân trang
 - đang có bug khi chuyển layout, filter ở trang thứ 2 trở đi
+
+25-3-2014:
+- fix bug khi chuyển layaout & filter
+
+26-3-2014
+- khi xóa sp trên sub-cart --> xóa sp ở bảng cart

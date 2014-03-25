@@ -6,11 +6,13 @@
 
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kim Hue
  */
-public class BoSuuTap {
+public class BoSuuTap implements Serializable{
     private int maBST;
     private boolean gioiTinh;
     private String tenBST;

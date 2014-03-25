@@ -116,7 +116,7 @@
                                                     <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
-                                                                <html:link action="products" paramId="id" paramName="loaiSPCon" paramProperty="maLoai">
+                                                                <html:link action="category" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
                                                                     ${loaiSPCon.tenLoai}
                                                                 </html:link>
                                                             </li>
@@ -141,7 +141,7 @@
                                                     <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
-                                                                <html:link action="products" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
+                                                                <html:link action="category" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
                                                                     ${loaiSPCon.tenLoai}
                                                                 </html:link>
                                                             </li>
@@ -179,7 +179,7 @@
                                                     <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
-                                                                <html:link action="products" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
+                                                                <html:link action="category" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
                                                                     ${loaiSPCon.tenLoai}
                                                                 </html:link>
                                                             </li>
@@ -202,7 +202,7 @@
                                                     <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
                                                             <li>
-                                                                <html:link action="products" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
+                                                                <html:link action="category" paramId="cat" paramName="loaiSPCon" paramProperty="maLoai">
                                                                     ${loaiSPCon.tenLoai}
                                                                 </html:link>
                                                             </li>

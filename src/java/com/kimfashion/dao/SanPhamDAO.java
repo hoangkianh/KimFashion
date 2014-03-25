@@ -57,6 +57,93 @@ public class SanPhamDAO {
         return list;
     }
     
+    public List<SanPham> getSanPhamByLoaiSP (int loaiSP) {
+        List<SanPham> list = new ArrayList<SanPham>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT a.*, b.`DuongDan` AS HinhAnh FROM tbl_sanpham a"
+                    + " LEFT JOIN `tbl_hinhanh` b"
+                    + " ON a.MaSP = b.MaSP"
+                    + " WHERE a.`DaAn`= FALSE AND b.`AnhChinh` = TRUE AND MaLoaiSP=?");
+            stm.setInt(1, loaiSP);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMaSP(rs.getInt("MaSP"));
+                sp.setCode(rs.getString("Code"));
+                sp.setTenSP(rs.getString("TenSP"));
+                sp.setGioiTinh(rs.getBoolean("GioiTinh"));
+                sp.setMaLoaiSP(rs.getInt("MaLoaiSP"));
+                sp.setMaBST(rs.getInt("MaBST"));
+                sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
+                sp.setMoTa(rs.getString("MoTa"));
+                sp.setGiaNhap(rs.getInt("GiaNhap"));
+                sp.setGiaBan(rs.getInt("GiaBan"));
+                sp.setGiaBanKM(rs.getInt("GiaBanKM"));
+                sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
+                sp.setDangKM(rs.getBoolean("DangKM"));
+                sp.setDaAn(rs.getBoolean("DaAn"));
+                sp.setXepHang(rs.getDouble("XepHang"));
+                sp.setMauSac(rs.getString("MauSac"));
+                sp.setHinhAnh(rs.getString("HinhAnh"));
+
+                list.add(sp);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
+    
+    
+    public List<SanPham> getSanPhamByThuongHieu (int thuongHieu) {
+        List<SanPham> list = new ArrayList<SanPham>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT a.*, b.`DuongDan` AS HinhAnh FROM tbl_sanpham a"
+                    + " LEFT JOIN `tbl_hinhanh` b"
+                    + " ON a.MaSP = b.MaSP"
+                    + " WHERE a.`DaAn`= FALSE AND b.`AnhChinh` = TRUE AND MaThuongHieu=?");
+            stm.setInt(1, thuongHieu);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMaSP(rs.getInt("MaSP"));
+                sp.setCode(rs.getString("Code"));
+                sp.setTenSP(rs.getString("TenSP"));
+                sp.setGioiTinh(rs.getBoolean("GioiTinh"));
+                sp.setMaLoaiSP(rs.getInt("MaLoaiSP"));
+                sp.setMaBST(rs.getInt("MaBST"));
+                sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
+                sp.setMoTa(rs.getString("MoTa"));
+                sp.setGiaNhap(rs.getInt("GiaNhap"));
+                sp.setGiaBan(rs.getInt("GiaBan"));
+                sp.setGiaBanKM(rs.getInt("GiaBanKM"));
+                sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
+                sp.setDangKM(rs.getBoolean("DangKM"));
+                sp.setDaAn(rs.getBoolean("DaAn"));
+                sp.setXepHang(rs.getDouble("XepHang"));
+                sp.setMauSac(rs.getString("MauSac"));
+                sp.setHinhAnh(rs.getString("HinhAnh"));
+
+                list.add(sp);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
+    
     public List<SanPham> getSanPhamPhanTrang(int soSPTren1Trang, int trang) {
         List<SanPham> list = new ArrayList<SanPham>();
         Connection conn = DBUtils.getConnection();

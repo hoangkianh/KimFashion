@@ -6,11 +6,13 @@
 
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kim Hue
  */
-public class Size {
+public class Size implements Serializable {
     private int maSize;
     private String tenSize;
 

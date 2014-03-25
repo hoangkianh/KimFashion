@@ -6,11 +6,13 @@
 
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kim Hue
  */
-public class ChiTietHD {
+public class ChiTietHD implements Serializable{
     private int maHD;
     private int maSP;
     private int maSize;

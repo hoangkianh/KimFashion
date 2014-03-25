@@ -1,13 +1,17 @@
 package com.kimfashion.form;
 
 import com.kimfashion.dao.HinhAnhDAO;
+import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.SanPhamSizeDAO;
 import com.kimfashion.dao.SizeDAO;
+import com.kimfashion.dao.ThuongHieuDAO;
 import com.kimfashion.dto.HinhAnh;
+import com.kimfashion.dto.LoaiSP;
 import com.kimfashion.dto.SanPham;
 import com.kimfashion.dto.SanPhamSize;
 import com.kimfashion.dto.Size;
+import com.kimfashion.dto.ThuongHieu;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +45,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private String mauSac;
     private String hinhAnh;
     private String tenThuongHieu;
+    private String tenLoaiSP;
     private List<SanPham> listSanPham;
 
     /**
@@ -283,10 +288,26 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     }
 
     public String getTenThuongHieu() {
+        ThuongHieu th = new ThuongHieuDAO().getThuongHieuByMaTH(maThuongHieu);
+        if (th != null) {
+            tenThuongHieu = th.getTenThuongHieu();
+        }
         return tenThuongHieu;
     }
 
     public void setTenThuongHieu(String tenThuongHieu) {
         this.tenThuongHieu = tenThuongHieu;
+    }
+
+    public void setTenLoaiSP(String tenLoaiSP) {
+        this.tenLoaiSP = tenLoaiSP;
+    }
+    
+    public String getTenLoaiSP() {
+        LoaiSP loaiSP = new LoaiSPDAO().getLoaiSPByMaLoai(maLoaiSP);
+        if (loaiSP != null) {
+            tenLoaiSP = loaiSP.getTenLoai();
+        }
+        return tenLoaiSP;
     }
 }

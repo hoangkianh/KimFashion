@@ -18,7 +18,7 @@
                 <div class="container">
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
-                            <li><a href="/checkout.do">Trang chủ</a></li>
+                            <li><a href="/KimFashion">Trang chủ</a></li>
                             <li class="active">Thanh toán</li>
                         </ul>
                     </div>
@@ -34,28 +34,16 @@
                             <!-- SIDEBAR -->
                             <aside class="col-xs-12 col-sm-4 col-md-3">
                                 <section class="side-section">
-                                    <h3 class="uppercase text-bold"><span class="text-xs">Usefull Pages</span></h3>
+                                    <h3 class="uppercase text-bold"><span class="text-xs">Bạn nên xem</span></h3>
 
                                     <ul class="nav nav-tabs nav-stacked">
-                                        <li><a href="index-3.html">Homepage</a></li>															
-                                        <li><a href="about-us.html">About us</a></li>															
-                                        <li><a href="products-2.html">Shop</a></li>															
-                                        <li><a href="product-2.html">Single Product Details</a></li>															
-                                        <li><a href="contact-us-2.html">Contact us</a></li>															
+                                        <li><a href="">Homepage</a></li>															
+                                        <li><a href="">About us</a></li>															
+                                        <li><a href="">Shop</a></li>															
+                                        <li><a href="">Single Product Details</a></li>															
+                                        <li><a href="">Contact us</a></li>															
                                     </ul>
                                 </section>
-
-                                <!-- PROMO -->
-                                <div class="promo inverse-background" style="background: url('images/collection/Barn-Dress-Girl_t.jpg') no-repeat; background-size: auto 100%;">
-                                    <div class="inner text-center np">
-                                        <div class="ribbon">
-                                            <h6 class="nmb">New Arrivals</h6>
-                                            <h5 class="text-semibold uppercase nmb">Leather Fashion</h5>
-                                            <div class="space10"></div>
-                                            <a href="products.html" class="with-icon prepend-icon"><i class="iconfont-caret-right"></i><span> Shop Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
                             </aside>
 
                             <section class="col-xs-12 col-sm-8 col-md-9">
@@ -65,7 +53,7 @@
                                             <h4 class="panel-title">
                                                 <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse1">
                                                     <span class="step">01</span>
-                                                    Checkout Infomation
+                                                    Thông tin của bạn
                                                 </a>
                                             </h4>
                                         </div>
@@ -75,7 +63,7 @@
                                                     <div class="col-xs-12 col-sm-6">
                                                         <form>
                                                             <fieldset>
-                                                                <legend class="title">New Customer</legend>
+                                                                <legend class="title">Tôi chưa có tài khoản</legend>
                                                                 <div class="inner">
                                                                     <p>Checkout Options:</p>
                                                                     <div class="form-account">

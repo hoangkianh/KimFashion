@@ -3,6 +3,7 @@ package com.kimfashion.dto;
 import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamSizeDAO;
 import com.kimfashion.dao.SizeDAO;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  *
  * @author KimHue
  */
-public class SanPham {
+public class SanPham implements Serializable {
 
     private int maSP;
     private String code;

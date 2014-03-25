@@ -6,11 +6,13 @@
 
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kim Hue
  */
-public class SanPhamSize {
+public class SanPhamSize implements Serializable {
     private int maSP;
     private int maSize;
     private int soLuongNhap;

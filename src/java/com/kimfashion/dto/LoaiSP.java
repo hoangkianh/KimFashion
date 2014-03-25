@@ -6,11 +6,13 @@
 
 package com.kimfashion.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kim Hue
  */
-public class LoaiSP {
+public class LoaiSP implements Serializable {
     private int maLoai;
     private String tenLoai;
     private boolean gioiTinh;
