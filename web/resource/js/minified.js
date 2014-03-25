@@ -3528,35 +3528,35 @@ css_browser_selector(navigator.userAgent);
     }
 });
 jQuery(function(e) {
-    function t() {
+    function getCookie() {
         return e.cookie("cart")
     }
 
-    function n(t) {
+    function setCookie(t) {
         e.cookie("cart", JSON.stringify(t))
     }
 
-    function r(t) {
+    function parseCookie(t) {
         return e.parseJSON(t)
     }
 
-    function i(e) {
-        var i = t();
+    function themSP(e) {
+        var i = getCookie();
         if (typeof i == "undefined") {
             i = [];
             i.push(e)
         } else {
-            i = r(i);
+            i = parseCookie(i);
             for (var s in i) {
                 if (i[s].id == e.id) {
                     i[s].qty++;
-                    n(i);
+                    setCookie(i);
                     return
                 }
             }
             i.push(e)
         }
-        n(i)
+        setCookie(i)
     }
 
     function formatNumber(nStr)
@@ -3573,8 +3573,8 @@ jQuery(function(e) {
     }
 
 
-    function s() {
-        var n = t();
+    function capNhatGioHang() {
+        var n = getCookie();
         var i = e("#sub-cart"),
                 o = i.find(".cart-items"),
                 u = i.find(".cart-header"),
@@ -3589,7 +3589,7 @@ jQuery(function(e) {
             var f = 0,
                     l = 0,
                     c, h = 2;
-            n = r(n);
+            n = parseCookie(n);
             for (var p in n) {
                 c = n[p].price;
                 c = c.replace(/[^0-9\.]+/g, "");
@@ -3612,7 +3612,7 @@ jQuery(function(e) {
             }
             if (l == 0) {
                 e.removeCookie("cart");
-                s();
+                capNhatGioHang();
                 return
             }
             u.find("span").text("Hiển thị " + h.toString() + " trong số " + l.toString() + " sản phẩm");
@@ -3623,10 +3623,10 @@ jQuery(function(e) {
     e(document).on("click", ".add-to-cart", function(t) {
         t.preventDefault();
         var n = e(this),
-                r, o = {};
+                r, sanPham = {};
         r = n.closest(".add-cart");
         $item = n.closest(r.data("product"));
-        o = {
+        sanPham = {
             id: $item.data("product-id"),
             thumbnail: $item.find(r.data("thumbnail")).attr("src"),
             title: e.trim($item.find(r.data("title")).text()),
@@ -3635,11 +3635,11 @@ jQuery(function(e) {
             qty: 1
         };
 
-        var u = $item.find(r.data("thumbnail")),
+        var anhSP = $item.find(r.data("thumbnail")),
                 a = e('.header-top [data-target="#sub-cart"]'),
-                f = u.clone().offset({
-            top: u.offset().top,
-            left: u.offset().left
+                f = anhSP.clone().offset({
+            top: anhSP.offset().top,
+            left: anhSP.offset().left
         }).css({
             opacity: "0.5",
             position: "absolute",
@@ -3659,7 +3659,7 @@ jQuery(function(e) {
                 e(this).detach();
             });
             var t = e(".cart-notification ul"),
-                    n = e('<li><strong>"' + o.title + '"</strong> được thêm vào giỏ hàng thành công.</li>').hide();
+                    n = e('<li><strong>"' + sanPham.title + '"</strong> được thêm vào giỏ hàng thành công.</li>').hide();
             n.appendTo(t).slideDown(400, function() {
                 setTimeout(function() {
                     n.slideUp(400, function() {
@@ -3668,8 +3668,8 @@ jQuery(function(e) {
                 }, 2e3);
             });
         });
-        i(o);
-        s();
+        themSP(sanPham);
+        capNhatGioHang();
     });
     ////////////////////////////
     // xóa 1 sản phẩm khỏi cookie (ở giỏ hàng trên header)
@@ -3677,17 +3677,17 @@ jQuery(function(e) {
     e(document).on("click", "#sub-cart .close", function() {
         var i = e(this),
                 o = i.closest(".item"),
-                u = o.data("product-id");
-        cookie = t();
-        cookie = r(cookie);
+                maSP = o.data("product-id");
+        cookie = getCookie();
+        cookie = parseCookie(cookie);
         for (var a in cookie) {
-            if (cookie[a].id == u) {
+            if (cookie[a].id == maSP) {
                 cookie.splice(a, 1)
             }
         }
-        n(cookie);
+        setCookie(cookie);
         o.parent().fadeOut(400, function() {
-            s();
+            capNhatGioHang();
         })
     });
     //////////////////////////////////
@@ -3696,21 +3696,21 @@ jQuery(function(e) {
     e(document).on('click', '.tbl-cart .close', function() {
         var i = e(this),
                 o = i.closest(".item"),
-                u = o.data("product-id");
+                maSP = o.data("product-id");
         // xóa khỏi cookie
-        cookie = t();
-        cookie = r(cookie);
+        cookie = getCookie();
+        cookie = parseCookie(cookie);
         for (var a in cookie) {
-            if (cookie[a].id == u) {
+            if (cookie[a].id == maSP) {
                 cookie.splice(a, 1)
             }
         }
-        n(cookie);
+        setCookie(cookie);
         o.parent().fadeOut(400, function() {
-            s();
+            capNhatGioHang();
         });
     });
-    s();
+    capNhatGioHang();
 });
 var scrnW, scrnH;
 jQuery(function(e) {

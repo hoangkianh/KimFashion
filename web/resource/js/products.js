@@ -15,7 +15,7 @@ jQuery(function($) {
             }
         });
     });
-    
+
     /*
      | ----------------------------------------------------------------------------------
      | xóa sản phẩm trong giỏ hàng trên header
@@ -23,6 +23,8 @@ jQuery(function($) {
      */
     $(document).on("click", "#sub-cart .close", function() {
         var id = $(this).closest(".item").data("product-id");
+
+        $('.tbl-cart').find('tr[data-product-id=' + id + ']').fadeOut(400);
     });
 
 
@@ -57,7 +59,7 @@ jQuery(function($) {
             temp = cookie[x].price;
             temp = temp.replace(/[^0-9\.]+/g, '');
             temp = parseInt(temp);
-            var $new = $('<tr> \
+            var $new = $('<tr data-product-id="' + cookie[x].id + '"> \
 							<td> \
 								<a class="entry-thumbnail" href="' + cookie[x].thumbnail + '" data-toggle="lightbox">\
 									<img src="' + cookie[x].thumbnail + '" alt="' + cookie[x].title + '" /> \
