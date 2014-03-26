@@ -117,9 +117,6 @@
                                                         <li>
                                                             <a href="${sp.hinhAnh}" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
                                                         </li>
-                                                        <li>
-                                                            <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
