@@ -100,7 +100,8 @@
                                      data-navigation="true" data-lazyload="true">
                                     <jsp:useBean id="spForm" class="com.kimfashion.form.SanPhamForm"/>
                                     <logic:iterate id="sp" collection="${spForm.listSPMoi}">
-                                        <div class="product" data-product-id="${sp.maSP}">
+                                        <div class="product" data-product-id="${sp.maSP}" 
+                                             data-size="${sp.listSizeString}" data-code="${sp.code}">
                                             <div class="entry-media">
                                                 <img data-src="${sp.hinhAnh}" alt="" class="lazyOwl thumb" />
                                                 <div class="hover">
@@ -166,7 +167,8 @@
                                 <div class="owl-carousel owl-theme" data-visible-items="5"
                                      data-navigation="true" data-lazyload="true">
                                     <logic:iterate id="sp" collection="${spForm.listSPKhuyenMai}">
-                                        <div class="product" data-product-id="${sp.maSP}">
+                                        <div class="product" data-product-id="${sp.maSP}"
+                                             data-size="${sp.listSizeString}" data-code="${sp.code}">
                                             <div class="entry-media">
                                                 <img data-src="${sp.hinhAnh}" alt="" class="lazyOwl thumb" />
                                                 <div class="hover">

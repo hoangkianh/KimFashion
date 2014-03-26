@@ -223,7 +223,8 @@
                                                  data-brand="th<bean:write name="sanPham" property="maThuongHieu"/>"
                                                  data-price="<bean:write name="sanPham" property="giaBan"/>" 
                                                  data-colors="<bean:write name="sanPham" property="listMauSacString"/>"
-                                                 data-size="<bean:write name="sanPham" property="listSizeString"/>">
+                                                 data-size="<bean:write name="sanPham" property="listSizeString"/>"
+                                                 data-code="<bean:write name="sanPham" property="code"/>">
                                                 <div class="entry-media">
                                                     <img data-src="<bean:write name="sanPham" property="hinhAnh"/>" alt="" class="lazyLoad thumb" />
                                                     <div class="hover">

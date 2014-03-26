@@ -3541,22 +3541,24 @@ jQuery(function(e) {
     }
 
     function themSP(e) {
-        var i = getCookie();
-        if (typeof i == "undefined") {
-            i = [];
-            i.push(e)
+        var cookie = getCookie();
+        if (typeof cookie == "undefined") {
+            cookie = [];
+            cookie.push(e);
         } else {
-            i = parseCookie(i);
-            for (var s in i) {
-                if (i[s].id == e.id) {
-                    i[s].qty++;
-                    setCookie(i);
-                    return
+            cookie = parseCookie(cookie);
+            for (var s in cookie) {
+                // kiểm tra id sản phẩm và size 
+                // nếu khác nhau thì cho là sp khác
+                if (cookie[s].id == e.id && cookie[s].size == e.size) {
+                    cookie[s].qty++;
+                    setCookie(cookie);
+                    return;
                 }
             }
-            i.push(e)
+            cookie.push(e);
         }
-        setCookie(i)
+        setCookie(cookie)
     }
 
     function formatNumber(nStr)
@@ -3584,7 +3586,7 @@ jQuery(function(e) {
         if (typeof n == "undefined") {
             u.find("span").text("Giỏ hàng chưa có sản phẩm nào.");
             a.text("0");
-            return
+            return;
         } else {
             var f = 0,
                     l = 0,
@@ -3625,17 +3627,26 @@ jQuery(function(e) {
         var n = e(this),
                 r, sanPham = {};
         r = n.closest(".add-cart");
-        $item = n.closest(r.data("product"));
+        $sp = n.closest(r.data("product"));
+        
+        // lấy size sp
+        // mặc định là size S
+        $size = $sp.data("size")
+        if ($size.indexOf("|") > -1) {
+            $size = $size.split("|")[0];
+        }
+        
         sanPham = {
-            id: $item.data("product-id"),
-            thumbnail: $item.find(r.data("thumbnail")).attr("src"),
-            title: e.trim($item.find(r.data("title")).text()),
-            url: $item.find(r.data("url")).attr("href"),
-            price: e.trim($item.find(r.data("price")).text()),
-            qty: 1
+            id: $sp.data("product-id"),
+            thumbnail: $sp.find(r.data("thumbnail")).attr("src"),
+            title: e.trim($sp.find(r.data("title")).text()),
+            url: $sp.find(r.data("url")).attr("href"),
+            price: e.trim($sp.find(r.data("price")).text()),
+            qty: 1,
+            size: $size
         };
 
-        var anhSP = $item.find(r.data("thumbnail")),
+        var anhSP = $sp.find(r.data("thumbnail")),
                 a = e('.header-top [data-target="#sub-cart"]'),
                 f = anhSP.clone().offset({
             top: anhSP.offset().top,

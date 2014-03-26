@@ -24,7 +24,11 @@ jQuery(function($) {
     $(document).on("click", "#sub-cart .close", function() {
         var id = $(this).closest(".item").data("product-id");
 
-        $('.tbl-cart').find('tr[data-product-id=' + id + ']').fadeOut(400);
+        var p = $('.tbl-cart').find('tr[data-product-id=' + id + ']');
+        p.fadeOut(400, function() {
+            $(this).remove();
+            update_cart_total();
+        });
     });
 
 
@@ -59,6 +63,7 @@ jQuery(function($) {
             temp = cookie[x].price;
             temp = temp.replace(/[^0-9\.]+/g, '');
             temp = parseInt(temp);
+            
             var $new = $('<tr data-product-id="' + cookie[x].id + '"> \
 							<td> \
 								<a class="entry-thumbnail" href="' + cookie[x].thumbnail + '" data-toggle="lightbox">\
@@ -67,6 +72,7 @@ jQuery(function($) {
 								<a class="entry-title" href="' + cookie[x].url + '">' + cookie[x].title + '</a> \
 							</td> \
 							<td><span class="unit-price">' + cookie[x].price + '</span></td> \
+							<td><span class="unit-size">' + cookie[x].size+ '</span></td> \
 							<td> \
 								<div class="qty-btn-group"> \
 									<button type="button" class="down"><i class="iconfont-caret-down inline-middle"></i></button> \

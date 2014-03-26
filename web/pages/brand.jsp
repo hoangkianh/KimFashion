@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title><bean:write name="SanPhamForm" property="tenThuongHieu"/> | KimFashion - Cửa hàng thời trang online</title>
+        <title>Thương hiệu <bean:write name="SanPhamForm" property="tenThuongHieu"/> | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/jquery.nouislider.css"/>
         <link rel="stylesheet" href="resource/css/isotope.css"/>
@@ -239,7 +239,8 @@
                                                  data-brand="th<bean:write name="sanPham" property="maThuongHieu"/>"
                                                  data-price="<bean:write name="sanPham" property="giaBan"/>" 
                                                  data-colors="<bean:write name="sanPham" property="listMauSacString"/>"
-                                                 data-size="<bean:write name="sanPham" property="listSizeString"/>">
+                                                 data-size="<bean:write name="sanPham" property="listSizeString"/>"
+                                                 data-code="<bean:write name="sanPham" property="code"/>">
                                                 <div class="entry-media">
                                                     <img data-src="<bean:write name="sanPham" property="hinhAnh"/>" alt="" class="lazyLoad thumb" />
                                                     <div class="hover">

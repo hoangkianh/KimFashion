@@ -155,7 +155,6 @@ public class SanPhamDAO {
                     + " LEFT JOIN `tbl_hinhanh` b"
                     + " ON a.MaSP = b.MaSP"
                     + " WHERE a.`DaAn`= FALSE AND b.`AnhChinh` = TRUE LIMIT " + dongBatDau + "," + soSPTren1Trang;
-        System.out.println(query);
         try {
             stm = conn.prepareStatement(query);
             rs = stm.executeQuery();

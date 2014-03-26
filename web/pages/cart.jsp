@@ -37,9 +37,10 @@
                                 <tr>
                                     <th>Tên sản phẩm</th>
                                     <th style="width: 15%;">Giá</th>
+                                    <th style="width: 10%;">Size</th>
                                     <th style="width: 15%;">Số lượng</th>
                                     <th class="hidden-xs" style="width: 15%;">Tổng tiền </th>
-                                    <th class="hidden-xs" style="width: 10%;">Xóa</th>
+                                    <th class="hidden-xs" style="width: 5%;">Xóa</th>
                                 </tr>
                             </thead>
                             <tbody>

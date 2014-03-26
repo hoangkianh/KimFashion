@@ -63,7 +63,8 @@ public class SanPhamService {
                     + " data-brand='th" + sanPham.getMaThuongHieu() + "'"
                     + " data-price='" + sanPham.getGiaBan() + "' "
                     + " data-colors='" + sanPham.getListMauSacString() + "'"
-                    + " data-size='" + sanPham.getListSizeString() + "'>";
+                    + " data-size='" + sanPham.getListSizeString() + "'"
+                    + " data-code='" + sanPham.getCode() + "'>";
             html += "<div class='entry-media'><img data-src='" + sanPham.getHinhAnh() + "' alt='' class='lazyLoad thumb' />";
             html += "<div class='hover'>"
                     + "<a href='product-details.do?id=" + sanPham.getMaSP() + "' class='entry-url'></a>"
