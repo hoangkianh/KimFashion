@@ -80,7 +80,6 @@ public class SanPhamService {
 
             html += "<li><a href='" + sanPham.getHinhAnh()
                     + "' class='circle' data-toggle='lightbox'><i class='iconfont-search'></i></a></li>"
-                    + "<li><a href='cart.do' class='circle add-to-cart'><i class='iconfont-shopping-cart'></i></a></li>"
                     + "</ul></div></div>";
 
             html += "<div class='entry-main'>"
@@ -103,7 +102,6 @@ public class SanPhamService {
             html += "<a href='#' class='btn btn-round btn-default add-to-cart visible-list'>Thêm vào giỏ</a>"
                     + "</div>"
                     + "<div class='entry-links clearfix'>"
-                    + "<a href='#' class='pull-center'>+ So sánh</a>"
                     + "</div></div></div></div>";
         }
 

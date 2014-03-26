@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>So sánh sản phẩm | KimFashion - Cửa hàng thời trang online</title>
+        <title>ĐĂNG KÝ THÀNH VIÊN | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
         <link rel="stylesheet" href="resource/css/owl.theme.css"/>
@@ -20,7 +20,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="/KimFashion">Trang chủ</a></li>
-                            <li class="active">So sánh</li>
+                            <li class="active">Đăng ký thành viên</li>
                         </ul>
                     </div>
                 </div>

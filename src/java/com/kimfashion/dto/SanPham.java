@@ -16,6 +16,7 @@ public class SanPham implements Serializable {
     private int maSP;
     private String code;
     private String tenSP;
+    private String tenBST;
     private boolean gioiTinh;
     private int maThuongHieu;
     private int maLoaiSP;
@@ -183,6 +184,14 @@ public class SanPham implements Serializable {
 
     public void setTenThuongHieu(String tenThuongHieu) {
         this.tenThuongHieu = tenThuongHieu;
+    }
+
+    public String getTenBST() {
+        return tenBST;
+    }
+
+    public void setTenBST(String tenBST) {
+        this.tenBST = tenBST;
     }
 
     public List<Size> getListSize() {

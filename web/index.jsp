@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
 
-                                <div class="owl-carousel owl-theme" data-visible-items="4"
+                                <div class="owl-carousel owl-theme" data-visible-items="5"
                                      data-navigation="true" data-lazyload="true">
                                     <jsp:useBean id="spForm" class="com.kimfashion.form.SanPhamForm"/>
                                     <logic:iterate id="sp" collection="${spForm.listSPMoi}">
@@ -114,9 +114,6 @@
                                                         <li>
                                                             <a href="${sp.hinhAnh}" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
                                                         </li>
-                                                        <li>
-                                                            <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -129,9 +126,6 @@
                                                         <fmt:formatNumber value="${sp.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                         VND
                                                     </strong>
-                                                </div>
-                                                <div class="entry-links clearfix">
-                                                    <a href="#" class="pull-center">+ So sánh</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,7 +148,7 @@
 
                             <div class="clearfix"></div>
 
-                            <!-- BEGIN CAROUSEL -->
+                            <!-- SẢN PHẨM KHUYẾN MÃI -->
                             <div id="new-arrivals-products" class="add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
 
                                 <div class="owl-controls clickable outside">
@@ -181,9 +175,6 @@
                                                         <li>
                                                             <a href="${sp.hinhAnh}" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
                                                         </li>
-                                                        <li>
-                                                            <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -200,9 +191,6 @@
                                                         <fmt:formatNumber value="${sp.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
                                                         VND
                                                     </strong>
-                                                </div>
-                                                <div class="entry-links clearfix">
-                                                    <a href="#" class="pull-center">+ So sánh</a>
                                                 </div>
                                             </div>
                                         </div>
