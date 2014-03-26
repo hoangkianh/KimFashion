@@ -272,6 +272,9 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     public List<SanPham> getListSPBanChay(){
         return new SanPhamDAO().getSanPhamBanChay();
     }
+    public List<SanPham> getListRandomSP(){
+        return new SanPhamDAO().getRandomSP();
+    }
     public List<HinhAnh> getListHinhAnh(){
         return new HinhAnhDAO().getAllHinhAnhByMaSP(maSP);
     }

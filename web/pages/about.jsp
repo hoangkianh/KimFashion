@@ -31,7 +31,28 @@
             <main id="main-content" role="main">
                 <div class="container">
                     <div class="row">
-
+                        
+                        <div class="col-xs-12 col-sm-6 col-lg-offset-1 col-md-5">
+                            <section class="widget widget-text">
+                                <span class="text-bold"><h3 class="widget-title">Giới thiệu Kim Fashion</h3></span>
+                                <div class="widget-content">
+                                    <p>Chào mừng quý khách đến với <span class="text-bold">KimFashion</span> , web mua sắm thời trang lớn nhất Việt Nam..</p>
+                                    <p><span class="text-bold">KimFashion</span> hân hạnh mang đến cho bạn một bộ sưu tập thời trang khổng lồ từ những thương hiệu nổi tiếng thế giới 
+                                        và Việt Nam. Tất cả các sản phẩm đều được <span class="text-bold">KimFashion</span> tuyển lựa một cách kỹ lưỡng sao cho thật hợp với phong cách Á Đông
+                                        mà cũng bắt nhịp cùng với những xu hướng mới nhất đang thịnh hành khắp thế giới..</p>
+                                    <p>Trong lĩnh vực thời trang, <span class="text-bold">KimFashion</span> tự hào về đội ngũ stylist chuyên nghiệp và tận tình giúp người mua có được
+                                        những gợi ý sáng tạo cho một vẻ ngoài hoàn hảo thật phù hợp với nhiều hoàn cảnh và phong cách đa dạng của quý khách.
+                                        Dù bạn thanh lịch, quý phái hay trẻ trung, năng động, bạn cũng đều có thể tìm được những món đồ ưng ý trên <span class="text-bold">KimFashion</span></p>
+                                    <p>Sự sành điệu và gout thẩm mỹ tinh tế của quý khách còn được thể hiện qua sự lựa chọn những món đồ phụ kiện 
+                                        có trên <span class="text-bold">KimFashion</span>. Chắc chắn quý khách sẽ rất hài lòng.</p>
+                                    <p>Ở <span class="text-bold">KimFashion</span>, quý khách sẽ có những trải nghiệm mua sắm vô cùng thú vị!</p>
+                                </div>
+                            </section>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-5">
+                            <img src="images/ABOUT.jpg" class="lazyOwl thumb"/>
+                        </div>
                     </div>
                 </div>
             </main>

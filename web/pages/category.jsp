@@ -243,14 +243,7 @@
                                                             <li>
                                                                 <a href="<bean:write name="sanPham" property="hinhAnh"/>" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
                                                             </li>
-                                                            <li>
-                                                                <a href="cart.do" class="circle add-to-cart"><i class="iconfont-shopping-cart"></i></a>
-                                                            </li>
                                                         </ul>
-                                                        <div class="rate-bar">
-                                                            <input type="range" value="<bean:write name="sanPham" property="xepHang"/>" step="0.5" id="backing<bean:write name="sanPham" property="maSP"/>" />
-                                                            <div class="rateit" data-rateit-backingfld="#backing<bean:write name="sanPham" property="maSP"/>" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="entry-main">
@@ -260,7 +253,7 @@
                                                         </a>
                                                     </h5>
                                                     <div class="entry-description visible-list">
-                                                        <p>Sed ornare cras donec litora integer curabitur orci, at nullam aliquam libero nam himenaeos, amet massa amet ut ipsum viverra mauris rhoncus neque aenean rhoncus gravida orci facilisis quis dui consectetur.</p>
+                                                        <p><bean:write name="sanPham" property="moTa" filter="false"/></p>
                                                     </div>
                                                     <div class="entry-price">
                                                         <logic:equal name="sanPham" property="dangKM" value="true">
@@ -279,10 +272,7 @@
                                                                 VND
                                                             </strong>
                                                         </logic:equal>
-                                                        <a href="#" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ</a>
-                                                    </div>
-                                                    <div class="entry-links clearfix">
-                                                        <a href="#" class="pull-center">+ So sánh</a>
+                                                        <a href="cart.do" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ</a>
                                                     </div>
                                                 </div>
                                             </div>

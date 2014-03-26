@@ -17,6 +17,7 @@
         <%@include file="../include/includeJS.jsp" %>
     </head>
     <body class="products-view">
+        
         <!-- PAGE -->
         <div id="page-wrapper">
             <%@include file="../include/header.jsp" %>

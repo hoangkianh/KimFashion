@@ -92,13 +92,6 @@
                                                         </strong>
                                                     </logic:notEqual>
                                                 </span>
-                                                <div class="rate-bar inline-middle">
-                                                    <input type="range" value="<bean:write name="SanPhamForm" property="xepHang"/>" step="0.5" id="backing0" />
-                                                    <div class="rateit" data-rateit-backingfld="#backing0" data-rateit-starwidth="12" data-rateit-starheight="12" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5"></div>
-                                                </div>
-                                                <span class="entry-review-count inline-middle">
-                                                    (<bean:write name="SanPhamForm" property="soLuotDanhGia"/> lượt đánh giá)
-                                                </span>
                                                 <ul class="entry-meta unstyled">
                                                     <li>
                                                         <span class="key">Thương hiệu:</span>
@@ -142,10 +135,7 @@
                                                 </div>
                                                 <ul class="inline-li li-m-r-l m-t-lg">
                                                     <li>
-                                                        <a href="#" class="btn btn-default btn-lg btn-round add-to-cart">Thêm vào giỏ</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.do">+ So sánh</a>
+                                                        <a href="cart.do" class="btn btn-default btn-lg btn-round add-to-cart">Thêm vào giỏ</a>
                                                     </li>
                                                 </ul>
 
@@ -231,9 +221,6 @@
                                                                 VND
                                                             </strong>
                                                         </logic:equal>
-                                                    </div>
-                                                    <div class="entry-links clearfix">
-                                                        <a href="#" class="pull-center">+ So sánh</a>
                                                     </div>
                                                 </div>
                                             </div>
