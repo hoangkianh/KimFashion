@@ -37,9 +37,9 @@
                                     <h3 class="uppercase text-bold"><span class="text-xs">Bạn nên xem</span></h3>
 
                                     <ul class="nav nav-tabs nav-stacked">
-                                        <li><a href="/KimFashion">Trang chủ</a></li>															
-                                        <li><a href="products.do">Sản phẩm</a></li>															
-                                        <li><a href="about.do">Giới thiệu</a></li>															
+                                        <li><a href="products.do">Danh mục sản phẩm</a></li>															
+                                        <li><a href="https://facebook.com/pages/KimFashion"><i class="iconfont-facebook-sign"></i> Facebook của chúng tôi</a></li>
+                                        <li><a href="about.do">Giới thiệu cửa hàng</a></li>														
                                         <li><a href="contact.do">Liên hệ</a></li>															
                                     </ul>
                                 </section>
@@ -50,62 +50,51 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse1">
+                                                <a href="javascript:void(0);">
                                                     <span class="step">01</span>
-                                                    Thông tin của bạn
+                                                    tài khoản
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div id="checkout-collapse1" class="panel-collapse collapse in">
+                                        <div id="checkout-collapse1" class="panel-collapse">
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-6">
-                                                        <form>
-                                                            <fieldset>
-                                                                <legend class="title">Tôi chưa có tài khoản</legend>
-                                                                <div class="inner">
-                                                                    <p>Checkout Options:</p>
-                                                                    <div class="form-account">
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="customer" id="radio-register" class="prettyCheckable" checked="checked" data-label="Register Account" />
-                                                                        </div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="customer" id="radio-guest" class="prettyCheckable" data-label="Guest Checkout" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <p class="light-color">Mauris dapibus quam id turpis dignissim rutrum. Phasellus placerat nunc [...]</p>
-                                                                    <div class="space20 clearfix"></div>
-                                                                    <button class="btn btn-default btn-round uppercase padder">Continue</button>
-                                                                </div>
-                                                            </fieldset>
-                                                        </form>
-                                                    </div>
-                                                    <div class="space40 visible-xs"></div>
-                                                    <div class="col-xs-12 col-sm-6">
                                                         <form class="form-horizontal">
                                                             <fieldset>
-                                                                <legend class="title">Returning Customer</legend>
+                                                                <legend class="title">tôi đã có tài khoản</legend>
                                                                 <div class="inner">
-                                                                    <p>I'm a Returning Customer</p>
+                                                                    <p>Tài khoản của tôi là</p>
                                                                     <div class="form-login">
                                                                         <div class="form-group stylish-input">
-                                                                            <label for="inputEmail" class="col-xs-12 col-sm-3 control-label required">Email</label>
+                                                                            <label for="inputTenDangNhap" class="col-xs-12 col-sm-3 control-label required">Email</label>
                                                                             <div class="col-lg-7">
-                                                                                <input type="text" class="form-control" id="inputEmail">
+                                                                                <input type="text" class="form-control" id="inputTenDangNhap">
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group stylish-input">
                                                                             <label for="inputPassword" class="col-xs-12 col-sm-3 control-label required">Password</label>
                                                                             <div class="col-lg-7">
                                                                                 <input type="password" class="form-control" id="inputPassword">
-                                                                                <a href="#" class="help-block">Forgot your password?</a>
+                                                                                <a href="#" class="help-block">Quên mật khẩu?</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <button class="btn btn-primary btn-round padder">Login</button>
+                                                                    <button class="btn btn-primary btn-round padder">Đăng nhập và mua hàng</button>
                                                                 </div>
                                                             </fieldset>
                                                         </form>
+                                                    </div>
+                                                    <div class="space40 visible-xs"></div>
+                                                    <div class="col-xs-12 col-sm-6">
+                                                        <fieldset>
+                                                            <legend class="title">Tôi chưa có tài khoản</legend>
+                                                            <div class="inner">
+                                                                <p>Hãy làm theo hướng dẫn trong trang đăng ký tài khoản</p>
+                                                                <div class="space20 clearfix"></div>
+                                                                <a href="register.do" class="btn btn-default btn-round uppercase padder">Đăng ký và mua hàng</a>
+                                                            </div>
+                                                        </fieldset>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,99 +103,91 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse2">
+                                                <a href="javascript:void(0);">
                                                     <span class="step">02</span>
-                                                    Billing Infomation
+                                                    thông tin khách hàng
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div id="checkout-collapse2" class="panel-collapse collapse">
+                                        <div id="checkout-collapse2">
                                             <div class="panel-body">
                                                 <form class="form-horizontal" role="form">
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputFirstname" class="col-sm-4 col-lg-4 control-label required">First Name</label>
+                                                                <label for="inputHoTen" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputFirstname" />
+                                                                    <input type="text" class="form-control" id="inputHoTen" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputLastname" class="col-sm-4 col-lg-4 control-label required">Last Name</label>
+                                                                <label for="inputAddress" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputLastname" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputEmail2" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="email" class="form-control" id="inputEmail2" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputPhone" class="col-sm-4 col-lg-4 control-label required">Telephone</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputPhone" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputFax" class="col-sm-4 col-lg-4 control-label">Fax</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputFax" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputCompany" class="col-sm-4 col-lg-4 control-label">Company</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputCompany" />
+                                                                    <input type="text" class="form-control" id="inputAddress" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputAddress1" class="col-sm-4 col-lg-4 control-label required">Address 1</label>
+                                                                <label for="inputEmail" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
+                                                                <div class="col-sm-8 col-lg-8">
+                                                                    <input type="email" class="form-control" id="inputEmail" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group stylish-input">
+                                                                <label for="inputDienThoai" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
+                                                                <div class="col-sm-8 col-lg-8">
+                                                                    <input type="text" class="form-control" id="inputDienThoai" />
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a href="javascript:void(0);">
+                                                    <span class="step">03</span>
+                                                    thông tin giao hàng
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="checkout-collapse3" class="panel-collapse">
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" role="form">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                                            <div class="form-group stylish-input">
+                                                                <label for="inputHoTen1" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
+                                                                <div class="col-sm-8 col-lg-8">
+                                                                    <input type="text" class="form-control" id="inputHoTen1" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group stylish-input">
+                                                                <label for="inputAddress1" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
                                                                 <div class="col-sm-8 col-lg-8">
                                                                     <input type="text" class="form-control" id="inputAddress1" />
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-6">
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputAddress2" class="col-sm-4 col-lg-4 control-label">Address 2</label>
+                                                                <label for="inputEmail1" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputAddress2" />
+                                                                    <input type="email" class="form-control" id="inputEmail1" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputCity" class="col-sm-4 col-lg-4 control-label required">City</label>
+                                                                <label for="inputPhone1" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputCity" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputPostcode" class="col-sm-4 col-lg-4 control-label required">Post Code</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="inputPostcode" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputCountry" class="col-sm-4 col-lg-4 control-label required">Country</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <select class="form-control" id="inputCountry">	
-                                                                        <option>select country</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputState" class="col-sm-4 col-lg-4 control-label required">Region/state</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <select class="form-control" id="inputState">
-                                                                        <option>select state/region</option>
-                                                                    </select>
+                                                                    <input type="text" class="form-control" id="inputPhone1" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="space20 clearfix"></div>
-                                                    <button class="btn btn-primary">Continue</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -214,196 +195,31 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse3">
-                                                    <span class="step">03</span>
-                                                    Delivery Details
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="checkout-collapse3" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <form class="form-horizontal" role="form">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputFirstname" class="col-sm-4 col-lg-4 control-label required">First Name</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text1" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputLastname" class="col-sm-4 col-lg-4 control-label required">Last Name</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text2" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputEmail2" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="email" class="form-control" id="Email1" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputPhone" class="col-sm-4 col-lg-4 control-label required">Telephone</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text3" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputFax" class="col-sm-4 col-lg-4 control-label">Fax</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text4" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputCompany" class="col-sm-4 col-lg-4 control-label">Company</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text5" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputAddress1" class="col-sm-4 col-lg-4 control-label required">Address 1</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text6" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputAddress2" class="col-sm-4 col-lg-4 control-label">Address 2</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text7" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputCity" class="col-sm-4 col-lg-4 control-label required">City</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text8" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputPostcode" class="col-sm-4 col-lg-4 control-label required">Post Code</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" id="Text9" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputCountry" class="col-sm-4 col-lg-4 control-label required">Country</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <select class="form-control" id="Select1">	
-                                                                        <option>select country</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputState" class="col-sm-4 col-lg-4 control-label required">Region/state</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <select class="form-control" id="Select2">
-                                                                        <option>select state/region</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="space20 clearfix"></div>
-                                                    <button class="btn btn-primary">Continue</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse4">
+                                                <a href="javascript:void(0);">
                                                     <span class="step">04</span>
-                                                    Payment Method
+                                                    đơn hàng
                                                 </a>
                                             </h4>
                                         </div>
-                                        <div id="checkout-collapse4" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <form class="paymethod" role="form">
-                                                    <div class="form-group stylish-input">
-                                                        <input type="radio" id="deliverymethod1" class="prettyCheckable" name="deliverymethod" data-label="Method 1" />
-                                                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.</p>
-                                                    </div>
-                                                    <div class="form-group stylish-input">
-                                                        <input type="radio" id="deliverymethod2" class="prettyCheckable" name="deliverymethod" data-label="Method 2" />
-                                                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.</p>
-                                                    </div>
-                                                    <div class="form-group stylish-input">
-                                                        <input type="radio" id="deliverymethod3" class="prettyCheckable" name="deliverymethod" data-label="Method 3" />
-                                                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.</p>
-                                                    </div>
-                                                    <div class="space20 clearfix"></div>
-                                                    <button class="btn btn-primary">Continue</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse5">
-                                                    <span class="step">05</span>
-                                                    Delivery Methods
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="checkout-collapse5" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <form class="paymethod" role="form">
-                                                    <div class="form-group stylish-input">
-                                                        <input type="radio" id="paymethod1" class="prettyCheckable" name="paymethod" data-label="Direct Bank Transfer" />
-                                                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.</p>
-                                                    </div>
-                                                    <div class="form-group stylish-input">
-                                                        <input type="radio" id="paymethod2" class="prettyCheckable" name="paymethod" data-label="C.O.D" />
-                                                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.</p>
-                                                    </div>
-                                                    <div class="form-group stylish-input">
-                                                        <input type="radio" id="paymethod3" class="prettyCheckable" name="paymethod" data-label="PayPal" />
-                                                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit.</p>
-                                                    </div>
-                                                    <div class="space20 clearfix"></div>
-                                                    <button class="btn btn-primary">Continue</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#checkout-collapse" href="#checkout-collapse6">
-                                                    <span class="step">06</span>
-                                                    Account & Billing Details
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="checkout-collapse6" class="panel-collapse collapse">
+                                        <div id="checkout-collapse6" class="panel-collapse">
                                             <div class="panel-body">
                                                 <div class="row">
-                                                    <div class="col-xs-12 col-sm-6 pull-right center-sm">
+                                                    <div class="col-xs-12 col-sm-6 center-sm">
                                                         <table class="shop-summary">
                                                             <tr>
-                                                                <th>Sub Total:</th>
-                                                                <td>$1170.00</td>
+                                                                <th>TỔNG CỘNG:</th>
+                                                                <td>170,000 VND</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Eco tax (-2.00)</th>
-                                                                <td>$2.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Vat (10.0 %):</th>
-                                                                <td>$117.00</td>
+                                                                <th>VẬN CHUYỂN:</th>
+                                                                <td>Miễn phí</td>
                                                             </tr>
                                                             <tr class="total">
-                                                                <th>Total:</th>
-                                                                <td>$1053.00</td>
+                                                                <th>Thành tiền:</th>
+                                                                <td>170,000 VND</td>
                                                             </tr>
                                                             <tr>
-                                                                <th><a href="#" class="btn btn-default btn-round uppercase">Checkout</a></th>
-                                                                <td><a href="#" class="btn btn-primary btn-round uppercase">Continue Shopping</a></td>
+                                                                <th><a href="#" class="btn btn-default btn-round uppercase">Thanh toán</a></th>
                                                             </tr>
                                                         </table>
                                                     </div>

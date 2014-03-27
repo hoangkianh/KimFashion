@@ -38,7 +38,8 @@
         <!-- =======================
         Front-end
         ======================= -->
-        <action path="/compare" forward="/pages/compare.jsp"/>
+        <action path="/register" forward="/pages/register.jsp"/>
+        <action path="/collection" forward="/pages/collection.jsp"/>
         <action path="/cart" forward="/pages/cart.jsp"/>
 
         <action input="/" name="SanPhamForm" path="/product-details" scope="session" type="com.kimfashion.struts.GetChiTietSP" validate="false">
