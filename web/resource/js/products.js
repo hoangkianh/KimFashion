@@ -1,4 +1,38 @@
 jQuery(function($) {
+
+    // hiển thị tổng đơn hàng ở trang thanh toán checkout.jsp
+    function hienThiCheckOut() {
+        var cookie = $.cookie('cart');
+        if (cookie === undefined)
+        {
+            return;
+        }
+        cookie = $.parseJSON(cookie);
+
+        var tongCong = 0,
+                vanChuyen = 0,
+                thanhTien = 0;
+
+        for (var sp in cookie) {
+            var gia = cookie[sp].price.replace(/[^0-9\.]+/g, '');
+            tongCong += parseInt(gia) * parseInt(cookie[sp].qty);
+        }
+
+        if (tongCong <= 1000000) {
+            vanChuyen = 50000;
+        }
+        thanhTien = tongCong + vanChuyen;
+
+        $('.shop-summary #tongCong').text(formatNumber(tongCong) + ' VND');
+        if (vanChuyen == 0) {
+            $('.shop-summary #vanChuyen').text('Miễn phí');
+        } else {
+            $('.shop-summary #vanChuyen').html(formatNumber(vanChuyen) + ' VND' + '&nbsp;<h5><small>(Đơn hàng lớn hơn 1 triệu đồng sẽ được miễn phí vận chuyển)</small></h5>');
+        }
+        $('.shop-summary #thanhTien').text(formatNumber(thanhTien) + ' VND');
+    }
+    hienThiCheckOut();//gọi hàm hiển thị
+
     // cookie được tạo trong trang minified.js (dòng 3530 - 3537): 
     /*
      | ----------------------------------------------------------------------------------
@@ -54,34 +88,37 @@ jQuery(function($) {
     {
         var cookie = $.cookie('cart');
         if (cookie === undefined)
+        {
+            $('#checkout-btn').attr('href', 'javascript:void(0)');
             return;
+        }
         cookie = $.parseJSON(cookie);
 
 
-        for (var x in cookie)
+        for (var sp in cookie)
         {
-            temp = cookie[x].price;
+            temp = cookie[sp].price;
             temp = temp.replace(/[^0-9\.]+/g, '');
-            temp = parseInt(temp);
-            
-            var $new = $('<tr data-product-id="' + cookie[x].id + '"> \
+            temp = parseInt(temp) * cookie[sp].qty;
+
+            var $new = $('<tr data-product-id="' + cookie[sp].id + '" data-size="' + cookie[sp].size + '"> \
 							<td> \
-								<a class="entry-thumbnail" href="' + cookie[x].thumbnail + '" data-toggle="lightbox">\
-									<img src="' + cookie[x].thumbnail + '" alt="' + cookie[x].title + '" /> \
+								<a class="entry-thumbnail" href="' + cookie[sp].thumbnail + '" data-toggle="lightbox">\
+									<img src="' + cookie[sp].thumbnail + '" alt="' + cookie[sp].title + '" /> \
 								</a> \
-								<a class="entry-title" href="' + cookie[x].url + '">' + cookie[x].title + '</a> \
+								<a class="entry-title" href="' + cookie[sp].url + '">' + cookie[sp].title + '</a> \
 							</td> \
-							<td><span class="unit-price">' + cookie[x].price + '</span></td> \
-							<td><span class="unit-size">' + cookie[x].size+ '</span></td> \
+                                                        <td><span class="unit-size">' + cookie[sp].tenSize + '</span></td> \
+							<td><span class="unit-price">' + cookie[sp].price + '</span></td> \
 							<td> \
 								<div class="qty-btn-group"> \
 									<button type="button" class="down"><i class="iconfont-caret-down inline-middle"></i></button> \
-									<input type="text" value="' + cookie[x].qty + '" /> \
+									<input type="text" value="' + cookie[sp].qty + '" /> \
 									<button type="button" class="up"><i class="iconfont-caret-up inline-middle"></i></button> \
 								</div> \
 							</td> \
 							<td class="hidden-xs"><strong class="text-bold row-total">' + formatNumber(temp) + ' VND</strong></td> \
-							<td class="hidden-xs"><div class="item" data-product-id="' + cookie[x].id + '"><button type="button" class="close" aria-hidden="true">×</button></div></td> \
+							<td class="hidden-xs"><div class="item" data-product-id="' + cookie[sp].id + '" data-size="' + cookie[sp].size + '"><button type="button" class="close" aria-hidden="true">×</button></div></td> \
 						</tr>');
 
             $new.appendTo($('.tbl-cart tbody'));
@@ -143,6 +180,9 @@ jQuery(function($) {
         });
 
         $('.shopcart-total .cart-total > .pull-right').text(formatNumber(total) + ' VND');
+        if (total === 0) {
+            $('#checkout-btn').attr('href', 'javascript:void(0)');
+        }
     }
 
 

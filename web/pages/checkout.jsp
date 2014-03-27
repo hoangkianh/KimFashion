@@ -204,19 +204,19 @@
                                         <div id="checkout-collapse6" class="panel-collapse">
                                             <div class="panel-body">
                                                 <div class="row">
-                                                    <div class="col-xs-12 col-sm-6 center-sm">
+                                                    <div class="col-xs-12 col-sm-12 center-sm">
                                                         <table class="shop-summary">
                                                             <tr>
                                                                 <th>TỔNG CỘNG:</th>
-                                                                <td>170,000 VND</td>
+                                                                <td id="tongCong"></td>
                                                             </tr>
                                                             <tr>
                                                                 <th>VẬN CHUYỂN:</th>
-                                                                <td>Miễn phí</td>
+                                                                <td id="vanChuyen"></td>
                                                             </tr>
                                                             <tr class="total">
                                                                 <th>Thành tiền:</th>
-                                                                <td>170,000 VND</td>
+                                                                <td id="thanhTien"></td>
                                                             </tr>
                                                             <tr>
                                                                 <th><a href="#" class="btn btn-default btn-round uppercase">Thanh toán</a></th>
@@ -235,5 +235,6 @@
             </main>
         </div>
         <%@include file="../include/footer.jsp" %>
+        <script src="resource/js/products.js"></script>
     </body>
 </html>

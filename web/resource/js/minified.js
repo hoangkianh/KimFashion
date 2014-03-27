@@ -3540,23 +3540,23 @@ jQuery(function(e) {
         return e.parseJSON(t)
     }
 
-    function themSP(e) {
+    function themSP(sp) {
         var cookie = getCookie();
         if (typeof cookie == "undefined") {
             cookie = [];
-            cookie.push(e);
+            cookie.push(sp);
         } else {
             cookie = parseCookie(cookie);
             for (var s in cookie) {
                 // kiểm tra id sản phẩm và size 
                 // nếu khác nhau thì cho là sp khác
-                if (cookie[s].id == e.id && cookie[s].size == e.size) {
+                if (cookie[s].id == sp.id && cookie[s].size == sp.size) {
                     cookie[s].qty++;
                     setCookie(cookie);
                     return;
                 }
             }
-            cookie.push(e);
+            cookie.push(sp);
         }
         setCookie(cookie)
     }
@@ -3575,40 +3575,46 @@ jQuery(function(e) {
     }
 
 
+    /*
+     * hiển thị giỏ hàng trên header
+     */
     function capNhatGioHang() {
-        var n = getCookie();
-        var i = e("#sub-cart"),
-                o = i.find(".cart-items"),
-                u = i.find(".cart-header"),
-                a = i.find(".cart-total .total");
-        o.empty();
+        var cookie = getCookie();
+        var gioHang = e("#sub-cart"),
+                item = gioHang.find(".cart-items"),
+                u = gioHang.find(".cart-header"),
+                a = gioHang.find(".cart-total .total");
+        item.empty();
         u.find("small").hide();
-        if (typeof n == "undefined") {
+        if (typeof cookie == "undefined") {
             u.find("span").text("Giỏ hàng chưa có sản phẩm nào.");
             a.text("0");
             return;
         } else {
             var f = 0,
                     l = 0,
-                    c, h = 2;
-            n = parseCookie(n);
-            for (var p in n) {
-                c = n[p].price;
-                c = c.replace(/[^0-9\.]+/g, "");
-                c = parseInt(c);
-                if (!isNaN(c)) {
-                    f += n[p].qty * c;
+                    giaSP, soLuong = 2;
+            cookie = parseCookie(cookie);
+            for (var sanPham in cookie) {
+                giaSP = cookie[sanPham].price;
+                giaSP = giaSP.replace(/[^0-9\.]+/g, "");
+                giaSP = parseInt(giaSP);
+                if (!isNaN(giaSP)) {
+                    f += cookie[sanPham].qty * giaSP;
                 }
-                if (++l > h)
+                if (++l > soLuong)
                     continue;
-                var d = e('<li><div class="item clearfix" data-product-id="' + n[p].id + '"> 									<button type="button" class="close" aria-hidden="true">×</button> 									<a href="' + n[p].thumbnail + '" data-toggle="lightbox" class="entry-thumbnail"> 										<img src="' + n[p].thumbnail + '" alt="' + n[p].title + '" /> 									</a> 									<h5 class="entry-title"><a href="' + n[p].url + '">' + n[p].title + '</a></h5> 									<span class="entry-price">' + n[p].qty + " x " + n[p].price + "</span></div></li>");
-                d.appendTo(o);
+                var d = e('<li><div class="item clearfix" data-product-id="' + cookie[sanPham].id + '" data-size="' + cookie[sanPham].size + '">\
+                            <button type="button" class="close" aria-hidden="true">×</button> 									<a href="' + cookie[sanPham].thumbnail + '" data-toggle="lightbox" class="entry-thumbnail"> 										<img src="' + cookie[sanPham].thumbnail + '" alt="' + cookie[sanPham].title + '" />\n\
+                            </a><h5 class="entry-title"><a href="' + cookie[sanPham].url + '">' + cookie[sanPham].title + ' - Size ' + cookie[sanPham].tenSize + '</a></h5> \
+                            <span class="entry-price">' + cookie[sanPham].qty + " x " + cookie[sanPham].price + "</span></div></li>");
+                d.appendTo(item);
                 d.find('[data-toggle="lightbox"]').magnificPopup({
                     type: "image"
                 })
             }
-            if (h >= l) {
-                h = l
+            if (soLuong >= l) {
+                soLuong = l
             } else {
                 u.find("small").show()
             }
@@ -3617,7 +3623,7 @@ jQuery(function(e) {
                 capNhatGioHang();
                 return
             }
-            u.find("span").text("Hiển thị " + h.toString() + " trong số " + l.toString() + " sản phẩm");
+            u.find("span").text("Hiển thị " + soLuong.toString() + " trong số " + l.toString() + " sản phẩm");
             a.text(formatNumber(f.toString()) + " VND");
         }
     }
@@ -3628,14 +3634,7 @@ jQuery(function(e) {
                 r, sanPham = {};
         r = n.closest(".add-cart");
         $sp = n.closest(r.data("product"));
-        
-        // lấy size sp
-        // mặc định là size S
-        $size = $sp.data("size")
-        if ($size.indexOf("|") > -1) {
-            $size = $size.split("|")[0];
-        }
-        
+
         sanPham = {
             id: $sp.data("product-id"),
             thumbnail: $sp.find(r.data("thumbnail")).attr("src"),
@@ -3643,7 +3642,8 @@ jQuery(function(e) {
             url: $sp.find(r.data("url")).attr("href"),
             price: e.trim($sp.find(r.data("price")).text()),
             qty: 1,
-            size: $size
+            size: parseInt($sp.find(r.data("size")).val()),
+            tenSize: $sp.find(r.data("size")).find("option:selected").text()
         };
 
         var anhSP = $sp.find(r.data("thumbnail")),
@@ -3670,7 +3670,7 @@ jQuery(function(e) {
                 e(this).detach();
             });
             var t = e(".cart-notification ul"),
-                    n = e('<li><strong>"' + sanPham.title + '"</strong> được thêm vào giỏ hàng thành công.</li>').hide();
+                    n = e('<li><strong>"' + sanPham.title + ' - Size ' + sanPham.tenSize + '"</strong> được thêm vào giỏ hàng thành công.</li>').hide();
             n.appendTo(t).slideDown(400, function() {
                 setTimeout(function() {
                     n.slideUp(400, function() {
@@ -3688,12 +3688,14 @@ jQuery(function(e) {
     e(document).on("click", "#sub-cart .close", function() {
         var i = e(this),
                 o = i.closest(".item"),
-                maSP = o.data("product-id");
+                maSP = o.data("product-id"),
+                size = o.data("size");
         cookie = getCookie();
         cookie = parseCookie(cookie);
-        for (var a in cookie) {
-            if (cookie[a].id == maSP) {
-                cookie.splice(a, 1)
+        for (var sp in cookie) {
+            // nếu mã sản phẩm và size trùng nhau
+            if (cookie[sp].id == maSP && cookie[sp].size == size) {
+                cookie.splice(sp, 1)
             }
         }
         setCookie(cookie);
@@ -3707,19 +3709,44 @@ jQuery(function(e) {
     e(document).on('click', '.tbl-cart .close', function() {
         var i = e(this),
                 o = i.closest(".item"),
-                maSP = o.data("product-id");
+                maSP = o.data("product-id"),
+                size = o.data("size");
         // xóa khỏi cookie
         cookie = getCookie();
         cookie = parseCookie(cookie);
-        for (var a in cookie) {
-            if (cookie[a].id == maSP) {
-                cookie.splice(a, 1)
+        for (var sp in cookie) {
+            if (cookie[sp].id == maSP && cookie[sp].size == size) {
+                cookie.splice(sp, 1);
             }
         }
         setCookie(cookie);
         o.parent().fadeOut(400, function() {
             capNhatGioHang();
         });
+    });
+    //////////////////////////////////////////
+    /// cập nhật số lượng sản phẩm khi thay đổi ở bảng giỏ hàng
+    //////////////////////////////////////////
+    e(document).on('click', '.qty-btn-group button', function() {
+        var i = e(this),
+            o = i.siblings('input'),
+            soLuong = parseInt(o.val());
+        var r = i.closest('tr'),
+            maSP = r.data("product-id"),
+            size = r.data("size");
+            
+            console.log(maSP);
+            console.log(size);
+        
+        cookie = getCookie();
+        cookie = parseCookie(cookie);
+        for (var sp in cookie) {
+            if (cookie[sp].id == maSP && cookie[sp].size == size) {
+                cookie[sp].qty = soLuong;
+            }
+        }
+        setCookie(cookie);
+        capNhatGioHang();
     });
     capNhatGioHang();
 });

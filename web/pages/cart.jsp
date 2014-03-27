@@ -39,8 +39,8 @@
                             <thead>
                                 <tr>
                                     <th>Tên sản phẩm</th>
-                                    <th style="width: 15%;">Giá</th>
                                     <th style="width: 10%;">Size</th>
+                                    <th style="width: 15%;">Giá</th>
                                     <th style="width: 15%;">Số lượng</th>
                                     <th class="hidden-xs" style="width: 15%;">Tổng tiền </th>
                                     <th class="hidden-xs" style="width: 5%;">Xóa</th>
@@ -61,7 +61,7 @@
                                 <span class="pull-right"></span>
                             </div>
                             <div class="text-center">
-                                <a class="btn btn-round btn-default uppercase" href="checkout.do">Thanh toán</a>
+                                <a id="checkout-btn" class="btn btn-round btn-default uppercase" href="checkout.do">Thanh toán</a>
                             </div>
                         </div>
 

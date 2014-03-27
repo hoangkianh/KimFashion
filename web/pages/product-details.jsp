@@ -38,8 +38,9 @@
                 <section class="section">
                     <div class="container">
                         <div class="row add-cart" data-product=".product-single-details" data-thumbnail=".big-image img"
-                             data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-content .entry-price > .price">
-                            <div class="product-single-details" data-product-id="<bean:write  name="SanPhamForm" property="maSP" />">
+                             data-title=".entry-title > a" data-url=".entry-title > a" data-size="select"
+                             data-price=".entry-content .entry-price > .price">
+                            <div class="product-single-details" data-product-id="<bean:write name="SanPhamForm" property="maSP" />">
                                 <!-- PRODUCT PREVIEW -->
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="product-preview">
