@@ -104,7 +104,7 @@
                             <a href="/KimFashion">Trang chủ</a>
                         </li>
                         <li>
-                            <a href="#">Thời trang nữ</a>
+                            <a href="products.do">Thời trang nữ</a>
                             <div class="mega-menu" data-col-lg="12" data-col-md="12">
                                 <div class="row">
                                     <jsp:useBean id="loaiSPForm" class="com.kimfashion.form.LoaiSPForm"></jsp:useBean>
@@ -130,7 +130,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#">Thời trang nam</a>
+                            <a href="products.do">Thời trang nam</a>
                             <div class="mega-menu" data-col-lg="12" data-col-md="12">
                                 <div class="row">
                                     <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">

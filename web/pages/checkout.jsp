@@ -37,11 +37,10 @@
                                     <h3 class="uppercase text-bold"><span class="text-xs">Bạn nên xem</span></h3>
 
                                     <ul class="nav nav-tabs nav-stacked">
-                                        <li><a href="">Homepage</a></li>															
-                                        <li><a href="">About us</a></li>															
-                                        <li><a href="">Shop</a></li>															
-                                        <li><a href="">Single Product Details</a></li>															
-                                        <li><a href="">Contact us</a></li>															
+                                        <li><a href="/KimFashion">Trang chủ</a></li>															
+                                        <li><a href="products.do">Sản phẩm</a></li>															
+                                        <li><a href="about.do">Giới thiệu</a></li>															
+                                        <li><a href="contact.do">Liên hệ</a></li>															
                                     </ul>
                                 </section>
                             </aside>
