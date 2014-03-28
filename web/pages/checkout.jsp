@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${empty cookie.cart}">
+    <c:redirect url="/"/>
+</c:if>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -204,8 +209,8 @@
                                         <div id="checkout-collapse6" class="panel-collapse">
                                             <div class="panel-body">
                                                 <div class="row">
-                                                    <div class="col-xs-12 col-sm-12 center-sm">
-                                                        <table class="shop-summary">
+                                                    <div class="col-xs-10 col-sm-10 center-sm">
+                                                        <table class="shop-summary text-right">
                                                             <tr>
                                                                 <th>TỔNG CỘNG:</th>
                                                                 <td id="tongCong"></td>
@@ -213,6 +218,11 @@
                                                             <tr>
                                                                 <th>VẬN CHUYỂN:</th>
                                                                 <td id="vanChuyen"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <h5><small>(Đơn hàng lớn hơn 1 triệu đồng sẽ được miễn phí vận chuyển)</small></h5>
+                                                                </td>
                                                             </tr>
                                                             <tr class="total">
                                                                 <th>Thành tiền:</th>

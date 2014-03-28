@@ -20,6 +20,24 @@ public class ThanhVien implements Serializable {
     private String email;
     private String hoTen;
     private boolean laAdmin;
+    private boolean xacNhan;
+    private String maXacNhan;
+
+    public boolean isXacNhan() {
+        return xacNhan;
+    }
+
+    public void setXacNhan(boolean xacNhan) {
+        this.xacNhan = xacNhan;
+    }
+
+    public String getMaXacNhan() {
+        return maXacNhan;
+    }
+
+    public void setMaXacNhan(String maXacNhan) {
+        this.maXacNhan = maXacNhan;
+    }
 
     public String getTenDangNhap() {
         return tenDangNhap;

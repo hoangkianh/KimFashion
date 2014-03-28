@@ -44,23 +44,30 @@
 
         <action input="/" name="SanPhamForm" path="/product-details" scope="session" type="com.kimfashion.struts.GetChiTietSP" validate="false">
             <forward name="GetChiTietSPOK" path="/pages/product-details.jsp"/>
-            <forward name="GetChiTietSPNotOK" path="/error.do"/>
+            <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
         </action>
         <action input="/" name="SanPhamForm" path="/category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
             <forward name="GetSanPhamOK" path="/pages/category.jsp"/>
-            <forward name="GetSanPhamNotOK" path="/error.do"/>            
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
         </action>
         <action input="/" name="SanPhamForm" path="/brand" scope="session" type="com.kimfashion.struts.GetSPByThuongHieu" validate="false">
             <forward name="GetSanPhamOK" path="/pages/brand.jsp"/>
-            <forward name="GetSanPhamNotOK" path="/error.do"/>            
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
         </action>
         <action input="/" name="SanPhamForm" path="/collection" scope="session" type="com.kimfashion.struts.GetSPTrongBST" validate="false">
             <forward name="GetBoSuuTapOK" path="/pages/collection.jsp"/>
-            <forward name="GetBoSuuTapNotOK" path="/error.do"/>            
+            <forward name="GetBoSuuTapNotOK" path="/error.do?e=1"/>            
+        </action>
+        <!-- đăng ký -->
+        <action input="/register.do" name="ThanhVienForm" path="/dangky" scope="session" type="com.kimfashion.struts.DangKy">
+            <forward name="DangKyOK" path="/success.do?s=1" />
+            <forward name="DangKyNotOK" path="/error.do?e=2" />
+            <forward name="GuiMailNotOK" path="/error.do?e=3" />
         </action>
         
         <action path="/products" forward="/pages/products.jsp"/>
         <action path="/error" forward="/pages/error.jsp"/>
+        <action path="/success" forward="/pages/success.jsp"/>
         <action path="/checkout" forward="/pages/checkout.jsp"/>
         <action path="/contact" forward="/pages/contact.jsp"/>
         <action path="/about" forward="/pages/about.jsp"/>

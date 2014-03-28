@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/checkout.jsp</file>
             <file>file:/F:/GitHub/KimFashion/web/resource/js/products.js</file>
-            <file>file:/F:/GitHub/KimFashion/web/resource/js/paging.js</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/products.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/service/SanPhamService.java</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/cart.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/resource/js/minified.js</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/product-details.jsp</file>
         </group>
     </open-files>
 </project-private>

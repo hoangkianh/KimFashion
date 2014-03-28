@@ -24,8 +24,8 @@
                                 <form action="#" method="post">
                                     <div class="input-iconed prepend">
                                         <button class="input-icon"><i class="iconfont-search"></i></button>
-                                        <label for="input-search" class="placeholder">Tìm kiếm…</label>
-                                        <input type="text" name="search-text" id="input-search" class="round-input full-width" required />
+                                        <input type="text" name="search-text" id="input-search" 
+                                               class="round-input full-width" placeholder="Tìm kiếm ..." />
                                     </div>
                                 </form>
                             </div>
@@ -84,7 +84,6 @@
                     <nav id="tiny-menu" class="clearfix">
                         <ul class="user-menu">
                             <li><a href="cart.do">Giỏ hàng</a></li>
-                            <li><a href="checkout.do">Thanh toán</a></li>
                             <li><a href="#">Đăng xuất</a></li>
                         </ul>
                     </nav>

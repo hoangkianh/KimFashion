@@ -3527,6 +3527,11 @@ css_browser_selector(navigator.userAgent);
         return !e.cookie(t)
     }
 });
+
+
+//////////////////////////////
+// giỏ hàng
+//////////////////////////////
 jQuery(function(e) {
     function getCookie() {
         return e.cookie("cart")
@@ -3540,6 +3545,7 @@ jQuery(function(e) {
         return e.parseJSON(t)
     }
 
+    /// thêm sp vào giỏ hàng, 
     function themSP(sp) {
         var cookie = getCookie();
         if (typeof cookie == "undefined") {
@@ -3634,6 +3640,13 @@ jQuery(function(e) {
                 r, sanPham = {};
         r = n.closest(".add-cart");
         $sp = n.closest(r.data("product"));
+        var size = parseInt($sp.find(r.data("size")).val());
+        
+        // nếu chưa chọn size
+        if (isNaN(size) || size < 0) {
+            alert('Bạn chưa chọn size cho sản phẩm');
+            return;
+        }
 
         sanPham = {
             id: $sp.data("product-id"),
@@ -3642,7 +3655,7 @@ jQuery(function(e) {
             url: $sp.find(r.data("url")).attr("href"),
             price: e.trim($sp.find(r.data("price")).text()),
             qty: 1,
-            size: parseInt($sp.find(r.data("size")).val()),
+            size: size,
             tenSize: $sp.find(r.data("size")).find("option:selected").text()
         };
 

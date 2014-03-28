@@ -1,27 +1,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:if test="${empty param.e}">
+<c:if test="${empty param.s}">
     <c:redirect url="/"/>
 </c:if>
-<c:set var="e" value="${param.e}"/>
-<c:if test="${e eq 1}">
-    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Đường dẫn mà bạn đang tìm kiếm không tồn tại hoặc bạn không có quyền truy cập."/>
-</c:if>
-<c:if test="${e eq 2}">
-    <c:set var="tenLoi" value="Đăng ký không thành công"/>
-    <c:set var="moTa" value="Đã có lỗi xảy ra trong quá trình đăng ký, bạn hãy thử lại"/>
-</c:if>
-<c:if test="${e eq 3}">
-    <c:set var="tenLoi" value="Đăng ký không thành công"/>
-    <c:set var="moTa" value="Chúng tôi không thể gửi mail vào địa chỉ email của bạn"/>
+<c:set var="s" value="${param.s}"/>
+<c:if test="${s eq 1}">
+    <c:set var="thongBao" value="Đăng ký thành công"/>
+    <c:set var="moTa" value="Chào mừng bạn đến với KimFashion."/>
 </c:if>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>Lỗi | KimFashion - Cửa hàng thời trang online</title>
+        <title>Thành công | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
         <link rel="stylesheet" href="resource/css/owl.theme.css"/>
@@ -35,10 +27,11 @@
                 <div class="container">
                     <div class="row">
                         <section class="section">
-                            <section class="col-xs-12 col-sm-12 text-center text-danger">
-                                <h1 class="text-bold"><i class='iconfont-frown'></i> <c:out value="${tenLoi}"/> </h1>
-                                <h4><c:out value="${moTa}" /></h4>
-                                <h3><small>Bạn có thể <a href="mailto:kimfashion@gmail.com">liên hệ</a> với KimFashion để được giải đáp</small></h3>
+                            <section class="col-xs-12 col-sm-12 text-center text-success">
+                                <h1 class="text-bold"><i class="iconfont-check"></i> <c:out value="${thongBao}"/></h1>
+                                <h4><c:out value="${moTa}"/></h4>
+                                
+                                <h3><small>Hãy <a href="mailto:kimfashion@gmail.com">liên hệ</a> với KimFashion nếu có thắc mắc</small></h3>
                                 <div id="sub-social">
                                     <ul class="social-list unstyled">
                                         <li><a href="https://www.facebook.com/pages/Kim-Fashion/1402400103359807"><i class="iconfont-facebook round-icon"></i></a></li>

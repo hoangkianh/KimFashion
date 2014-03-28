@@ -31,10 +31,9 @@
             <main id="main-content" role="main">
                 <div class="container">
                     <div class="row">
-                        
                         <div class="col-xs-12 col-sm-6 col-lg-offset-1 col-md-5">
-                            <section class="widget widget-text">
-                                <span class="text-bold"><h3 class="widget-title">Giới thiệu Kim Fashion</h3></span>
+                            <section class="section">
+                                <h3 class="widget-title"><span class="text-bold">Giới thiệu Kim Fashion</span></h3>
                                 <div class="widget-content">
                                     <p>Chào mừng quý khách đến với <span class="text-bold">KimFashion</span> , web mua sắm thời trang lớn nhất Việt Nam..</p>
                                     <p><span class="text-bold">KimFashion</span> hân hạnh mang đến cho bạn một bộ sưu tập thời trang khổng lồ từ những thương hiệu nổi tiếng thế giới 
@@ -49,9 +48,11 @@
                                 </div>
                             </section>
                         </div>
-                        
+
                         <div class="col-xs-12 col-sm-6 col-md-5">
-                            <img src="images/ABOUT.jpg" class="lazyOwl thumb"/>
+                            <section class="section">
+                                <img src="images/ABOUT.jpg" class="lazyOwl thumb"/>
+                            </section>
                         </div>
                     </div>
                 </div>
