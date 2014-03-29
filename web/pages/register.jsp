@@ -1,6 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
+    <c:if test="${not empty sessionScope.blackpoints}">
+        <c:set var="s" value="${fn:split(sessionScope.blackpoints, '~')}"/>        
+    </c:if>
+    <c:if test="${not empty cookie.blackpoints}">
+        <c:set var="s" value="${fn:split(cookie.blackpoints.value, '~')}"/>
+    </c:if>
+    <c:choose>
+        <c:when test="${s[2] eq true}">
+            <c:redirect url="/dashboard.do" />                
+        </c:when>
+        <c:otherwise>
+            <c:redirect url="/" />                
+        </c:otherwise>
+    </c:choose>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
@@ -132,7 +149,7 @@
                 });
                 return this.optional(element) || exist;
             }, "Tân đăng nhập này đã được sử dụng");
-            
+
             $.validator.addMethod("checkEmail", function(value, element) {
                 var exist;
                 $.ajax({
@@ -150,7 +167,7 @@
                 });
                 return this.optional(element) || exist;
             }, "Email này đã được đăng kí");
-            
+
             $("#formDangKy").validate({
                 errorClass: "text-danger",
                 rules: {

@@ -101,10 +101,10 @@
                                                     <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
                                                 </c:otherwise>
                                             </c:choose>
-                                            ${s[2]}
+                                            ${s[1]}
                                         </a>
                                     </li>
-                                    <c:if test="${s[3] eq true}">
+                                    <c:if test="${s[2] eq true}">
                                         <li>
                                             <a href="dashboard.do" >Admin</a>
                                         </li>

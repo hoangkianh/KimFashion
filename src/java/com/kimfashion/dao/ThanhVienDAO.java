@@ -217,4 +217,35 @@ public class ThanhVienDAO {
         }
         return kq;
     }
+
+    public ThanhVien dangNhap(String tenDangNhap, String password) {
+        ThanhVien tv = null;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM tbl_thanhvien WHERE TenDangNhap=? AND Password=?");
+            stm.setString(1, tenDangNhap);
+            stm.setString(2, password);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                tv = new ThanhVien();
+                tv.setMaTV(rs.getInt("MaTV"));
+                tv.setTenDangNhap(rs.getString("TenDangNhap"));
+                tv.setPassword(rs.getString("Password"));
+                tv.setGioiTinh(rs.getBoolean("GioiTinh"));
+                tv.setEmail(rs.getString("Email"));
+                tv.setHoTen(rs.getString("HoTen"));
+                tv.setLaAdmin(rs.getBoolean("LaAdmin"));
+                tv.setXacNhan(rs.getBoolean("XacNhan"));
+                tv.setMaXacNhan(rs.getString("MaXacNhan"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return tv;
+    }
 }

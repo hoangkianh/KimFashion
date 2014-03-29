@@ -14,9 +14,14 @@
     <c:set var="moTa" value="Chào mừng bạn đến với Kimfashion ! Chúc bạn có những giây phút mua sắm vui vẻ với Kimfashion <i class='iconfont-smile'></i>"/>
 </c:if>
 <c:if test="${s eq 3}">
-    <c:set var="thongBao" value="Xác gửi email thành công"/>
+    <c:set var="thongBao" value="Gửi email thành công"/>
     <c:set var="moTa" value="Chúng tôi đã gửi 1 email vào hòm mail của bạn.
                         Hãy làm theo hướng dẫn trong đó để xác nhận tài khoản"/>
+</c:if>
+<c:if test="${s eq 4}">
+    <c:set var="thongBao" value="Gửi email thành công"/>
+    <c:set var="moTa" value="Chúng tôi đã gửi 1 mật khẩu mới vào email của bạn.
+                        Hãy sử dụng mật khẩu đó để đăng nhập"/>
 </c:if>
 <!DOCTYPE html>
 <html>

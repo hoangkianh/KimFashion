@@ -22,6 +22,10 @@
     <c:set var="moTa" value="Địa chỉ email hoặc mã xác nhận không chính xác. 
                         Bạn có thể yêu cầu gửi lại mail xác nhận <a href='reconfirm.do'>tại đây</a>"/>
 </c:if>
+<c:if test="${e eq 5}">
+    <c:set var="tenLoi" value="Gửi mail không thành công"/>
+    <c:set var="moTa" value="Chúng tôi không thể gửi mail vào địa chỉ email của bạn."/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="DangNhapForm" type="com.kimfashion.form.DangNhapForm"/>
         <form-bean name="ConfirmLaiForm" type="com.kimfashion.form.ConfirmLaiForm"/>
         <form-bean name="ThuongHieuForm" type="com.kimfashion.form.ThuongHieuForm"/>
         <form-bean name="ThanhVienForm" type="com.kimfashion.form.ThanhVienForm"/>
@@ -80,6 +81,22 @@
         
         <!-- đăng nhập -->
         <action path="/login" forward="/pages/login.jsp" />
+        <action input="/login.do" name="DangNhapForm" path="/dangnhap" scope="session" type="com.kimfashion.struts.DangNhap" validate="false">
+            <forward name="dangNhapNotOK" path="/login.do"/>
+            <forward name="khachHangDangNhapOK" path="/" redirect="true"/>
+            <forward name="adminDangNhapOK" path="/admin/dashboard.do" redirect="true"/>
+        </action>
+        <action path="/logout" type="com.kimfashion.form.DangXuat">
+            <forward name="logoutOK" path="/" redirect="true" />
+        </action>
+        
+        <!-- quên mật khẩu  -->
+        <action path="/forgotpass" forward="/pages/forgotpass.jsp"/>
+        <action input="/forgotpass.do" name="ThanhVienForm" path="/QuenMatKhau" scope="session" type="com.kimfashion.struts.QuenMatKhau" validate="false">
+            <forward name="forgotPassOK" path="/success.do?s=4" />
+            <forward name="forgotPassNotOK" path="/error.do?e=5" />
+            <forward name="GuiMailNotOK" path="/failure.do?f=1" />
+        </action>
         
         <action path="/collection" forward="/pages/collection.jsp"/>
         <action path="/cart" forward="/pages/cart.jsp"/>
