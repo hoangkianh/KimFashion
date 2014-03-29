@@ -10,11 +10,17 @@
 </c:if>
 <c:if test="${e eq 2}">
     <c:set var="tenLoi" value="Đăng ký không thành công"/>
-    <c:set var="moTa" value="Đã có lỗi xảy ra trong quá trình đăng ký, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Đã có lỗi xảy ra trong quá trình đăng ký, bạn hãy <a href='register.do'>thử lại</a>"/>
 </c:if>
 <c:if test="${e eq 3}">
     <c:set var="tenLoi" value="Đăng ký không thành công"/>
-    <c:set var="moTa" value="Chúng tôi không thể gửi mail vào địa chỉ email của bạn"/>
+    <c:set var="moTa" value="Chúng tôi không thể gửi mail vào địa chỉ email của bạn.
+           Bạn có thể <a href='register.do'>đăng ký</a> lại."/>
+</c:if>
+<c:if test="${e eq 4}">
+    <c:set var="tenLoi" value="Xác nhận không thành công"/>
+    <c:set var="moTa" value="Địa chỉ email hoặc mã xác nhận không chính xác. 
+                        Bạn có thể yêu cầu gửi lại mail xác nhận <a href='reconfirm.do'>tại đây</a>"/>
 </c:if>
 <!DOCTYPE html>
 <html>
@@ -37,7 +43,7 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 text-center text-danger">
                                 <h1 class="text-bold"><i class='iconfont-frown'></i> <c:out value="${tenLoi}"/> </h1>
-                                <h4><c:out value="${moTa}" /></h4>
+                                <h4><c:out value="${moTa}" escapeXml="false" /></h4>
                                 <h3><small>Bạn có thể <a href="mailto:kimfashion@gmail.com">liên hệ</a> với KimFashion để được giải đáp</small></h3>
                                 <div id="sub-social">
                                     <ul class="social-list unstyled">

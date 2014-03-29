@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <!DOCTYPE html>
 <html>
@@ -50,31 +51,40 @@
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label" for="tenDangNhap">Tên đăng nhập</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="tenDangNhap" class="form-control" id="tenDangNhap" placeholder="Tên đăng nhập"/>
+                                            <input type="text" name="tenDangNhap" class="form-control" 
+                                                   id="tenDangNhap" placeholder="Tên đăng nhập"
+                                                   value="<bean:write name="ThanhVienForm" property="tenDangNhap"/>"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label" for="password">Mật khẩu</label>
                                         <div class="col-sm-8">
-                                            <input type="password" name="password" class="form-control" id="password" placeholder="Mật khẩu"/>
+                                            <input type="password" name="password" class="form-control" 
+                                                   id="password" placeholder="Mật khẩu"
+                                                   value="<bean:write name="ThanhVienForm" property="password"/>"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label" for="matKhau2">Nhập lại mật khẩu</label>
                                         <div class="col-sm-8">
-                                            <input type="password" name="password2" class="form-control" id="matKhau2" placeholder=""/>
+                                            <input type="password" name="password2" class="form-control" 
+                                                   id="matKhau2" placeholder=""/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label" for="email">Email</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="email" class="form-control" id="email" placeholder="kimfashion@example.com"/>
+                                            <input type="text" name="email" class="form-control"
+                                                   id="email" placeholder="kimfashion@example.com"
+                                                   value="<bean:write name="ThanhVienForm" property="email"/>"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label" for="hoTen">Họ tên</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="hoTen" class="form-control" id="hoTen" placeholder="Họ tên"/>
+                                            <input type="text" name="hoTen" class="form-control" 
+                                                   id="hoTen" placeholder="Họ tên"
+                                                   value="<bean:write name="ThanhVienForm" property="hoTen"/>"/>
                                         </div>
                                     </div>
                                     <div class="form-group">

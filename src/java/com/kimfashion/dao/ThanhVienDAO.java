@@ -38,6 +38,8 @@ public class ThanhVienDAO {
                 tv.setEmail(rs.getString("Email"));
                 tv.setHoTen(rs.getString("HoTen"));
                 tv.setLaAdmin(rs.getBoolean("LaAdmin"));
+                tv.setXacNhan(rs.getBoolean("XacNhan"));
+                tv.setMaXacNhan(rs.getString("MaXacNhan"));
                 list.add(tv);
             }
         } catch (SQLException e) {
@@ -67,6 +69,8 @@ public class ThanhVienDAO {
                 tv.setEmail(rs.getString("Email"));
                 tv.setHoTen(rs.getString("HoTen"));
                 tv.setLaAdmin(rs.getBoolean("LaAdmin"));
+                tv.setXacNhan(rs.getBoolean("XacNhan"));
+                tv.setMaXacNhan(rs.getString("MaXacNhan"));
             }
         } catch (SQLException e) {
             System.err.println(e.getErrorCode() + ":" + e.getMessage());
@@ -95,6 +99,8 @@ public class ThanhVienDAO {
                 tv.setEmail(rs.getString("Email"));
                 tv.setHoTen(rs.getString("HoTen"));
                 tv.setLaAdmin(rs.getBoolean("LaAdmin"));
+                tv.setXacNhan(rs.getBoolean("XacNhan"));
+                tv.setMaXacNhan(rs.getString("MaXacNhan"));
             }
         } catch (SQLException e) {
             System.err.println(e.getErrorCode() + ":" + e.getMessage());
@@ -123,6 +129,8 @@ public class ThanhVienDAO {
                 tv.setEmail(rs.getString("Email"));
                 tv.setHoTen(rs.getString("HoTen"));
                 tv.setLaAdmin(rs.getBoolean("LaAdmin"));
+                tv.setXacNhan(rs.getBoolean("XacNhan"));
+                tv.setMaXacNhan(rs.getString("MaXacNhan"));
             }
         } catch (SQLException e) {
             System.err.println(e.getErrorCode() + ":" + e.getMessage());
@@ -165,7 +173,7 @@ public class ThanhVienDAO {
         PreparedStatement stm = null;
         String query = "UPDATE tbl_thanhvien"
                 + " SET TenDangNhap=?, Password=?, GioiTinh=?"
-                + ", Email=?, HoTen=?, LaAdmin=? WHERE MaTV=?";
+                + ", Email=?, HoTen=?, LaAdmin=?,XacNhan=?,MaXacNhan=? WHERE MaTV=?";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, tv.getTenDangNhap());
@@ -174,8 +182,31 @@ public class ThanhVienDAO {
             stm.setString(4, tv.getEmail());
             stm.setString(5, tv.getHoTen());
             stm.setBoolean(6, tv.isLaAdmin());
-            stm.setInt(7, tv.getMaTV());
+            stm.setBoolean(7, tv.isXacNhan());
+            stm.setString(8, tv.getMaXacNhan());
+            stm.setInt(9, tv.getMaTV());
 
+            if (stm.executeUpdate() > 0) {
+                kq = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, null);
+        }
+        return kq;
+    }
+
+    public boolean xacNhan(ThanhVien tv) {
+        boolean kq = false;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        
+        try {
+            stm = conn.prepareStatement("UPDATE tbl_thanhvien SET XacNhan=?, MaXacNhan = ?");
+            stm.setBoolean(1, true);
+            stm.setString(2, tv.getMaXacNhan());
+            
             if (stm.executeUpdate() > 0) {
                 kq = true;
             }

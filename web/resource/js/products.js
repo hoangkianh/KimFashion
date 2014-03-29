@@ -57,8 +57,9 @@ jQuery(function($) {
      */
     $(document).on("click", "#sub-cart .close", function() {
         var id = $(this).closest(".item").data("product-id");
+        var size = $(this).closest(".item").data("size");
 
-        var p = $('.tbl-cart').find('tr[data-product-id=' + id + ']');
+        var p = $('.tbl-cart').find('tr[data-product-id=' + id + '][data-size=' + size + ']');
         p.fadeOut(400, function() {
             $(this).remove();
             update_cart_total();
@@ -90,6 +91,7 @@ jQuery(function($) {
         if (cookie === undefined)
         {
             $('#checkout-btn').attr('href', 'javascript:void(0)');
+            $('.tbl-cart .empty-cart').removeClass('hide');
             return;
         }
         cookie = $.parseJSON(cookie);
@@ -182,6 +184,7 @@ jQuery(function($) {
         $('.shopcart-total .cart-total > .pull-right').text(formatNumber(total) + ' VND');
         if (total === 0) {
             $('#checkout-btn').attr('href', 'javascript:void(0)');
+             $('.tbl-cart .empty-cart').removeClass('hide');
         }
     }
 

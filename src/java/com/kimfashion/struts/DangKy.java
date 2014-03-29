@@ -15,7 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -53,7 +52,9 @@ public class DangKy extends org.apache.struts.action.Action {
         tv.setMaXacNhan(MaHoaMD5.maHoa(dateFormat.format(new Date())));
 
         // gửi mail
-        String link = "http://localhost:8080/KimFashion/confirm.do?";
+        StringBuffer requestURL = request.getRequestURL();
+        String link = requestURL.substring(0, requestURL.lastIndexOf("/"));
+        link += "/confirm.do?";
         String subject = "Kimfashion - Xác nhận tài khoản";
         String noiDung = "Xin chào " + tv.getHoTen() + ",<br/><br/>"
                 + "Bạn đã đăng ký tài khoản tại Kimfashion<br/><br/>"
@@ -62,7 +63,7 @@ public class DangKy extends org.apache.struts.action.Action {
                 + "<br/><br/>Nếu có câu hỏi muốn giải đáp, hãy liên hệ email: support@kimfashion.com"
                 + "<br/><br/>Xin chân thành cám ơn<br/><br/>Kimfashion.com";
 
-        if (!GuiMail.sendEmail("hoangkianh31592@gmail.com", "h0@ngki@nh", tv.getEmail(), subject, noiDung)) {
+        if (!GuiMail.sendEmail("kimhue1012.uct@gmail.com", "nhokyeuanh", tv.getEmail(), subject, noiDung)) {
             return mapping.findForward("GuiMailNotOK");
         }
 
