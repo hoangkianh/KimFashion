@@ -27,7 +27,7 @@ jQuery(function($) {
         if (vanChuyen == 0) {
             $('.shop-summary #vanChuyen').text('Miễn phí');
         } else {
-            $('.shop-summary #vanChuyen').html(formatNumber(vanChuyen) + ' VND' + '&nbsp;<h5><small>(Đơn hàng lớn hơn 1 triệu đồng sẽ được miễn phí vận chuyển)</small></h5>');
+            $('.shop-summary #vanChuyen').html(formatNumber(vanChuyen) + ' VND');
         }
         $('.shop-summary #thanhTien').text(formatNumber(thanhTien) + ' VND');
     }

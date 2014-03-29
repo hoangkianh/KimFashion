@@ -137,8 +137,8 @@ public class ThanhVienDAO {
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
         String query = "INSERT INTO tbl_thanhvien"
-                + " (TenDangNhap, Password, GioiTinh, Email, HoTen, LaAdmin)"
-                + " VALUES (?,?,?,?,?,False)";
+                + " (TenDangNhap, Password, GioiTinh, Email, HoTen, LaAdmin, XacNhan, MaXacNhan)"
+                + " VALUES (?,?,?,?,?,False,False,?)";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, tv.getTenDangNhap());
@@ -146,7 +146,7 @@ public class ThanhVienDAO {
             stm.setBoolean(3, tv.isGioiTinh());
             stm.setString(4, tv.getEmail());
             stm.setString(5, tv.getHoTen());
-            stm.setBoolean(6, tv.isLaAdmin());
+            stm.setString(6, tv.getMaXacNhan());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;
