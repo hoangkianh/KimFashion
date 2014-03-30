@@ -48,15 +48,35 @@ public class DangNhap extends org.apache.struts.action.Action {
         
         dangNhapForm.setError("");
         
+        String value = tv.getMaTV() + 
+                "~" + tv.getTenDangNhap() +
+                "~" + tv.isLaAdmin() + 
+                "~" + tv.getHoTen() +
+                "~" + tv.getEmail();
+        
         // tạo session
-        session.setAttribute("kimfashion", tv.getMaTV() + "~" + tv.getTenDangNhap() + "~" + tv.isLaAdmin());
+        session.setAttribute("kimfashion", value);
         
         // tạo cookie nếu user chọn lưu lại
         if (dangNhapForm.isLuuLai()) {
-            Cookie cookie = new Cookie("kimfashion", tv.getMaTV() + "~" + tv.getTenDangNhap() + "~" + tv.isLaAdmin());
+            Cookie cookie = new Cookie("kimfashion", value);
             cookie.setMaxAge(7 * 24 * 60 * 60); // thời gian là 1 tuần
             response.addCookie(cookie);
         }
-        return tv.isLaAdmin() ? mapping.findForward("adminDangNhapOK") : mapping.findForward("khachHangDangNhapOK");
+        
+        String s = "khachHangDangNhapOK";
+        
+        if (tv.isLaAdmin()) {
+            s = "adminDangNhapOK";
+        }
+        
+        // kiểm tra đăng nhập từ trang nào
+        String link = request.getHeader("referer"); // lấy link mà user đăng nhập vào
+        // nếu đăng nhập từ trang giỏ hàng thì quay lại trang checkout.do
+        if (link.substring(link.lastIndexOf("/")).equals("/checkout.do")) {
+            s = "gioHangDangNhapOK";
+        }
+       
+        return mapping.findForward(s);
     }
 }

@@ -148,7 +148,7 @@
                     }
                 });
                 return this.optional(element) || exist;
-            }, "Tân đăng nhập này đã được sử dụng");
+            }, "Tên đăng nhập này đã được sử dụng");
 
             $.validator.addMethod("checkEmail", function(value, element) {
                 var exist;

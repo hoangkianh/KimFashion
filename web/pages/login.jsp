@@ -3,11 +3,11 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
-    <c:if test="${not empty sessionScope.blackpoints}">
-        <c:set var="s" value="${fn:split(sessionScope.blackpoints, '~')}"/>        
+    <c:if test="${not empty sessionScope.kimfashion}">
+        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
     </c:if>
-    <c:if test="${not empty cookie.blackpoints}">
-        <c:set var="s" value="${fn:split(cookie.blackpoints.value, '~')}"/>
+    <c:if test="${not empty cookie.kimfashion}">
+        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '~')}"/>
     </c:if>
     <c:choose>
         <c:when test="${s[2] eq true}">
@@ -65,7 +65,7 @@
                                 <h3 class="uppercase text-bold"><span>đăng nhập</span></h3>
                                 <html:form action="/dangnhap" method="POST" styleClass="form-horizontal" styleId="formDangNhap">
                                     <p class="text-danger"><bean:write name="DangNhapForm" property="error"/></p>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="tenDangNhap">Tên đăng nhập</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="tenDangNhap" class="form-control" 
@@ -73,19 +73,14 @@
                                                    value="<bean:write name="DangNhapForm" property="tenDangNhap"/>"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="password">Mật khẩu</label>
                                         <div class="col-sm-8">
                                             <input type="password" name="password" class="form-control" 
                                                    id="password" placeholder="Mật khẩu" />
+                                            <a href="forgotpass.do" class="help-block">Quên mật khẩu?</a>
+                                            <input type="checkbox" name="luuLai" class="prettyCheckable" data-label="Nhớ tôi lại" >
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="checkbox pull-right">
-                                            <input type="checkbox" name="luuLai" >
-                                            Nhớ tôi lại
-                                        </label>
-                                        <a href="forgotpass.do">Quên mật khẩu</a>
                                     </div>
                                     <div class="pull-right">
                                         <input type="submit" class="btn btn-primary" value="Đăng nhập"/>
@@ -98,36 +93,5 @@
             </main>
         </div>
         <%@include file="../include/footer.jsp" %>
-        <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
-        <script type="text/javascript">
-
-            $("#formDangNhap").validate({
-                errorClass: "text-danger",
-                rules: {
-                    tenDangNhap: {
-                        required: true,
-                        maxlength: 30,
-                        minlength: 6
-                    },
-                    password: {
-                        required: true,
-                        maxlength: 30,
-                        minlength: 6
-                    }
-                },
-                messages: {
-                    tenDangNhap: {
-                        required: "Bạn cần điền tên đăng nhập",
-                        maxlength: "Tên đăng nhập dài tối đa 30 kí tự",
-                        minlength: "Tên đăng nhập dài tối thiểu 6 kí tự"
-                    },
-                    password: {
-                        required: "Bạn cần điền mật khẩu",
-                        maxlength: "Mật khẩu dài tối đa 30 kí tự",
-                        minlength: "Mật khẩu dài tối thiểu 6 kí tự"
-                    }
-                }
-            });
-        </script>
     </body>
 </html>

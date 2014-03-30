@@ -3,6 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:choose>
+    <c:when test="${not empty sessionScope.kimfashion}">
+        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
+    </c:otherwise>
+</c:choose>
 <!-- SITE HEADER -->
 <header id="site-header" role="banner">
     <!-- HEADER TOP -->
@@ -84,33 +92,26 @@
                     <!--USER MENU-->
                     <nav id="tiny-menu" class="clearfix">
                         <ul class="user-menu">
-                            <li><a href="cart.do">Giỏ hàng</a></li>                                        
-                                <c:choose>
-                                    <c:when test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
-                                        <li><a href="register.do">Đăng kí</a></li>                                
-                                        <li><a href="login.do">Đăng nhập</a></li>                                
+                            <c:choose>
+                                <c:when test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
+                                    <li><a href="cart.do">Giỏ hàng</a></li>                                        
+                                    <li><a href="register.do">Đăng kí</a></li>                                
+                                    <li><a href="login.do">Đăng nhập</a></li>                                
                                     </c:when>
                                     <c:otherwise>
-                                        <li>
-                                            <a href="updateinfo.do">
-                                                <c:choose>
-                                                    <c:when test="${not empty sessionScope.kimfashion}">
-                                                        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                                ${s[1]}
-                                            </a>
-                                        </li>
+                                    <li>
+                                        <a href="updateinfo.do">
+                                            ${s[1]}
+                                        </a>
+                                    </li>
                                     <c:if test="${s[2] eq true}">
                                         <li>
                                             <a href="dashboard.do" >Trang quản trị</a>
                                         </li>
                                     </c:if>
                                     <c:if test="${s[2] ne true}">
-                                    </c:if>
+                                        <li><a href="cart.do">Giỏ hàng</a></li>                                        
+                                        </c:if>
                                     <li><a href="logout.do">Đăng xuất</a></li>                                
                                     </c:otherwise>
                                 </c:choose>
