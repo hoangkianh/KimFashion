@@ -26,6 +26,11 @@
     <c:set var="tenLoi" value="Gửi mail không thành công"/>
     <c:set var="moTa" value="Chúng tôi không thể gửi mail vào địa chỉ email của bạn."/>
 </c:if>
+<c:if test="${e eq 6}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Đã có lỗi xảy ra trong quá trình thanh toán.
+           Rất xin lỗi bạn vì sự cố này."/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

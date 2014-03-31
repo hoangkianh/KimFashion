@@ -31,10 +31,11 @@ public class HoaDonDAO {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getInt("MaHD"));
                 hd.setMaTV(rs.getInt("MaTV"));
+                hd.setHoTenNguoiNhan(rs.getString("HoTenNguoiNhan"));
                 hd.setSdtNguoiNhan(rs.getString("SDTNguoiNhan"));
                 hd.setDiaChiGiaoHang(rs.getString("DiaChiGiaoHang"));
-                hd.setGhiChu(rs.getString("GhiChu"));
                 hd.setTrangThai(rs.getBoolean("TrangThai"));
+                hd.setGhiChu(rs.getString("GhiChu"));
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                 Timestamp ngayLapTimeStamp = rs.getTimestamp("NgayLapHD");
@@ -71,11 +72,11 @@ public class HoaDonDAO {
                 hd = new HoaDon();
                 hd.setMaHD(rs.getInt("MaHD"));
                 hd.setMaTV(rs.getInt("MaTV"));
+                hd.setHoTenNguoiNhan(rs.getString("HoTenNguoiNhan"));
                 hd.setSdtNguoiNhan(rs.getString("SDTNguoiNhan"));
                 hd.setDiaChiGiaoHang(rs.getString("DiaChiGiaoHang"));
-                hd.setGhiChu(rs.getString("GhiChu"));
-
                 hd.setTrangThai(rs.getBoolean("TrangThai"));
+                hd.setGhiChu(rs.getString("GhiChu"));
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                 Timestamp ngayLapTimeStamp = rs.getTimestamp("NgayLapHD");
@@ -102,19 +103,51 @@ public class HoaDonDAO {
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
         String query = "INSERT INTO tbl_hoadon"
-                + " (NgayLapHD, NgayGiaoHang, MaTV, SDTNguoiNhan,"
+                + " (NgayLapHD, MaTV, HoTenNguoiNhan, SDTNguoiNhan,"
                 + " DiaChiGiaoHang, TrangThai, GhiChu)"
                 + "VALUES (NOW(), ?, ?, ?, ?, ?, ?)";
         try {
             stm = conn.prepareStatement(query);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            java.util.Date ngayGiaoHang = sdf.parse(hd.getNgayGiaoHang());
-            stm.setDate(1, new java.sql.Date(ngayGiaoHang.getTime()));
-            stm.setInt(2, hd.getMaTV());
+            stm.setInt(1, hd.getMaTV());
+            stm.setString(2, hd.getHoTenNguoiNhan());
             stm.setString(3, hd.getSdtNguoiNhan());
             stm.setString(4, hd.getDiaChiGiaoHang());
             stm.setBoolean(5, hd.isTrangThai());
             stm.setString(6, hd.getGhiChu());
+
+            if (stm.executeUpdate() > 0) {
+                kq = true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, null);
+        }
+        return kq;
+    }
+
+    public boolean updateHoaDon(HoaDon hd) {
+        boolean kq = false;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        String query = "UPDATE tbl_hoadon SET"
+                + " NgayLapHD=?, NgayGiaoHang=?, MaTV=?, HoTenNguoiNhan=?, SDTNguoiNhan=? ,"
+                + " DiaChiGiaoHang=?, TrangThai=?, GhiChu=? WHERE MaHD=?";
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            java.util.Date ngayLapHD = sdf.parse(hd.getNgayLapHD());
+            java.util.Date ngayGiaoHang = sdf.parse(hd.getNgayGiaoHang());
+
+            stm = conn.prepareStatement(query);
+            stm.setDate(1, new java.sql.Date(ngayLapHD.getTime()));
+            stm.setDate(2, new java.sql.Date(ngayGiaoHang.getTime()));
+            stm.setInt(3, hd.getMaTV());
+            stm.setString(4, hd.getHoTenNguoiNhan());
+            stm.setString(5, hd.getSdtNguoiNhan());
+            stm.setString(6, hd.getDiaChiGiaoHang());
+            stm.setBoolean(7, hd.isTrangThai());
+            stm.setString(8, hd.getGhiChu());
+            stm.setInt(9, hd.getMaHD());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;
@@ -129,38 +162,24 @@ public class HoaDonDAO {
         return kq;
     }
 
-    public boolean updateHoaDon(HoaDon hd) {
-        boolean kq = false;
+    // lấy mã hd vừa chèn vào trong CSDL
+    public int getMaHDMoiNhat() {
+        int maHD = -1;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "UPDATE tbl_hoadon SET"
-                + " NgayLapHD=?, NgayGiaoHang=?, MaTV=?, SDTNguoiNhan=? ,"
-                + " DiaChiGiaoHang=?, TrangThai=?, GhiChu=? WHERE MaHD=?";
+        ResultSet rs = null;
+        String query = "SELECT MaHD AS MaHD FROM tbl_hoadon ORDER BY MaHD DESC LIMIT 1";
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            java.util.Date ngayLapHD = sdf.parse(hd.getNgayLapHD());
-            java.util.Date ngayGiaoHang = sdf.parse(hd.getNgayGiaoHang());
-
             stm = conn.prepareStatement(query);
-            stm.setDate(1, new java.sql.Date(ngayLapHD.getTime()));
-            stm.setDate(2, new java.sql.Date(ngayGiaoHang.getTime()));
-            stm.setInt(3, hd.getMaTV());
-            stm.setString(4, hd.getSdtNguoiNhan());
-            stm.setString(5, hd.getDiaChiGiaoHang());
-            stm.setBoolean(6, hd.isTrangThai());
-            stm.setString(7, hd.getGhiChu());
-            stm.setInt(8, hd.getMaHD());
-
-            if (stm.executeUpdate() > 0) {
-                kq = true;
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                maHD = rs.getInt("MaHD");
             }
         } catch (SQLException ex) {
             System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
-        } catch (ParseException ex) {
-            System.err.println(ex.getMessage());
         } finally {
-            DBUtils.closeAll(conn, stm, null);
+            DBUtils.closeAll(conn, stm, rs);
         }
-        return kq;
+        return maHD;
     }
 }

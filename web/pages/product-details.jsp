@@ -205,18 +205,15 @@
                                                     <div class="entry-price">
                                                         <logic:equal name="sanPham" property="dangKM" value="true">
                                                             <s class="entry-discount">
-                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                                VND
+                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" /> VND
                                                             </s>
                                                             <strong class="accent-color price">
-                                                                <fmt:formatNumber value="${sanPham.giaBanKM}" type="NUMBER" maxFractionDigits="3" />
-                                                                VND
+                                                                <fmt:formatNumber value="${sanPham.giaBanKM}" type="NUMBER" maxFractionDigits="3" /> VND
                                                             </strong>
                                                         </logic:equal>
                                                         <logic:equal name="sanPham" property="sanPhamMoi" value="true">
                                                             <strong class="price accent-color">
-                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
-                                                                VND
+                                                                <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" /> VND
                                                             </strong>
                                                         </logic:equal>
                                                     </div>

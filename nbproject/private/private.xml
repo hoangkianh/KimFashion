@@ -2,12 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
             <file>file:/F:/GitHub/KimFashion/web/pages/checkout.jsp</file>
             <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/error.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/success.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/dao/HoaDonDAO.java</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/dao/ChiTietHDDAO.java</file>
             <file>file:/F:/GitHub/KimFashion/web/admin/dashboard.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/resource/js/minified.js</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/product-details.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/struts/ThanhToan.java</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/form/HoaDonForm.java</file>
         </group>
+>>>>>>> 80d6128fde3e8babe4748b8cebb777dcb679270d
     </open-files>
 </project-private>

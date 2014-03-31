@@ -24,6 +24,9 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
     private String ngayLapHD;
     private String ngayGiaoHang;
     private int maTV;
+    private String diaChiTV;
+    private String dienThoaiTV;
+    private String hoTenNguoiNhan;
     private String sdtNguoiNhan;
     private String diaChiGiaoHang;
     private boolean trangThai;
@@ -32,15 +35,7 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
    
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors err = new ActionErrors();
-        
-        if (ngayGiaoHang == null || ngayGiaoHang.trim().length() == 0) {
-            err.add("ngayGiaoHang", new ActionMessage("Bạn chưa chọn ngày giao hàng"));
-        }
-        
-        if (maTV <= 0) {
-            err.add("maTV", new ActionMessage("Bạn chưa chọn mã thành viên"));
-        }
-        
+                
         if (sdtNguoiNhan == null || sdtNguoiNhan.trim().length() == 0) {
             err.add("sdtNguoiNhan", new ActionMessage("Bạn chưa điền số điện thoại người nhận"));
         }
@@ -115,6 +110,30 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
         this.listHoaDon = listHoaDon;
     }
 
+    public String getDiaChiTV() {
+        return diaChiTV;
+    }
+
+    public void setDiaChiTV(String diaChiTV) {
+        this.diaChiTV = diaChiTV;
+    }    
+
+    public String getDienThoaiTV() {
+        return dienThoaiTV;
+    }
+
+    public void setDienThoaiTV(String dienThoaiTV) {
+        this.dienThoaiTV = dienThoaiTV;
+    }
+
+    public String getHoTenNguoiNhan() {
+        return hoTenNguoiNhan;
+    }
+
+    public void setHoTenNguoiNhan(String hoTenNguoiNhan) {
+        this.hoTenNguoiNhan = hoTenNguoiNhan;
+    }
+
     public String getGhiChu() {
         return ghiChu;
     }
@@ -122,5 +141,4 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
-    
 }
