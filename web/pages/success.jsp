@@ -23,6 +23,10 @@
     <c:set var="moTa" value="Chúng tôi đã gửi 1 mật khẩu mới vào email của bạn.
                         Hãy sử dụng mật khẩu đó để đăng nhập"/>
 </c:if>
+<c:if test="${s eq 5}">
+    <c:set var="thongBao" value="Gửi đơn hàng thành công"/>
+    <c:set var="moTa" value="Cám ơn bạn đã mua hàng, chúng tôi sẽ liên lạc với bạn trong vòng 48h tới"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

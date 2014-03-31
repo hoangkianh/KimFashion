@@ -34,8 +34,6 @@ public class SanPhamSizeDAO {
                 SanPhamSize sanPhamSize = new SanPhamSize();
                 sanPhamSize.setMaSP(maSP);
                 sanPhamSize.setMaSize(rs.getInt("MaSize"));
-                sanPhamSize.setSoLuongBan(rs.getInt("SoLuongBan"));
-                sanPhamSize.setSoLuongNhap(rs.getInt("SoLuongNhap"));
                 list.add(sanPhamSize);
             }
         } catch (SQLException e) {
@@ -60,8 +58,6 @@ public class SanPhamSizeDAO {
                 SanPhamSize sanPhamSize = new SanPhamSize();
                 sanPhamSize.setMaSP(rs.getInt("MaSP"));
                 sanPhamSize.setMaSize(maSize);
-                sanPhamSize.setSoLuongBan(rs.getInt("SoLuongBan"));
-                sanPhamSize.setSoLuongNhap(rs.getInt("SoLuongNhap"));
                 list.add(sanPhamSize);
             }
         } catch (SQLException e) {
@@ -76,38 +72,12 @@ public class SanPhamSizeDAO {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "INSERT INTO tbl_sanpham_size (MaSP, MaSize, SoLuongNhap, SoLuongBan)"
-                + " VALUES (?,?,?,?)";
+        String query = "INSERT INTO tbl_sanpham_size (MaSP, MaSize)"
+                + " VALUES (?,?)";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, sanPhamSize.getMaSP());
             stm.setInt(2, sanPhamSize.getMaSize());
-            stm.setInt(3, sanPhamSize.getSoLuongNhap());
-            stm.setInt(4, sanPhamSize.getSoLuongBan());
-            
-            if (stm.executeUpdate() > 0) {
-                kq = true;
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getErrorCode() + ":" + e.getMessage());
-        } finally {
-            DBUtils.closeAll(conn, stm, null);
-        }
-        return kq;
-    }
-
-    public boolean updateSanPhamSize (SanPhamSize sanPhamSize) {
-        boolean kq = false;
-        Connection conn = DBUtils.getConnection();
-        PreparedStatement stm = null;
-        String query = "UPDATE tbl_sanpham_size SET SoLuongNhap=?, SoLuongBan=?"
-                + " WHERE MaSP=?, MaSize=?";
-        try {
-            stm = conn.prepareStatement(query);
-            stm.setInt(1, sanPhamSize.getSoLuongNhap());
-            stm.setInt(2, sanPhamSize.getSoLuongBan());
-            stm.setInt(3, sanPhamSize.getMaSP());
-            stm.setInt(4, sanPhamSize.getMaSize());
             
             if (stm.executeUpdate() > 0) {
                 kq = true;

@@ -22,8 +22,6 @@ public class SanPhamSizeForm extends org.apache.struts.action.ActionForm {
     
     private int maSP;
     private int maSize;
-    private int soLuongNhap;
-    private int soLuongBan;
     private List<SanPhamSize> listSanPhamSize;
     
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
@@ -31,14 +29,6 @@ public class SanPhamSizeForm extends org.apache.struts.action.ActionForm {
         
         if (maSize <= 0) {
             err.add("maSize", new ActionMessage("Bạn chưa chọn size"));
-        }
-        
-        if (soLuongNhap <= 0) {
-            err.add("soLuongNhap", new ActionMessage("Bạn chưa điền số lượng nhập"));
-        }
-        
-        if (soLuongBan <= 0) {
-            err.add("soLuongBan", new ActionMessage("Bạn chưa điền số lượng bán"));
         }
         
         return err;
@@ -58,22 +48,6 @@ public class SanPhamSizeForm extends org.apache.struts.action.ActionForm {
 
     public void setMaSize(int maSize) {
         this.maSize = maSize;
-    }
-
-    public int getSoLuongNhap() {
-        return soLuongNhap;
-    }
-
-    public void setSoLuongNhap(int soLuongNhap) {
-        this.soLuongNhap = soLuongNhap;
-    }
-
-    public int getSoLuongBan() {
-        return soLuongBan;
-    }
-
-    public void setSoLuongBan(int soLuongBan) {
-        this.soLuongBan = soLuongBan;
     }
 
     public List<SanPhamSize> getListSanPhamSize() {

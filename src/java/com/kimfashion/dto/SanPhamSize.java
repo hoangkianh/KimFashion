@@ -15,8 +15,6 @@ import java.io.Serializable;
 public class SanPhamSize implements Serializable {
     private int maSP;
     private int maSize;
-    private int soLuongNhap;
-    private int soLuongBan;
 
     public int getMaSP() {
         return maSP;
@@ -32,22 +30,6 @@ public class SanPhamSize implements Serializable {
 
     public void setMaSize(int maSize) {
         this.maSize = maSize;
-    }
-
-    public int getSoLuongNhap() {
-        return soLuongNhap;
-    }
-
-    public void setSoLuongNhap(int soLuongNhap) {
-        this.soLuongNhap = soLuongNhap;
-    }
-
-    public int getSoLuongBan() {
-        return soLuongBan;
-    }
-
-    public void setSoLuongBan(int soLuongBan) {
-        this.soLuongBan = soLuongBan;
     }
 
 }

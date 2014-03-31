@@ -52,7 +52,7 @@
 
                                     <ul class="nav nav-tabs nav-stacked">
                                         <li><a href="products.do">Danh mục sản phẩm</a></li>															
-                                        <li><a href="https://facebook.com/pages/KimFashion"><i class="iconfont-facebook-sign"></i> Facebook của chúng tôi</a></li>
+                                        <li><a href="https://www.facebook.com/pages/Kim-Fashion/"><i class="iconfont-facebook-sign"></i> Facebook của chúng tôi</a></li>
                                         <li><a href="about.do">Giới thiệu cửa hàng</a></li>														
                                         <li><a href="contact.do">Liên hệ</a></li>															
                                     </ul>
@@ -120,6 +120,7 @@
                                         </div>
                                     </c:if>
                                     <html:form action="/thanhtoan" method="POST" styleClass="form-horizontal" styleId="formThanhToan">
+                                        <input type="hidden" name="maTV" value="<c:out value="${s[0]}"/>"/>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
@@ -133,29 +134,29 @@
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputHoTen" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
+                                                                <label for="hoTen" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="inputHoTen" id="inputHoTen" value="<c:out value="${s[3]}"/>" />
+                                                                    <input type="text" class="form-control" name="hoTen" id="hoTen" value="<c:out value="${s[3]}"/>" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputAddress" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
+                                                                <label for="diaChiTV" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" />
+                                                                    <input type="text" class="form-control" name="diaChiTV" id="diaChiTV" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputEmail" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
+                                                                <label for="email" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="<c:out value="${s[4]}"/>"  />
+                                                                    <input type="email" class="form-control" name="email" id="email" value="<c:out value="${s[4]}"/>"  />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputDienThoai" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
+                                                                <label for="dienThoaiTV" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="inputDienThoai" id="inputDienThoai" />
+                                                                    <input type="text" class="form-control" name="dienThoaiTV" id="dienThoaiTV" />
                                                                 </div>
                                                             </div>                                                            
                                                         </div>
@@ -186,29 +187,21 @@
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-12 col-md-6">
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputHoTen1" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
+                                                                <label for="hoTenNguoiNhan" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="inputHoTen1" id="inputHoTen1" />
+                                                                    <input type="text" class="form-control" name="hoTenNguoiNhan" id="hoTenNguoiNhan" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputAddress1" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
+                                                                <label for="diaChiGiaoHang" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="inputAddress1" id="inputAddress1" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                                            <div class="form-group stylish-input">
-                                                                <label for="inputEmail1" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="email" class="form-control" name="inputEmail1" id="inputEmail1" />
+                                                                    <input type="text" class="form-control" name="diaChiGiaoHang" id="diaChiGiaoHang" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group stylish-input">
-                                                                <label for="inputPhone1" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
+                                                                <label for="sdtNguoiNhan" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
                                                                 <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="inputPhone1" id="inputPhone1" />
+                                                                    <input type="text" class="form-control" name="sdtNguoiNhan" id="sdtNguoiNhan" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -227,7 +220,7 @@
                                             <div id="checkout-collapse6" class="panel-collapse">
                                                 <div class="panel-body">
                                                     <div class="row">
-                                                        <div class="col-xs-10 col-sm-10 center-sm">
+                                                        <div class="col-xs-6 col-sm-6 center-sm">
                                                             <table class="shop-summary text-right">
                                                                 <tr>
                                                                     <th>TỔNG CỘNG:</th>
@@ -247,11 +240,28 @@
                                                                     <td id="thanhTien"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th>
-                                                                        <input type="submit" class="btn btn-default btn-round uppercase" value="Thanh toán"/>
-                                                                    </th>
+                                                                    <c:choose>
+                                                                        <c:when  test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
+                                                                            <td colspan="2">
+                                                                                <p>Hãy trở thành thành viên của Kimfashion để có thể thanh toán</p>
+                                                                            </td>   
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <th>
+                                                                                <input type="submit" class="btn btn-default btn-round uppercase" value="Thanh toán"/>
+                                                                            </th>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
                                                                 </tr>
                                                             </table>
+                                                        </div>
+                                                        <div class="col-xs-6 col-sm-6 center-sm">
+                                                            <div class="form-group">
+                                                                <label for="ghiChu" class="col-sm-4 col-lg-4 control-label">Ghi chú</label>
+                                                                <div class="col-sm-8 col-lg-8">
+                                                                    <textarea class="form-control" name="ghiChu" rows="10"></textarea>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -281,42 +291,35 @@
             $("#formThanhToan").validate({
                 errorClass: "text-danger",
                 rules: {
-                    inputHoTen: {
+                    hoTen: {
                         required: true,
                     },
-                    inputAddress: {
+                    diaChiTV: {
                         required: true,
                     },
-                    inputEmail: {
+                    email: {
                         required: true,
                         email: true
                     },
-                    inputDienThoai: {
+                    dienThoaiTV: {
                         required: true,
                         checkPhone: true
                     },
-                    inputHoTen1: {
+                    hoTenNguoiNhan: {
                         required: {
                             depends: function() {
                                 return !$('#checkBoxGiaoHang').is(':checked');
                             }
                         }
                     },
-                    inputAddress1: {
+                    diaChiGiaoHang: {
                         required: {
                             depends: function() {
                                 return !$('#checkBoxGiaoHang').is(':checked');
                             }
                         }
                     },
-                    inputEmail1: {
-                        required: {
-                            depends: function() {
-                                return !$('#checkBoxGiaoHang').is(':checked');
-                            }
-                        }
-                    },
-                    inputDienThoai1: {
+                    sdtNguoiNhan: {
                         required: {
                             depends: function() {
                                 return !$('#checkBoxGiaoHang').is(':checked');
@@ -327,35 +330,37 @@
                                 return !$('#checkBoxGiaoHang').is(':checked');
                             }
                         }
+                    },
+                    ghiChu: {
+                        maxlength: 200
                     }
                 },
                 messages: {
-                    inputHoTen: {
+                    hoTen: {
                         required: "Bạn cần điền họ tên của mình"
                     },
-                    inputAddress: {
+                    diaChiTV: {
                         required: "Bạn cần điền địa chỉ của mình"
                     },
-                    inputEmail: {
+                    email: {
                         required: "Bạn cần điền email",
                         email: "Địa chỉ email không hợp lệ"
                     },
-                    inputDienThoai: {
+                    dienThoaiTV: {
                         required: "Bạn cần điền số điện thoại của mình"
                     },
-                    inputHoTen1: {
+                    hoTenNguoiNhan: {
                         required: "Bạn cần điền họ tên người nhận"
                     },
-                    inputAddress1:{
-                        required: "Bạn cần điền địa chỉ người nhận"                        
+                    diaChiGiaoHang: {
+                        required: "Bạn cần điền địa chỉ giao hàng"
                     },
-                    inputEmail1: {
-                        required: "Bạn cần điền email người nhận",
-                        email: "Địa chỉ email không hợp lệ"
-                    },
-                    inputDienThoai1: {
+                    sdtNguoiNhan: {
                         required: "Bạn cần điền số điện thoại người nhận"
                     },
+                    ghiChu: {
+                        maxlength: "Ghi chú dài tối đa 200 kí tự"
+                    }
                 }
             });
 

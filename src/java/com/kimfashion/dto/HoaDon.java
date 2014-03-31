@@ -11,10 +11,27 @@ public class HoaDon implements Serializable {
     private String ngayLapHD;
     private String ngayGiaoHang;
     private int maTV;
+    private String hoTenNguoiNhan;
     private String sdtNguoiNhan;
     private String diaChiGiaoHang;
     private boolean trangThai;
     private String ghiChu;
+
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+
+    public String getHoTenNguoiNhan() {
+        return hoTenNguoiNhan;
+    }
+
+    public void setHoTenNguoiNhan(String hoTenNguoiNhan) {
+        this.hoTenNguoiNhan = hoTenNguoiNhan;
+    }
 
     public int getMaHD() {
         return maHD;
@@ -71,13 +88,4 @@ public class HoaDon implements Serializable {
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
-
-    public String getGhiChu() {
-        return ghiChu;
-    }
-
-    public void setGhiChu(String ghiChu) {
-        this.ghiChu = ghiChu;
-    }
-    
 }
