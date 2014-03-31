@@ -9,6 +9,7 @@ import com.kimfashion.dao.ThanhVienDAO;
 import com.kimfashion.dto.ThanhVien;
 import com.kimfashion.form.DangNhapForm;
 import com.kimfashion.utils.MaHoaMD5;
+import java.net.URLEncoder;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,7 +60,7 @@ public class DangNhap extends org.apache.struts.action.Action {
         
         // tạo cookie nếu user chọn lưu lại
         if (dangNhapForm.isLuuLai()) {
-            Cookie cookie = new Cookie("kimfashion", value);
+            Cookie cookie = new Cookie("kimfashion", URLEncoder.encode(value, "UTF-8"));
             cookie.setMaxAge(7 * 24 * 60 * 60); // thời gian là 1 tuần
             response.addCookie(cookie);
         }
