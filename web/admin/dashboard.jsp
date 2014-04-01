@@ -49,11 +49,11 @@
                             <!-- SIDEBAR -->
                             <aside class="col-xs-12 col-sm-4 col-md-3">
                                 <section class="side-section">
+                                    <h3 class="uppercase text-bold"><span class="text-xs">trang quản trị</span></h3>
                                     <ul class="nav nav-tabs nav-stacked">
-                                        <li><a href="products.do">Danh mục sản phẩm</a></li>															
-                                        <li><a href="https://facebook.com/pages/KimFashion"><i class="iconfont-facebook-sign"></i> Facebook của chúng tôi</a></li>
-                                        <li><a href="about.do">Giới thiệu cửa hàng</a></li>														
-                                        <li><a href="contact.do">Liên hệ</a></li>															
+                                        <li><a href="#">Quản lý sản phẩm</a></li>															
+                                        <li><a href="#">Đơn hàng</a></li>
+                                        <li><a href="#">Quản lý thành viên</a></li>														
                                     </ul>
                                 </section>
                             </aside>
