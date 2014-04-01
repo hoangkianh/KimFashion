@@ -1,6 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
+    <c:if test="${not empty sessionScope.kimfashion}">
+        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
+    </c:if>
+    <c:if test="${not empty cookie.kimfashion}">
+        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
+    </c:if>
+    <c:choose>
+        <c:when test="${s[2] eq true}">
+            <c:redirect url="/dashboard.do" />                
+        </c:when>
+        <c:otherwise>
+            <c:redirect url="/" />                
+        </c:otherwise>
+    </c:choose>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
