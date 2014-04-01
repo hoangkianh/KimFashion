@@ -7,7 +7,7 @@
         <c:set var="s" value="${fn:split(sessionScope.blackpoints, '~')}"/>        
     </c:if>
     <c:if test="${not empty cookie.blackpoints}">
-        <c:set var="s" value="${fn:split(cookie.blackpoints.value, '~')}"/>
+        <c:set var="s" value="${fn:split(cookie.blackpoints.value, '%7E')}"/>
     </c:if>
     <c:choose>
         <c:when test="${s[2] eq true}">

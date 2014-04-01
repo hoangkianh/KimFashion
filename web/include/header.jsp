@@ -8,7 +8,7 @@
         <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
     </c:when>
     <c:otherwise>
-        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
+        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
     </c:otherwise>
 </c:choose>
 <!-- SITE HEADER -->

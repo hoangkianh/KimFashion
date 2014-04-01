@@ -7,7 +7,7 @@
         <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
     </c:if>
     <c:if test="${not empty cookie.kimfashion}">
-        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '~')}"/>
+        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
     </c:if>
     <c:choose>
         <c:when test="${s[2] eq true}">

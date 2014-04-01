@@ -5,7 +5,7 @@
         <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
     </c:when>
     <c:otherwise>
-        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
+        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
     </c:otherwise>
 </c:choose>
 <!-- nếu không phải admin redirect sang trang chủ -->
@@ -66,7 +66,6 @@
         </div>
         <%@include file="../include/footer.jsp" %>
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-        <script src="resource/js/contact.js"></script>
         <script src="resource/js/gmap3.min.js"></script>
     </body>
 </html>
