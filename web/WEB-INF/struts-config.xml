@@ -99,7 +99,6 @@
             <forward name="ThanhToanNotOK" path="/error.do?e=6" />            
         </action>            
         
-        <action path="/collection" forward="/pages/collection.jsp"/>
         <action path="/cart" forward="/pages/cart.jsp"/>
         <action path="/products" forward="/pages/products.jsp"/>
         <action path="/error" forward="/pages/error.jsp"/>

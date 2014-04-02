@@ -1,11 +1,13 @@
 package com.kimfashion.form;
 
+import com.kimfashion.dao.BoSuuTapDAO;
 import com.kimfashion.dao.HinhAnhDAO;
 import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.SanPhamSizeDAO;
 import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dao.ThuongHieuDAO;
+import com.kimfashion.dto.BoSuuTap;
 import com.kimfashion.dto.HinhAnh;
 import com.kimfashion.dto.LoaiSP;
 import com.kimfashion.dto.SanPham;
@@ -312,5 +314,13 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
             tenLoaiSP = loaiSP.getTenLoai();
         }
         return tenLoaiSP;
+    }
+    
+    public String getTenBST () {
+        BoSuuTap bst = new BoSuuTapDAO().getBoSuuTapByMaBST(maBST);
+        if (bst != null) {
+            return bst.getTenBST();
+        }
+        return "";
     }
 }

@@ -21,9 +21,6 @@ import org.apache.struts.action.ActionMapping;
  */
 public class GetSPTrongBST extends org.apache.struts.action.Action {
 
-    /* forward name="success" path="" */
-    private static final String SUCCESS = "success";
-
     /**
      * This is the action called from the Struts framework.
      *
@@ -45,9 +42,8 @@ public class GetSPTrongBST extends org.apache.struts.action.Action {
             SanPhamForm sanPhamForm = (SanPhamForm) form;
             sanPhamForm.setListSanPham(list);
             sanPhamForm.setMaBST(maBST);
-            
+            System.out.println(list.size());
         } catch (Exception e) {
-            e.printStackTrace();
             return mapping.findForward("GetBoSuuTapNotOK");
         }
 

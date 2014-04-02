@@ -100,6 +100,14 @@
                                                             <a href="brand.do?id=<bean:write name="SanPhamForm" property="maThuongHieu" />"><bean:write name="SanPhamForm" property="tenThuongHieu"/></a>
                                                         </span>
                                                     </li>
+                                                    <c:if test="${SanPhamForm.maBST gt 0}">
+                                                        <li>
+                                                            <span class="key">Bộ sưu tập:</span>
+                                                            <span class="value">
+                                                                <a href="collection.do?id=<bean:write name="SanPhamForm" property="maBST" />"><bean:write name="SanPhamForm" property="tenBST"/></a>
+                                                            </span>
+                                                        </li>
+                                                    </c:if>
                                                     <li>
                                                         <span class="key">Code:</span>
                                                         <span class="value">
