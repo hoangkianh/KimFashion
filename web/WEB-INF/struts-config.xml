@@ -133,6 +133,17 @@
             <forward name="GetSanPhamOK" path="/admin/product.jsp" />
             <forward name="GetSanPhamNotOK" path="/error.do?e=1" />
         </action>
+        <!-- xem chi tiết sp -->
+        <action input="/" name="SanPhamForm" path="/details-product" scope="session" type="com.kimfashion.struts.GetChiTietSP" validate="false">
+            <forward name="GetChiTietSPOK" path="/admin/details-product.jsp"/>
+            <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
+        </action>
+        <!-- lấy chi tiết sp để sửa -->
+        <action input="/" name="SanPhamForm" path="/edit-product" scope="session" type="com.kimfashion.struts.GetChiTietSP" validate="false">
+            <forward name="GetChiTietSPOK" path="/admin/edit-product.jsp"/>
+            <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
+        </action>
+        <action input="/" name="SanPhamForm" path="/SuaSanPham" scope="session" type="com.kimfashion.struts.SuaSanPham"/>
         
     </action-mappings>
     

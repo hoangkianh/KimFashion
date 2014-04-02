@@ -3,6 +3,7 @@
 <%@taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
     <c:if test="${not empty sessionScope.kimfashion}">
         <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
@@ -54,47 +55,88 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <p>
-                                    <a href="#" class="btn btn-primary btn-round">Thêm sản phẩm mới</a>
+                                    <a href="product-new.do" class="btn btn-primary btn-round">Thêm sản phẩm mới</a>
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
                                     <caption class="uppercase text-bold">Danh sách sản phẩm</caption>
                                     <thead>
                                         <tr>
-                                            <th>Sửa</th>
-                                            <th>Ẩn</th>
+                                            <th class="sorting_disabled">Sửa</th>
                                             <th>Code</th>
                                             <th>Tên</th>
-                                            <th>Ảnh</th>
+                                            <th class="sorting_disabled">Ảnh</th>
                                             <th>Loại</th>
                                             <th>Thương hiệu</th>
-                                            <th>Bộ sưu tập</th>
                                             <th>Giá bán</th>
-                                            <th>Giá bán KM</th>
-                                            <th>Đang khuyến mại</th>
-                                            <th>Hàng mới về</th>
+                                            <th class="sorting_disabled">Đang KM</th>
+                                            <th class="sorting_disabled">Hàng mới về</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <logic:iterate id="sp" name="SanPhamForm" property="listSanPham">                                            
                                             <tr>
-                                                <td>b</td>
-                                                <td>c</td>
+                                                <td align="center">
+                                                    <a href="edit-product.do?id=<bean:write name="sp" property="maSP"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin sản phẩm">
+                                                        <i class="iconfont-edit"></i>
+                                                    </a>
+                                                </td>
+<!--                                                <td align="center">
+                                                    <c:choose>
+                                                        <c:when  test="${sp.daAn eq true}">
+                                                            <i class="iconfont-trash text-muted"></i>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <a href="delete-product.do?id=<bean:write name="sp" property="maSP"/>"
+                                                               rel="tooltip" data-toggle="tooltip" data-placement="top" title="Ẩn sản phẩm này">
+                                                                <i class="iconfont-trash"></i>
+                                                            </a>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>-->
                                                 <td>
-                                                    <a href="edit-product.do?id=<bean:write name="sp" property="maSP"/>" 
+                                                    <a class="accent-color" href="details-product.do?id=<bean:write name="sp" property="maSP"/>" 
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem chi tiết">
                                                         <bean:write name="sp" property="code"/>
                                                     </a>
                                                 </td>
-                                                <td>c</td>
-                                                <td>d</td>
-                                                <td>e</td>
-                                                <td>f</td>
-                                                <td>h</td>
-                                                <td>i</td>
-                                                <td>i</td>
-                                                <td>j</td>
-                                                <td>k</td>
+                                                <td><bean:write name="sp" property="tenSP"/></td>
+                                                <td>
+                                                    <a href="<bean:write name="sp" property="hinhAnh"/>" data-toggle="lightbox">
+                                                        <img width="100" src="<bean:write name="sp" property="hinhAnh"/>"/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="accent-color" href="product-category.do?id=<bean:write name="sp" property="maLoaiSP"/>">
+                                                        <bean:write name="sp" property="tenLoaiSP"/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="accent-color" href="product-brand.do?id=<bean:write name="sp" property="maThuongHieu"/>">
+                                                        <bean:write name="sp" property="tenThuongHieu" />
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${sp.dangKM eq true}">
+                                                            <fmt:formatNumber value="${sp.giaBanKM}" type="NUMBER" maxFractionDigits="3" /> VND
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <fmt:formatNumber value="${sp.giaBan}" type="NUMBER" maxFractionDigits="3" /> VND                                                            
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
+                                                <td align="center">
+                                                    <c:if test="${sp.dangKM eq true}">
+                                                        <i class="iconfont-check text-success"></i>
+                                                    </c:if>
+                                                </td>
+                                                <td align="center">
+                                                    <c:if test="${sp.sanPhamMoi eq true}">
+                                                        <i class="iconfont-check text-success"></i>
+                                                    </c:if>
+                                                </td>
                                             </tr>
                                         </logic:iterate>
                                     </tbody>
@@ -108,7 +150,9 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
-            $('#myTable').dataTable();
+            $('#myTable').dataTable({
+                "aaSorting": [[2, 'asc']] // sort theo tên sp
+            });
         </script>
     </body>
 </html>

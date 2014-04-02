@@ -48,7 +48,7 @@
                                 <h3 class="uppercase text-bold text-center"><span>cập nhật thông tin của bạn</span></h3>
                                 <html:errors/>
                                 <html:form action="/CapNhatThongTinTV" method="POST" styleClass="form-horizontal" styleId="formCapNhat">
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="hoTen">Họ tên</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="hoTen" class="form-control" 
@@ -56,12 +56,18 @@
                                                    value="<bean:write name="ThanhVienForm" property="hoTen"/>"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label">Giới tính</label>
                                         <div class="col-sm-8">
                                             <div class="stylish-input">
-                                                <label><input type="radio" name="gioiTinh" value="False" class="prettyCheckable" checked="checked" />Nam</label>
-                                                <label><input type="radio" name="gioiTinh" value="True" class="prettyCheckable" />Nữ</label>
+                                                <c:if test="${ThanhVienForm.gioiTinh eq true}">
+                                                    <label><input type="radio" name="gioiTinh" value="False" class="prettyCheckable" />Nam</label>
+                                                    <label><input type="radio" name="gioiTinh" value="True" class="prettyCheckable" checked="checked" />Nữ</label>
+                                                </c:if>
+                                                <c:if test="${ThanhVienForm.gioiTinh eq false}">
+                                                    <label><input type="radio" name="gioiTinh" value="False" class="prettyCheckable" checked="checked" />Nam</label>
+                                                    <label><input type="radio" name="gioiTinh" value="True" class="prettyCheckable" />Nữ</label>
+                                                </c:if>
                                             </div>
                                             <small class="text-xs text-muted">Chúng tôi sẽ tìm những sản phẩm phù hợp với bạn</small>
                                         </div>
@@ -80,7 +86,7 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
-             $("#formCapNhat").validate({
+            $("#formCapNhat").validate({
                 errorClass: "text-danger",
                 rules: {
                     hoTen: {

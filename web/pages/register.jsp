@@ -65,7 +65,7 @@
                                 <h3 class="uppercase text-bold text-center"><span>đăng ký làm thành viên</span></h3>
                                 <html:errors/>
                                 <html:form action="/dangky" method="POST" styleClass="form-horizontal" styleId="formDangKy">
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="tenDangNhap">Tên đăng nhập</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="tenDangNhap" class="form-control" 
@@ -73,21 +73,21 @@
                                                    value="<bean:write name="ThanhVienForm" property="tenDangNhap"/>"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="password">Mật khẩu</label>
                                         <div class="col-sm-8">
                                             <input type="password" name="password" class="form-control" 
                                                    id="password" placeholder="Mật khẩu" />
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="matKhau2">Nhập lại mật khẩu</label>
                                         <div class="col-sm-8">
                                             <input type="password" name="password2" class="form-control" 
                                                    id="matKhau2" placeholder="Nhập lại mật khẩu"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="email">Email</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="email" class="form-control"
@@ -95,7 +95,7 @@
                                                    value="<bean:write name="ThanhVienForm" property="email"/>"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label" for="hoTen">Họ tên</label>
                                         <div class="col-sm-8">
                                             <input type="text" name="hoTen" class="form-control" 
@@ -103,7 +103,7 @@
                                                    value="<bean:write name="ThanhVienForm" property="hoTen"/>"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-4 control-label">Giới tính</label>
                                         <div class="col-sm-8">
                                             <div class="stylish-input">

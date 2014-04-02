@@ -291,6 +291,15 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
         }
         return list;
     }
+    
+    public List<ThuongHieu> getListThuongHieu() {
+        List<ThuongHieu> list = new ThuongHieuDAO().getAllThuongHieu();
+        return list;
+    }
+    public List<LoaiSP> getListLoaiSP() {
+        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSP();
+        return list;
+    }
 
     public String getTenThuongHieu() {
         ThuongHieu th = new ThuongHieuDAO().getThuongHieuByMaTH(maThuongHieu);

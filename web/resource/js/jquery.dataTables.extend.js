@@ -2,6 +2,7 @@
 $.extend(true, $.fn.dataTable.defaults, {
     "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
     "sPaginationType": "bootstrap",
+    "aoColumnDefs": [{'bSortable': false, 'bSearchable': false, 'aTargets': ['sorting_disabled']}],
     "oLanguage": {
         "sProcessing": "Đang xử lý...",
         "sLengthMenu": "Xem _MENU_ dòng",

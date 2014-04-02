@@ -514,7 +514,6 @@ public class SanPhamDAO {
                 sp.setDaAn(rs.getBoolean("DaAn"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
-                sp.setSoLuotDanhGia(rs.getInt("SoLuotDanhGia"));
                 sp.setTenThuongHieu(rs.getString("TenThuongHieu"));
             }
         } catch (SQLException ex) {
@@ -532,8 +531,8 @@ public class SanPhamDAO {
         String query = "INSERT INTO tbl_sanpham"
                 + " (Code, TenSP, GioiTinh, MaLoaiSP, MaThuongHieu, MaBST,"
                 + " MoTa, GiaNhap, GiaBan, GiaBanKM, SanPhamMoi, DangKM,"
-                + " DaAn, SoLuotDanhGia, MauSac)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
+                + " DaAn, MauSac)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, sp.getCode());
@@ -548,7 +547,6 @@ public class SanPhamDAO {
             stm.setInt(10, sp.getGiaBanKM());
             stm.setBoolean(11, sp.isSanPhamMoi());
             stm.setBoolean(12, sp.isDangKM());
-            stm.setInt(14, sp.getSoLuotDanhGia());
             stm.setString(15, sp.getMauSac());
 
             if (stm.executeUpdate() > 0) {
@@ -570,7 +568,7 @@ public class SanPhamDAO {
         String query = "UPDATE tbl_sanpham"
                 + " SET Code=?, TenSP=?, GioiTinh=?, MaLoaiSP=?, MaThuongHieu=?, MaBST=?,"
                 + " MoTa=?, GiaNhap=?, GiaBan=?, GiaBanKM=?, SanPhamMoi=?, DangKM=?,"
-                + " DaAn=?, SoLuotDanhGia=?, MauSac=? WHERE MaSP=?;";
+                + " DaAn=?, MauSac=? WHERE MaSP=?;";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, sp.getCode());
@@ -586,9 +584,8 @@ public class SanPhamDAO {
             stm.setBoolean(11, sp.isSanPhamMoi());
             stm.setBoolean(12, sp.isDangKM());
             stm.setBoolean(13, sp.isDaAn());
-            stm.setInt(15, sp.getSoLuotDanhGia());
-            stm.setString(16, sp.getMauSac());
-            stm.setInt(17, sp.getMaSP());
+            stm.setString(14, sp.getMauSac());
+            stm.setInt(15, sp.getMaSP());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;
