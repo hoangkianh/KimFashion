@@ -20,7 +20,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author Kim Hue
  */
-public class GetAllProducts extends org.apache.struts.action.Action {
+public class GetAllSanPham extends org.apache.struts.action.Action {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -28,9 +28,12 @@ public class GetAllProducts extends org.apache.struts.action.Action {
             throws Exception {
         
         SanPhamForm sanPhamForm = (SanPhamForm) form;
-        List<SanPham> list = new SanPhamDAO().getAllSanPham();
+        List<SanPham> list = new SanPhamDAO().getAllSanPhamAdmin();
         sanPhamForm.setListSanPham(list);
         
+        if (list.isEmpty()) {
+            return mapping.findForward("GetSanPhamNotOK");            
+        }
         return mapping.findForward("GetSanPhamOK");
     }
 }

@@ -3,15 +3,15 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
-    <c:if test="${not empty sessionScope.blackpoints}">
-        <c:set var="s" value="${fn:split(sessionScope.blackpoints, '~')}"/>        
+    <c:if test="${not empty sessionScope.kimfashion}">
+        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
     </c:if>
-    <c:if test="${not empty cookie.blackpoints}">
-        <c:set var="s" value="${fn:split(cookie.blackpoints.value, '%7E')}"/>
+    <c:if test="${not empty cookie.kimfashion}">
+        <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
     </c:if>
     <c:choose>
         <c:when test="${s[2] eq true}">
-            <c:redirect url="/dashboard.do" />                
+            <c:redirect url="/admin.do" />                
         </c:when>
         <c:otherwise>
             <c:redirect url="/" />                

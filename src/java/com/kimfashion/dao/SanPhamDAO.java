@@ -43,7 +43,47 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
+                sp.setMauSac(rs.getString("MauSac"));
+                sp.setHinhAnh(rs.getString("HinhAnh"));
+
+                list.add(sp);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
+    
+    public List<SanPham> getAllSanPhamAdmin() {
+        List<SanPham> list = new ArrayList<SanPham>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT a.*, b.`DuongDan` AS HinhAnh FROM tbl_sanpham a"
+                    + " LEFT JOIN `tbl_hinhanh` b"
+                    + " ON a.MaSP = b.MaSP"
+                    + " WHERE b.`AnhChinh` = TRUE");
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                SanPham sp = new SanPham();
+                sp.setMaSP(rs.getInt("MaSP"));
+                sp.setCode(rs.getString("Code"));
+                sp.setTenSP(rs.getString("TenSP"));
+                sp.setGioiTinh(rs.getBoolean("GioiTinh"));
+                sp.setMaLoaiSP(rs.getInt("MaLoaiSP"));
+                sp.setMaBST(rs.getInt("MaBST"));
+                sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
+                sp.setMoTa(rs.getString("MoTa"));
+                sp.setGiaNhap(rs.getInt("GiaNhap"));
+                sp.setGiaBan(rs.getInt("GiaBan"));
+                sp.setGiaBanKM(rs.getInt("GiaBanKM"));
+                sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
+                sp.setDangKM(rs.getBoolean("DangKM"));
+                sp.setDaAn(rs.getBoolean("DaAn"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -86,7 +126,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -131,7 +170,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -174,7 +212,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -219,7 +256,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -262,7 +298,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -302,7 +337,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -349,7 +383,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -392,7 +425,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -436,7 +468,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
 
@@ -481,7 +512,6 @@ public class SanPhamDAO {
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
                 sp.setDangKM(rs.getBoolean("DangKM"));
                 sp.setDaAn(rs.getBoolean("DaAn"));
-                sp.setXepHang(rs.getDouble("XepHang"));
                 sp.setMauSac(rs.getString("MauSac"));
                 sp.setHinhAnh(rs.getString("HinhAnh"));
                 sp.setSoLuotDanhGia(rs.getInt("SoLuotDanhGia"));
@@ -502,8 +532,8 @@ public class SanPhamDAO {
         String query = "INSERT INTO tbl_sanpham"
                 + " (Code, TenSP, GioiTinh, MaLoaiSP, MaThuongHieu, MaBST,"
                 + " MoTa, GiaNhap, GiaBan, GiaBanKM, SanPhamMoi, DangKM,"
-                + " DaAn, XepHang, SoLuotDanhGia, MauSac)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
+                + " DaAn, SoLuotDanhGia, MauSac)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, sp.getCode());
@@ -518,7 +548,6 @@ public class SanPhamDAO {
             stm.setInt(10, sp.getGiaBanKM());
             stm.setBoolean(11, sp.isSanPhamMoi());
             stm.setBoolean(12, sp.isDangKM());
-            stm.setDouble(13, sp.getXepHang());
             stm.setInt(14, sp.getSoLuotDanhGia());
             stm.setString(15, sp.getMauSac());
 
@@ -541,7 +570,7 @@ public class SanPhamDAO {
         String query = "UPDATE tbl_sanpham"
                 + " SET Code=?, TenSP=?, GioiTinh=?, MaLoaiSP=?, MaThuongHieu=?, MaBST=?,"
                 + " MoTa=?, GiaNhap=?, GiaBan=?, GiaBanKM=?, SanPhamMoi=?, DangKM=?,"
-                + " DaAn=?, XepHang=?, SoLuotDanhGia=?, MauSac=? WHERE MaSP=?;";
+                + " DaAn=?, SoLuotDanhGia=?, MauSac=? WHERE MaSP=?;";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, sp.getCode());
@@ -557,7 +586,6 @@ public class SanPhamDAO {
             stm.setBoolean(11, sp.isSanPhamMoi());
             stm.setBoolean(12, sp.isDangKM());
             stm.setBoolean(13, sp.isDaAn());
-            stm.setDouble(14, sp.getXepHang());
             stm.setInt(15, sp.getSoLuotDanhGia());
             stm.setString(16, sp.getMauSac());
             stm.setInt(17, sp.getMaSP());
