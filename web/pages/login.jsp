@@ -62,7 +62,7 @@
                             </aside>
 
                             <section class="col-xs-12 col-sm-5 col-md-5 col-sm-offset-1">
-                                <h3 class="uppercase text-bold"><span>đăng nhập</span></h3>
+                                <h3 class="uppercase text-bold text-center"><span>đăng nhập</span></h3>
                                 <html:form action="/dangnhap" method="POST" styleClass="form-horizontal" styleId="formDangNhap">
                                     <p class="text-danger"><bean:write name="DangNhapForm" property="error"/></p>
                                     <div class="form-group stylish-input">

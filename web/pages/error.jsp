@@ -31,6 +31,22 @@
     <c:set var="moTa" value="Đã có lỗi xảy ra trong quá trình thanh toán.
            Rất xin lỗi bạn vì sự cố này."/>
 </c:if>
+<c:if test="${e eq 7}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Bạn không có quyền truy cập trang này."/>
+</c:if>
+<c:if test="${e eq 8}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Cập nhật thông tin không thành công, bạn hãy thử lại"/>
+</c:if>
+<c:if test="${e eq 9}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Mật khẩu không đúng, bạn hãy nhập lại"/>
+</c:if>
+<c:if test="${e eq 10}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Cập nhật mật khẩu không thành công, bạn hãy thử lại"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

@@ -62,7 +62,7 @@
                             </aside>
 
                             <section class="col-xs-12 col-sm-5 col-md-5 col-sm-offset-1">
-                                <h3 class="uppercase text-bold"><span>quên mật khẩu</span></h3>
+                                <h3 class="uppercase text-bold text-center"><span>quên mật khẩu</span></h3>
                                 <html:errors/>
                                 <html:form action="/QuenMatKhau" method="POST" styleClass="form-horizontal" styleId="formQuenMK">
                                     <div class="form-group">

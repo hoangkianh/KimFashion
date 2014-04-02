@@ -42,7 +42,6 @@ public class GetSPTrongBST extends org.apache.struts.action.Action {
             SanPhamForm sanPhamForm = (SanPhamForm) form;
             sanPhamForm.setListSanPham(list);
             sanPhamForm.setMaBST(maBST);
-            System.out.println(list.size());
         } catch (Exception e) {
             return mapping.findForward("GetBoSuuTapNotOK");
         }

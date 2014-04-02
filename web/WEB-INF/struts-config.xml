@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="CapNhatMatKhauForm" type="com.kimfashion.form.CapNhatMatKhauForm"/>
         <form-bean name="DangNhapForm" type="com.kimfashion.form.DangNhapForm"/>
         <form-bean name="ConfirmLaiForm" type="com.kimfashion.form.ConfirmLaiForm"/>
         <form-bean name="ThuongHieuForm" type="com.kimfashion.form.ThuongHieuForm"/>
@@ -94,10 +95,27 @@
             <forward name="forgotPassNotOK" path="/error.do?e=5" />
             <forward name="GuiMailNotOK" path="/failure.do?f=1" />
         </action>
+        <!-- đổi mật khẩu & cập nhật thông tin -->
+        <action input="/" name="ThanhVienForm" path="/updateinfo" scope="session" type="com.kimfashion.struts.GetThongTinTV" validate="false">
+            <forward name="GetThongTinOK" path="/pages/updateinfo.jsp" />
+            <forward name="GetThongTinNotOK" path="/error.do?e=7"/>
+        </action>
         <action input="/" name="HoaDonForm" path="/thanhtoan" scope="session" type="com.kimfashion.struts.ThanhToan" validate="false">
             <forward name="ThanhToanOK" path="/success.do?s=5" />
             <forward name="ThanhToanNotOK" path="/error.do?e=6" />            
-        </action>            
+        </action>
+        <action input="/" name="ThanhVienForm" path="/CapNhatThongTinTV" scope="session" type="com.kimfashion.struts.CapNhatThongTinTV" validate="false">
+            <forward name="GetThongTinNotOK" path="/error.do?e=7" />
+            <forward name="CapNhatThongTinOK" path="/success.do?s=6" />
+            <forward name="CapNhatThongTinNotOK" path="/error.do?e=8" />
+        </action>
+        <action path="/changepassword" forward="/pages/changepassword.jsp"/>
+        <action input="/" name="CapNhatMatKhauForm" path="/CapNhatMatKhau" scope="session" type="com.kimfashion.struts.CapNhatMatKhau">
+            <forward name="GetThongTinNotOK" path="/error.do?e=7" />
+            <forward name="MatKhauKhongDung" path="/error.do?e=9" />
+            <forward name="CapNhatMatKhauOK" path="/success.do?s=7" />
+            <forward name="CapNhatMatKhauNotOK" path="/error.do?e=10" />
+        </action>
         
         <action path="/cart" forward="/pages/cart.jsp"/>
         <action path="/products" forward="/pages/products.jsp"/>

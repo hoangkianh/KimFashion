@@ -45,7 +45,7 @@
                             </aside>
 
                             <section class="col-xs-12 col-sm-5 col-md-5 col-sm-offset-1">
-                                <h3 class="uppercase text-bold"><span>Gửi mail xác nhận</span></h3>
+                                <h3 class="uppercase text-bold text-center"><span>Gửi mail xác nhận</span></h3>
                                 <html:errors/>
                                 <html:form action="/ConfirmLai" method="POST" styleClass="form-horizontal" styleId="formXacNhan">
                                     <div class="form-group">

@@ -27,6 +27,14 @@
     <c:set var="thongBao" value="Gửi đơn hàng thành công"/>
     <c:set var="moTa" value="Cám ơn bạn đã mua hàng, chúng tôi sẽ liên lạc với bạn trong vòng 48h tới"/>
 </c:if>
+<c:if test="${s eq 6}">
+    <c:set var="thongBao" value="Cập nhật thông tin thành công"/>
+    <c:set var="moTa" value="Thông tin của bạn đã được cập nhật."/>
+</c:if>
+<c:if test="${s eq 7}">
+    <c:set var="thongBao" value="Cập nhật mật khẩu thành công"/>
+    <c:set var="moTa" value="Bạn có thể đăng nhập bằng mật khẩu mới."/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

@@ -62,7 +62,7 @@
                             </aside>
 
                             <section class="col-xs-12 col-sm-5 col-md-5 col-sm-offset-1">
-                                <h3 class="uppercase text-bold"><span>đăng ký làm thành viên</span></h3>
+                                <h3 class="uppercase text-bold text-center"><span>đăng ký làm thành viên</span></h3>
                                 <html:errors/>
                                 <html:form action="/dangky" method="POST" styleClass="form-horizontal" styleId="formDangKy">
                                     <div class="form-group">
@@ -77,15 +77,14 @@
                                         <label class="col-sm-4 control-label" for="password">Mật khẩu</label>
                                         <div class="col-sm-8">
                                             <input type="password" name="password" class="form-control" 
-                                                   id="password" placeholder="Mật khẩu"
-                                                   value="<bean:write name="ThanhVienForm" property="password"/>"/>
+                                                   id="password" placeholder="Mật khẩu" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-4 control-label" for="matKhau2">Nhập lại mật khẩu</label>
                                         <div class="col-sm-8">
                                             <input type="password" name="password2" class="form-control" 
-                                                   id="matKhau2" placeholder=""/>
+                                                   id="matKhau2" placeholder="Nhập lại mật khẩu"/>
                                         </div>
                                     </div>
                                     <div class="form-group">

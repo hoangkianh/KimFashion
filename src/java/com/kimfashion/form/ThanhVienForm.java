@@ -63,10 +63,10 @@ public class ThanhVienForm extends org.apache.struts.action.ActionForm {
         }
 
         if (password == null || password.trim().length() == 0) {
-            err.add("password", new ActionMessage("errors.required", "password"));
+            err.add("password", new ActionMessage("errors.required", "Mật khẩu"));
         } else {
             if (password.trim().length() < 6 || password.trim().length() > 20) {
-                err.add("password", new ActionMessage("errors.rangelength", "Password", "từ 6", "20"));
+                err.add("password", new ActionMessage("errors.rangelength", "Mật khẩu", "từ 6", "20"));
             }
         }
 
