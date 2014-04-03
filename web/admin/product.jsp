@@ -4,6 +4,10 @@
 <%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- nếu chưa đăng nhập -->
+<c:if test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
+    <c:redirect url="/login.do" />
+</c:if>
 <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
     <c:if test="${not empty sessionScope.kimfashion}">
         <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        

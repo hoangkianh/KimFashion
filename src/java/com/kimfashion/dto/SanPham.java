@@ -24,7 +24,6 @@ public class SanPham implements Serializable {
     private int maLoaiSP;
     private int maBST;
     private String moTa;
-    private int giaNhap;
     private int giaBan;
     private int giaBanKM;
     private boolean sanPhamMoi;
@@ -119,14 +118,6 @@ public class SanPham implements Serializable {
     
     public void setMoTa(String moTa) {
         this.moTa = moTa;
-    }
-    
-    public int getGiaNhap() {
-        return giaNhap;
-    }
-    
-    public void setGiaNhap(int giaNhap) {
-        this.giaNhap = giaNhap;
     }
     
     public int getGiaBan() {

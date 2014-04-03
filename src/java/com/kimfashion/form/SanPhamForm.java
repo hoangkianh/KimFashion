@@ -36,7 +36,6 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private int maLoaiSP;
     private int maBST;
     private String moTa;
-    private int giaNhap;
     private int giaBan;
     private int giaBanKM;
     private boolean sanPhamMoi;
@@ -87,11 +86,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
         if (moTa.trim().length() > 255) {
             err.add("moTa", new ActionMessage("Mô tả sản phẩm tối đa 255 kí tự (mô tả của bạn có " + moTa.trim().length() + ")"));
         }
-        
-        if (giaNhap <= 0) {
-            err.add("giaNhap", new ActionMessage("Bạn chưa điền giá nhập"));            
-        }
-        
+                
         if (giaBan <= 0) {
             err.add("giaBan", new ActionMessage("Bạn chưa điền giá bán"));            
         }
@@ -172,14 +167,6 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
 
     public void setMoTa(String moTa) {
         this.moTa = moTa;
-    }
-
-    public int getGiaNhap() {
-        return giaNhap;
-    }
-
-    public void setGiaNhap(int giaNhap) {
-        this.giaNhap = giaNhap;
     }
 
     public int getGiaBan() {
