@@ -37,7 +37,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -78,7 +77,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -120,7 +118,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -164,7 +161,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -206,7 +202,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -250,7 +245,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -292,7 +286,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -331,7 +324,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -377,7 +369,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -419,7 +410,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -462,7 +452,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -506,7 +495,6 @@ public class SanPhamDAO {
                 sp.setMaBST(rs.getInt("MaBST"));
                 sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
                 sp.setMoTa(rs.getString("MoTa"));
-                sp.setGiaNhap(rs.getInt("GiaNhap"));
                 sp.setGiaBan(rs.getInt("GiaBan"));
                 sp.setGiaBanKM(rs.getInt("GiaBanKM"));
                 sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
@@ -530,9 +518,9 @@ public class SanPhamDAO {
         PreparedStatement stm = null;
         String query = "INSERT INTO tbl_sanpham"
                 + " (Code, TenSP, GioiTinh, MaLoaiSP, MaThuongHieu, MaBST,"
-                + " MoTa, GiaNhap, GiaBan, GiaBanKM, SanPhamMoi, DangKM,"
+                + " MoTa, GiaBan, GiaBanKM, SanPhamMoi, DangKM,"
                 + " DaAn, MauSac)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, sp.getCode());
@@ -542,12 +530,11 @@ public class SanPhamDAO {
             stm.setInt(5, sp.getMaThuongHieu());
             stm.setInt(6, sp.getMaBST());
             stm.setString(7, sp.getMoTa());
-            stm.setInt(8, sp.getGiaNhap());
-            stm.setInt(9, sp.getGiaBan());
-            stm.setInt(10, sp.getGiaBanKM());
-            stm.setBoolean(11, sp.isSanPhamMoi());
-            stm.setBoolean(12, sp.isDangKM());
-            stm.setString(15, sp.getMauSac());
+            stm.setInt(8, sp.getGiaBan());
+            stm.setInt(9, sp.getGiaBanKM());
+            stm.setBoolean(10, sp.isSanPhamMoi());
+            stm.setBoolean(11, sp.isDangKM());
+            stm.setString(12, sp.getMauSac());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;
@@ -567,7 +554,7 @@ public class SanPhamDAO {
         PreparedStatement stm = null;
         String query = "UPDATE tbl_sanpham"
                 + " SET Code=?, TenSP=?, GioiTinh=?, MaLoaiSP=?, MaThuongHieu=?, MaBST=?,"
-                + " MoTa=?, GiaNhap=?, GiaBan=?, GiaBanKM=?, SanPhamMoi=?, DangKM=?,"
+                + " MoTa=?, GiaBan=?, GiaBanKM=?, SanPhamMoi=?, DangKM=?,"
                 + " DaAn=?, MauSac=? WHERE MaSP=?;";
         try {
             stm = conn.prepareStatement(query);
@@ -578,14 +565,13 @@ public class SanPhamDAO {
             stm.setInt(5, sp.getMaThuongHieu());
             stm.setInt(6, sp.getMaBST());
             stm.setString(7, sp.getMoTa());
-            stm.setInt(8, sp.getGiaNhap());
-            stm.setInt(9, sp.getGiaBan());
-            stm.setInt(10, sp.getGiaBanKM());
-            stm.setBoolean(11, sp.isSanPhamMoi());
-            stm.setBoolean(12, sp.isDangKM());
-            stm.setBoolean(13, sp.isDaAn());
-            stm.setString(14, sp.getMauSac());
-            stm.setInt(15, sp.getMaSP());
+            stm.setInt(8, sp.getGiaBan());
+            stm.setInt(9, sp.getGiaBanKM());
+            stm.setBoolean(10, sp.isSanPhamMoi());
+            stm.setBoolean(11, sp.isDangKM());
+            stm.setBoolean(12, sp.isDaAn());
+            stm.setString(13, sp.getMauSac());
+            stm.setInt(14, sp.getMaSP());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;

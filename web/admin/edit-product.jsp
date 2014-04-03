@@ -4,6 +4,10 @@
 <%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- nếu chưa đăng nhập -->
+<c:if test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
+    <c:redirect url="/login.do" />
+</c:if>
 <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
     <c:if test="${not empty sessionScope.kimfashion}">
         <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
@@ -79,6 +83,7 @@
                                         <h3 class="uppercase text-bold text-center"><span>sửa thông tin sản phẩm</span></h3>
                                         <html:errors/>
                                         <html:form action="/SuaSanPham" method="POST" styleClass="form-horizontal" styleId="formSanPham">
+                                            <input type="hidden" value="<bean:write name="SanPhamForm" property="maSP"/>"/>
                                             <div class="form-group stylish-input">
                                                 <label class="col-sm-4 control-label" for="tenSP">Tên sản phẩm</label>
                                                 <div class="col-sm-8">
@@ -111,7 +116,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label" for="giaBan">Giá bán</label>
+                                                <label class="col-sm-4 control-label" for="giaBan">Giá bán (VND)</label>
                                                 <div class="col-sm-2">
                                                     <input type="text" name="giaBan" class="form-control" 
                                                            id="giaBan" placeholder="Giá bán"
@@ -129,7 +134,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label" for="giaBanKM">Giá bán KM</label>
+                                               <label class="col-sm-4 control-label" for="giaBanKM">Giá bán KM (VND)</label>
                                                 <div class="col-sm-2">
                                                     <input type="text" name="giaBanKM" class="form-control" 
                                                            id="giaBanKM" placeholder="Giá bán KM"

@@ -80,7 +80,7 @@
         <action input="/login.do" name="DangNhapForm" path="/dangnhap" scope="session" type="com.kimfashion.struts.DangNhap" validate="false">
             <forward name="dangNhapNotOK" path="/login.do"/>
             <forward name="khachHangDangNhapOK" path="/" redirect="true"/>
-            <forward name="adminDangNhapOK" path="/dashboard.do" redirect="true"/>
+            <forward name="adminDangNhapOK" path="/admin.do" redirect="true"/>
             <forward name="gioHangDangNhapOK" path="/checkout.do" redirect="true"/> <!-- nếu đăng nhập từ trang giỏ hàng -->
         </action>
         <action path="/logout" type="com.kimfashion.form.DangXuat">
