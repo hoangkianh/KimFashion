@@ -1,13 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:choose>
-    <c:when test="${not empty sessionScope.kimfashion}">
-        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>
-    </c:when>
-    <c:otherwise>
+<c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
+    <c:if test="${not empty sessionScope.kimfashion}">
+        <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
+    </c:if>
+    <c:if test="${not empty cookie.kimfashion}">
         <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
-    </c:otherwise>
-</c:choose>
+    </c:if>
+    <c:if test="${s[2] ne true}">
+        <c:redirect url="/" />
+    </c:if>
+</c:if>
 <!-- nếu không phải admin redirect sang trang chủ -->
 <c:if test="${s[2] ne true}">
     <c:redirect url="/"/>
@@ -27,7 +30,7 @@
     <body>
         <!-- PAGE -->
         <div id="page-wrapper">
-            <%@include file="../include/header.jsp" %>
+            <%@include file="../include/header-admin.jsp" %>
             <!-- BREADCRUMB -->
             <div class="breadcrumb-container">
                 <div class="container">
@@ -42,30 +45,15 @@
             <main id="main-content" role="main">
                 <div class="container">
                     <div class="row">
-
                         <section class="section">
-
-                            <!-- SIDEBAR -->
-                            <!-- SIDEBAR -->
-                            <aside class="col-xs-12 col-sm-4 col-md-3">
-                                <section class="side-section">
-                                    <h3 class="uppercase text-bold"><span class="text-xs">trang quản trị</span></h3>
-                                    <ul class="nav nav-tabs nav-stacked">
-                                        <li><a href="#">Quản lý sản phẩm</a></li>															
-                                        <li><a href="#">Đơn hàng</a></li>
-                                        <li><a href="#">Quản lý thành viên</a></li>														
-                                    </ul>
-                                </section>
-                            </aside>
-
-                            <div class="clearfix"></div>
+                            <section class="col-xs-12 col-sm-12 col-md-12">
+                                
+                            </section>
                         </section>
                     </div>
                 </div>
             </main>
         </div>
         <%@include file="../include/footer.jsp" %>
-        <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-        <script src="resource/js/gmap3.min.js"></script>
     </body>
 </html>

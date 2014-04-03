@@ -11,7 +11,7 @@
     </c:if>
     <c:choose>
         <c:when test="${s[2] eq true}">
-            <c:redirect url="/dashboard.do" />                
+            <c:redirect url="/admin.do" />                
         </c:when>
         <c:otherwise>
             <c:redirect url="/" />                
@@ -65,7 +65,7 @@
                                 <h3 class="uppercase text-bold text-center"><span>quên mật khẩu</span></h3>
                                 <html:errors/>
                                 <html:form action="/QuenMatKhau" method="POST" styleClass="form-horizontal" styleId="formQuenMK">
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="control-label" for="email">Email của bạn</label>
                                         <input type="text" name="email" class="form-control" 
                                                id="email" placeholder="kimfashion@example.com" />

@@ -11,7 +11,7 @@
     </c:if>
     <c:choose>
         <c:when test="${s[2] eq true}">
-            <c:redirect url="/dashboard.do" />                
+            <c:redirect url="/admin.do" />                
         </c:when>
         <c:otherwise>
             <c:redirect url="/" />                

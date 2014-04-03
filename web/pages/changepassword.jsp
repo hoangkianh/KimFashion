@@ -48,21 +48,21 @@
                                 <h3 class="uppercase text-bold text-center"><span>đổi mật khẩu</span></h3>
                                 <html:errors/>
                                 <html:form action="/CapNhatMatKhau" method="POST" styleClass="form-horizontal" styleId="formCapNhat">
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-5 control-label" for="password">Mật khẩu cũ</label>
                                         <div class="col-sm-7">
                                             <input type="password" name="password" class="form-control" 
                                                    id="password" placeholder="Mật khẩu cũ"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-5 control-label" for="passwordMoi">Mật khẩu mới</label>
                                         <div class="col-sm-7">
                                             <input type="password" name="passwordMoi" class="form-control" 
                                                    id="passwordMoi" placeholder="Mật khẩu mới"/>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="col-sm-5 control-label" for="passwordMoi2">Nhập lại mật khẩu mới</label>
                                         <div class="col-sm-7">
                                             <input type="password" name="passwordMoi2" class="form-control" 

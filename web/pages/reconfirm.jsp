@@ -48,7 +48,7 @@
                                 <h3 class="uppercase text-bold text-center"><span>Gửi mail xác nhận</span></h3>
                                 <html:errors/>
                                 <html:form action="/ConfirmLai" method="POST" styleClass="form-horizontal" styleId="formXacNhan">
-                                    <div class="form-group">
+                                    <div class="form-group stylish-input">
                                         <label class="control-label" for="email">Email bạn đã đăng ký</label>
                                         <input type="text" name="email" class="form-control" 
                                                id="email" placeholder="kimfashion@example.com"
