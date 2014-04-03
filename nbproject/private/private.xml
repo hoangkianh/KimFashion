@@ -5,8 +5,8 @@
         <group>
             <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
             <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/dto/SanPham.java</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/updateinfo.jsp</file>
             <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/struts/SuaSanPham.java</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/form/SanPhamForm.java</file>
             <file>file:/F:/GitHub/KimFashion/web/admin/edit-product.jsp</file>
             <file>file:/F:/GitHub/KimFashion/web/admin/product.jsp</file>
         </group>
