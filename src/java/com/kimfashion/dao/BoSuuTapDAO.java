@@ -165,4 +165,31 @@ public class BoSuuTapDAO {
         }
         return kq;
     }
+
+    public List<BoSuuTap> getBoSuutapByGioiTinh(boolean gioiTinh) {
+        List<BoSuuTap> list = new ArrayList<BoSuuTap>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap WHERE GioiTinh=?");
+            stm.setBoolean(1, gioiTinh);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                BoSuuTap bst = new BoSuuTap();
+                bst.setMaBST(rs.getInt("MaBST"));
+                bst.setTenBST(rs.getString("TenBST"));
+                bst.setGioiTinh(rs.getBoolean("GioiTinh"));
+                bst.setAnhDaiDien(rs.getString("AnhDaiDien"));
+
+                list.add(bst);
+            }
+        } catch (SQLException ex) {
+            System.err.printf(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
 }

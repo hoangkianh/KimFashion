@@ -31,6 +31,7 @@
         <title>Sửa sản phẩm | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
+        <link rel="stylesheet" href="resource/css/wysiwyg.css"/>
         <%@include file="../include/includeJS.jsp" %>
     </head>
     <body>
@@ -101,6 +102,14 @@
                                                 </div>
                                             </div>
                                             <div class="form-group stylish-input">
+                                                <label class="col-sm-4 control-label" for="mauSac">Màu sắc</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" name="mauSac" class="form-control" 
+                                                           id="mauSac" placeholder="Màu sắc"
+                                                           value="<bean:write name="SanPhamForm" property="mauSac"/>"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group stylish-input">
                                                 <label class="col-sm-4 control-label">Giới tính</label>
                                                 <div class="col-sm-8">
                                                     <div class="stylish-input">
@@ -125,6 +134,16 @@
                                             </div>
                                             <div class="form-group stylish-input">
                                                 <div class="col-sm-8 col-sm-offset-4">
+                                                    <c:if test="${SanPhamForm.sanPhamMoi eq true}">
+                                                        <input type="checkbox" name="luuLai" class="prettyCheckable" data-label="Sản phẩm mới" checked="checked">
+                                                    </c:if>
+                                                    <c:if test="${SanPhamForm.sanPhamMoi eq false}">
+                                                        <input type="checkbox" name="luuLai" class="prettyCheckable" data-label="Sản phẩm mới">
+                                                    </c:if>
+                                                </div>
+                                            </div>
+                                            <div class="form-group stylish-input">
+                                                <div class="col-sm-8 col-sm-offset-4">
                                                     <c:if test="${SanPhamForm.dangKM eq true}">
                                                         <input type="checkbox" name="luuLai" class="prettyCheckable" data-label="Đang khuyến mại" checked="checked">
                                                     </c:if>
@@ -134,7 +153,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group stylish-input">
-                                               <label class="col-sm-4 control-label" for="giaBanKM">Giá bán KM (VND)</label>
+                                                <label class="col-sm-4 control-label" for="giaBanKM">Giá bán KM (VND)</label>
                                                 <div class="col-sm-2">
                                                     <input type="text" name="giaBanKM" class="form-control" 
                                                            id="giaBanKM" placeholder="Giá bán KM"
@@ -161,6 +180,26 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group stylish-input">
+                                                <label class="col-sm-4 control-label" for="maBST">Thương hiệu</label>
+                                                <div class="col-sm-8">
+                                                    <div class="inline-middle styled-dd">
+                                                        <html:select name="SanPhamForm" property="maBST" styleId="maBST">
+                                                            <option>--Chọn bộ sưu tập--</option>
+                                                            <html:optionsCollection name="SanPhamForm" property="listBoSuuTap" label="tenBST" value="maBST"/>
+                                                        </html:select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group stylish-input">
+                                                <label class="col-sm-4 control-label" for="moTa">Mô tả</label>
+                                                <div class="col-sm-8">
+                                                    <div class="inline-middle">
+                                                        <textarea id="moTa" class="form-control" name="moTa"
+                                                                  style="height: 178px; width: 400px;"><bean:write name="SanPhamForm" property="moTa"/></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="pull-right">
                                                 <input type="submit" class="btn btn-primary btn-round" value="Sửa sản phẩm" />
                                                 <input type="reset" class="btn btn-default btn-round" value="Nhập lại" />
@@ -168,28 +207,6 @@
                                         </html:form>
                                         <article class="entry-content">
                                             <figure>
-                                                <ul class="entry-meta unstyled">
-                                                    <c:if test="${SanPhamForm.maBST gt 0}">
-                                                        <li>
-                                                            <span class="key">Bộ sưu tập:</span>
-                                                            <span class="value">
-                                                                <a href="product-collection.do?id=<bean:write name="SanPhamForm" property="maBST" />"><bean:write name="SanPhamForm" property="tenBST"/></a>
-                                                            </span>
-                                                        </li>
-                                                    </c:if>
-                                                </ul>
-
-                                                <figcaption class="m-b-sm">
-                                                    <h5 class="subheader uppercase">Mô tả:</h5>
-                                                    <p><bean:write name="SanPhamForm" property="moTa" filter="false"/></p>
-                                                </figcaption>
-
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-12">
-                                                        <h5 class="subheader uppercase">Màu sắc:</h5>
-                                                        <p><bean:write name="SanPhamForm" property="mauSac" filter="false"/></p>
-                                                    </div>
-                                                </div>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12">
                                                         <h5 class="subheader uppercase">Size:</h5>
@@ -212,5 +229,13 @@
         </div>
         <%@include file="../include/footer.jsp" %>
         <script src="resource/js/products.js"></script>
+        <script src="resource/js/jquery-1.7.2.min.js"></script>
+        <script src="resource/js/jquery.wysiwyg.js"></script>
+        <script type="text/javascript">
+            $(function()
+            {
+                $('#moTa').wysiwyg();
+            });
+        </script>
     </body>
 </html>
