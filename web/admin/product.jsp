@@ -66,7 +66,8 @@
                                     <caption class="uppercase text-bold">Danh sách sản phẩm</caption>
                                     <thead>
                                         <tr>
-                                            <th class="sorting_disabled">Sửa</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th>Code</th>
                                             <th>Tên</th>
                                             <th class="sorting_disabled">Ảnh</th>
@@ -86,19 +87,22 @@
                                                         <i class="iconfont-edit"></i>
                                                     </a>
                                                 </td>
-<!--                                                <td align="center">
+                                                <td align="center">
                                                     <c:choose>
                                                         <c:when  test="${sp.daAn eq true}">
-                                                            <i class="iconfont-trash text-muted"></i>
+                                                            <a href="show-product.do?id=<bean:write name="sp" property="maSP"/>"
+                                                               rel="tooltip" data-toggle="tooltip" data-placement="top" title="Hiện sản phẩm">
+                                                                <i class="iconfont-eye-open text-info"></i>
+                                                            </a>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <a href="delete-product.do?id=<bean:write name="sp" property="maSP"/>"
+                                                            <a href="hide-product.do?id=<bean:write name="sp" property="maSP"/>"
                                                                rel="tooltip" data-toggle="tooltip" data-placement="top" title="Ẩn sản phẩm này">
-                                                                <i class="iconfont-trash"></i>
+                                                                <i class="iconfont-eye-close text-danger"></i>
                                                             </a>
                                                         </c:otherwise>
                                                     </c:choose>
-                                                </td>-->
+                                                </td>
                                                 <td>
                                                     <a class="accent-color" href="details-product.do?id=<bean:write name="sp" property="maSP"/>" 
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem chi tiết">
@@ -155,7 +159,7 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[2, 'asc']] // sort theo tên sp
+                "aaSorting": [[3, 'asc']] // sort theo tên sp
             });
         </script>
     </body>

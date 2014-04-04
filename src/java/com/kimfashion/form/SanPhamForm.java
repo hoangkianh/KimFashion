@@ -82,19 +82,19 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
         if (maLoaiSP <= 0) {
             err.add("maLoaiSP", new ActionMessage("Bạn chưa chọn loại sản phẩm"));
         }
-        
+
         if (moTa.trim().length() > 255) {
             err.add("moTa", new ActionMessage("Mô tả sản phẩm tối đa 255 kí tự (mô tả của bạn có " + moTa.trim().length() + ")"));
         }
-                
+
         if (giaBan <= 0) {
-            err.add("giaBan", new ActionMessage("Bạn chưa điền giá bán"));            
+            err.add("giaBan", new ActionMessage("Bạn chưa điền giá bán"));
         }
-        
+
         if (dangKM && giaBanKM <= 0) {
             err.add("giaBanKM", new ActionMessage("Bạn chưa điền giá bán khuyến mại"));
         }
-        
+
         if (mauSac == null || mauSac.trim().length() == 0) {
             err.add("mauSac", new ActionMessage("Bạn chưa điền tên màu sắc sản phẩm"));
         } else {
@@ -248,46 +248,58 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     public void setListSanPham(List<SanPham> listSanPham) {
         this.listSanPham = listSanPham;
     }
-    
-    public List<SanPham> getListSPMoi(){
+
+    public List<SanPham> getListSPMoi() {
         return new SanPhamDAO().getSanPhamMoi();
     }
-    public List<SanPham> getListSPKhuyenMai(){
+
+    public List<SanPham> getListSPKhuyenMai() {
         return new SanPhamDAO().getSanPhamKhuyenMai();
     }
-    public List<SanPham> getListSPCungLoai(){
+
+    public List<SanPham> getListSPCungLoai() {
         return new SanPhamDAO().getSanPhamCungLoai(maLoaiSP, maSP);
     }
-    public List<SanPham> getListSPBanChay(){
+
+    public List<SanPham> getListSPBanChay() {
         return new SanPhamDAO().getSanPhamBanChay();
     }
-    public List<SanPham> getListRandomSP(){
+
+    public List<SanPham> getListRandomSP() {
         return new SanPhamDAO().getRandomSP();
     }
-    public List<HinhAnh> getListHinhAnh(){
+
+    public List<HinhAnh> getListHinhAnh() {
         return new HinhAnhDAO().getAllHinhAnhByMaSP(maSP);
     }
-    public List<Size> getListSize(){
+
+    public List<Size> getListSize() {
         List<Size> list = new ArrayList<Size>();
         List<SanPhamSize> listSPSize = new SanPhamSizeDAO().getAllSizeBySanPham(maSP);
         SizeDAO sizeDAO = new SizeDAO();
-        
+
         for (SanPhamSize sanPhamSize : listSPSize) {
             Size s = sizeDAO.getSizeByMaSize(sanPhamSize.getMaSize());
             list.add(s);
         }
         return list;
     }
-    
+
     public List<ThuongHieu> getListThuongHieu() {
         List<ThuongHieu> list = new ThuongHieuDAO().getAllThuongHieu();
         return list;
     }
+
     public List<LoaiSP> getListLoaiSP() {
         List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSP();
         return list;
     }
 
+    public List<BoSuuTap> getListBoSuuTap () {
+        List<BoSuuTap> list = new BoSuuTapDAO().getBoSuutapByGioiTinh(gioiTinh);
+        return list;
+    }
+    
     public String getTenThuongHieu() {
         ThuongHieu th = new ThuongHieuDAO().getThuongHieuByMaTH(maThuongHieu);
         if (th != null) {
@@ -303,7 +315,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     public void setTenLoaiSP(String tenLoaiSP) {
         this.tenLoaiSP = tenLoaiSP;
     }
-    
+
     public String getTenLoaiSP() {
         LoaiSP loaiSP = new LoaiSPDAO().getLoaiSPByMaLoai(maLoaiSP);
         if (loaiSP != null) {
@@ -311,8 +323,8 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
         }
         return tenLoaiSP;
     }
-    
-    public String getTenBST () {
+
+    public String getTenBST() {
         BoSuuTap bst = new BoSuuTapDAO().getBoSuuTapByMaBST(maBST);
         if (bst != null) {
             return bst.getTenBST();

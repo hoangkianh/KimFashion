@@ -119,155 +119,157 @@
                                             </div>
                                         </div>
                                     </c:if>
-                                    <html:form action="/thanhtoan" method="POST" styleClass="form-horizontal" styleId="formThanhToan">
-                                        <input type="hidden" name="maTV" value="<c:out value="${s[0]}"/>"/>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a href="javascript:void(0);">
-                                                        thông tin xuất hóa đơn
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="checkout-collapse2">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                                            <div class="form-group stylish-input">
-                                                                <label for="hoTen" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="hoTen" id="hoTen" value="<c:out value="${s[3]}"/>" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="diaChiTV" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="diaChiTV" id="diaChiTV" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                                            <div class="form-group stylish-input">
-                                                                <label for="email" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="email" class="form-control" name="email" id="email" value="<c:out value="${s[4]}"/>"  />
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="dienThoaiTV" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="dienThoaiTV" id="dienThoaiTV" />
-                                                                </div>
-                                                            </div>                                                            
-                                                        </div>
-                                                    </div>
+                                    <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
+                                        <html:form action="/thanhtoan" method="POST" styleClass="form-horizontal" styleId="formThanhToan">
+                                            <input type="hidden" name="maTV" value="<c:out value="${s[0]}"/>"/>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a href="javascript:void(0);">
+                                                            thông tin xuất hóa đơn
+                                                        </a>
+                                                    </h4>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a href="javascript:void(0);">
-                                                        <i class="iconfont-truck"></i>
-                                                        thông tin giao hàng 
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="form-group stylish-input">
-                                                    <div class="col-sm-8 col-lg-8">
-                                                        <input type="checkbox" id="checkBoxGiaoHang" name="luuLai"
-                                                               class="prettyCheckable" checked="checked" 
-                                                               data-label="Giao hàng tới địa chỉ trên hóa đơn" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="checkout-collapse3" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                                            <div class="form-group stylish-input">
-                                                                <label for="hoTenNguoiNhan" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="hoTenNguoiNhan" id="hoTenNguoiNhan" />
+                                                <div id="checkout-collapse2">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="hoTen" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="text" class="form-control" name="hoTen" id="hoTen" value="<c:out value="${s[3]}"/>" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="diaChiTV" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="text" class="form-control" name="diaChiTV" id="diaChiTV" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="diaChiGiaoHang" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="diaChiGiaoHang" id="diaChiGiaoHang" />
+                                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="email" class="col-sm-4 col-lg-4 control-label required">E-Mail</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="email" class="form-control" name="email" id="email" value="<c:out value="${s[4]}"/>"  />
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group stylish-input">
-                                                                <label for="sdtNguoiNhan" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <input type="text" class="form-control" name="sdtNguoiNhan" id="sdtNguoiNhan" />
-                                                                </div>
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="dienThoaiTV" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="text" class="form-control" name="dienThoaiTV" id="dienThoaiTV" />
+                                                                    </div>
+                                                                </div>                                                            
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a href="javascript:void(0);">
-                                                        đơn hàng
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="checkout-collapse6" class="panel-collapse">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-xs-6 col-sm-6 center-sm">
-                                                            <table class="shop-summary text-right">
-                                                                <tr>
-                                                                    <th>TỔNG CỘNG:</th>
-                                                                    <td id="tongCong"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>VẬN CHUYỂN:</th>
-                                                                    <td id="vanChuyen"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <h5><small>(Đơn hàng lớn hơn 1 triệu đồng sẽ được miễn phí vận chuyển)</small></h5>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="total">
-                                                                    <th>Thành tiền:</th>
-                                                                    <td id="thanhTien"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <c:choose>
-                                                                        <c:when  test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
-                                                                            <td colspan="2">
-                                                                                <p>Hãy trở thành thành viên của Kimfashion để có thể thanh toán</p>
-                                                                            </td>   
-                                                                        </c:when>
-                                                                        <c:otherwise>
-                                                                            <th>
-                                                                                <input type="submit" class="btn btn-default btn-round uppercase" value="Thanh toán"/>
-                                                                            </th>
-                                                                        </c:otherwise>
-                                                                    </c:choose>
-                                                                </tr>
-                                                            </table>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a href="javascript:void(0);">
+                                                            <i class="iconfont-truck"></i>
+                                                            thông tin giao hàng 
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    <div class="form-group stylish-input">
+                                                        <div class="col-sm-8 col-lg-8">
+                                                            <input type="checkbox" id="checkBoxGiaoHang" name="luuLai"
+                                                                   class="prettyCheckable" checked="checked" 
+                                                                   data-label="Giao hàng tới địa chỉ trên hóa đơn" >
                                                         </div>
-                                                        <div class="col-xs-6 col-sm-6 center-sm">
-                                                            <div class="form-group">
-                                                                <label for="ghiChu" class="col-sm-4 col-lg-4 control-label">Ghi chú</label>
-                                                                <div class="col-sm-8 col-lg-8">
-                                                                    <textarea class="form-control" name="ghiChu" rows="10"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div id="checkout-collapse3" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="hoTenNguoiNhan" class="col-sm-4 col-lg-4 control-label required">Họ tên</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="text" class="form-control" name="hoTenNguoiNhan" id="hoTenNguoiNhan" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="diaChiGiaoHang" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="text" class="form-control" name="diaChiGiaoHang" id="diaChiGiaoHang" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="sdtNguoiNhan" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <input type="text" class="form-control" name="sdtNguoiNhan" id="sdtNguoiNhan" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </html:form>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a href="javascript:void(0);">
+                                                            đơn hàng
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="checkout-collapse6" class="panel-collapse">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-xs-6 col-sm-6 center-sm">
+                                                                <table class="shop-summary text-right">
+                                                                    <tr>
+                                                                        <th>TỔNG CỘNG:</th>
+                                                                        <td id="tongCong"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>VẬN CHUYỂN:</th>
+                                                                        <td id="vanChuyen"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2">
+                                                                            <h5><small>(Đơn hàng lớn hơn 1 triệu đồng sẽ được miễn phí vận chuyển)</small></h5>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="total">
+                                                                        <th>Thành tiền:</th>
+                                                                        <td id="thanhTien"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <c:choose>
+                                                                            <c:when  test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
+                                                                                <td colspan="2">
+                                                                                    <p>Hãy trở thành thành viên của Kimfashion để có thể thanh toán</p>
+                                                                                </td>   
+                                                                            </c:when>
+                                                                            <c:otherwise>
+                                                                                <th>
+                                                                                    <input type="submit" class="btn btn-default btn-round uppercase" value="Thanh toán"/>
+                                                                                </th>
+                                                                            </c:otherwise>
+                                                                        </c:choose>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class="col-xs-6 col-sm-6 center-sm">
+                                                                <div class="form-group">
+                                                                    <label for="ghiChu" class="col-sm-4 col-lg-4 control-label">Ghi chú</label>
+                                                                    <div class="col-sm-8 col-lg-8">
+                                                                        <textarea class="form-control" name="ghiChu" rows="10"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </html:form>
+                                    </c:if>
                                 </div>
                             </section>
                         </div>
