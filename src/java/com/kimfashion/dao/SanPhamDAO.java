@@ -511,6 +511,48 @@ public class SanPhamDAO {
         }
         return sp;
     }
+    
+    public SanPham getSanPhamByMaSPAdmin(int maSP) {
+        SanPham sp = null;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT a.*, b.`DuongDan` AS HinhAnh, c.`TenThuongHieu`"
+                + " FROM tbl_sanpham a"
+                + " LEFT JOIN `tbl_hinhanh` b ON a.MaSP = b.MaSP"
+                + " LEFT JOIN `tbl_thuonghieu` c ON a.`MaThuongHieu` = c.`MaThuongHieu`"
+                + " WHERE a.`MaSP` = ? AND b.`AnhChinh` = TRUE";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, maSP);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                sp = new SanPham();
+                sp.setMaSP(rs.getInt("MaSP"));
+                sp.setCode(rs.getString("Code"));
+                sp.setTenSP(rs.getString("TenSP"));
+                sp.setGioiTinh(rs.getBoolean("GioiTinh"));
+                sp.setMaLoaiSP(rs.getInt("MaLoaiSP"));
+                sp.setMaBST(rs.getInt("MaBST"));
+                sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
+                sp.setMoTa(rs.getString("MoTa"));
+                sp.setGiaBan(rs.getInt("GiaBan"));
+                sp.setGiaBanKM(rs.getInt("GiaBanKM"));
+                sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
+                sp.setDangKM(rs.getBoolean("DangKM"));
+                sp.setDaAn(rs.getBoolean("DaAn"));
+                sp.setMauSac(rs.getString("MauSac"));
+                sp.setHinhAnh(rs.getString("HinhAnh"));
+                sp.setTenThuongHieu(rs.getString("TenThuongHieu"));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return sp;
+    }
 
     public boolean addNewSanPham(SanPham sp) {
         boolean kq = false;
