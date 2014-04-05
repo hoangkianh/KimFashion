@@ -47,7 +47,7 @@
                                         <div class="big-image">
                                             <a href="<bean:write name="SanPhamForm" property="hinhAnh"/>" data-toggle="lightbox">
                                                 <img src="<bean:write name="SanPhamForm" property="hinhAnh"/>"
-                                                     alt="<bean:write name="SanPhamForm" property="tenSP"/>" />
+                                                     alt="<bean:write name="SanPhamForm" property="tenSP"/>" class="img-thumbnail"/>
                                             </a>
                                         </div>
                                         <ul class="thumbs unstyled clearfix">

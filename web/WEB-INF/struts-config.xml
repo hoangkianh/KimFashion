@@ -145,7 +145,15 @@
         </action>
         <action input="/edit-product.do" name="SanPhamForm" path="/SuaSanPham" scope="request" type="com.kimfashion.struts.SuaSanPham" validate="false">
             <forward name="CapNhatSanPhamOK" path="/success.do?s=9"/>
-            <forward name="CapNhatSanPhamNotOK" path="/error.do?e=12"/>            
+            <forward name="CapNhatSanPhamNotOK" path="/error.do?e=12"/>
+        </action>
+        <action input="/" name="HinhAnhForm" path="/edit-hinhanh" scope="request" type="com.kimfashion.struts.GetAllHinhAnhBySanPham" validate="false">
+            <forward name="GetHinhAnhOK" path="/admin/edit-hinhanh.jsp"/>
+            <forward name="GetHinhAnhNotOK" path="/error.do?e=1"/>
+        </action>
+        <action input="/edit-hinhanh" name="HinhAnhForm" path="/SuaHinhAnh" scope="request" type="com.kimfashion.struts.SuaHinhAnh" validate="false">
+            <forward name="CapNhatHinhAnhOK" path="/success.do?s=9"/>
+            <forward name="CapNhatHinhAnhNotOK" path="/error.do?e=12"/>
         </action>
         
     </action-mappings>

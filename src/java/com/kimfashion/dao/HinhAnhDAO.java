@@ -52,7 +52,7 @@ public class HinhAnhDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement("SELECT * FROM `tbl_hinhanh` WHERE MaSP=?");
+            stm = conn.prepareStatement("SELECT * FROM `tbl_hinhanh` WHERE MaSP=? ORDER BY AnhChinh DESC ");
             stm.setInt(1, maSP);
             rs = stm.executeQuery();
 
@@ -126,18 +126,19 @@ public class HinhAnhDAO {
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
         String query = "UPDATE tbl_hinhanh SET DuongDan=?,AnhChinh=?"
-                + " WHERE MaHinhAnh=? AND MaSP=?";
+                + " WHERE MaHinhAnh=?";
+        
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, h.getDuongDan());
             stm.setBoolean(2, h.isAnhChinh());
             stm.setInt(3, h.getMaHinhAnh());
-            stm.setInt(4, h.getMaSP());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
             System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
         } finally {
             DBUtils.closeAll(conn, stm, null);

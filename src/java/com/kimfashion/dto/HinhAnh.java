@@ -18,6 +18,14 @@ public class HinhAnh implements Serializable {
     private String duongDan;
     private boolean anhChinh;
 
+    public HinhAnh() {
+    }
+
+    public HinhAnh(int maHinhAnh, String duongDan, boolean anhChinh) {
+        this.maHinhAnh = maHinhAnh;
+        this.duongDan = duongDan;
+        this.anhChinh = anhChinh;
+    }
     public boolean isAnhChinh() {
         return anhChinh;
     }

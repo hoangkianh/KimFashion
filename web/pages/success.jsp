@@ -60,7 +60,6 @@
                 <c:if test="${not empty cookie.kimfashion}">
                     <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
                 </c:if>
-
             </c:if>
             <c:if test="${s[2] eq true}">
                 <%@include file="../include/header-admin.jsp" %>
@@ -84,7 +83,9 @@
                                             <li><a href="https://plus.google.com/u/0/108003680879148344644"><i class="iconfont-google-plus-sign round-icon"></i></a></li>
                                         </ul>
                                     </div>
-                                </section>
+                                </c:if>
+                            </section>
+                            <c:if test="${s[2] eq false}">
                                 <section class="section">
                                     <section class="col-xs-12 col-sm-12">
                                         <div id="gmap" class="gmap"></div>
