@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.kimfashion.struts;
 
+import com.kimfashion.dao.SanPhamDAO;
+import com.kimfashion.dto.SanPham;
+import com.kimfashion.form.SanPhamForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -32,8 +35,25 @@ public class SuaSanPham extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        SanPhamForm sanPhamForm = (SanPhamForm) form;
+        SanPhamDAO spDao = new SanPhamDAO();
+
+        SanPham sp = spDao.getSanPhamByMaSP(sanPhamForm.getMaSP());
+
+        if (sp == null) {
+            return mapping.findForward("CapNhatSanPhamNotOK");
+        }
+
+        if (sanPhamForm.isDangKM() == false) {
+            sanPhamForm.setGiaBanKM(0);
+        }
         
+        BeanUtils.copyProperties(sp, sanPhamForm);
         
-        return mapping.findForward("");
+        if (!spDao.updateSanPham(sp)) {
+            return mapping.findForward("CapNhatSanPhamNotOK");
+        }
+
+        return mapping.findForward("CapNhatSanPhamOK");
     }
 }

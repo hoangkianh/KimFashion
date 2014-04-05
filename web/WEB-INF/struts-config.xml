@@ -139,11 +139,14 @@
             <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
         </action>
         <!-- lấy chi tiết sp để sửa -->
-        <action input="/" name="SanPhamForm" path="/edit-product" scope="session" type="com.kimfashion.struts.GetChiTietSPAdmin" validate="false">
+        <action input="/" name="SanPhamForm" path="/edit-product" scope="request" type="com.kimfashion.struts.GetChiTietSPAdmin" validate="false">
             <forward name="GetChiTietSPOK" path="/admin/edit-product.jsp"/>
             <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
         </action>
-        <action input="/" name="SanPhamForm" path="/SuaSanPham" scope="session" type="com.kimfashion.struts.SuaSanPham"/>
+        <action input="/edit-product.do" name="SanPhamForm" path="/SuaSanPham" scope="request" type="com.kimfashion.struts.SuaSanPham" validate="false">
+            <forward name="CapNhatSanPhamOK" path="/success.do?s=9"/>
+            <forward name="CapNhatSanPhamNotOK" path="/error.do?e=12"/>            
+        </action>
         
     </action-mappings>
     

@@ -41,6 +41,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private boolean sanPhamMoi;
     private boolean dangKM;
     private boolean daAn;
+    private String daAnStr;
     private double xepHang;
     private int soLuotDanhGia;
     private String mauSac;
@@ -241,6 +242,14 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
         this.hinhAnh = hinhAnh;
     }
 
+    public String getDaAnStr() {
+        return daAnStr;
+    }
+
+    public void setDaAnStr(String daAnStr) {
+        this.daAnStr = daAnStr;
+    }
+
     public List<SanPham> getListSanPham() {
         return listSanPham;
     }
@@ -291,7 +300,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     }
 
     public List<LoaiSP> getListLoaiSP() {
-        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSP();
+        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSPCon();
         return list;
     }
 

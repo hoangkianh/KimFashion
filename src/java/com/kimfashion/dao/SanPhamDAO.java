@@ -479,7 +479,7 @@ public class SanPhamDAO {
                 + " FROM tbl_sanpham a"
                 + " LEFT JOIN `tbl_hinhanh` b ON a.MaSP = b.MaSP"
                 + " LEFT JOIN `tbl_thuonghieu` c ON a.`MaThuongHieu` = c.`MaThuongHieu`"
-                + " WHERE a.`DaAn`= FALSE AND a.`MaSP` = ? AND b.`AnhChinh` = TRUE";
+                + " WHERE a.`MaSP` = ? AND b.`AnhChinh` = TRUE";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maSP);
@@ -605,7 +605,11 @@ public class SanPhamDAO {
             stm.setBoolean(3, sp.isGioiTinh());
             stm.setInt(4, sp.getMaLoaiSP());
             stm.setInt(5, sp.getMaThuongHieu());
-            stm.setInt(6, sp.getMaBST());
+            if (sp.getMaBST() <= 0) {
+                stm.setNull(6, java.sql.Types.INTEGER);
+            } else {
+                stm.setInt(6, sp.getMaBST());
+            }
             stm.setString(7, sp.getMoTa());
             stm.setInt(8, sp.getGiaBan());
             stm.setInt(9, sp.getGiaBanKM());
