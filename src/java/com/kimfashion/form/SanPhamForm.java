@@ -41,7 +41,6 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private boolean sanPhamMoi;
     private boolean dangKM;
     private boolean daAn;
-    private String daAnStr;
     private double xepHang;
     private int soLuotDanhGia;
     private String mauSac;
@@ -242,14 +241,6 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
         this.hinhAnh = hinhAnh;
     }
 
-    public String getDaAnStr() {
-        return daAnStr;
-    }
-
-    public void setDaAnStr(String daAnStr) {
-        this.daAnStr = daAnStr;
-    }
-
     public List<SanPham> getListSanPham() {
         return listSanPham;
     }
@@ -281,6 +272,11 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     public List<HinhAnh> getListHinhAnh() {
         return new HinhAnhDAO().getAllHinhAnhByMaSP(maSP);
     }
+    
+    public List<Size> getListAllSize () {
+        List<Size> list = new SizeDAO().getAllSize();
+        return list;
+    }
 
     public List<Size> getListSize() {
         List<Size> list = new ArrayList<Size>();
@@ -292,6 +288,19 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
             list.add(s);
         }
         return list;
+    }
+    
+    /**
+     * Lấy ra list size để sử dụng trong javascript
+     *
+     * @return chuỗi size. VD: S|M|L|XL|
+     */
+    public String getListSizeString() {
+        String str = "";
+        for (Size size : getListSize()) {
+            str += size.getMaSize() + "|";
+        }
+        return str;
     }
 
     public List<ThuongHieu> getListThuongHieu() {

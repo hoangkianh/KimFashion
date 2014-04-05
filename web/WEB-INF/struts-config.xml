@@ -155,6 +155,10 @@
             <forward name="CapNhatHinhAnhOK" path="/success.do?s=9"/>
             <forward name="CapNhatHinhAnhNotOK" path="/error.do?e=12"/>
         </action>
+        <action input="/" name="SanPhamSizeForm" path="/SuaSizeSP" scope="request" type="com.kimfashion.struts.SuaSizeSP" validate="false">
+            <forward name="CapNhatSizeOK" path="/success.do?s=9"/>
+            <forward name="CapNhatSizeNotOK" path="/error.do?e=12"/>            
+        </action>
         
     </action-mappings>
     

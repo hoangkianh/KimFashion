@@ -45,6 +45,7 @@
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
                             <li><a href="admin-product.do">Sản phẩm</a></li>
+                            <li><a href="edit-product.do?id=${param.id}">Sửa sản phẩm</a></li>
                             <li class="active">Đổi hình ảnh</li>
                         </ul>
                     </div>

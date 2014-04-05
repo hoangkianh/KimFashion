@@ -16,6 +16,14 @@ public class SanPhamSize implements Serializable {
     private int maSP;
     private int maSize;
 
+    public SanPhamSize() {
+    }
+
+    public SanPhamSize(int maSP, int maSize) {
+        this.maSP = maSP;
+        this.maSize = maSize;
+    }
+
     public int getMaSP() {
         return maSP;
     }
