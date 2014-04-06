@@ -121,7 +121,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-wrapper">
-                    <a href="/KimFashion" class="logo" title="KimFashion - Cửa hàng thời trang online">
+                    <a href="/" class="logo" title="KimFashion - Cửa hàng thời trang online">
                         <img src="resource/img/logo.png" alt="Kim Fashion - Cửa hàng thời trang online"/>
                     </a>
                 </div>
@@ -130,7 +130,7 @@
                 <nav id="site-menu" role="navigation">
                     <ul class="main-menu hidden-sm hidden-xs">
                         <li class="active">
-                            <a href="/KimFashion">Trang chủ</a>
+                            <a href="/">Trang chủ</a>
                         </li>
                         <li>
                             <a href="products.do">Thời trang nữ</a>

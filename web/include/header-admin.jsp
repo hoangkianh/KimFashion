@@ -29,7 +29,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-wrapper">
-                    <a href="/KimFashion" class="logo" title="KimFashion - Cửa hàng thời trang online">
+                    <a href="/" class="logo" title="KimFashion - Cửa hàng thời trang online">
                         <img src="resource/img/logo.png" alt="Kim Fashion - Cửa hàng thời trang online"/>
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                                 <a href="#">Quản lý thành viên</a>
                             </li>
                             <li>
-                                <a href="/KimFashion">Quay lại cửa hàng</a>
+                                <a href="/">Quay lại cửa hàng</a>
                             </li>
                         </ul>
 

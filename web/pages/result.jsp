@@ -25,7 +25,7 @@
                 <div class="container">
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
-                            <li><a href="/KimFashion">Trang chủ</a></li>
+                            <li><a href="/">Trang chủ</a></li>
                             <li class="active">Tìm kiếm</li>
                         </ul>
                     </div>
