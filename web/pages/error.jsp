@@ -59,6 +59,11 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="Thêm mới hình ảnh không thành công, bạn hãy thử lại"/>
 </c:if>
+<c:if test="${e eq 15}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Sản phẩm bạn đang tìm kiếm không có.
+           Bạn hãy thử <a href='/KimFashion'>tìm kiếm</a> lại."/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

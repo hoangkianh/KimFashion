@@ -36,6 +36,10 @@
         <!-- =======================
         Front-end
         ======================= -->
+        <action input="/" name="SanPhamForm" path="/timkiem" scope="session" type="com.kimfashion.struts.TimKiem" validate="false">
+             <forward name="TimKiemOK" path="/pages/result.jsp"/>
+            <forward name="TimKiemNotOK" path="/error.do?e=15"/>
+        </action>
         <action input="/" name="SanPhamForm" path="/product-details" scope="session" type="com.kimfashion.struts.GetChiTietSP" validate="false">
             <forward name="GetChiTietSPOK" path="/pages/product-details.jsp"/>
             <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
@@ -173,6 +177,7 @@
             <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
         </action>
+        
         
         
     </action-mappings>
