@@ -1,9 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
 <%@taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
-<%@taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- nếu chưa đăng nhập -->
 <c:if test="${empty sessionScope.kimfashion and empty cookie.kimfashion}">
     <c:redirect url="/login.do" />
@@ -28,7 +25,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>Trang quản trị | KimFashion - Cửa hàng thời trang online</title>
+        <title><bean:write name="SanPhamForm" property="tenThuongHieu"/> | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
         <link rel="stylesheet" href="resource/css/jquery.dataTables.css"/>
@@ -46,12 +43,13 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li class="active">Sản phẩm</li>
+                            <li><a href="admin-product.do">Sản phẩm</a></li>
+                            <li class="active">Thương hiệu <bean:write name="SanPhamForm" property="tenThuongHieu"/></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- SITE MAIN CONTENT -->
+             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
                     <div class="row">
@@ -62,7 +60,7 @@
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold">Danh sách sản phẩm</caption>
+                                    <caption class="uppercase text-bold">Thương hiệu: <bean:write name="SanPhamForm" property="tenThuongHieu"/></caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>

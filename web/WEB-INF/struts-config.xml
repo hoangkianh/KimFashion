@@ -165,6 +165,16 @@
             <forward name="ThemSanPhamNotOK" path="/error.do?e=13"/>            
             <forward name="ThemHinhAnhNotOK" path="/error.do?e=14"/>            
         </action>
+        <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
+            <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
+        </action>
+          <action input="/" name="SanPhamForm" path="/product-brand" scope="session" type="com.kimfashion.struts.GetSPByThuongHieu" validate="false">
+            <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
+        </action>
+        
+        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
