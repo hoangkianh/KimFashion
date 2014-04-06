@@ -21,6 +21,11 @@ public class HinhAnh implements Serializable {
     public HinhAnh() {
     }
 
+    public HinhAnh(String duongDan, boolean anhChinh) {
+        this.duongDan = duongDan;
+        this.anhChinh = anhChinh;
+    }
+
     public HinhAnh(int maHinhAnh, String duongDan, boolean anhChinh) {
         this.maHinhAnh = maHinhAnh;
         this.duongDan = duongDan;

@@ -39,6 +39,10 @@
     <c:set var="thongBao" value="Cập nhật thành công!"/>
     <c:set var="moTa" value="Sản phẩm đã được cập nhật thành công. <br/> <a href='admin-product.do'>Quay lại danh sách sản phẩm</a>"/>
 </c:if>
+<c:if test="${s eq 10}">
+    <c:set var="thongBao" value="Thêm sản phẩm thành công!"/>
+    <c:set var="moTa" value="Sản phẩm đã được thêm thành công. <br/> <a href='admin-product.do'>Quay lại danh sách sản phẩm</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

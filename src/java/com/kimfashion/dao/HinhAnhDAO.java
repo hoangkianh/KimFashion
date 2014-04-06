@@ -102,7 +102,7 @@ public class HinhAnhDAO {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "INSERT INTO tbl_hinhanh (MaSP, DuongDan,AnhChinh)"
+        String query = "INSERT INTO tbl_hinhanh (MaSP, DuongDan, AnhChinh)"
                 + " VALUES (?,?,?)";
         try {
             stm = conn.prepareStatement(query);

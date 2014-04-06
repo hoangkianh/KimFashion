@@ -289,7 +289,7 @@
                         minlength: 6
                     },
                     code: {
-                        required: true,
+                        required: true
                     },
                     mauSac: {
                         required: true

@@ -159,9 +159,12 @@
             <forward name="CapNhatSizeOK" path="/success.do?s=9"/>
             <forward name="CapNhatSizeNotOK" path="/error.do?e=12"/>            
         </action>
-        <action input="/add-product.do" name="SanPhamForm" path="/ThemSanPham" scope="request" type="com.kimfashion.struts.ThemSanPham" validate="false"/>
-        <action path="/add-product" forward="/admin/add-product.jsp"/>
-        
+        <action path="/add-product" forward="/admin/add-product.jsp"/>        
+        <action input="/add-product.do" name="SanPhamForm" path="/ThemSanPham" scope="request" type="com.kimfashion.struts.ThemSanPham" >
+            <forward name="ThemSanPhamOK" path="/success.do?s=10"/>
+            <forward name="ThemSanPhamNotOK" path="/error.do?e=13"/>            
+            <forward name="ThemHinhAnhNotOK" path="/error.do?e=14"/>            
+        </action>
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

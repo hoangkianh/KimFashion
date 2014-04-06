@@ -38,7 +38,7 @@ public class SuaSanPham extends org.apache.struts.action.Action {
         SanPhamForm sanPhamForm = (SanPhamForm) form;
         SanPhamDAO spDao = new SanPhamDAO();
 
-        SanPham sp = spDao.getSanPhamByMaSP(sanPhamForm.getMaSP());
+        SanPham sp = spDao.getSanPhamByMaSPAdmin(sanPhamForm.getMaSP());
 
         if (sp == null) {
             return mapping.findForward("CapNhatSanPhamNotOK");

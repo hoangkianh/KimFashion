@@ -27,7 +27,7 @@ public class SanPhamService {
         listAllSanpham = new SanPhamDAO().getAllSanPham();
     }
 
-    private final int soSPTren1Trang = 2;
+    private final int soSPTren1Trang = 15;
 
     @GET
     @Path("phanTrang")

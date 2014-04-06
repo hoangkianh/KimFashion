@@ -52,6 +52,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private String duongDan2;
     private String duongDan3;
     private String duongDan4;
+    private String listSizeStringSPMoi;
     private List<SanPham> listSanPham;
 
     /**
@@ -64,47 +65,50 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors err = new ActionErrors();
 
-        if (code == null || code.trim().length() == 0) {
-            err.add("code", new ActionMessage("Bạn chưa điền tên code sản phẩm"));
-        } else {
-            if (code.trim().length() < 4 || code.trim().length() > 20) {
-                err.add("code", new ActionMessage("Code sản phẩm từ 4 - 20 kí tự"));
-            }
-        }
-
         if (tenSP == null || tenSP.trim().length() == 0) {
-            err.add("tenSP", new ActionMessage("Bạn chưa điền tên sản phẩm"));
+            err.add("tenSP", new ActionMessage("errors.required", "tên sản phẩm"));
         } else {
             if (tenSP.trim().length() < 4 || tenSP.trim().length() > 100) {
-                err.add("tenSP", new ActionMessage("Tên sản phẩm từ 4 - 100 kí tự"));
+                err.add("tenSP", new ActionMessage("errors.rangelength", "Tên sản phẩm", "4", "100"));
+            }
+        }
+        if (code == null || code.trim().length() == 0) {
+            err.add("code", new ActionMessage("errors.required", "code sản phẩm"));
+        } else {
+            if (code.trim().length() < 4 || code.trim().length() > 20) {
+                err.add("code", new ActionMessage("errors.rangelength", "Code sản phẩm",  "4", "20"));
+            } else {
+                if (new SanPhamDAO().getSanPhamByCode(code) != null) {
+                    err.add("code", new ActionMessage("errors.exist", "Code sản phẩm"));
+                }
             }
         }
 
         if (maThuongHieu <= 0) {
-            err.add("maThuongHieu", new ActionMessage("Bạn chưa chọn thương hiệu"));
+            err.add("maThuongHieu", new ActionMessage("errors.select" , "thương hiệu"));
         }
 
         if (maLoaiSP <= 0) {
-            err.add("maLoaiSP", new ActionMessage("Bạn chưa chọn loại sản phẩm"));
+            err.add("maLoaiSP", new ActionMessage("errors.select" , "loại sản phẩm"));
         }
 
-        if (moTa.trim().length() > 255) {
-            err.add("moTa", new ActionMessage("Mô tả sản phẩm tối đa 255 kí tự (mô tả của bạn có " + moTa.trim().length() + ")"));
+        if (moTa.trim().length() > 1000) {
+            err.add("moTa", new ActionMessage("errors.max" , "Mô tả sản phẩm", "1000"));
         }
 
         if (giaBan <= 0) {
-            err.add("giaBan", new ActionMessage("Bạn chưa điền giá bán"));
+            err.add("giaBan", new ActionMessage("errors.required", "giá bán"));
         }
 
         if (dangKM && giaBanKM <= 0) {
-            err.add("giaBanKM", new ActionMessage("Bạn chưa điền giá bán khuyến mại"));
+            err.add("giaBanKM", new ActionMessage("errors.required", "giá bán khuyến mại"));
         }
 
         if (mauSac == null || mauSac.trim().length() == 0) {
-            err.add("mauSac", new ActionMessage("Bạn chưa điền tên màu sắc sản phẩm"));
+            err.add("mauSac", new ActionMessage("errors.required", "màu sắc sản phẩm"));
         } else {
             if (mauSac.trim().length() < 3 || mauSac.trim().length() > 100) {
-                err.add("mauSac", new ActionMessage("Màu sắc sản phẩm từ 3 - 100 kí tự"));
+                err.add("mauSac", new ActionMessage("errors.rangelength", "màu sắc sản phẩm", "3", "100"));
             }
         }
         return err;
@@ -393,5 +397,13 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
 
     public void setDuongDan4(String duongDan4) {
         this.duongDan4 = duongDan4;
+    }
+
+    public String getListSizeStringSPMoi() {
+        return listSizeStringSPMoi;
+    }
+
+    public void setListSizeStringSPMoi(String listSizeStringSPMoi) {
+        this.listSizeStringSPMoi = listSizeStringSPMoi;
     }
 }

@@ -479,10 +479,52 @@ public class SanPhamDAO {
                 + " FROM tbl_sanpham a"
                 + " LEFT JOIN `tbl_hinhanh` b ON a.MaSP = b.MaSP"
                 + " LEFT JOIN `tbl_thuonghieu` c ON a.`MaThuongHieu` = c.`MaThuongHieu`"
-                + " WHERE a.`MaSP` = ? AND b.`AnhChinh` = TRUE";
+                + " WHERE a.`DaAn`= FALSE AND a.`MaSP` = ? AND b.`AnhChinh` = TRUE";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maSP);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                sp = new SanPham();
+                sp.setMaSP(rs.getInt("MaSP"));
+                sp.setCode(rs.getString("Code"));
+                sp.setTenSP(rs.getString("TenSP"));
+                sp.setGioiTinh(rs.getBoolean("GioiTinh"));
+                sp.setMaLoaiSP(rs.getInt("MaLoaiSP"));
+                sp.setMaBST(rs.getInt("MaBST"));
+                sp.setMaThuongHieu(rs.getInt("MaThuongHieu"));
+                sp.setMoTa(rs.getString("MoTa"));
+                sp.setGiaBan(rs.getInt("GiaBan"));
+                sp.setGiaBanKM(rs.getInt("GiaBanKM"));
+                sp.setSanPhamMoi(rs.getBoolean("SanPhamMoi"));
+                sp.setDangKM(rs.getBoolean("DangKM"));
+                sp.setDaAn(rs.getBoolean("DaAn"));
+                sp.setMauSac(rs.getString("MauSac"));
+                sp.setHinhAnh(rs.getString("HinhAnh"));
+                sp.setTenThuongHieu(rs.getString("TenThuongHieu"));
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return sp;
+    }
+    
+    public SanPham getSanPhamByCode(String code) {
+        SanPham sp = null;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT a.*, b.`DuongDan` AS HinhAnh, c.`TenThuongHieu`"
+                + " FROM tbl_sanpham a"
+                + " LEFT JOIN `tbl_hinhanh` b ON a.MaSP = b.MaSP"
+                + " LEFT JOIN `tbl_thuonghieu` c ON a.`MaThuongHieu` = c.`MaThuongHieu`"
+                + " WHERE a.`Code` = ? AND b.`AnhChinh` = TRUE";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setString(1, code);
             rs = stm.executeQuery();
 
             if (rs.next()) {
@@ -562,7 +604,7 @@ public class SanPhamDAO {
                 + " (Code, TenSP, GioiTinh, MaLoaiSP, MaThuongHieu, MaBST,"
                 + " MoTa, GiaBan, GiaBanKM, SanPhamMoi, DangKM,"
                 + " DaAn, MauSac)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, False, ?, ?, ?)";
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, TRUE, ?, FALSE, ?)";
         try {
             stm = conn.prepareStatement(query);
             stm.setString(1, sp.getCode());
@@ -570,13 +612,16 @@ public class SanPhamDAO {
             stm.setBoolean(3, sp.isGioiTinh());
             stm.setInt(4, sp.getMaLoaiSP());
             stm.setInt(5, sp.getMaThuongHieu());
-            stm.setInt(6, sp.getMaBST());
+             if (sp.getMaBST() <= 0) {
+                stm.setNull(6, java.sql.Types.INTEGER);
+            } else {
+                stm.setInt(6, sp.getMaBST());
+            }
             stm.setString(7, sp.getMoTa());
             stm.setInt(8, sp.getGiaBan());
             stm.setInt(9, sp.getGiaBanKM());
-            stm.setBoolean(10, sp.isSanPhamMoi());
-            stm.setBoolean(11, sp.isDangKM());
-            stm.setString(12, sp.getMauSac());
+            stm.setBoolean(10, sp.isDangKM());
+            stm.setString(11, sp.getMauSac());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;
@@ -650,5 +695,26 @@ public class SanPhamDAO {
         }
 
         return kq;
+    }
+    
+    // lấy mã hd vừa chèn vào trong CSDL
+    public int getMaSPMoiNhat() {
+        int maSP = -1;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT MaSP AS MaSP FROM tbl_sanpham ORDER BY MaSP DESC LIMIT 1";
+        try {
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                maSP = rs.getInt("MaSP");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return maSP;
     }
 }

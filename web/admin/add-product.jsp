@@ -54,6 +54,7 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <h3 class="uppercase text-bold text-center"><span>thêm sản phẩm mới</span></h3>
+                                <html:errors/>
                                 <html:form action="/ThemSanPham" method="POST" styleClass="form-horizontal" styleId="formSanPham">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="panel panel-default">
@@ -93,15 +94,6 @@
                                                             <div class="col-sm-8 col-lg-8">
                                                                 <input type="radio" name="gioiTinh" value="False" class="chkGioiTinh prettyCheckable" checked="checked" data-label="Nam" />
                                                                 <input type="radio" name="gioiTinh" value="True" class="chkGioiTinh prettyCheckable" data-label="Nữ" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group stylish-input">
-                                                            <label for="sanPhamMoi" class="col-sm-4 col-lg-4 control-label"></label>
-                                                            <div class="col-sm-8 col-lg-8">
-                                                                <label>
-                                                                    <html:checkbox name="SanPhamForm" property="sanPhamMoi" styleId="chksanPhamMoi"/>
-                                                                    Sản phẩm mới
-                                                                </label>
                                                             </div>
                                                         </div>
                                                         <div class="form-group stylish-input">
@@ -180,7 +172,7 @@
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <input type="hidden" name="listSizeString" id="listSizeStr" value="<bean:write name="SanPhamForm" property="listSizeString" />"/>
+                                                        <input type="hidden" name="listSizeStringSPMoi" id="listSizeStr" value="<bean:write name="SanPhamForm" property="listSizeStringSPMoi" />"/>
                                                         <label for="chkSize" class="text-danger text-xs"></label>
                                                         <logic:iterate id="size" name="SanPhamForm" property="listAllSize">
                                                             <div class="checkbox">
@@ -278,6 +270,25 @@
                 return this.optional(element) || value > 0;
             }, "Bạn cần điền giá chính xác");
 
+            // kiểm tra code trùng lặp
+            $.validator.addMethod("checkCode", function(value, element) {
+                var exist;
+                $.ajax({
+                    type: 'POST',
+                    url: "service/checkexist/checkCode/" + value,
+                    dataType: "text",
+                    async: false,
+                    success: function(data) {
+                        if (data === "true") {
+                            exist = true;
+                        } else {
+                            exist = false;
+                        }
+                    }
+                });
+                return this.optional(element) || exist;
+            }, "Code này đã tồn tại trong sản phẩm khác");
+
             $('#formSanPham').validate({
                 errorClass: "text-danger text-xs",
                 rules: {
@@ -288,6 +299,7 @@
                     },
                     code: {
                         required: true,
+                        checkCode: true
                     },
                     mauSac: {
                         required: true
@@ -404,6 +416,27 @@
 
                     // thay ảnh ở thẻ a
                     $('#a-' + id).attr('href', 'http://dummyimage.com/762x1100/FA6F57/fff.png&text=Kimfashion');
+                });
+            });
+
+
+            // lấy ra string của listSizeStr
+            var listSizeStr = $('#listSizeStr').val();
+            var sizeArray = listSizeStr.split('|');
+            // select các checkbox 
+            // duyệt qua list size của sp và list size trong csdl
+            // nếu có 2 size giống nhau thì select checkbox
+            for (i = 0; i < sizeArray.length - 1; i++) {
+                $('#chk' + sizeArray[i]).prop('checked', true);
+            }
+
+
+            $('.chkSize').change(function() {
+                listSizeStr = "";
+                $('.chkSize:checked').each(function() {
+                    listSizeStr += $(this).val() + "|";
+                    $('#listSizeStr').val(listSizeStr);
+                    console.log("a");
                 });
             });
         </script>
