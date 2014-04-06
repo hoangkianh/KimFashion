@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.kimfashion.struts;
 
 import com.kimfashion.dao.LoaiSPDAO;
@@ -24,16 +23,19 @@ import org.apache.struts.action.ActionMapping;
  */
 public class GetAllLoaiSanPham extends org.apache.struts.action.Action {
 
-
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        
+
         LoaiSPForm loaiSPForm = (LoaiSPForm) form;
         List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSP();
-        loaiSPForm.setListLoaiSP(list);        
-        
-        return mapping.findForward("GetOK");
+
+        if (list.size() > 0) {
+            loaiSPForm.setListLoaiSP(list);
+            return mapping.findForward("GetLoaiSPOK");
+
+        }
+        return mapping.findForward("GetLoaiSPNotOK");
     }
 }

@@ -132,7 +132,10 @@
         Admin
         ======================= -->
         <action path="/admin" forward="/admin/dashboard.jsp"/>
-        <action input="/" name="LoaiSPForm" path="/GetAllLoaiSanPham" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false"/>
+        <action input="/" name="LoaiSPForm" path="/admin-category" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false">
+            <forward name="GetLoaiSPOK" path="/admin/product-category.jsp" />
+            <forward name="GetLoaiSPNotOK" path="/error.do?e=1" />
+        </action>
         <action input="/" name="SanPhamForm" path="/admin-product" scope="session" type="com.kimfashion.struts.GetAllSanPham" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product.jsp" />
             <forward name="GetSanPhamNotOK" path="/error.do?e=1" />

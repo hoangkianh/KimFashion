@@ -25,7 +25,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title><bean:write name="SanPhamForm" property="tenLoaiSP"/> | KimFashion - Cửa hàng thời trang online</title>
+        <title>Loại sản phẩm | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
         <link rel="stylesheet" href="resource/css/jquery.dataTables.css"/>
@@ -43,8 +43,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Sản phẩm</a></li>
-                            <li class="active"><bean:write name="SanPhamForm" property="tenLoaiSP"/></li>
+                            <li><a href="admin-product.do">Loại Sản phẩm</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,92 +55,38 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <p>
-                                    <a href="add-product.do" class="btn btn-primary btn-round">Thêm sản phẩm mới</a>
+                                    <a href="add-category.do" class="btn btn-primary btn-round">Thêm loại sản phẩm mới</a>
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold">Loại sản phẩm: <bean:write name="SanPhamForm" property="tenLoaiSP"/></caption>
+                                    <caption class="uppercase text-bold">Danh sách loại sản phẩm</caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
-                                            <th class="sorting_disabled">&nbsp;</th>
-                                            <th>Code</th>
-                                            <th>Tên</th>
-                                            <th class="sorting_disabled">Ảnh</th>
-                                            <th>Loại</th>
-                                            <th>Thương hiệu</th>
-                                            <th>Giá bán</th>
-                                            <th class="sorting_disabled">Đang KM</th>
-                                            <th class="sorting_disabled">Hàng mới về</th>
+                                            <th>Tên loại </th>                                            
+                                            <th>Giới tính</th>                                            
+                                            <th>Tên loại Cha</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <logic:iterate id="sp" name="SanPhamForm" property="listSanPham">                                            
+                                        <logic:iterate id="loaiSP" name="LoaiSPForm" property="listLoaiSP">                                            
                                             <tr>
                                                 <td align="center">
-                                                    <a href="edit-product.do?id=<bean:write name="sp" property="maSP"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin sản phẩm">
+                                                    <a href="edit-category.do?id=<bean:write name="loaiSP" property="maLoai"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin loại sản phẩm">
                                                         <i class="iconfont-edit"></i>
                                                     </a>
                                                 </td>
-                                                <td align="center">
-                                                    <c:choose>
-                                                        <c:when  test="${sp.daAn eq true}">
-                                                            <a href="show-product.do?id=<bean:write name="sp" property="maSP"/>"
-                                                               rel="tooltip" data-toggle="tooltip" data-placement="top" title="Hiện sản phẩm">
-                                                                <i class="iconfont-eye-open text-info"></i>
-                                                            </a>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <a href="hide-product.do?id=<bean:write name="sp" property="maSP"/>"
-                                                               rel="tooltip" data-toggle="tooltip" data-placement="top" title="Ẩn sản phẩm này">
-                                                                <i class="iconfont-eye-close text-danger"></i>
-                                                            </a>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </td>
+                                                <td><bean:write name="loaiSP" property="tenLoai"/></td>
                                                 <td>
-                                                    <a class="accent-color" href="details-product.do?id=<bean:write name="sp" property="maSP"/>" 
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem chi tiết">
-                                                        <bean:write name="sp" property="code"/>
-                                                    </a>
-                                                </td>
-                                                <td><bean:write name="sp" property="tenSP"/></td>
-                                                <td>
-                                                    <a href="<bean:write name="sp" property="hinhAnh"/>" data-toggle="lightbox">
-                                                        <img width="50" src="<bean:write name="sp" property="hinhAnh"/>"/>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a class="accent-color" href="product-category.do?cat=<bean:write name="sp" property="maLoaiSP"/>">
-                                                        <bean:write name="sp" property="tenLoaiSP"/>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a class="accent-color" href="product-brand.do?id=<bean:write name="sp" property="maThuongHieu"/>">
-                                                        <bean:write name="sp" property="tenThuongHieu" />
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <c:choose>
-                                                        <c:when test="${sp.dangKM eq true}">
-                                                            <fmt:formatNumber value="${sp.giaBanKM}" type="NUMBER" maxFractionDigits="3" /> VND
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <fmt:formatNumber value="${sp.giaBan}" type="NUMBER" maxFractionDigits="3" /> VND                                                            
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </td>
-                                                <td align="center">
-                                                    <c:if test="${sp.dangKM eq true}">
-                                                        <i class="iconfont-check text-success"></i>
+                                                    <c:if test="${loaiSP.gioiTinh eq true}">
+                                                        Nữ
+                                                    </c:if>
+                                                    <c:if test="${loaiSP.gioiTinh eq false}">
+                                                        Nam
                                                     </c:if>
                                                 </td>
-                                                <td align="center">
-                                                    <c:if test="${sp.sanPhamMoi eq true}">
-                                                        <i class="iconfont-check text-success"></i>
-                                                    </c:if>
-                                                </td>
+                                                <td><bean:write name="loaiSP" property="tenLoaiCha"/></td>
                                             </tr>
                                         </logic:iterate>
                                     </tbody>
@@ -156,7 +101,7 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[3, 'asc']] // sort theo tên sp
+                "aaSorting": [[1, 'asc']] // sort theo tên loại sp
             });
         </script>
     </body>
