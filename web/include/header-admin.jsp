@@ -46,7 +46,7 @@
                                             <ul class="mega-sub">
                                                 <li><a href="admin-product.do">Danh sách sản phẩm</a></li>
                                                 <li><a href="admin-category.do">Loại sản phẩm</a></li>
-                                                <li><a href="admin-product-brand.do">Thương hiệu</a></li>
+                                                <li><a href="admin-brand.do">Thương hiệu</a></li>
                                                 <li><a href="admin-collection.do">Bộ sưu tập</a></li>
                                                 <li><a href="admin-size">Size</a></li>
                                             </ul>
@@ -72,8 +72,8 @@
                                     <a href="javsacript:void(0);">Sản phẩm</a> 
                                     <ul class="dl-submenu">
                                         <li><a href="admin-product.do">Danh sách sản phẩm</a></li>
-                                        <li><a href="#">Loại sản phẩm</a></li>
-                                        <li><a href="#">Thương hiệu</a></li>
+                                        <li><a href="admin-category.do">Loại sản phẩm</a></li>
+                                        <li><a href="admin-brand.do">Thương hiệu</a></li>
                                         <li><a href="#">Bộ sưu tập</a></li>
                                         <li><a href="#">Size</a></li>
                                     </ul>

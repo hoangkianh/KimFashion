@@ -43,7 +43,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Loại Sản phẩm</a></li>
+                            <li><a href="admin-category.do">Loại Sản phẩm</a></li>
                         </ul>
                     </div>
                 </div>

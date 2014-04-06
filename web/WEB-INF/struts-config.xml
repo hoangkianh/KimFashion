@@ -136,6 +136,10 @@
             <forward name="GetLoaiSPOK" path="/admin/product-category.jsp" />
             <forward name="GetLoaiSPNotOK" path="/error.do?e=1" />
         </action>
+        <action input="/" name="ThuongHieuForm" path="/admin-brand" scope="session" type="com.kimfashion.struts.GetAllThuongHieu" validate="false">
+            <forward name="GetThuongHieuOK" path="/admin/product-brand.jsp" />
+            <forward name="GetThuongHieuNotOK" path="/error.do?e=1" />
+        </action>
         <action input="/" name="SanPhamForm" path="/admin-product" scope="session" type="com.kimfashion.struts.GetAllSanPham" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product.jsp" />
             <forward name="GetSanPhamNotOK" path="/error.do?e=1" />
@@ -180,6 +184,7 @@
             <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
         </action>
+        
         
         
         
