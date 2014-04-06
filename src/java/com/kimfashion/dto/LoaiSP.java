@@ -6,6 +6,7 @@
 
 package com.kimfashion.dto;
 
+import com.kimfashion.dao.LoaiSPDAO;
 import java.io.Serializable;
 
 /**
@@ -15,6 +16,7 @@ import java.io.Serializable;
 public class LoaiSP implements Serializable {
     private int maLoai;
     private String tenLoai;
+    private String tenLoaiCha;
     private boolean gioiTinh;
     private int maLoaiCha;
 
@@ -48,6 +50,18 @@ public class LoaiSP implements Serializable {
 
     public void setMaLoaiCha(int maLoaiCha) {
         this.maLoaiCha = maLoaiCha;
+    }
+
+    public String getTenLoaiCha() {
+        LoaiSP loaiSPCha = new LoaiSPDAO().getLoaiSPByMaLoai(maLoaiCha);
+        if (loaiSPCha != null) {
+            tenLoaiCha = loaiSPCha.getTenLoai();
+        }
+        return tenLoaiCha;
+    }
+
+    public void setTenLoaiCha(String tenLoaiCha) {
+        this.tenLoaiCha = tenLoaiCha;
     }
     
     

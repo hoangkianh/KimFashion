@@ -53,6 +53,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private String duongDan3;
     private String duongDan4;
     private String listSizeStringSPMoi;
+    private String timKiem;
     private List<SanPham> listSanPham;
 
     /**
@@ -406,4 +407,13 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     public void setListSizeStringSPMoi(String listSizeStringSPMoi) {
         this.listSizeStringSPMoi = listSizeStringSPMoi;
     }
+
+    public String getTimKiem() {
+        return timKiem;
+    }
+
+    public void setTimKiem(String timKiem) {
+        this.timKiem = timKiem;
+    }
+    
 }

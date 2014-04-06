@@ -25,6 +25,7 @@ public class LoaiSPForm extends org.apache.struts.action.ActionForm {
     private String tenLoai;
     private boolean gioiTinh;
     private int maLoaiCha;
+    private String tenLoaiCha;
     private List<LoaiSP> listLoaiSP;
        
     @Override
@@ -84,5 +85,17 @@ public class LoaiSPForm extends org.apache.struts.action.ActionForm {
     
     public List<LoaiSP> getListLoaiSPCon() {
         return new LoaiSPDAO().getAllLoaiSPCon();
+    }
+
+    public String getTenLoaiCha() {
+        LoaiSP loaiSPCha = new LoaiSPDAO().getLoaiSPByMaLoai(maLoaiCha);
+        if (loaiSPCha != null) {
+            tenLoaiCha = loaiSPCha.getTenLoai();
+        }
+        return tenLoaiCha;
+    }
+
+    public void setTenLoaiCha(String tenLoaiCha) {
+        this.tenLoaiCha = tenLoaiCha;
     }
 }

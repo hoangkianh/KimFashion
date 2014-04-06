@@ -43,7 +43,6 @@ public class GetSPByLoaiSP extends org.apache.struts.action.Action {
             sanPhamForm.setListSanPham(list);
             sanPhamForm.setMaLoaiSP(maLoaiSP);
         } catch (Exception e) {
-            e.printStackTrace();
             return mapping.findForward("GetSanPhamNotOK");
         }
         

@@ -36,6 +36,10 @@
         <!-- =======================
         Front-end
         ======================= -->
+        <action input="/" name="SanPhamForm" path="/timkiem" scope="session" type="com.kimfashion.struts.TimKiem" validate="false">
+             <forward name="TimKiemOK" path="/pages/result.jsp"/>
+            <forward name="TimKiemNotOK" path="/error.do?e=15"/>
+        </action>
         <action input="/" name="SanPhamForm" path="/product-details" scope="session" type="com.kimfashion.struts.GetChiTietSP" validate="false">
             <forward name="GetChiTietSPOK" path="/pages/product-details.jsp"/>
             <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
@@ -128,7 +132,10 @@
         Admin
         ======================= -->
         <action path="/admin" forward="/admin/dashboard.jsp"/>
-        <action input="/" name="LoaiSPForm" path="/GetAllLoaiSanPham" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false"/>
+        <action input="/" name="LoaiSPForm" path="/admin-category" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false">
+            <forward name="GetLoaiSPOK" path="/admin/product-category.jsp" />
+            <forward name="GetLoaiSPNotOK" path="/error.do?e=1" />
+        </action>
         <action input="/" name="SanPhamForm" path="/admin-product" scope="session" type="com.kimfashion.struts.GetAllSanPham" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product.jsp" />
             <forward name="GetSanPhamNotOK" path="/error.do?e=1" />
@@ -165,6 +172,17 @@
             <forward name="ThemSanPhamNotOK" path="/error.do?e=13"/>            
             <forward name="ThemHinhAnhNotOK" path="/error.do?e=14"/>            
         </action>
+        <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
+            <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
+        </action>
+          <action input="/" name="SanPhamForm" path="/product-brand" scope="session" type="com.kimfashion.struts.GetSPByThuongHieu" validate="false">
+            <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
+        </action>
+        
+        
+        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

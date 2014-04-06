@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>Bộ Sưu Tập | KimFashion - Cửa hàng thời trang online</title>
+        <title>Kết quả tìm kiếm | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/jquery.nouislider.css"/>
         <link rel="stylesheet" href="resource/css/isotope.css"/>
@@ -26,7 +26,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="/">Trang chủ</a></li>
-                            <li class="active">Bộ sưu tập </li>
+                            <li class="active">Tìm kiếm</li>
                         </ul>
                     </div>
                 </div>
@@ -267,7 +267,7 @@
                                                             </strong>
                                                         </logic:equal>
                                                         <logic:equal name="sanPham" property="sanPhamMoi" value="true">
-                                                            <strong class="price accent-color">
+                                                            <strong class="price">
                                                                 <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </strong>

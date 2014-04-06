@@ -17,7 +17,7 @@
     <div class="header-top">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-7">
+                <div class="col-xs-12 col-sm-6 col-md-5">
                     <!-- CONTACT INFO -->
                     <div class="contact-info">
                         <i class="iconfont-headphones round-icon"></i>
@@ -25,18 +25,18 @@
                         <span>(Thứ 2 - CN: 9h - 21h)</span>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-5">
+                <div class="col-xs-12 col-sm-6 col-md-7">
                     <ul class="actions unstyled clearfix">
                         <li>
                             <!-- SEARCH BOX -->
                             <div class="search-box">
-                                <form action="#" method="post">
+                                <html:form action="/timkiem" method="POST">
                                     <div class="input-iconed prepend">
                                         <button class="input-icon"><i class="iconfont-search"></i></button>
-                                        <input type="text" name="search-text" id="input-search" 
-                                               class="round-input full-width" placeholder="Tìm kiếm ..." />
+                                        <input type="text" name="timKiem" id="timKiem" 
+                                               class="round-input full-width" placeholder="Nhập tên sản phẩm hoặc code.." />
                                     </div>
-                                </form>
+                                </html:form>
                             </div>
                         </li>
                         <li data-toggle="sub-header" data-target="#sub-social">
@@ -121,7 +121,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-wrapper">
-                    <a href="/KimFashion" class="logo" title="KimFashion - Cửa hàng thời trang online">
+                    <a href="/" class="logo" title="KimFashion - Cửa hàng thời trang online">
                         <img src="resource/img/logo.png" alt="Kim Fashion - Cửa hàng thời trang online"/>
                     </a>
                 </div>
@@ -130,7 +130,7 @@
                 <nav id="site-menu" role="navigation">
                     <ul class="main-menu hidden-sm hidden-xs">
                         <li class="active">
-                            <a href="/KimFashion">Trang chủ</a>
+                            <a href="/">Trang chủ</a>
                         </li>
                         <li>
                             <a href="products.do">Thời trang nữ</a>

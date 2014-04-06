@@ -29,7 +29,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-wrapper">
-                    <a href="/KimFashion" class="logo" title="KimFashion - Cửa hàng thời trang online">
+                    <a href="/" class="logo" title="KimFashion - Cửa hàng thời trang online">
                         <img src="resource/img/logo.png" alt="Kim Fashion - Cửa hàng thời trang online"/>
                     </a>
                 </div>
@@ -45,10 +45,10 @@
                                             <h4 class="menu-title">quản lý sản phẩm</h4>
                                             <ul class="mega-sub">
                                                 <li><a href="admin-product.do">Danh sách sản phẩm</a></li>
-                                                <li><a href="#">Loại sản phẩm</a></li>
-                                                <li><a href="#">Thương hiệu</a></li>
-                                                <li><a href="#">Bộ sưu tập</a></li>
-                                                <li><a href="#">Size</a></li>
+                                                <li><a href="admin-category.do">Loại sản phẩm</a></li>
+                                                <li><a href="admin-product-brand.do">Thương hiệu</a></li>
+                                                <li><a href="admin-collection.do">Bộ sưu tập</a></li>
+                                                <li><a href="admin-size">Size</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                 <a href="#">Quản lý thành viên</a>
                             </li>
                             <li>
-                                <a href="/KimFashion">Quay lại cửa hàng</a>
+                                <a href="/">Quay lại cửa hàng</a>
                             </li>
                         </ul>
 

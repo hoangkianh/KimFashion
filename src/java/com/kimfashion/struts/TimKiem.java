@@ -5,11 +5,9 @@
  */
 package com.kimfashion.struts;
 
-import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamDAO;
-import com.kimfashion.dto.LoaiSP;
 import com.kimfashion.dto.SanPham;
-import com.kimfashion.form.LoaiSPForm;
+import com.kimfashion.form.SanPhamForm;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,23 +17,24 @@ import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author Kim Hue
+ * @author KimHue
  */
-public class GetAllLoaiSanPham extends org.apache.struts.action.Action {
+public class TimKiem extends org.apache.struts.action.Action {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        SanPhamForm sanPhamForm = (SanPhamForm) form;
+        SanPhamDAO sanPhamDAO = new SanPhamDAO();
 
-        LoaiSPForm loaiSPForm = (LoaiSPForm) form;
-        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSP();
+        String timKiem = sanPhamForm.getTimKiem();
+        List<SanPham> list = sanPhamDAO.timKiem(timKiem);
 
         if (list.size() > 0) {
-            loaiSPForm.setListLoaiSP(list);
-            return mapping.findForward("GetLoaiSPOK");
-
+            sanPhamForm.setListSanPham(list);
+            return mapping.findForward("TimKiemOK");
         }
-        return mapping.findForward("GetLoaiSPNotOK");
+        return mapping.findForward("TimKiemNotOK");
     }
 }
