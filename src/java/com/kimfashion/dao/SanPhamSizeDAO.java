@@ -94,8 +94,7 @@ public class SanPhamSizeDAO {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "DELETE FROM tbl_sanpham_size"
-                + " WHERE MaSP=?, MaSize=?";
+        String query = "DELETE FROM tbl_sanpham_size WHERE MaSP=? AND MaSize=?";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maSP);

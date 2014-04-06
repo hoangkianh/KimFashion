@@ -46,8 +46,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Sản phẩm</a></li>
-                            <li class="active">Danh sách sản phẩm</li>
+                            <li class="active">Sản phẩm</li>
                         </ul>
                     </div>
                 </div>
@@ -59,7 +58,7 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <p>
-                                    <a href="product-new.do" class="btn btn-primary btn-round">Thêm sản phẩm mới</a>
+                                    <a href="add-product.do" class="btn btn-primary btn-round">Thêm sản phẩm mới</a>
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
@@ -112,7 +111,7 @@
                                                 <td><bean:write name="sp" property="tenSP"/></td>
                                                 <td>
                                                     <a href="<bean:write name="sp" property="hinhAnh"/>" data-toggle="lightbox">
-                                                        <img width="100" src="<bean:write name="sp" property="hinhAnh"/>"/>
+                                                        <img width="50" src="<bean:write name="sp" property="hinhAnh"/>"/>
                                                     </a>
                                                 </td>
                                                 <td>

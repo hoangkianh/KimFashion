@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="resource/css/wysiwyg.css"/>
         <%@include file="../include/includeJS.jsp" %>
     </head>
-    <body>
+    <body>        
         <!-- PAGE -->
         <div id="page-wrapper">
             <%@include file="../include/header-admin.jsp" %>
@@ -55,6 +55,37 @@
                 <section class="section">
                     <div class="container">
                         <div class="row">
+                            <!-- Modal -->
+                            <div class="modal fade" id="suaSize">
+                                <div class="modal-dialog modal-sm">
+                                    <html:form action="/SuaSizeSP"  method="POST" styleClass="form-horizontal" styleId="formSuaSize">
+                                        <input type="hidden" name="maSP" value="<bean:write name="SanPhamForm" property="maSP" />"/>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Sửa size sản phẩm</h4>
+                                            </div>
+                                            <div class="modal-body ">
+                                                <input type="hidden" name="listSizeString" id="listSizeStr" value="<bean:write name="SanPhamForm" property="listSizeString" />"/>
+                                                <label for="chkSize" class="text-danger text-xs"></label>
+                                                <logic:iterate id="size" name="SanPhamForm" property="listAllSize">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="chkSize" class="chkSize" id="chk<bean:write name="size" property="maSize"/>" name="maSize"
+                                                                   value="<bean:write name="size" property="maSize"/>" />
+                                                            <bean:write name="size" property="tenSize"/>
+                                                        </label>
+                                                    </div>
+                                                </logic:iterate>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-primary btn-round" value="Cập nhật" />
+                                                <input type="reset" class="btn btn-default btn-round" value="Nhập lại" />
+                                            </div>
+                                        </div>
+                                    </html:form>
+                                </div>
+                            </div>
                             <div class="product-single-details" data-product-id="<bean:write name="SanPhamForm" property="maSP" />">
                                 <!--PRODUCT PREVIEW--> 
                                 <div class="col-xs-12 col-sm-4">
@@ -85,7 +116,7 @@
                                                 <logic:iterate id="size" name="SanPhamForm" property="listSize">
                                                     <bean:write name="size" property="tenSize"/>
                                                 </logic:iterate>
-                                                <a href="" class="accent-color"><i class="iconfont-pencil"></i> Sửa</a>
+                                                <a href="" class="accent-color" data-toggle="modal" data-target="#suaSize"><i class="iconfont-pencil"></i> Sửa</a>
                                             </p>
                                         </div>
                                     </div>
@@ -98,15 +129,15 @@
                                         <h3 class="uppercase text-bold text-center"><span>sửa thông tin sản phẩm</span></h3>
                                         <html:errors/>
                                         <html:form action="/SuaSanPham" method="POST" styleClass="form-horizontal" styleId="formSanPham">
-                                            <input type="hidden" value="<bean:write name="SanPhamForm" property="maSP"/>"/>
+                                            <input type="hidden" name="maSP" value="<bean:write name="SanPhamForm" property="maSP"/>"/>
                                             <div class="form-group stylish-input">
-                                                <div class="col-sm-8 col-sm-offset-4">
-                                                    <c:if test="${SanPhamForm.daAn eq true}">
-                                                        <input type="checkbox" name="daAn" class="prettyCheckable" data-label="Sản phẩm đã ẩn" checked="checked">
-                                                    </c:if>
-                                                    <c:if test="${SanPhamForm.daAn eq false}">
-                                                        <input type="checkbox" name="daAn" class="prettyCheckable" data-label="Ẩn sản phẩm">
-                                                    </c:if>
+                                                <div class="col-sm-8 col-sm-offset-4 checkbox">
+                                                    <label for="chkDaAn">
+                                                        <html:checkbox name="SanPhamForm" property="daAn" styleId="chkDaAn">
+                                                            <c:if test="${SanPhamForm.daAn eq true}"> Sản phẩm đang ẩn </c:if>
+                                                            <c:if test="${SanPhamForm.daAn eq false}"> Ẩn sản phẩm </c:if>
+                                                        </html:checkbox>
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="form-group stylish-input">
@@ -157,78 +188,81 @@
                                                 </div>
                                             </div>
                                             <div class="form-group stylish-input">
+                                                <div class="col-sm-8 col-sm-offset-4 checkbox">
+                                                    <label for="chksanPhamMoi">
+                                                        <html:checkbox name="SanPhamForm" property="sanPhamMoi" styleId="chksanPhamMoi">
+                                                            Sản phẩm mới
+                                                        </html:checkbox>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group stylish-input">
+                                                <div class="col-sm-8 col-sm-offset-4 checkbox">
+                                                    <label for="chkKhuyenMai">
+                                                        <html:checkbox name="SanPhamForm" property="dangKM" styleId="chkKhuyenMai">
+                                                            Sản phẩm đang khuyến mại
+                                                        </html:checkbox>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <c:if test="${SanPhamForm.dangKM eq true}">
+                                                <div class="form-group stylish-input collapse in" id="collapseKM">
+                                                </c:if>
+                                                <c:if test="${SanPhamForm.dangKM eq false}">
+                                                    <div class="form-group stylish-input collapse" id="collapseKM">                                                
+                                                    </c:if>
+                                                    <label class="col-sm-4 control-label subheader uppercase" for="giaBanKM">Giá bán KM (VND)</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="giaBanKM" class="form-control" 
+                                                               id="giaBanKM" placeholder="Giá bán KM"
+                                                               value="<bean:write name="SanPhamForm" property="giaBanKM"/>"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group stylish-input">
+                                                    <label class="col-sm-4 control-label subheader uppercase" for="maLoaiSP">Phân loại</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="inline-middle styled-dd">
+                                                            <html:select name="SanPhamForm" property="maLoaiSP" styleId="maLoaiSP">
+                                                                <html:optionsCollection name="SanPhamForm" property="listLoaiSP" label="tenLoai" value="maLoai"/>
+                                                            </html:select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group stylish-input">
+                                                    <label class="col-sm-4 control-label subheader uppercase" for="maThuongHieu">Thương hiệu</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="inline-middle styled-dd">
+                                                            <html:select name="SanPhamForm" property="maThuongHieu" styleId="maThuongHieu">
+                                                                <html:optionsCollection name="SanPhamForm" property="listThuongHieu" label="tenThuongHieu" value="maThuongHieu"/>
+                                                            </html:select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group stylish-input">
+                                                    <label class="col-sm-4 control-label subheader uppercase" for="maBST">Bộ sưu tập</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="inline-middle styled-dd">
+                                                            <html:select name="SanPhamForm" property="maBST" styleId="maBST">
+                                                                <option>--Chọn bộ sưu tập--</option>
+                                                                <html:optionsCollection name="SanPhamForm" property="listBoSuuTap" label="tenBST" value="maBST"/>
+                                                            </html:select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group stylish-input">
+                                                    <label class="col-sm-4 control-label subheader uppercase" for="moTa">Mô tả</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="inline-middle">
+                                                            <textarea id="moTa" class="form-control" name="moTa"
+                                                                      style="height: 178px; width: 400px;"><bean:write name="SanPhamForm" property="moTa"/></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-sm-8 col-sm-offset-4">
-                                                    <c:if test="${SanPhamForm.sanPhamMoi eq true}">
-                                                        <input type="checkbox" name="sanPhamMoi" class="prettyCheckable" data-label="Sản phẩm mới" checked="checked">
-                                                    </c:if>
-                                                    <c:if test="${SanPhamForm.sanPhamMoi eq false}">
-                                                        <input type="checkbox" name="sanPhamMoi" class="prettyCheckable" data-label="Sản phẩm mới">
-                                                    </c:if>
+                                                    <input type="submit" class="btn btn-primary btn-round" value="Cập nhật sản phẩm" />
+                                                    <input type="reset" class="btn btn-default btn-round" value="Nhập lại" />
                                                 </div>
-                                            </div>
-                                            <div class="form-group stylish-input">
-                                                <div class="col-sm-8 col-sm-offset-4">
-                                                    <c:if test="${SanPhamForm.dangKM eq true}">
-                                                        <input type="checkbox" id="chkKhuyenMai" name="dangKM" class="prettyCheckable" data-label="Đang khuyến mại" checked="checked">
-                                                    </c:if>
-                                                    <c:if test="${SanPhamForm.dangKM eq false}">
-                                                        <input type="checkbox" id="chkKhuyenMai" name="dangKM" class="prettyCheckable" data-label="Đang khuyến mại">
-                                                    </c:if>
-                                                </div>
-                                            </div>
-                                            <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label subheader uppercase" for="giaBanKM">Giá bán KM (VND)</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" name="giaBanKM" class="form-control" 
-                                                           id="giaBanKM" placeholder="Giá bán KM"
-                                                           value="<bean:write name="SanPhamForm" property="giaBanKM"/>"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label subheader uppercase" for="maLoaiSP">Phân loại</label>
-                                                <div class="col-sm-8">
-                                                    <div class="inline-middle styled-dd">
-                                                        <html:select name="SanPhamForm" property="maLoaiSP" styleId="maLoaiSP">
-                                                            <html:optionsCollection name="SanPhamForm" property="listLoaiSP" label="tenLoai" value="maLoai"/>
-                                                        </html:select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label subheader uppercase" for="maThuongHieu">Thương hiệu</label>
-                                                <div class="col-sm-8">
-                                                    <div class="inline-middle styled-dd">
-                                                        <html:select name="SanPhamForm" property="maThuongHieu" styleId="maThuongHieu">
-                                                            <html:optionsCollection name="SanPhamForm" property="listThuongHieu" label="tenThuongHieu" value="maThuongHieu"/>
-                                                        </html:select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label subheader uppercase" for="maBST">Bộ sưu tập</label>
-                                                <div class="col-sm-8">
-                                                    <div class="inline-middle styled-dd">
-                                                        <html:select name="SanPhamForm" property="maBST" styleId="maBST">
-                                                            <option>--Chọn bộ sưu tập--</option>
-                                                            <html:optionsCollection name="SanPhamForm" property="listBoSuuTap" label="tenBST" value="maBST"/>
-                                                        </html:select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group stylish-input">
-                                                <label class="col-sm-4 control-label subheader uppercase" for="moTa">Mô tả</label>
-                                                <div class="col-sm-8">
-                                                    <div class="inline-middle">
-                                                        <textarea id="moTa" class="form-control" name="moTa"
-                                                                  style="height: 178px; width: 400px;"><bean:write name="SanPhamForm" property="moTa"/></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-8 col-sm-offset-4">
-                                                <input type="submit" class="btn btn-primary btn-round" value="Sửa sản phẩm" />
-                                                <input type="reset" class="btn btn-default btn-round" value="Nhập lại" />
-                                            </div>
-                                        </html:form>
+                                            </html:form>
                                     </section>
                                 </div>
                             </div>
@@ -239,11 +273,12 @@
         </div>
         <%@include file="../include/footer.jsp" %>
         <script src="resource/js/products.js"></script>
-        <script src="resource/js/jquery-1.7.2.min.js"></script>
-        <script src="resource/js/jquery.wysiwyg.js"></script>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
-            $('#moTa').wysiwyg();
+
+            $.validator.addMethod("checkGia", function(value, element) {
+                return this.optional(element) || value > 0;
+            }, "Bạn cần điền giá chính xác");
 
             $("#formSanPham").validate({
                 errorClass: "text-danger text-xs",
@@ -254,43 +289,32 @@
                         minlength: 6
                     },
                     code: {
-                        required: true,
+                        required: true
                     },
                     mauSac: {
                         required: true
                     },
                     giaBan: {
                         required: true,
-                        digits: true
+                        digits: true,
+                        checkGia: true
                     },
                     giaBanKM: {
                         required: {
                             depends: function() {
                                 return $('#chkKhuyenMai').is(':checked');
                             }
-                        }
-                    },
-                    diaChiGiaoHang: {
-                        required: {
+                        },
+                        digits: {
                             depends: function() {
-                                return !$('#checkBoxGiaoHang').is(':checked');
-                            }
-                        }
-                    },
-                    sdtNguoiNhan: {
-                        required: {
-                            depends: function() {
-                                return !$('#checkBoxGiaoHang').is(':checked');
+                                return $('#chkKhuyenMai').is(':checked');
                             }
                         },
-                        checkPhone: {
+                        checkGia: {
                             depends: function() {
-                                return !$('#checkBoxGiaoHang').is(':checked');
+                                return $('#chkKhuyenMai').is(':checked');
                             }
                         }
-                    },
-                    ghiChu: {
-                        maxlength: 200
                     }
                 },
                 messages: {
@@ -310,19 +334,55 @@
                         digits: "Bạn cần điền giá chính xác"
                     },
                     giaBanKM: {
-                        required: "Bạn cần điền giá bán khuyến mại"
-                    },
-                    diaChiGiaoHang: {
-                        required: "Bạn cần điền địa chỉ giao hàng"
-                    },
-                    sdtNguoiNhan: {
-                        required: "Bạn cần điền số điện thoại người nhận"
-                    },
-                    ghiChu: {
-                        maxlength: "Ghi chú dài tối đa 200 kí tự"
+                        required: "Bạn cần điền giá bán khuyến mại",
+                        digits: "Bạn cần điền giá chính xác"
                     }
                 }
             });
+
+            $('#chkKhuyenMai').change(function() {
+                $('#collapseKM').collapse('toggle');
+            });
+
+            // lấy ra string của listSizeStr
+            var listSizeStr = $('#listSizeStr').val();
+            var sizeArray = listSizeStr.split('|');
+            // select các checkbox 
+            // duyệt qua list size của sp và list size trong csdl
+            // nếu có 2 size giống nhau thì select checkbox
+            for (i = 0; i < sizeArray.length - 1; i++) {
+                $('#chk' + sizeArray[i]).prop('checked', true);
+            }
+
+
+            $('.chkSize').change(function() {
+                listSizeStr = "";
+                $('.chkSize:checked').each(function() {
+                    listSizeStr += $(this).val() + "|";
+                    $('#listSizeStr').val(listSizeStr);
+                    console.log("a");
+                });
+            });
+
+            $('#formSuaSize').validate({
+                errorClass: "text-danger text-xs",
+                rules: {
+                    chkSize: {
+                        required: true
+                    }
+                },
+                messages: {
+                    chkSize: {
+                        required: "Bạn phải chọn ít nhất 1 size"
+                    }
+                }
+            });
+        </script>
+        <script src="resource/js/jquery-1.7.2.min.js"></script>
+        <script src="resource/js/jquery.wysiwyg.js"></script>
+        <script type="text/javascript">
+            $('#moTa').wysiwyg();
+            $.noConflict();
         </script>
     </body>
 </html>

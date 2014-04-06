@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.kimfashion.struts;
 
-import com.kimfashion.dao.SanPhamDAO;
-import com.kimfashion.dto.SanPham;
-import com.kimfashion.form.SanPhamForm;
+import com.kimfashion.dao.HinhAnhDAO;
+import com.kimfashion.dto.HinhAnh;
+import com.kimfashion.form.HinhAnhForm;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -19,7 +20,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author Kim Hue
  */
-public class SuaSanPham extends org.apache.struts.action.Action {
+public class GetAllHinhAnhBySanPham extends org.apache.struts.action.Action {
 
     /**
      * This is the action called from the Struts framework.
@@ -35,25 +36,20 @@ public class SuaSanPham extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        SanPhamForm sanPhamForm = (SanPhamForm) form;
-        SanPhamDAO spDao = new SanPhamDAO();
-
-        SanPham sp = spDao.getSanPhamByMaSPAdmin(sanPhamForm.getMaSP());
-
-        if (sp == null) {
-            return mapping.findForward("CapNhatSanPhamNotOK");
-        }
-
-        if (sanPhamForm.isDangKM() == false) {
-            sanPhamForm.setGiaBanKM(0);
+        HinhAnhForm hinhAnhForm = (HinhAnhForm) form;
+        HinhAnhDAO hinhAnhDAO = new HinhAnhDAO();
+        
+        // lấy id của sp
+        try {
+            int maSP = Integer.parseInt(request.getParameter("id"));
+            List<HinhAnh> list = hinhAnhDAO.getAllHinhAnhByMaSP(maSP);
+            hinhAnhForm.setListHinhAnh(list);
+            hinhAnhForm.setMaSP(maSP);
+            
+        } catch (NumberFormatException e) {
+            return mapping.findForward("GetHinhAnhNotOK");
         }
         
-        BeanUtils.copyProperties(sp, sanPhamForm);
-        
-        if (!spDao.updateSanPham(sp)) {
-            return mapping.findForward("CapNhatSanPhamNotOK");
-        }
-
-        return mapping.findForward("CapNhatSanPhamOK");
+        return mapping.findForward("GetHinhAnhOK");
     }
 }

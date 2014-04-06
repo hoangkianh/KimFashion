@@ -26,7 +26,7 @@ public class BoSuuTapDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap");
+            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap ORDER BY TenBST");
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -172,7 +172,7 @@ public class BoSuuTapDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap WHERE GioiTinh=?");
+            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap WHERE GioiTinh=? ORDER BY TenBST");
             stm.setBoolean(1, gioiTinh);
             rs = stm.executeQuery();
 

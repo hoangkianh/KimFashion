@@ -6,7 +6,11 @@
 
 package com.kimfashion.form;
 
+import com.kimfashion.dao.SanPhamSizeDAO;
+import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dto.SanPhamSize;
+import com.kimfashion.dto.Size;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +26,7 @@ public class SanPhamSizeForm extends org.apache.struts.action.ActionForm {
     
     private int maSP;
     private int maSize;
+    private String listSizeString;
     private List<SanPhamSize> listSanPhamSize;
     
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
@@ -57,6 +62,12 @@ public class SanPhamSizeForm extends org.apache.struts.action.ActionForm {
     public void setListSanPhamSize(List<SanPhamSize> listSanPhamSize) {
         this.listSanPhamSize = listSanPhamSize;
     }
-    
-    
+
+    public String getListSizeString() {
+        return listSizeString;
+    }
+
+    public void setListSizeString(String listSizeString) {
+        this.listSizeString = listSizeString;
+    }
 }

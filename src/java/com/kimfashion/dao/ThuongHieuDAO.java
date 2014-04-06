@@ -27,7 +27,7 @@ public class ThuongHieuDAO {
         ResultSet rs = null;
 
         try {
-            stm = conn.prepareStatement("SELECT * FROM tbl_thuonghieu");
+            stm = conn.prepareStatement("SELECT * FROM tbl_thuonghieu  ORDER BY TenThuongHieu");
             rs = stm.executeQuery();
 
             while (rs.next()) {

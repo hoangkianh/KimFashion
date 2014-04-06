@@ -20,7 +20,7 @@
 <c:if test="${e eq 4}">
     <c:set var="tenLoi" value="Xác nhận không thành công"/>
     <c:set var="moTa" value="Địa chỉ email hoặc mã xác nhận không chính xác. 
-                        Bạn có thể yêu cầu gửi lại mail xác nhận <a href='reconfirm.do'>tại đây</a>"/>
+           Bạn có thể yêu cầu gửi lại mail xác nhận <a href='reconfirm.do'>tại đây</a>"/>
 </c:if>
 <c:if test="${e eq 5}">
     <c:set var="tenLoi" value="Gửi mail không thành công"/>
@@ -47,6 +47,18 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="Cập nhật mật khẩu không thành công, bạn hãy thử lại"/>
 </c:if>
+<c:if test="${e eq 12}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Cập nhật không thành công, bạn hãy thử lại"/>
+</c:if>
+<c:if test="${e eq 13}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Thêm mới sản phẩm không thành công, bạn hãy thử lại"/>
+</c:if>
+<c:if test="${e eq 14}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Thêm mới hình ảnh không thành công, bạn hãy thử lại"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,7 +73,20 @@
     <body>
         <!-- PAGE -->
         <div id="page-wrapper">
-            <%@include file="../include/header.jsp" %>
+            <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
+                <c:if test="${not empty sessionScope.kimfashion}">
+                    <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
+                </c:if>
+                <c:if test="${not empty cookie.kimfashion}">
+                    <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
+                </c:if>
+            </c:if>
+            <c:if test="${s[2] eq true}">
+                <%@include file="../include/header-admin.jsp" %>
+            </c:if>
+            <c:if test="${s[2] eq false}">
+                <%@include file="../include/header.jsp" %>
+            </c:if>
             <main id="main-content" role="main">
                 <div class="container">
                     <div class="row">
@@ -69,20 +94,24 @@
                             <section class="col-xs-12 col-sm-12 text-center text-danger">
                                 <h1 class="text-bold"><i class='iconfont-frown'></i> <c:out value="${tenLoi}"/> </h1>
                                 <h4><c:out value="${moTa}" escapeXml="false" /></h4>
-                                <h3><small>Bạn có thể <a href="mailto:kimfashion@gmail.com">liên hệ</a> với KimFashion để được giải đáp</small></h3>
-                                <div id="sub-social">
-                                    <ul class="social-list unstyled">
-                                        <li><a href="https://www.facebook.com/pages/Kim-Fashion/1402400103359807"><i class="iconfont-facebook round-icon"></i></a></li>
-                                        <li><a href="https://twitter.com/kimhue1012"><i class="iconfont-twitter round-icon"></i></a></li>
-                                        <li><a href="https://plus.google.com/u/0/108003680879148344644"><i class="iconfont-google-plus-sign round-icon"></i></a></li>
-                                    </ul>
-                                </div>
+                                <c:if test="${s[2] eq false}">
+                                    <h3><small>Bạn có thể <a href="mailto:kimfashion@gmail.com">liên hệ</a> với KimFashion để được giải đáp</small></h3>
+                                    <div id="sub-social">
+                                        <ul class="social-list unstyled">
+                                            <li><a href="https://www.facebook.com/pages/Kim-Fashion/1402400103359807"><i class="iconfont-facebook round-icon"></i></a></li>
+                                            <li><a href="https://twitter.com/kimhue1012"><i class="iconfont-twitter round-icon"></i></a></li>
+                                            <li><a href="https://plus.google.com/u/0/108003680879148344644"><i class="iconfont-google-plus-sign round-icon"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </c:if>
                             </section>
-                            <section class="section">
-                                <section class="col-xs-12 col-sm-12">
-                                    <div id="gmap" class="gmap"></div>
+                            <c:if test="${s[2] eq false}">
+                                <section class="section">
+                                    <section class="col-xs-12 col-sm-12">
+                                        <div id="gmap" class="gmap"></div>
+                                    </section>
                                 </section>
-                            </section>
+                            </c:if>
                         </section>
                     </div>
                 </div>

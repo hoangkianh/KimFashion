@@ -1,7 +1,6 @@
 package com.kimfashion.dto;
 
 import com.kimfashion.dao.LoaiSPDAO;
-import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.SanPhamSizeDAO;
 import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dao.ThuongHieuDAO;

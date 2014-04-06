@@ -5,6 +5,7 @@
  */
 package com.kimfashion.service;
 
+import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.ThanhVienDAO;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Path;
@@ -34,6 +35,16 @@ public class CheckExist {
     @Produces("text/plain")
     public String checkEmail(@PathParam("email") String email) {
         if (new ThanhVienDAO().getThanhVienByEmail(email) != null) {
+            return "false";
+        }
+        return "true";
+    }
+    
+    @POST
+    @Path("checkCode/{code}")
+    @Produces("text/plain")
+    public String checkCode (@PathParam("code") String code) {
+        if (new SanPhamDAO().getSanPhamByCode(code) != null) {
             return "false";
         }
         return "true";
