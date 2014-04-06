@@ -1,6 +1,10 @@
 package com.kimfashion.service;
 
+import com.kimfashion.dao.BoSuuTapDAO;
+import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamDAO;
+import com.kimfashion.dto.BoSuuTap;
+import com.kimfashion.dto.LoaiSP;
 import com.kimfashion.dto.SanPham;
 import java.text.DecimalFormat;
 import java.util.List;
@@ -34,9 +38,9 @@ public class SanPhamService {
         int soTrang = (int) Math.ceil(tongsoSP / (soSPTren1Trang * 1.0));
 
         html += "<li><a class='round-icon prev' onclick='trangTruoc()' href='#' data-toggle='tooltip' data-title='Trước'><i class='iconfont-angle-left'></i></a></li>";
-                
+
         if (true) {
-            
+
         }
         html += "<li><a href='#' onclick='chuyenTrang(this.id)' class='page accent-color' id='1'>1</a></li>";
 
@@ -106,5 +110,33 @@ public class SanPhamService {
         }
 
         return html;
+    }
+
+    @GET
+    @Path("getLoaiSPByGioiTinh/{gioiTinh}")
+    @Produces("text/plain;charset=UTF-8")
+    public String getLoaiSPByGioiTinh(@PathParam("gioiTinh") boolean gioiTinh) {
+        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSPConByGioiTinh(gioiTinh);
+        String kq = "";
+        kq += "<option>" + "--Chọn loại sản phẩm--" + "</option>";
+        for (int i = 0; i < list.size(); i++) {
+            LoaiSP loaiSP = list.get(i);
+            kq += "<option value='" + loaiSP.getMaLoai() + "'>" + loaiSP.getTenLoai() + "</option>";
+        }
+        return kq;
+    }
+
+    @GET
+    @Path("getBSTByGioiTinh/{gioiTinh}")
+    @Produces("text/plain;charset=UTF-8")
+    public String getBSTByGioiTinh(@PathParam("gioiTinh") boolean gioiTinh) {
+        List<BoSuuTap> list = new BoSuuTapDAO().getBoSuutapByGioiTinh(gioiTinh);
+        String kq = "";
+        kq += "<option>" + "--Chọn bộ sưu tập--" + "</option>";
+        for (int i = 0; i < list.size(); i++) {
+            BoSuuTap bst = list.get(i);
+            kq += "<option value='" + bst.getMaBST() + "'>" + bst.getTenBST() + "</option>";
+        }
+        return kq;
     }
 }

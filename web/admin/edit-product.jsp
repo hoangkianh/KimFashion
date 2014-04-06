@@ -67,10 +67,11 @@
                                             </div>
                                             <div class="modal-body ">
                                                 <input type="hidden" name="listSizeString" id="listSizeStr" value="<bean:write name="SanPhamForm" property="listSizeString" />"/>
+                                                <label for="chkSize" class="text-danger text-xs"></label>
                                                 <logic:iterate id="size" name="SanPhamForm" property="listAllSize">
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" class="chkSize" id="chk<bean:write name="size" property="maSize"/>" name="maSize"
+                                                            <input type="checkbox" name="chkSize" class="chkSize" id="chk<bean:write name="size" property="maSize"/>" name="maSize"
                                                                    value="<bean:write name="size" property="maSize"/>" />
                                                             <bean:write name="size" property="tenSize"/>
                                                         </label>
@@ -361,6 +362,20 @@
                     $('#listSizeStr').val(listSizeStr);
                     console.log("a");
                 });
+            });
+
+            $('#formSuaSize').validate({
+                errorClass: "text-danger text-xs",
+                rules: {
+                    chkSize: {
+                        required: true
+                    }
+                },
+                messages: {
+                    chkSize: {
+                        required: "Bạn phải chọn ít nhất 1 size"
+                    }
+                }
             });
         </script>
         <script src="resource/js/jquery-1.7.2.min.js"></script>

@@ -66,8 +66,9 @@
                                         <logic:iterate id="hinhAnh" name="HinhAnhForm" property="listHinhAnh" indexId="i">
                                             <div class="form-group stylish-input">
                                                 <div class="col-sm-2">
-                                                    <a href="<bean:write name="hinhAnh" property="duongDan"/>" data-toggle="lightbox">
-                                                        <img src="<bean:write name="hinhAnh" property="duongDan"/>" width="100" class="img-thumbnail"/>
+                                                    <a id="a-duongDan${i}" href="<bean:write name="hinhAnh" property="duongDan"/>" data-toggle="lightbox">
+                                                        <img src="<bean:write name="hinhAnh" property="duongDan"/>"
+                                                             id="img-duongDan${i}" width="100" class="img-thumbnail"/>
                                                     </a>                                    
                                                 </div>
                                                 <c:if test="${i eq 0}">
@@ -75,7 +76,7 @@
                                                 </c:if>
                                                 <div class="col-sm-6">
                                                     <input type="hidden" name="maHinhAnh${i}" value="<bean:write name="hinhAnh" property="maHinhAnh"/>"/>
-                                                    <input type="text" name="duongDan${i}" class="form-control" 
+                                                    <input type="text" name="duongDan${i}" class="form-control txtDuongDan" 
                                                            id="duongDan${i}" placeholder="Đường dẫn hình ảnh"
                                                            value="<bean:write name="hinhAnh" property="duongDan"/>"/>
                                                 </div>
@@ -134,6 +135,27 @@
                         required: "Bạn cần điền đường dẫn ảnh"
                     }
                 }
+            });
+            
+            /// hiển thị ảnh khi paste đường dẫn vào textbox
+            $('.txtDuongDan').change(function() {
+                // lấy ra id của textbox đó (duongDan0, duongDan1, duongDan2...)
+                var id = $(this).attr('id');
+
+                // lấy đường dẫn
+                var duongDan = $(this).val();
+
+                // thay thuộc tính src của thẻ img có id tương ứng
+                $('#img-' + id).attr('src', duongDan);
+                // thay thuộc tính href của thẻ a có id tương ứng
+                $('#a-' + id).attr('href', duongDan);
+                // nếu trường hợp ảnh lỗi thì in ra ảnh mặc định
+                $('.img-thumbnail').error(function() {
+                    $(this).unbind('error').attr('src', 'http://dummyimage.com/100x140/FA6F57/fff.png&text=Kimfashion');
+
+                    // thay ảnh ở thẻ a
+                    $('#a-' + id).attr('href', 'http://dummyimage.com/762x1100/FA6F57/fff.png&text=Kimfashion');
+                });
             });
         </script>
     </body>

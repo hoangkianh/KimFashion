@@ -159,6 +159,8 @@
             <forward name="CapNhatSizeOK" path="/success.do?s=9"/>
             <forward name="CapNhatSizeNotOK" path="/error.do?e=12"/>            
         </action>
+        <action input="/add-product.do" name="SanPhamForm" path="/ThemSanPham" scope="request" type="com.kimfashion.struts.ThemSanPham" validate="false"/>
+        <action path="/add-product" forward="/admin/add-product.jsp"/>
         
     </action-mappings>
     

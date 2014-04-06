@@ -47,6 +47,11 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     private String hinhAnh;
     private String tenThuongHieu;
     private String tenLoaiSP;
+    private String duongDan0;
+    private String duongDan1;
+    private String duongDan2;
+    private String duongDan3;
+    private String duongDan4;
     private List<SanPham> listSanPham;
 
     /**
@@ -309,7 +314,7 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
     }
 
     public List<LoaiSP> getListLoaiSP() {
-        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSPCon();
+        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSPConByGioiTinh(gioiTinh);
         return list;
     }
 
@@ -348,5 +353,45 @@ public class SanPhamForm extends org.apache.struts.action.ActionForm {
             return bst.getTenBST();
         }
         return "";
+    }
+
+    public String getDuongDan0() {
+        return duongDan0;
+    }
+
+    public void setDuongDan0(String duongDan0) {
+        this.duongDan0 = duongDan0;
+    }
+
+    public String getDuongDan1() {
+        return duongDan1;
+    }
+
+    public void setDuongDan1(String duongDan1) {
+        this.duongDan1 = duongDan1;
+    }
+
+    public String getDuongDan2() {
+        return duongDan2;
+    }
+
+    public void setDuongDan2(String duongDan2) {
+        this.duongDan2 = duongDan2;
+    }
+
+    public String getDuongDan3() {
+        return duongDan3;
+    }
+
+    public void setDuongDan3(String duongDan3) {
+        this.duongDan3 = duongDan3;
+    }
+
+    public String getDuongDan4() {
+        return duongDan4;
+    }
+
+    public void setDuongDan4(String duongDan4) {
+        this.duongDan4 = duongDan4;
     }
 }
