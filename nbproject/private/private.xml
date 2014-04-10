@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/GitHub/KimFashion/web/pages/collection.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/category.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/index.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/about.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/products.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/include/footer.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/contact.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/checkout.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/include/header.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
+            <file>file:/F:/GitHub/KimFashion/web/include/header-admin.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/admin/product-brand.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/admin/product-category.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/form/ThuongHieuForm.java</file>
         </group>
     </open-files>
 </project-private>
