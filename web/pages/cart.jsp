@@ -135,7 +135,7 @@
                                                             VND
                                                         </strong>
                                                     </logic:equal>
-                                                    <logic:equal name="sp" property="sanPhamMoi" value="true">
+                                                    <logic:equal name="sp" property="dangKM" value="false">
                                                         <strong class="price accent-color">
                                                             <fmt:formatNumber value="${sp.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                             VND

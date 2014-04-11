@@ -25,7 +25,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>Thương hiệu | KimFashion - Cửa hàng thời trang online</title>
+        <title>Size | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
         <link rel="stylesheet" href="resource/css/jquery.dataTables.css"/>
@@ -43,7 +43,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Thương hiệu</a></li>
+                            <li><a href="admin-size.do">Size</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,27 +55,27 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <p>
-                                    <a href="add-brand.do" class="btn btn-primary btn-round">Thêm thương hiệu mới</a>
+                                    <a href="add-size.do" class="btn btn-primary btn-round">Thêm size mới</a>
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold">Danh sách thương hiệu</caption>
+                                    <caption class="uppercase text-bold">Danh sách size</caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
-                                            <th>Tên thương hiệu </th>                                            
+                                            <th>Tên size</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <logic:iterate id="th" name="ThuongHieuForm" property="listThuongHieu">                                            
+                                        <logic:iterate id="si" name="SizeForm" property="listSize">                                            
                                             <tr>
                                                 <td align="center">
-                                                    <a href="edit-category.do?id=<bean:write name="th" property="maThuongHieu"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin thương hiệu">
+                                                    <a href="edit-size.do?id=<bean:write name="si" property="maSize"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin size">
                                                         <i class="iconfont-edit"></i>
                                                     </a>
                                                 </td>
-                                                <td><bean:write name="th" property="tenThuongHieu"/></td>
+                                                <td><bean:write name="si" property="tenSize"/></td>
                                             </tr>
                                         </logic:iterate>
                                     </tbody>
@@ -90,7 +90,7 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[1, 'asc']] // sort theo tên thương hiệu
+                "aaSorting": [[1, 'asc']] // sort theo tên size
             });
         </script>
     </body>

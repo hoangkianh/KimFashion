@@ -534,7 +534,7 @@ body {
 
     25%,75% {
         opacity: 0;
-    };
+    }
 }
 
 @-moz-keyframes flash {
@@ -585,7 +585,7 @@ body {
 
     20%,40%,60%,80% {
         -webkit-transform: translateX(10px);
-    };
+    }
 }
 
 @-moz-keyframes shake {
@@ -648,8 +648,8 @@ body {
 
     60% {
         -webkit-transform: translateY(-15px);
-    };
-}
+    }
+};
 
 @-moz-keyframes bounce {
     0%,100%,20%,50%,80% {
@@ -719,8 +719,8 @@ body {
 
     100% {
         -webkit-transform: scale(1) rotate(0);
-    };
-}
+    }
+};
 
 @-moz-keyframes tada {
     0% {

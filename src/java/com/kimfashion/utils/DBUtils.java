@@ -16,7 +16,7 @@ public class DBUtils {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String host = "jdbc:mysql://localhost:3306/KimFashion?useUnicode=true&characterEncoding=utf-8";
+            String host = "jdbc:mysql://localhost:3306/kimfashion?useUnicode=true&characterEncoding=utf-8";
             String userName = "root";
             String password = "";
             conn = DriverManager.getConnection(host, userName, password);

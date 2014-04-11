@@ -25,7 +25,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>Thương hiệu | KimFashion - Cửa hàng thời trang online</title>
+        <title>Bộ sưu tập | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
         <link rel="stylesheet" href="resource/css/jquery.dataTables.css"/>
@@ -43,7 +43,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Thương hiệu</a></li>
+                            <li><a href="admin-collection.do">Bộ sưu tập</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,27 +55,42 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <p>
-                                    <a href="add-brand.do" class="btn btn-primary btn-round">Thêm thương hiệu mới</a>
+                                    <a href="add-collection.do" class="btn btn-primary btn-round">Thêm bộ sưu tập mới</a>
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold">Danh sách thương hiệu</caption>
+                                    <caption class="uppercase text-bold">Danh sách bộ sưu tập</caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
-                                            <th>Tên thương hiệu </th>                                            
+                                            <th>Tên bộ sưu tập</th>                                            
+                                            <th>Giới tính</th>                                            
+                                            <th class="sorting_disabled">Ảnh đại diện</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <logic:iterate id="th" name="ThuongHieuForm" property="listThuongHieu">                                            
+                                        <logic:iterate id="bst" name="BoSuuTapForm" property="listBST">                                            
                                             <tr>
                                                 <td align="center">
-                                                    <a href="edit-category.do?id=<bean:write name="th" property="maThuongHieu"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin thương hiệu">
+                                                    <a href="edit-collection.do?id=<bean:write name="bst" property="maBST"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin bộ sưu tập">
                                                         <i class="iconfont-edit"></i>
                                                     </a>
                                                 </td>
-                                                <td><bean:write name="th" property="tenThuongHieu"/></td>
+                                                <td><bean:write name="bst" property="tenBST"/></td>
+                                                <td>
+                                                    <c:if test="${bst.gioiTinh eq true}">
+                                                        Nữ
+                                                    </c:if>
+                                                    <c:if test="${bst.gioiTinh eq false}">
+                                                        Nam
+                                                    </c:if>
+                                                </td>
+                                                <td>
+                                                    <a href="<bean:write name="bst" property="anhDaiDien"/>" data-toggle="lightbox">
+                                                        <img width="50" src="<bean:write name="bst" property="anhDaiDien"/>"/>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </logic:iterate>
                                     </tbody>
@@ -90,7 +105,7 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[1, 'asc']] // sort theo tên thương hiệu
+                "aaSorting": [[1, 'asc']] // sort theo tên BST
             });
         </script>
     </body>

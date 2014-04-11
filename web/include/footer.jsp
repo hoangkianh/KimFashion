@@ -18,8 +18,8 @@
                         <section class="widget widget-text">
                             <h5 class="widget-title">Thời gian mở cửa</h5>
                             <div class="widget-content">
-                                <p>Thứ 2 - Thứ 6:-------------------------9h đến 21h</p>
-                                <p>Thứ 7 & CN:----------------------------10h đến 20h</p>
+                                <p>Thứ 2 - Thứ 6:-----------------------9h đến 21h</p>
+                                <p>Thứ 7 & CN:--------------------------10h đến 20h</p>
                             </div>
                         </section>
                     </div>
