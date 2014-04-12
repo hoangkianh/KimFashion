@@ -190,6 +190,7 @@
                             <a href="contact.do">Liên hệ</a>
                         </li>
                     </ul>
+                                    
                     <!-- MOBILE MENU -->
                     <div id="mobile-menu" class="dl-menuwrapper visible-xs visible-sm">
                         <button class="dl-trigger"><i class="iconfont-reorder round-icon"></i></button>
@@ -198,12 +199,12 @@
                                 <a href="javsacript:void(0);">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="javsacript:void(0);">Thời trang nữ</a>
+                                <a href="">Thời trang nữ</a>
                                 <ul class="dl-submenu">
                                     <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">
                                         <logic:equal name="loaiSPCha" property="gioiTinh" value="true">
                                             <li>
-                                                <a href="#">${loaiSPCha.tenLoai}</a>
+                                                <a href="">${loaiSPCha.tenLoai}</a>
                                                 <ul class="dl-submenu">
                                                     <logic:iterate id="loaiSPCon" collection="${loaiSPForm.listLoaiSPCon}">
                                                         <logic:equal name="loaiSPCon" property="maLoaiCha" value="${loaiSPCha.maLoai}">
@@ -221,7 +222,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javsacript:void(0);">Thời trang nam</a>
+                                <a href="">Thời trang nam</a>
                                 <ul class="dl-submenu">
                                     <logic:iterate id="loaiSPCha" collection="${loaiSPForm.listLoaiSPCha}">
                                         <logic:equal name="loaiSPCha" property="gioiTinh" value="false">

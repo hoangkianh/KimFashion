@@ -266,7 +266,7 @@
                                                                 VND
                                                             </strong>
                                                         </logic:equal>
-                                                        <logic:equal name="sanPham" property="sanPhamMoi" value="true">
+                                                        <logic:equal name="sanPham" property="dangKM" value="false">
                                                             <strong class="price">
                                                                 <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND

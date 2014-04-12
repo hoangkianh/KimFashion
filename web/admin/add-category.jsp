@@ -55,7 +55,7 @@
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <h3 class="uppercase text-bold text-center"><span>thêm loại sản phẩm mới</span></h3>
                                 <html:errors/>
-                                <html:form action="/ThemLoaiSP" method="POST" styleClass="form-horizontal" styleId="formSanPham">
+                                <html:form action="/ThemLoaiSP" method="POST" styleClass="form-horizontal" styleId="formLoaiSP">
                                     <div class="col-md-12 col-sm-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -125,7 +125,7 @@
 
             
            
-            $('#formSanPham').validate({
+            $('#formLoaiSP').validate({
                 errorClass: "text-danger text-xs",
                 rules: {
                     tenLoai: {

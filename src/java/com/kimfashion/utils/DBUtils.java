@@ -19,6 +19,9 @@ public class DBUtils {
             String host = "jdbc:mysql://localhost:3306/kimfashion?useUnicode=true&characterEncoding=utf-8";
             String userName = "root";
             String password = "";
+          /*  String host = "jdbc:mysql://mysql-kimfashion.jelastic.dogado.eu/kimfashion?useUnicode=true&characterEncoding=utf-8";
+            String userName = "root";
+            String password = "FVcVPiBHGI"; */
             conn = DriverManager.getConnection(host, userName, password);
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
