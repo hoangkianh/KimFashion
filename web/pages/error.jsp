@@ -64,6 +64,10 @@
     <c:set var="moTa" value="Sản phẩm bạn đang tìm kiếm không có.
            Bạn hãy thử <a href='/'>tìm kiếm</a> lại."/>
 </c:if>
+<c:if test="${e eq 16}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Thêm mới loại sản phẩm không thành công, bạn hãy thử lại"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

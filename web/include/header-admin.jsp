@@ -48,7 +48,7 @@
                                                 <li><a href="admin-category.do">Loại sản phẩm</a></li>
                                                 <li><a href="admin-brand.do">Thương hiệu</a></li>
                                                 <li><a href="admin-collection.do">Bộ sưu tập</a></li>
-                                                <li><a href="admin-size">Size</a></li>
+                                                <li><a href="admin-size.do">Size</a></li>
                                             </ul>
                                         </div>
                                     </div>

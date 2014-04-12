@@ -185,6 +185,11 @@
             <forward name="ThemSanPhamNotOK" path="/error.do?e=13"/>            
             <forward name="ThemHinhAnhNotOK" path="/error.do?e=14"/>            
         </action>
+        <action path="/add-category" forward="/admin/add-category.jsp"/>        
+        <action input="/add-category.do" name="LoaiSPForm" path="/ThemLoaiSP" scope="session" type="com.kimfashion.struts.ThemLoaiSP" validate="false">
+            <forward name="ThemLoaiSPOK" path="/success.do?s=11"/>
+            <forward name="ThemLoaiSPNotOK" path="/error.do?e=16"/>
+        </action>
         <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
@@ -193,6 +198,7 @@
             <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
         </action>
+        
         
         
         

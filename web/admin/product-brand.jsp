@@ -59,7 +59,7 @@
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold">Danh sách thương hiệu</caption>
+                                    <caption class="uppercase text-bold"><h3>Danh sách thương hiệu</h3></caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>

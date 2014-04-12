@@ -125,6 +125,20 @@ public class SanPhamService {
         }
         return kq;
     }
+    
+    @GET
+    @Path("getLoaiSPChaByGioiTinh/{gioiTinh}")
+    @Produces("text/plain;charset=UTF-8")
+    public String getLoaiSPChaByGioiTinh(@PathParam("gioiTinh") boolean gioiTinh) {
+        List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSPChaByGioiTinh(gioiTinh);
+        String kq = "";
+        kq += "<option>" + "--Chọn loại sản phẩm cha--" + "</option>";
+        for (int i = 0; i < list.size(); i++) {
+            LoaiSP loaiSP = list.get(i);
+            kq += "<option value='" + loaiSP.getMaLoai() + "'>" + loaiSP.getTenLoai() + "</option>";
+        }
+        return kq;
+    }
 
     @GET
     @Path("getBSTByGioiTinh/{gioiTinh}")

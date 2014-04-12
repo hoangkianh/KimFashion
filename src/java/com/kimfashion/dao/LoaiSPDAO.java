@@ -126,6 +126,35 @@ public class LoaiSPDAO {
         }
         return list;
     }
+    
+    public List<LoaiSP> getAllLoaiSPChaByGioiTinh(boolean gioiTinh) {
+        List<LoaiSP> list = new ArrayList<LoaiSP>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM `tbl_loaisp`"
+                    + " WHERE `MaLoaiCha` IS NULL AND GioiTinh = ?"
+                    + " ORDER BY TenLoai");
+            stm.setBoolean(1, gioiTinh);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                LoaiSP loaiSP = new LoaiSP();
+                loaiSP.setMaLoai(rs.getInt("MaLoai"));
+                loaiSP.setTenLoai(rs.getString("TenLoai"));
+                loaiSP.setGioiTinh(rs.getBoolean("GioiTinh"));
+                loaiSP.setMaLoaiCha(rs.getInt("MaLoaiCha"));
+
+                list.add(loaiSP);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
 
     public LoaiSP getLoaiSPByMaLoai(int maLoai) {
         LoaiSP loaiSP = null;

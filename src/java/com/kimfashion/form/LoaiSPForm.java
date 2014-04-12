@@ -82,6 +82,9 @@ public class LoaiSPForm extends org.apache.struts.action.ActionForm {
     public List<LoaiSP> getListLoaiSPCha() {
         return new LoaiSPDAO().getAllLoaiSPCha();
     }
+    public List<LoaiSP> getListLoaiSPChaByGioiTinh() {
+        return new LoaiSPDAO().getAllLoaiSPChaByGioiTinh(gioiTinh);
+    }
     
     public List<LoaiSP> getListLoaiSPCon() {
         return new LoaiSPDAO().getAllLoaiSPCon();
