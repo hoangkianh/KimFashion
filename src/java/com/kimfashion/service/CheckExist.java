@@ -49,5 +49,15 @@ public class CheckExist {
         }
         return "true";
     }
+    
+    /*@POST
+    @Path("checkTenSize/{tenSize}")
+    @Produces("text/plain")
+    public String checkSize (@PathParam("tenSize") String tenSize) {
+        if (new SanPhamDAO().getSanPhamByCode(code) != null) {
+            return "false";
+        }
+        return "true";
+    }*/
   
  }

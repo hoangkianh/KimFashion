@@ -179,13 +179,13 @@
             <forward name="CapNhatSizeOK" path="/success.do?s=9"/>
             <forward name="CapNhatSizeNotOK" path="/error.do?e=12"/>            
         </action>
+        
         <action path="/add-product" forward="/admin/add-product.jsp"/>        
         <action input="/add-product.do" name="SanPhamForm" path="/ThemSanPham" scope="request" type="com.kimfashion.struts.ThemSanPham" >
             <forward name="ThemSanPhamOK" path="/success.do?s=10"/>
             <forward name="ThemSanPhamNotOK" path="/error.do?e=13"/>            
             <forward name="ThemHinhAnhNotOK" path="/error.do?e=14"/>            
         </action>
-        
         <action path="/add-category" forward="/admin/add-category.jsp"/>        
         <action input="/add-category.do" name="LoaiSPForm" path="/ThemLoaiSP" scope="request" type="com.kimfashion.struts.ThemLoaiSP" validate="false">
             <forward name="ThemLoaiSPOK" path="/success.do?s=11"/>
@@ -196,6 +196,16 @@
             <forward name="ThemBoSuuTapOK" path="/success.do?s=12"/>
             <forward name="ThemBoSuuTapNotOK" path="/error.do?e=17"/>
         </action>    
+        <action path="/add-brand" forward="/admin/add-brand.jsp"/>  
+        <action input="/" name="ThuongHieuForm" path="/ThemThuongHieu" scope="request" type="com.kimfashion.struts.ThemThuongHieu" validate="false">
+            <forward name="ThemThuongHieuOK" path="/success.do?s=13"/>
+            <forward name="ThemThuongHieuNotOK" path="/error.do?e=18"/>
+        </action>
+        <action path="/add-size" forward="/admin/add-size.jsp"/>  
+        <action input="/" name="SizeForm" path="/ThemSize" scope="request" type="com.kimfashion.struts.ThemSize" validate="false">
+            <forward name="ThemSizeOK" path="/success.do?s=14"/>
+            <forward name="ThemSizeNotOK" path="/error.do?e=19"/>
+        </action>
           
         <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>

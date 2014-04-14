@@ -51,6 +51,14 @@
     <c:set var="thongBao" value="Thêm bộ sưu tập thành công!"/>
     <c:set var="moTa" value="Bộ sưu tập đã được thêm thành công. <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
 </c:if>
+<c:if test="${s eq 13}">
+    <c:set var="thongBao" value="Thêm thương hiệu thành công!"/>
+    <c:set var="moTa" value="Thương hiệu đã được thêm thành công. <br/> <a href='admin-brand.do'>Quay lại danh sách thương hiệu</a>"/>
+</c:if>
+<c:if test="${s eq 14}">
+    <c:set var="thongBao" value="Thêm size thành công!"/>
+    <c:set var="moTa" value="Size đã được thêm thành công. <br/> <a href='admin-size.do'>Quay lại danh sách size</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
