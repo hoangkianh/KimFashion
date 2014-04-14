@@ -185,12 +185,18 @@
             <forward name="ThemSanPhamNotOK" path="/error.do?e=13"/>            
             <forward name="ThemHinhAnhNotOK" path="/error.do?e=14"/>            
         </action>
+        
         <action path="/add-category" forward="/admin/add-category.jsp"/>        
-        <action input="/add-category.do" name="LoaiSPForm" path="/ThemLoaiSP" scope="session" type="com.kimfashion.struts.ThemLoaiSP" validate="false">
+        <action input="/add-category.do" name="LoaiSPForm" path="/ThemLoaiSP" scope="request" type="com.kimfashion.struts.ThemLoaiSP" validate="false">
             <forward name="ThemLoaiSPOK" path="/success.do?s=11"/>
             <forward name="ThemLoaiSPNotOK" path="/error.do?e=16"/>
         </action>
-        <action path="/add-collection" forward="/admin/add-collection.jsp"/>        
+        <action path="/add-collection" forward="/admin/add-collection.jsp"/>  
+        <action input="/add-collection.do" name="BoSuuTapForm" path="/ThemBoSuuTap" scope="request" type="com.kimfashion.struts.ThemBoSuuTap" validate="false">
+            <forward name="ThemBoSuuTapOK" path="/success.do?s=12"/>
+            <forward name="ThemBoSuuTapNotOK" path="/error.do?e=17"/>
+        </action>    
+          
         <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
@@ -199,7 +205,6 @@
             <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
             <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
         </action>
-        <action input="/" name="BoSuuTapForm" path="/ThemBoSuuTap" scope="session" type="com.kimfashion.struts.ThemBoSuuTap" validate="false"/>
         
         
         

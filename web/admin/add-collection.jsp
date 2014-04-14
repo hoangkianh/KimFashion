@@ -69,10 +69,10 @@
                                                 <div class="row">
                                                     <div class="col-xs-12 col-sm-12 col-md-6">
                                                         <div class="form-group stylish-input">
-                                                            <label for="tenLoai" class="col-sm-4 col-lg-4 control-label required">Tên bộ sưu tập</label>
+                                                            <label for="tenBST" class="col-sm-4 col-lg-4 control-label required">Tên bộ sưu tập</label>
                                                             <div class="col-sm-8 col-lg-8">
-                                                                <input type="text" class="form-control" name="tenLoai" id="tenLoai"
-                                                                       value="<bean:write name="LoaiSPForm" property="tenLoai"/>" />
+                                                                <input type="text" class="form-control" name="tenBST" id="tenBST"
+                                                                       value="<bean:write name="BoSuuTapForm" property="tenBST"/>" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group stylish-input">
@@ -85,14 +85,14 @@
                                                         <div class="form-group stylish-input">
                                                             <label for="anhDaiDien" class="col-sm-4 col-lg-4 control-label required">Hình ảnh</label>
                                                             <div class="col-sm-2">
-                                                                <a id="a-duongDan" href="http://dummyimage.com/762x1100/FA6F57/fff.png&text=Kimfashion" data-toggle="lightbox">
+                                                                <a id="a-anhDaiDien" href="http://dummyimage.com/762x1100/FA6F57/fff.png&text=Kimfashion" data-toggle="lightbox">
                                                                     <img src="http://dummyimage.com/100x140/FA6F57/fff.png&text=Kimfashion" 
-                                                                         id="img-duongDan" width="100" class="img-thumbnail"/>
+                                                                         id="img-anhDaiDien" width="100" class="img-thumbnail"/>
                                                                 </a>           
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <input type="text" name="duongDan" class="form-control txtDuongDan" 
-                                                                       id="duongDan" placeholder="Đường dẫn hình ảnh"
+                                                                <input type="text" name="anhDaiDien" class="form-control txtDuongDan" 
+                                                                       id="anhDaiDien" placeholder="Đường dẫn hình ảnh"
                                                                        value="<bean:write name="BoSuuTapForm" property="anhDaiDien"/>"/>
                                                             </div>
                                                         </div>
@@ -115,37 +115,48 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
-            $('.chkGioiTinh').change(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "service/sanpham/getLoaiSPChaByGioiTinh/" + $(this).val(),
-                    async: false,
-                    success: function(data) {
-                        // xóa dữ liệu trong select box BST
-                        $("#selectLoaiSPCha").empty();
-                        $("#selectLoaiSPCha").append(data);
-                    }
-                });
-            });
-
-
 
             $('#formBST').validate({
                 errorClass: "text-danger text-xs",
                 rules: {
-                    tenLoai: {
+                    tenBST: {
                         required: true,
                         maxlength: 100,
                         minlength: 6
                     },
+                    anhDaiDien: {
+                        required: true
+                    }
                 },
                 messages: {
-                    tenLoai: {
-                        required: "Bạn cần điền tên loại sản phẩm",
-                        maxlength: "Tên loại sản phẩm dài tối đa 100 kí tự",
-                        minlength: "Tên loại sản phẩm dài tối thiểu 6 kí tự"
+                    tenBST: {
+                        required: "Bạn cần điền tên bộ sưu tập",
+                        maxlength: "Tên bộ sưu tập dài tối đa 100 kí tự",
+                        minlength: "Tên bộ sưu tập dài tối thiểu 6 kí tự"
+                    },
+                    anhDaiDien: {
+                        required: "Bạn cần điền đường dẫn ảnh"
                     }
                 }
+            });
+            
+            /// hiển thị ảnh khi paste đường dẫn vào textbox
+            $('.txtDuongDan').change(function() {
+                
+                // lấy đường dẫn
+                var duongDan = $(this).val();
+
+                // thay thuộc tính src của thẻ img có id tương ứng
+                $('#img-anhDaiDien').attr('src', duongDan);
+                // thay thuộc tính href của thẻ a có id tương ứng
+                $('#a-anhDaiDien').attr('href', duongDan);
+                // nếu trường hợp ảnh lỗi thì in ra ảnh mặc định
+                $('.img-thumbnail').error(function() {
+                    $(this).unbind('error').attr('src', 'http://dummyimage.com/100x140/FA6F57/fff.png&text=Kimfashion');
+
+                    // thay ảnh ở thẻ a
+                    $('#a-anhDaiDien').attr('href', 'http://dummyimage.com/762x1100/FA6F57/fff.png&text=Kimfashion');
+                });
             });
         </script>
     </body>

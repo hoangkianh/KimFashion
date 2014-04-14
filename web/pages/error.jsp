@@ -68,6 +68,10 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="Thêm mới loại sản phẩm không thành công, bạn hãy thử lại"/>
 </c:if>
+<c:if test="${e eq 17}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Thêm mới bộ sưu tập không thành công, bạn hãy thử lại"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

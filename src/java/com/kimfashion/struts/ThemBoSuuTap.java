@@ -6,8 +6,12 @@
 
 package com.kimfashion.struts;
 
+import com.kimfashion.dao.BoSuuTapDAO;
+import com.kimfashion.dto.BoSuuTap;
+import com.kimfashion.form.BoSuuTapForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -36,6 +40,17 @@ public class ThemBoSuuTap extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        return mapping.findForward(SUCCESS);
+          BoSuuTapForm boSuuTapForm = (BoSuuTapForm) form;
+        BoSuuTapDAO  bstdao = new BoSuuTapDAO();
+        
+        BoSuuTap bst = new BoSuuTap();
+        
+        BeanUtils.copyProperties(bst, boSuuTapForm);
+        
+        if (!bstdao.addNewBoSuuTap(bst)) {
+            return mapping.findForward("ThemBoSuuTapNotOK");
+
+        }
+        return mapping.findForward("ThemBoSuuTapOK");
     }
 }

@@ -51,20 +51,27 @@
                             <h5 class="widget-title">liên lạc với chúng tôi</h5>
                             <div class="widget-content">
                                 <ul class="menu iconed-list unstyled list-inline">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                     <li>
                                         <span class="list-icon"><i class="round-icon iconfont-map-marker"></i></span>
                                         <div class="list-content">99 Nguyễn Chí Thanh - Quận Đống Đa - TP.Hà Nội</div>
                                     </li>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-2">
                                     <li>
                                         <span class="list-icon"><i class="round-icon iconfont-phone"></i></span>
                                         <div class="list-content">(043) 8374447</div>
                                     </li>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-3">
                                     <li>
                                         <span class="list-icon"><i class="round-icon iconfont-envelope-alt"></i></span>
                                         <div class="list-content">kimfashion@gmail.com</div>
                                     </li>
+                                    </div>
                                 </ul>
                             </div>
+                            <br/>
                         </section>
                     </div>
                 </div>
