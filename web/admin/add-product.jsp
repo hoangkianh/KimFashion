@@ -92,7 +92,7 @@
                                                         <div class="form-group stylish-input">
                                                             <label for="gioiTinh" class="col-sm-4 col-lg-4 control-label required">Giới tính</label>
                                                             <div class="col-sm-8 col-lg-8">
-                                                                <input type="radio" name="gioiTinh" value="False" class="chkGioiTinh prettyCheckable" checked="checked" data-label="Nam" />
+                                                                <input type="radio" name="gioiTinh" value="False" class="chkGioiTinh prettyCheckable" data-label="Nam" />
                                                                 <input type="radio" name="gioiTinh" value="True" class="chkGioiTinh prettyCheckable" data-label="Nữ" />
                                                             </div>
                                                         </div>

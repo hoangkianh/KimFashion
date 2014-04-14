@@ -73,11 +73,10 @@ public class ThemSanPham extends org.apache.struts.action.Action {
             }
         }
         
-        
         // thêm vào sanpham_size
         // cắt chuỗi size dể lấy ra mảng maSize
-        String[] maSizeArray = spForm.getListSizeStringSPMoi().split("|");
-        for (int i = 1; i < maSizeArray.length; i+=2) {
+        String[] maSizeArray = spForm.getListSizeStringSPMoi().split("[|]");
+        for (int i = 0; i < maSizeArray.length; i++) {
             try {
                 int maSize = Integer.parseInt(maSizeArray[i]);
                 

@@ -6,11 +6,7 @@
 
 package com.kimfashion.form;
 
-import com.kimfashion.dao.SanPhamSizeDAO;
-import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dto.SanPhamSize;
-import com.kimfashion.dto.Size;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 

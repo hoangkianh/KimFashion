@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.kimfashion.struts;
 
 import com.kimfashion.dao.SanPhamSizeDAO;
@@ -38,24 +37,25 @@ public class SuaSizeSP extends org.apache.struts.action.Action {
             throws Exception {
         SanPhamSizeForm sanPhamSizeForm = (SanPhamSizeForm) form;
         SanPhamSizeDAO sanPhamSizeDAO = new SanPhamSizeDAO();
-        
+
         int maSP = sanPhamSizeForm.getMaSP();
         // xóa tất cả size của sp trong csdl
         List<SanPhamSize> list = sanPhamSizeDAO.getAllSizeBySanPham(maSP);
         for (SanPhamSize sanPhamSize : list) {
-            sanPhamSizeDAO.deleteSanPhamSize(maSP, sanPhamSize.getMaSize());
+            if (!sanPhamSizeDAO.deleteSanPhamSize(maSP, sanPhamSize.getMaSize())) {
+                return mapping.findForward("CapNhatSizeNotOK");
+            }
         }
-        
         // sau đó add sp-size mới
         // cắt chuỗi size dể lấy ra mảng maSize
-        String[] maSizeArray = sanPhamSizeForm.getListSizeString().split("|");
-        for (int i = 1; i < maSizeArray.length; i+=2) {
+        String[] maSizeArray = sanPhamSizeForm.getListSizeString().split("[|]");
+        for (int i = 0; i < maSizeArray.length; i ++) {
             try {
                 int maSize = Integer.parseInt(maSizeArray[i]);
-                
+                System.out.println(maSize);
                 SanPhamSize sanPhamSize = new SanPhamSize(maSP, maSize);
-                if (!sanPhamSizeDAO.addNewSanPhamSize(sanPhamSize)){
-                    return mapping.findForward("CapNhatSizeNotOK");                    
+                if (!sanPhamSizeDAO.addNewSanPhamSize(sanPhamSize)) {
+                    return mapping.findForward("CapNhatSizeNotOK");
                 }
             } catch (NumberFormatException e) {
                 return mapping.findForward("CapNhatSizeNotOK");
