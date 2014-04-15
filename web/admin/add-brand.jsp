@@ -94,26 +94,6 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
-            // kiểm tra code trùng lặp
-            $.validator.addMethod("checkCode", function(value, element) {
-                var exist;
-                $.ajax({
-                    type: 'POST',
-                    url: "service/checkexist/checkCode/" + value,
-                    dataType: "text",
-                    async: false,
-                    success: function(data) {
-                        if (data === "true") {
-                            exist = true;
-                        } else {
-                            exist = false;
-                        }
-                    }
-                });
-                return this.optional(element) || exist;
-            }, "Code này đã tồn tại trong sản phẩm khác");
-
-
             $('#formThuongHieu').validate({
                 errorClass: "text-danger text-xs",
                 rules: {

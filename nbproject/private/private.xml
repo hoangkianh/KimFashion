@@ -4,14 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
-            <file>file:/F:/GitHub/KimFashion/web/admin/add-product.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/error.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/success.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/struts/ThemThuongHieu.java</file>
-            <file>file:/F:/GitHub/KimFashion/web/admin/add-brand.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/struts/ThemSize.java</file>
-            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/service/CheckExist.java</file>
-            <file>file:/F:/GitHub/KimFashion/web/admin/add-size.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/struts/GetAllSize.java</file>
+            <file>file:/F:/GitHub/KimFashion/web/admin/product-size.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/admin/product-brand.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/form/SizeForm.java</file>
+            <file>file:/F:/GitHub/KimFashion/src/java/com/kimfashion/struts/ThemSanPham.java</file>
         </group>
     </open-files>
 </project-private>

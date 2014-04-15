@@ -67,6 +67,7 @@
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
                                             <th class="sorting_disabled">&nbsp;</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th>Code</th>
                                             <th>Tên</th>
                                             <th class="sorting_disabled">Ảnh</th>
@@ -101,6 +102,12 @@
                                                             </a>
                                                         </c:otherwise>
                                                     </c:choose>
+                                                </td>
+                                                <td align="center">
+                                                    <a href="delete-product.do?id=<bean:write name="sp" property="maSP"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa sản phẩm">
+                                                        <i class="iconfont-trash"></i>
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <a class="accent-color" href="details-product.do?id=<bean:write name="sp" property="maSP"/>" 

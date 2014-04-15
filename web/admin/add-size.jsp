@@ -82,6 +82,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </html:form>
@@ -94,6 +95,24 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
+            // kiểm tra tên size trùng lặp
+            $.validator.addMethod("checkTenSize", function(value, element) {
+                var exist;
+                $.ajax({
+                    type: 'POST',
+                    url: "service/checkexist/checkTenSize/" + value,
+                    dataType: "text",
+                    async: false,
+                    success: function(data) {
+                        if (data === "true") {
+                            exist = true;
+                        } else {
+                            exist = false;
+                        }
+                    }
+                });
+                return this.optional(element) || exist;
+            }, "Size này đã tồn tại. Bạn hãy điền tên size khác");
 
             $('#formSize').validate({
                 errorClass: "text-danger text-xs",
@@ -112,7 +131,7 @@
                     },
                 }
             });
-            
+
         </script>
     </body>
 </html>

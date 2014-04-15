@@ -6,6 +6,7 @@
 package com.kimfashion.service;
 
 import com.kimfashion.dao.SanPhamDAO;
+import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dao.ThanhVienDAO;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Path;
@@ -50,14 +51,14 @@ public class CheckExist {
         return "true";
     }
     
-    /*@POST
+    @POST
     @Path("checkTenSize/{tenSize}")
     @Produces("text/plain")
-    public String checkSize (@PathParam("tenSize") String tenSize) {
-        if (new SanPhamDAO().getSanPhamByCode(code) != null) {
+    public String checkTenSize (@PathParam("tenSize") String tenSize) {
+        if (new SizeDAO().getSizeByTenSize(tenSize) != null) {
             return "false";
         }
         return "true";
-    }*/
+    }
   
  }
