@@ -43,7 +43,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Thương hiệu</a></li>
+                            <li><a href="admin-brand.do">Thương hiệu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                                         <logic:iterate id="th" name="ThuongHieuForm" property="listThuongHieu">                                            
                                             <tr>
                                                 <td align="center">
-                                                    <a href="edit-category.do?id=<bean:write name="th" property="maThuongHieu"/>"
+                                                    <a href="edit-brand.do?id=<bean:write name="th" property="maThuongHieu"/>"
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin thương hiệu">
                                                         <i class="iconfont-edit"></i>
                                                     </a>

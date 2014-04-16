@@ -17,9 +17,9 @@ import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author Kim Hue
+ * @author HKA
  */
-public class SuaLoaiSP extends org.apache.struts.action.Action {
+public class GetChiTietLoaiSPAdmin extends org.apache.struts.action.Action {
 
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
@@ -39,21 +39,20 @@ public class SuaLoaiSP extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
-        LoaiSPForm loaiSPForm = (LoaiSPForm) form;
-        LoaiSPDAO loaiSPDAO = new LoaiSPDAO();
+        try {
+            int maloaiSP = Integer.parseInt(request.getParameter("id"));
+            LoaiSP loaiSP = new LoaiSPDAO().getLoaiSPByMaLoai(maloaiSP);
 
-        LoaiSP loaiSP = loaiSPDAO.getLoaiSPByMaLoai(loaiSPForm.getMaLoai());
+            LoaiSPForm loaiSPForm = (LoaiSPForm) form;
 
-        if (loaiSP == null) {
-            return mapping.findForward("CapNhatLoaiSanPhamNotOK");
+            if (loaiSP != null) {
+                BeanUtils.copyProperties(loaiSPForm, loaiSP);
+                return mapping.findForward("GetChiTietLoaiSPOK");
+            }
+        } catch (NumberFormatException ex) {
+            return mapping.findForward("GetChiTietLoaiSPNotOK");
         }
 
-        BeanUtils.copyProperties(loaiSP, loaiSPForm);
-
-        if (!loaiSPDAO.updateLoaiSP(loaiSP)) {
-            return mapping.findForward("CapNhatLoaiSanPhamNotOK");
-        }
-
-        return mapping.findForward("CapNhatLoaiSanPhamOK");
+        return mapping.findForward("GetChiTietLoaiSPNotOK");
     }
 }

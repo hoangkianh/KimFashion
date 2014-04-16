@@ -5,9 +5,11 @@
  */
 package com.kimfashion.service;
 
+import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.SizeDAO;
 import com.kimfashion.dao.ThanhVienDAO;
+import com.kimfashion.dao.ThuongHieuDAO;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.POST;
@@ -56,6 +58,26 @@ public class CheckExist {
     @Produces("text/plain")
     public String checkTenSize (@PathParam("tenSize") String tenSize) {
         if (new SizeDAO().getSizeByTenSize(tenSize) != null) {
+            return "false";
+        }
+        return "true";
+    }
+    
+    @POST
+    @Path("checkTenThuongHieu/{tenThuongHieu}")
+    @Produces("text/plain")
+    public String checkTenThuongHieu (@PathParam("tenThuongHieu") String tenThuongHieu) {
+        if (new ThuongHieuDAO().getThuongHieuByTenTH(tenThuongHieu) != null) {
+            return "false";
+        }
+        return "true";
+    }
+    
+    @POST
+    @Path("checkTenLoaiSP/{tenLoai}/{gioiTinh}")
+    @Produces("text/plain")
+    public String checkTenLoaiSP (@PathParam("tenLoai") String tenLoai,@PathParam("gioiTinh") boolean gioiTinh) {
+        if (new LoaiSPDAO().getLoaiSPByTenLoai(tenLoai, gioiTinh) != null) {
             return "false";
         }
         return "true";

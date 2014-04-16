@@ -120,7 +120,8 @@
                     tenSize: {
                         required: true,
                         maxlength: 20,
-                        minlength: 1
+                        minlength: 1,
+                        checkTenSize: true
                     },
                 },
                 messages: {

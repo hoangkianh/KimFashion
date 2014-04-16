@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.kimfashion.struts;
 
-import com.kimfashion.dao.LoaiSPDAO;
-import com.kimfashion.dto.LoaiSP;
-import com.kimfashion.form.LoaiSPForm;
+import com.kimfashion.dao.ThuongHieuDAO;
+import com.kimfashion.dto.ThuongHieu;
+import com.kimfashion.form.ThuongHieuForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
@@ -17,9 +18,9 @@ import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author Kim Hue
+ * @author HKA
  */
-public class SuaLoaiSP extends org.apache.struts.action.Action {
+public class GetChiTietThuongHieuAdmin extends org.apache.struts.action.Action {
 
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
@@ -38,22 +39,21 @@ public class SuaLoaiSP extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        
+        try {
+            int maTH = Integer.parseInt(request.getParameter("id"));
+            ThuongHieu th = new ThuongHieuDAO().getThuongHieuByMaTH(maTH);
 
-        LoaiSPForm loaiSPForm = (LoaiSPForm) form;
-        LoaiSPDAO loaiSPDAO = new LoaiSPDAO();
+            ThuongHieuForm thuongHieuForm = (ThuongHieuForm) form;
 
-        LoaiSP loaiSP = loaiSPDAO.getLoaiSPByMaLoai(loaiSPForm.getMaLoai());
-
-        if (loaiSP == null) {
-            return mapping.findForward("CapNhatLoaiSanPhamNotOK");
+            if (th != null) {
+                BeanUtils.copyProperties(thuongHieuForm, th);
+                return mapping.findForward("GetChiTietThuongHieuOK");
+            }
+        } catch (NumberFormatException ex) {
+            return mapping.findForward("GetChiTietThuongHieuNotOK");
         }
 
-        BeanUtils.copyProperties(loaiSP, loaiSPForm);
-
-        if (!loaiSPDAO.updateLoaiSP(loaiSP)) {
-            return mapping.findForward("CapNhatLoaiSanPhamNotOK");
-        }
-
-        return mapping.findForward("CapNhatLoaiSanPhamOK");
+        return mapping.findForward("GetChiTietThuongHieuNotOK");
     }
 }

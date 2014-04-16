@@ -181,6 +181,32 @@ public class LoaiSPDAO {
         return loaiSP;
     }
     
+    public LoaiSP getLoaiSPByTenLoai(String tenLoai, boolean gioiTinh) {
+        LoaiSP loaiSP = null;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM tbl_loaisp WHERE TenLoai=? AND GioiTinh=?");
+            stm.setString(1, tenLoai);
+            stm.setBoolean(2, gioiTinh);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                loaiSP = new LoaiSP();
+                loaiSP.setMaLoai(rs.getInt("MaLoai"));
+                loaiSP.setTenLoai(rs.getString("TenLoai"));
+                loaiSP.setGioiTinh(rs.getBoolean("GioiTinh"));
+                loaiSP.setMaLoaiCha(rs.getInt("MaLoaiCha"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return loaiSP;
+    }
+    
     
     public boolean addNewLoaiSP(LoaiSP loaiSP) {
         boolean kq = false;
