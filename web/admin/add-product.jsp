@@ -56,7 +56,7 @@
                                 <h3 class="uppercase text-bold text-center"><span>thêm sản phẩm mới</span></h3>
                                 <html:errors/>
                                 <html:form action="/ThemSanPham" method="POST" styleClass="form-horizontal" styleId="formSanPham">
-                                    <div class="col-md-12 col-sm-12">
+                                    <div class="col-md-12 col-xs-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">

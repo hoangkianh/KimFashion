@@ -6,7 +6,10 @@
 
 package com.kimfashion.form;
 
+import com.kimfashion.dao.ThanhVienDAO;
+import com.kimfashion.dto.ChiTietHD;
 import com.kimfashion.dto.HoaDon;
+import com.kimfashion.dto.ThanhVien;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,14 +27,16 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
     private String ngayLapHD;
     private String ngayGiaoHang;
     private int maTV;
-    private String diaChiTV;
-    private String dienThoaiTV;
+    private String diaChiNguoiMua;
+    private String sdtNguoiMua;
     private String hoTenNguoiNhan;
     private String sdtNguoiNhan;
     private String diaChiGiaoHang;
     private boolean trangThai;
     private String ghiChu;
     private List<HoaDon> listHoaDon;
+    private List<ChiTietHD> listChiTietHD;
+    private String listChiTietHDString;
    
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors err = new ActionErrors();
@@ -46,6 +51,54 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
         return err;
     }
 
+    public String getListChiTietHDString() {
+        return listChiTietHDString;
+    }
+
+    public void setListChiTietHDString(String listChiTietHDString) {
+        this.listChiTietHDString = listChiTietHDString;
+    }
+    
+    public int getPhiVanChuyen() {
+        int phiVC = 0;
+        if (getTongTien() < 1000000) {
+            phiVC = 50000;
+        }
+        return phiVC;
+    }
+    
+    public int getTongTien () {
+        int tongTien = 0;
+        for (ChiTietHD chiTietHD : listChiTietHD) {
+            tongTien += chiTietHD.getDonGia() * chiTietHD.getSoLuong();
+        }
+        return tongTien;
+    }
+    
+    public List<ChiTietHD> getListChiTietHD() {
+        return listChiTietHD;
+    }
+
+    public void setListChiTietHD(List<ChiTietHD> listChiTietHD) {
+        this.listChiTietHD = listChiTietHD;
+    }
+
+     public String getHoTenNguoiMua() {
+        ThanhVien tv = new ThanhVienDAO().getThanhVienByMaTV(maTV);
+        if (tv != null) {
+            return tv.getHoTen();
+        }
+        return "";
+    }
+    
+    public String getEmailNguoiMua() {
+        ThanhVien tv = new ThanhVienDAO().getThanhVienByMaTV(maTV);
+        if (tv != null) {
+            return tv.getEmail();
+        }
+        return "";
+    }
+    
     public int getMaHD() {
         return maHD;
     }
@@ -110,20 +163,20 @@ public class HoaDonForm extends org.apache.struts.action.ActionForm {
         this.listHoaDon = listHoaDon;
     }
 
-    public String getDiaChiTV() {
-        return diaChiTV;
+    public String getDiaChiNguoiMua() {
+        return diaChiNguoiMua;
     }
 
-    public void setDiaChiTV(String diaChiTV) {
-        this.diaChiTV = diaChiTV;
+    public void setDiaChiNguoiMua(String diaChiNguoiMua) {
+        this.diaChiNguoiMua = diaChiNguoiMua;
     }    
 
-    public String getDienThoaiTV() {
-        return dienThoaiTV;
+    public String getSdtNguoiMua() {
+        return sdtNguoiMua;
     }
 
-    public void setDienThoaiTV(String dienThoaiTV) {
-        this.dienThoaiTV = dienThoaiTV;
+    public void setSdtNguoiMua(String sdtNguoiMua) {
+        this.sdtNguoiMua = sdtNguoiMua;
     }
 
     public String getHoTenNguoiNhan() {

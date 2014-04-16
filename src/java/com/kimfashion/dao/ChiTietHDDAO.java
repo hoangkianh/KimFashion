@@ -27,6 +27,7 @@ public class ChiTietHDDAO {
         ResultSet rs = null;
         try {
             stm = conn.prepareStatement("SELECT * FROM `tbl_chitiethd` WHERE `MaHD` = ?");
+            stm.setInt(1, maHD);
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -79,16 +80,14 @@ public class ChiTietHDDAO {
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
         ResultSet rs = null;
-        String query = "INSERT INTO `tbl_chitiethd`"
-                + "(`MaHD`, `MaSP`, `MaSize`, `SoLuong`, `DonGia`) "
-                + "VALUES (?,?,?,?,?)";
+        String query = "UPDATE `tbl_chitiethd`"
+                + "SET SoLuong=? WHERE `MaHD`=? AND `MaSP`=? AND `MaSize`=?";
         try {
             stm = conn.prepareStatement(query);
-            stm.setInt(1, ct.getMaHD());
-            stm.setInt(2, ct.getMaSP());
-            stm.setInt(3, ct.getMaSize());
-            stm.setInt(4, ct.getSoLuong());
-            stm.setInt(5, ct.getDonGia());
+            stm.setInt(1, ct.getSoLuong());
+            stm.setInt(2, ct.getMaHD());
+            stm.setInt(3, ct.getMaSP());
+            stm.setInt(4, ct.getMaSize());
 
             if (stm.executeUpdate() > 0) {
                 kq = true;

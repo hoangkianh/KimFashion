@@ -18,18 +18,18 @@ jQuery(function($) {
             tongCong += parseInt(gia) * parseInt(cookie[sp].qty);
         }
 
-        if (tongCong <= 1000000) {
+        if (tongCong < 1000000) {
             vanChuyen = 50000;
         }
         thanhTien = tongCong + vanChuyen;
 
-        $('.shop-summary #tongCong').text(formatNumber(tongCong) + ' VND');
+        $('.shop-summary #tongCong').text(formatNumber(tongCong));
         if (vanChuyen == 0) {
             $('.shop-summary #vanChuyen').text('Miễn phí');
         } else {
-            $('.shop-summary #vanChuyen').html(formatNumber(vanChuyen) + ' VND');
+            $('.shop-summary #vanChuyen').html(formatNumber(vanChuyen));
         }
-        $('.shop-summary #thanhTien').text(formatNumber(thanhTien) + ' VND');
+        $('.shop-summary #thanhTien').text(formatNumber(thanhTien));
     }
     hienThiCheckOut();//gọi hàm hiển thị
 
@@ -82,7 +82,7 @@ jQuery(function($) {
         while (rgx.test(x1)) {
             x1 = x1.replace(rgx, '$1' + ',' + '$2');
         }
-        return x1 + x2;
+        return x1 + x2 + ' VND';
     }
 
     function output_cookie()
@@ -119,7 +119,7 @@ jQuery(function($) {
 									<button type="button" class="up"><i class="iconfont-caret-up inline-middle"></i></button> \
 								</div> \
 							</td> \
-							<td class="hidden-xs"><strong class="text-bold row-total">' + formatNumber(temp) + ' VND</strong></td> \
+							<td class="hidden-xs"><strong class="text-bold row-total">' + formatNumber(temp) + '</strong></td> \
 							<td class="hidden-xs"><div class="item" data-product-id="' + cookie[sp].id + '" data-size="' + cookie[sp].size + '"><button type="button" class="close" aria-hidden="true">×</button></div></td> \
 						</tr>');
 
@@ -136,7 +136,7 @@ jQuery(function($) {
 
     /*
      | ----------------------------------------------------------------------------------
-     | cập nhật số lượng
+     | cập nhật số lượng trong trang giỏ hàng
      | ----------------------------------------------------------------------------------
      */
     $('.qty-btn-group button').on('click', function() {
@@ -155,7 +155,7 @@ jQuery(function($) {
                 row_total = unit_price.replace(/[^0-9\.]+/g, '');
         row_total = parseInt(row_total) * val;
 
-        $row.find('.row-total').text(formatNumber(row_total) + ' VND');
+        $row.find('.row-total').text(formatNumber(row_total));
 
         update_cart_total();
     });
@@ -181,7 +181,7 @@ jQuery(function($) {
             }
         });
 
-        $('.shopcart-total .cart-total > .pull-right').text(formatNumber(total) + ' VND');
+        $('.shopcart-total .cart-total > .pull-right').text(formatNumber(total));
         if (total === 0) {
             $('#checkout-btn').attr('href', 'javascript:void(0)');
              $('.tbl-cart .empty-cart').removeClass('hide');
@@ -437,8 +437,8 @@ jQuery(function($) {
             slide: function() {
                 var values = $(this).val();
 
-                $this.siblings('.range-slider-value').find('> .min').text(formatNumber(values[0]) + ' ' + configs['currency']);
-                $this.siblings('.range-slider-value').find('> .max').text(formatNumber(values[1]) + ' ' + configs['currency']);
+                $this.siblings('.range-slider-value').find('> .min').text(formatNumber(values[0]));
+                $this.siblings('.range-slider-value').find('> .max').text(formatNumber(values[1]));
             },
             serialization: {
                 to: ['min-price', 'max-price'],
@@ -449,8 +449,8 @@ jQuery(function($) {
             priceSlider($(this).val());
         });
 
-        $this.siblings('.range-slider-value').find('> .min').text(formatNumber($this.val()[0]) + ' ' + configs['currency']);
-        $this.siblings('.range-slider-value').find('> .max').text(formatNumber($this.val()[1]) + ' ' + configs['currency']);
+        $this.siblings('.range-slider-value').find('> .min').text(formatNumber($this.val()[0]));
+        $this.siblings('.range-slider-value').find('> .max').text(formatNumber($this.val()[1]));
     });
 
 });

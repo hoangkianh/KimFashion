@@ -78,7 +78,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <logic:iterate id="sp" name="SanPhamForm" property="listSanPham">                                            
+                                        <logic:iterate id="sp" name="SanPhamForm" property="listSanPham">
                                             <tr>
                                                 <td align="center">
                                                     <a href="edit-product.do?id=<bean:write name="sp" property="maSP"/>"
@@ -115,12 +115,14 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a class="accent-color" href="product-category.do?cat=<bean:write name="sp" property="maLoaiSP"/>">
+                                                    <a class="accent-color" href="product-category.do?cat=<bean:write name="sp" property="maLoaiSP"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem tất cả sản phẩm <bean:write name="sp" property="tenLoaiSP"/>">
                                                         <bean:write name="sp" property="tenLoaiSP"/>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a class="accent-color" href="product-brand.do?id=<bean:write name="sp" property="maThuongHieu"/>">
+                                                    <a class="accent-color" href="product-brand.do?id=<bean:write name="sp" property="maThuongHieu"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem tất cả sản phẩm thuộc thương hiệu <bean:write name="sp" property="tenThuongHieu"/>">
                                                         <bean:write name="sp" property="tenThuongHieu" />
                                                     </a>
                                                 </td>

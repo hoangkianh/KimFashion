@@ -51,15 +51,14 @@ public class ThanhToan extends org.apache.struts.action.Action {
         ThanhVien tv = new ThanhVienDAO().getThanhVienByMaTV(hoaDonForm.getMaTV());
 
         if (tv != null
-                || !hoaDonForm.getDiaChiTV().isEmpty()
-                || !hoaDonForm.getDienThoaiTV().isEmpty()) {
+                || !hoaDonForm.getDiaChiNguoiMua().isEmpty()
+                || !hoaDonForm.getSdtNguoiMua().isEmpty()) {
             // nếu giao hàng tới địa chỉ trên hóa đơn
             if (hoaDonForm.getHoTenNguoiNhan().isEmpty()) {
                 hoaDonForm.setHoTenNguoiNhan(tv.getHoTen());
-                hoaDonForm.setSdtNguoiNhan(hoaDonForm.getDienThoaiTV());
-                hoaDonForm.setDiaChiGiaoHang(hoaDonForm.getDiaChiTV());
+                hoaDonForm.setSdtNguoiNhan(hoaDonForm.getSdtNguoiMua());
+                hoaDonForm.setDiaChiGiaoHang(hoaDonForm.getDiaChiNguoiMua());
             }
-
             BeanUtils.copyProperties(hd, hoaDonForm);
 
             if (hddao.addNewHoaDon(hd)) {

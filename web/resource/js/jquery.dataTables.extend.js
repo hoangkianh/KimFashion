@@ -13,6 +13,7 @@ $.extend(true, $.fn.dataTable.defaults, {
         "sInfoPostFix": "",
         "sSearch": "Tìm:",
         "sUrl": "",
+        "sEmptyTable": "Không có dữ liệu",
         "oPaginate": {
             "sFirst": "Đầu",
             "sPrevious": "Trước",

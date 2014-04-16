@@ -38,10 +38,12 @@
                     <nav id="site-menu" role="navigation">
                         <ul class="main-menu hidden-sm hidden-xs">
                             <li>
-                                <a href="admin-product.do">Sản phẩm</a>
-                                <div class="mega-menu" data-col-lg="3" data-col-md="3">
+                                <a href="admin-product.do">
+                                    <i class="iconfont-bookmark"></i>
+                                </a>
+                                <div class="mega-menu" data-col-lg="9" data-col-md="9">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-4">
                                             <h4 class="menu-title">quản lý sản phẩm</h4>
                                             <ul class="mega-sub">
                                                 <li><a href="admin-product.do">Danh sách sản phẩm</a></li>
@@ -51,14 +53,24 @@
                                                 <li><a href="admin-size.do">Size</a></li>
                                             </ul>
                                         </div>
+                                        <div class="col-md-4">
+                                            <h4 class="menu-title">quản lý hóa đơn</h4>
+                                            <ul class="mega-sub">
+                                                <li><a href="all-order.do">Tất cả hóa đơn</a></li>
+                                                <li><a href=".do">Hóa đơn đã thanh toán</a></li>
+                                                <li><a href=".do">Hóa đơn chưa thanh toán</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4 class="menu-title">Quản lý thành viên</h4>
+                                            <ul class="mega-sub">
+                                                <li><a href=".do"></a></li>
+                                                <li><a href=".do"></a></li>
+                                                <li><a href=".do"></a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li>
-                                <a href="#">Đơn hàng</a>
-                            </li>
-                            <li>
-                                <a href="#">Quản lý thành viên</a>
                             </li>
                             <li>
                                 <a href="/">Quay lại cửa hàng</a>

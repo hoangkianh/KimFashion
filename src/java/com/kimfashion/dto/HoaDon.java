@@ -1,6 +1,8 @@
 package com.kimfashion.dto;
 
+import com.kimfashion.dao.ThanhVienDAO;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -12,10 +14,36 @@ public class HoaDon implements Serializable {
     private String ngayGiaoHang;
     private int maTV;
     private String hoTenNguoiNhan;
+    private String sdtNguoiMua;
     private String sdtNguoiNhan;
     private String diaChiGiaoHang;
     private boolean trangThai;
     private String ghiChu;
+    private List<ChiTietHD> listChiTietHD;
+
+    public List<ChiTietHD> getListChiTietHD() {
+        return listChiTietHD;
+    }
+
+    public void setListChiTietHD(List<ChiTietHD> listChiTietHD) {
+        this.listChiTietHD = listChiTietHD;
+    }
+
+    public String getHoTenNguoiMua() {
+        ThanhVien tv = new ThanhVienDAO().getThanhVienByMaTV(maTV);
+        if (tv != null) {
+            return tv.getHoTen();
+        }
+        return "";
+    }
+    
+    public String getEmailNguoiMua() {
+        ThanhVien tv = new ThanhVienDAO().getThanhVienByMaTV(maTV);
+        if (tv != null) {
+            return tv.getEmail();
+        }
+        return "";
+    }
 
     public String getGhiChu() {
         return ghiChu;
@@ -64,6 +92,15 @@ public class HoaDon implements Serializable {
     public void setMaTV(int maTV) {
         this.maTV = maTV;
     }
+
+    public String getSdtNguoiMua() {
+        return sdtNguoiMua;
+    }
+
+    public void setSdtNguoiMua(String sdtNguoiMua) {
+        this.sdtNguoiMua = sdtNguoiMua;
+    }
+    
 
     public String getSdtNguoiNhan() {
         return sdtNguoiNhan;

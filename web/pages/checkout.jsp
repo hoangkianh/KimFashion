@@ -21,6 +21,7 @@
         <title>Thanh toán | KimFashion - Cửa hàng thời trang online</title>
         <%@include file="../include/includeCSS.jsp" %>
         <link rel="stylesheet" href="resource/css/innerpage.css"/>
+        <link rel="stylesheet" href="resource/css/bootstrap-datetimepicker.min.css"/>
         <%@include file="../include/includeJS.jsp" %>
     </head>
     <body>
@@ -141,9 +142,9 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group stylish-input">
-                                                                    <label for="diaChiTV" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
+                                                                    <label for="diaChiNguoiMua" class="col-sm-4 col-lg-4 control-label required">Địa chỉ</label>
                                                                     <div class="col-sm-8 col-lg-8">
-                                                                        <input type="text" class="form-control" name="diaChiTV" id="diaChiTV" />
+                                                                        <input type="text" class="form-control" name="diaChiNguoiMua" id="diaChiNguoiMua" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -155,9 +156,9 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group stylish-input">
-                                                                    <label for="dienThoaiTV" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
+                                                                    <label for="sdtNguoiMua" class="col-sm-4 col-lg-4 control-label required">Điện thoại</label>
                                                                     <div class="col-sm-8 col-lg-8">
-                                                                        <input type="text" class="form-control" name="dienThoaiTV" id="dienThoaiTV" />
+                                                                        <input type="text" class="form-control" name="sdtNguoiMua" id="sdtNguoiMua" />
                                                                     </div>
                                                                 </div>                                                            
                                                             </div>
@@ -174,12 +175,24 @@
                                                         </a>
                                                     </h4>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <div class="form-group stylish-input">
-                                                        <div class="col-sm-8 col-lg-8">
-                                                            <input type="checkbox" id="checkBoxGiaoHang" name="luuLai"
-                                                                   class="prettyCheckable" checked="checked" 
-                                                                   data-label="Giao hàng tới địa chỉ trên hóa đơn" >
+                                                <div class="panel-body">
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group stylish-input">
+                                                            <div class="col-sm-4 col-lg-4">
+                                                                <input type="checkbox" id="checkBoxGiaoHang" name="luuLai"
+                                                                       class="prettyCheckable" checked="checked" 
+                                                                       data-label="Giao hàng tới địa chỉ trên hóa đơn" >
+                                                            </div>
+                                                            <div class="col-sm-6 col-lg-6">
+                                                                <div class="form-group stylish-input">
+                                                                    <label for="ngayGiaoHang" class="col-sm-4 col-lg-4 control-label required">Ngày giao hàng</label>
+                                                                    <div class="col-sm-8 col-lg-8 date input-group" id="datetimepicker1">
+                                                                        <input type="text" class="form-control" name="ngayGiaoHang" id="ngayGiaoHang" 
+                                                                               data-format="dd/MM/yyyy hh:mm:ss" />
+                                                                        <span class="input-group-addon"><i data-time-icon="iconfont-time" data-date-icon="iconfont-calendar"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,6 +293,7 @@
         <%@include file="../include/footer.jsp" %>
         <script src="resource/js/products.js"></script>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
+        <script src="resource/js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript">
 
             $.validator.addMethod("checkPhone", function(value, element) {
@@ -296,16 +310,19 @@
                     hoTen: {
                         required: true,
                     },
-                    diaChiTV: {
+                    diaChiNguoiMua: {
                         required: true,
                     },
                     email: {
                         required: true,
                         email: true
                     },
-                    dienThoaiTV: {
+                    sdtNguoiMua: {
                         required: true,
                         checkPhone: true
+                    },
+                    ngayGiaoHang: {
+                        required: true
                     },
                     hoTenNguoiNhan: {
                         required: {
@@ -341,18 +358,21 @@
                     hoTen: {
                         required: "Bạn cần điền họ tên của mình"
                     },
-                    diaChiTV: {
+                    diaChiNguoiMua: {
                         required: "Bạn cần điền địa chỉ của mình"
                     },
                     email: {
                         required: "Bạn cần điền email",
                         email: "Địa chỉ email không hợp lệ"
                     },
-                    dienThoaiTV: {
+                    sdtNguoiMua: {
                         required: "Bạn cần điền số điện thoại của mình"
                     },
                     hoTenNguoiNhan: {
                         required: "Bạn cần điền họ tên người nhận"
+                    },
+                    ngayGiaoHang: {
+                        required: "Bạn cần chọn ngày giao hàng"
                     },
                     diaChiGiaoHang: {
                         required: "Bạn cần điền địa chỉ giao hàng"
@@ -368,6 +388,11 @@
 
             $('#checkBoxGiaoHang').change(function() {
                 $('#checkout-collapse3').collapse('toggle');
+            });
+
+            $('#datetimepicker1').datetimepicker({
+                language: 'vi-VN',
+                pickTime: false
             });
         </script>
     </body>
