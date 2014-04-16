@@ -170,7 +170,8 @@
         <action input="/" name="ThuongHieuForm" path="/edit-brand" scope="request" type="com.kimfashion.struts.GetChiTietThuongHieuAdmin" validate="false">
             <forward name="GetChiTietThuongHieuOK" path="/admin/edit-brand.jsp"/>
             <forward name="GetChiTietThuongHieuNotOK" path="/error.do?e=1"/>
-        </action>        
+        </action>
+        
         <!-- SỬA -->
         <action input="/edit-product.do" name="SanPhamForm" path="/SuaSanPham" scope="request" type="com.kimfashion.struts.SuaSanPham" validate="false">
             <forward name="CapNhatSanPhamOK" path="/success.do?s=9"/>
