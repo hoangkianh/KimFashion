@@ -72,7 +72,7 @@ public class SizeDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareCall("SELECT * FROM tbl_size WHERE TenSize=?");
+            stm = conn.prepareStatement("SELECT * FROM tbl_size WHERE TenSize=?");
             stm.setString(1, tenSize);
             rs = stm.executeQuery();
 
@@ -93,10 +93,10 @@ public class SizeDAO {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "INSERT INTO tbl_size TenSize VALUES (?)";
+        String query = "INSERT INTO tbl_size(TenSize) VALUES (?)";
         
         try {
-            stm = conn.prepareCall(query);
+            stm = conn.prepareStatement(query);
             stm.setString(1, s.getTenSize());
             
             if (stm.executeUpdate() > 0) {
@@ -117,7 +117,7 @@ public class SizeDAO {
         String query = "UPDATE tbl_size SET TenSize=? WHERE MaSize=?";
         
         try {
-            stm = conn.prepareCall(query);
+            stm = conn.prepareStatement(query);
             stm.setInt(1, s.getMaSize());
             
             if (stm.executeUpdate() > 0) {
@@ -138,7 +138,7 @@ public class SizeDAO {
         String query = "DELETE FROM tbl_size WHERE MaSize=?";
         
         try {
-            stm = conn.prepareCall(query);
+            stm = conn.prepareStatement(query);
             stm.setInt(1, maSize);
             
             if (stm.executeUpdate() > 0) {

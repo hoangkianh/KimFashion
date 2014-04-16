@@ -66,6 +66,29 @@ public class ThuongHieuDAO {
         }
         return th;
     }
+    
+     public ThuongHieu getThuongHieuByTenTH(String tenThuongHieu) {
+        ThuongHieu th = null;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM tbl_thuonghieu WHERE TenThuongHieu=?");
+            stm.setString(1, tenThuongHieu);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                th = new ThuongHieu();
+                th.setMaThuongHieu(rs.getInt("MaThuongHieu"));
+                th.setTenThuongHieu(rs.getString("TenThuongHieu"));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return th;
+    }
 
     public boolean addNewThuongHieu(ThuongHieu th) {
         boolean kq = false;

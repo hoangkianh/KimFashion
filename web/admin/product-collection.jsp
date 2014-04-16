@@ -63,6 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th>Tên bộ sưu tập</th>                                            
                                             <th>Giới tính</th>                                            
                                             <th class="sorting_disabled">Ảnh đại diện</th>                                            
@@ -75,6 +76,12 @@
                                                     <a href="edit-collection.do?id=<bean:write name="bst" property="maBST"/>"
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin bộ sưu tập">
                                                         <i class="iconfont-edit"></i>
+                                                    </a>
+                                                </td>
+                                                <td align="center">
+                                                    <a href="delete-collection.do?id=<bean:write name="bst" property="maBST"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa bộ sưu tập">
+                                                        <i class="iconfont-trash"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="bst" property="tenBST"/></td>

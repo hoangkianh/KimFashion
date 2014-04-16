@@ -63,6 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th>Tên size</th>                                            
                                         </tr>
                                     </thead>
@@ -73,6 +74,12 @@
                                                     <a href="edit-size.do?id=<bean:write name="si" property="maSize"/>"
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin size">
                                                         <i class="iconfont-edit"></i>
+                                                    </a>
+                                                </td>
+                                                <td align="center">
+                                                    <a href="delete-size.do?id=<bean:write name="si" property="maSize"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa size">
+                                                        <i class="iconfont-trash"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="si" property="tenSize"/></td>

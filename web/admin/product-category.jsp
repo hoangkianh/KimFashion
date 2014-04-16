@@ -63,6 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th>Tên loại </th>                                            
                                             <th>Giới tính</th>                                            
                                             <th>Tên loại Cha</th>                                            
@@ -75,6 +76,12 @@
                                                     <a href="edit-category.do?id=<bean:write name="loaiSP" property="maLoai"/>"
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin loại sản phẩm">
                                                         <i class="iconfont-edit"></i>
+                                                    </a>
+                                                </td>
+                                               <td align="center">
+                                                    <a href="delete-category.do?id=<bean:write name="loaiSP" property="maLoai"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa loại sản phẩm">
+                                                        <i class="iconfont-trash"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="loaiSP" property="tenLoai"/></td>

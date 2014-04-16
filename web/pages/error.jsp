@@ -72,6 +72,14 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="Thêm mới bộ sưu tập không thành công, bạn hãy thử lại"/>
 </c:if>
+<c:if test="${e eq 18}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Thêm mới thương hiệu không thành công, bạn hãy thử lại"/>
+</c:if>
+<c:if test="${e eq 19}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Thêm mới size không thành công, bạn hãy thử lại"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

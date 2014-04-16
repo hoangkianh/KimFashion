@@ -43,7 +43,7 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li><a href="admin-product.do">Thương hiệu</a></li>
+                            <li><a href="admin-brand.do">Thương hiệu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -63,6 +63,7 @@
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th>Tên thương hiệu </th>                                            
                                         </tr>
                                     </thead>
@@ -70,9 +71,15 @@
                                         <logic:iterate id="th" name="ThuongHieuForm" property="listThuongHieu">                                            
                                             <tr>
                                                 <td align="center">
-                                                    <a href="edit-category.do?id=<bean:write name="th" property="maThuongHieu"/>"
+                                                    <a href="edit-brand.do?id=<bean:write name="th" property="maThuongHieu"/>"
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa thông tin thương hiệu">
                                                         <i class="iconfont-edit"></i>
+                                                    </a>
+                                                </td>
+                                                <td align="center">
+                                                    <a href="delete-brand.do?id=<bean:write name="th" property="maThuongHieu"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa thương hiệu">
+                                                        <i class="iconfont-trash"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="th" property="tenThuongHieu"/></td>

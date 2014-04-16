@@ -87,8 +87,8 @@
                                                         <div class="form-group stylish-input">
                                                             <label for="gioiTinh" class="col-sm-4 col-lg-4 control-label required">Giới tính</label>
                                                             <div class="col-sm-8 col-lg-8">
-                                                                <input type="radio" name="gioiTinh" value="False" class="chkGioiTinh prettyCheckable" checked="checked" data-label="Nam" />
-                                                                <input type="radio" name="gioiTinh" value="True" class="chkGioiTinh prettyCheckable" data-label="Nữ" />
+                                                                <input type="radio" name="gioiTinh" value="false" class="chkGioiTinh prettyCheckable" checked="checked" data-label="Nam" />
+                                                                <input type="radio" name="gioiTinh" value="true" class="chkGioiTinh prettyCheckable" data-label="Nữ" />
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-8 col-sm-offset-4">
@@ -110,6 +110,25 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
+            // kiểm tra tên loai trùng lặp
+            $.validator.addMethod("checkTenLoaiSP", function(value, element) {
+                var exist;
+                $.ajax({
+                    type: 'POST',
+                    url: "service/checkexist/checkTenLoaiSP/" + value + "/" + $('input:radio[name=gioiTinh]:checked').val(),
+                    dataType: "text",
+                    async: false,
+                    success: function(data) {
+                        if (data === "true") {
+                            exist = true;
+                        } else {
+                            exist = false;
+                        }
+                    }
+                });
+                return this.optional(element) || exist;
+            }, "Loại sản phẩm đã tồn tại. Bạn hãy điền tên loại SP khác.");
+
             $('.chkGioiTinh').change(function() {
                 $.ajax({
                     type: "GET",
@@ -123,23 +142,24 @@
                 });
             });
 
-            
-           
             $('#formLoaiSP').validate({
                 errorClass: "text-danger text-xs",
                 rules: {
                     tenLoai: {
                         required: true,
                         maxlength: 100,
-                        minlength: 6
+                        minlength: 2,
+                        checkTenLoaiSP: true
                     },
-                    
+                    gioiTinh: {
+                        checkTenLoaiSP: true                        
+                    }
                 },
                 messages: {
                     tenLoai: {
                         required: "Bạn cần điền tên loại sản phẩm",
                         maxlength: "Tên loại sản phẩm dài tối đa 100 kí tự",
-                        minlength: "Tên loại sản phẩm dài tối thiểu 6 kí tự"
+                        minlength: "Tên loại sản phẩm dài tối thiểu 2 kí tự"
                     }
                 }
             });
