@@ -100,4 +100,26 @@ public class ChiTietHDDAO {
         }
         return kq;
     }
+
+    public boolean deleteChiTietHD(int maHD) {
+        boolean kq = false;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "DELETE FROM `tbl_chitiethd` WHERE MaHD=?";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, maHD);
+
+            if (stm.executeUpdate() > 0) {
+                kq = true;
+            }
+
+        } catch (SQLException ex) {
+            System.err.printf(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return kq;
+    }
 }

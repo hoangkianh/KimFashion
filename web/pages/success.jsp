@@ -79,6 +79,10 @@
     <c:set var="thongBao" value="Cập nhật thành công!"/>
     <c:set var="moTa" value="Bộ sưu tập đã được cập nhật thành công. <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
 </c:if>
+<c:if test="${s eq 20}">
+    <c:set var="thongBao" value="Xóa hóa đơn thành công!"/>
+    <c:set var="moTa" value="Hóa đơn đã được xóa thành công. <br/> <a href='all-order.do'>Quay lại danh sách hóa đơn</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

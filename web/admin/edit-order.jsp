@@ -120,34 +120,16 @@
                                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                                             <ul class="list-unstyled">
                                                                 <li>
-                                                                    <div class="form-group stylish-input">
-                                                                        <label class="col-sm-4 control-label" for="hoTenNguoiMua">Họ tên:</label>
-                                                                        <div class="col-lg-7">
-                                                                            <input type="text" name="hoTenNguoiMua" class="form-control" 
-                                                                                   id="tenDangNhap" placeholder="Họ tên người mua"
-                                                                                   value="<bean:write name="HoaDonForm" property="hoTenNguoiMua"/>"/>
-                                                                        </div>
-                                                                    </div>
+                                                                    <span class="text-bold uppercase">họ tên: </span>
+                                                                    <bean:write name="HoaDonForm" property="hoTenNguoiMua"/>
                                                                 </li>
                                                                 <li>
-                                                                    <div class="form-group stylish-input">
-                                                                        <label class="col-sm-4 control-label" for="emailNguoiMua">Email:</label>
-                                                                        <div class="col-lg-7">
-                                                                            <input type="text" name="emailNguoiMua" class="form-control" 
-                                                                                   id="tenDangNhap" placeholder="Email người mua"
-                                                                                   value="<bean:write name="HoaDonForm" property="emailNguoiMua"/>"/>
-                                                                        </div>
-                                                                    </div>
+                                                                    <span class="text-bold uppercase">email: </span>
+                                                                    <bean:write name="HoaDonForm" property="emailNguoiMua"/>
                                                                 </li>
                                                                 <li>
-                                                                    <div class="form-group stylish-input">
-                                                                        <label class="col-sm-4 control-label" for="sdtNguoiMua">SĐT:</label>
-                                                                        <div class="col-lg-7">
-                                                                            <input type="text" name="sdtNguoiMua" class="form-control" 
-                                                                                   id="tenDangNhap" placeholder="SDT người mua"
-                                                                                   value="<bean:write name="HoaDonForm" property="sdtNguoiMua"/>"/>
-                                                                        </div>
-                                                                    </div>
+                                                                    <span class="text-bold uppercase">SĐT: </span>
+                                                                    <bean:write name="HoaDonForm" property="sdtNguoiMua"/>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -221,7 +203,6 @@
                                                             <table id="myTable" class="tbl-order table table-striped table-bordered table-hover table-condensed">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>&nbsp;</th>
                                                                         <th>Code</th>
                                                                         <th>Tên sản phẩm</th>
                                                                         <th>Hình ảnh</th>
@@ -235,12 +216,6 @@
                                                                     <logic:iterate id="chiTietHD" name="HoaDonForm" property="listChiTietHD">
                                                                         <tr data-product-id="<bean:write name="chiTietHD" property="maSP"/>" 
                                                                             data-size="<bean:write name="chiTietHD" property="maSize"/>">
-                                                                            <td>
-                                                                                <div class="item" data-product-id="<bean:write name="chiTietHD" property="maSP"/>" 
-                                                                                     data-size="<bean:write name="chiTietHD" property="maSize"/>">
-                                                                                    <button type="button" class="close" aria-hidden="true">×</button>
-                                                                                </div>
-                                                                            </td>
                                                                             <td>
                                                                                 <a href="details-product.do?id=<bean:write name="chiTietHD" property="sanPham.maSP" />"
                                                                                    class="accent-color" rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem chi tiết">
@@ -273,19 +248,19 @@
                                                                         </tr>
                                                                     </logic:iterate>
                                                                     <tr class="info text-bold uppercase">
-                                                                        <td align="right" colspan="7">tổng</td>
+                                                                        <td align="right" colspan="6">tổng</td>
                                                                         <td align="center">
                                                                             <span class="all-row-total"><fmt:formatNumber value="${HoaDonForm.tongTien}" type="NUMBER" maxFractionDigits="3" /> VND</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="info text-bold uppercase">
-                                                                        <td align="right" colspan="7">phí vận chuyển</td>
+                                                                        <td align="right" colspan="6">phí vận chuyển</td>
                                                                         <td align="center">
                                                                             <span class="ship-fee"><fmt:formatNumber value="${HoaDonForm.phiVanChuyen}" type="NUMBER" maxFractionDigits="3" /> VND</span>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="info text-bold uppercase">
-                                                                        <td align="right" colspan="7">tổng cộng</td>
+                                                                        <td align="right" colspan="6">tổng cộng</td>
                                                                         <td align="center">
                                                                             <span class="order-total"><fmt:formatNumber value="${HoaDonForm.tongTien + HoaDonForm.phiVanChuyen}" type="NUMBER" maxFractionDigits="3" /> VND</span>
                                                                         </td>
