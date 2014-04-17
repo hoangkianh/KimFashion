@@ -52,6 +52,26 @@
                     </div>
                 </div>
             </div>
+            <div id="delete-confirm" class="modal fade">
+                <div class="modal-dialog">
+                    <html:form styleId="deleteForm" method="POST" action="/DeleteHD">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Xóa hóa đơn</h3>                    
+                            </div>
+                            <div class="modal-body">
+                                <html:hidden styleId="maHD" name="HoaDonForm" property="maHD"/>
+                                <p>Bạn có muốn xóa hóa đơn này không?</p>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa hóa đơn" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Nhập lại" />
+                                </div>
+                            </div>
+                        </div>
+                    </html:form>
+                </div>
+            </div>
             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
@@ -62,6 +82,7 @@
                                     <caption class="uppercase text-bold"><h3>tất cả hóa đơn</h3></caption>
                                     <thead>
                                         <tr>
+                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th class="sorting_disabled">&nbsp;</th>
                                             <th class="sorting_disabled">&nbsp;</th>
                                             <th>Mã HD</th>
@@ -78,20 +99,27 @@
                                             <c:if test="${hd.trangThai eq true}">
                                                 <tr class="success">
                                                     <td></td>
-                                            </c:if>
-                                            <c:if test="${hd.trangThai eq false}">
+                                                </c:if>
+                                                <c:if test="${hd.trangThai eq false}">
                                                 <tr>
-                                                <td align="center">
-                                                    <a href="edit-order.do?id=<bean:write name="hd" property="maHD"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa hóa đơn">
-                                                        <i class="iconfont-edit"></i>
-                                                    </a>
-                                                </td>
+                                                    <td align="center">
+                                                        <a href="edit-order.do?id=<bean:write name="hd" property="maHD"/>"
+                                                           rel="tooltip" data-toggle="tooltip" data-placement="top" title="Sửa hóa đơn">
+                                                            <i class="iconfont-edit"></i>
+                                                        </a>
+                                                    </td>
                                                 </c:if>
                                                 <td align="center">
                                                     <a href="details-order.do?id=<bean:write name="hd" property="maHD"/>"
                                                        rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xem chi tiết">
                                                         <i class="iconfont-eye-open"></i>
+                                                    </a>
+                                                </td>
+                                                <td align="center">
+                                                    <a href="#delete-confirm" class="delete"
+                                                       id="<bean:write name="hd" property="maHD"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                        <i class="iconfont-trash text-danger"></i>
                                                     </a>
                                                 </td>
                                                 <td align="center"><bean:write name="hd" property="maHD" /></td>
@@ -119,7 +147,15 @@
         <%@include file="../include/footer.jsp" %><script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[2, 'asc']] // sort theo mã HD
+                "aaSorting": [[3, 'asc']] // sort theo mã HD
+            });
+
+            $("a.delete").click(function() {
+                $('#delete-confirm').modal();
+
+                var maHD = $(this).attr('id');
+                $("#maHD").val(maHD);
+                return false;
             });
         </script>
     </body>

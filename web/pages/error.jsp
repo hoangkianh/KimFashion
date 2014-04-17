@@ -80,6 +80,10 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="Thêm mới size không thành công, bạn hãy thử lại"/>
 </c:if>
+<c:if test="${e eq 20}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Xóa hóa đơn không thành công, bạn hãy thử lại"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
