@@ -78,8 +78,35 @@ public class BoSuuTapDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap WHERE maBST = ?");
+            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap WHERE MaBST = ?");
             stm.setInt(1, maBST);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                bst = new BoSuuTap();
+                bst.setMaBST(rs.getInt("MaBST"));
+                bst.setTenBST(rs.getString("TenBST"));
+                bst.setGioiTinh(rs.getBoolean("GioiTinh"));
+                bst.setAnhDaiDien(rs.getString("AnhDaiDien"));
+
+            }
+        } catch (SQLException ex) {
+            System.err.printf(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return bst;
+    }
+    
+    public BoSuuTap getBoSuuTapByTenBST(String tenBST, boolean gioiTinh) {
+        BoSuuTap bst = null;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM tbl_bosuutap WHERE TenBST = ? AND GioiTinh=?");
+            stm.setString(1, tenBST);
+            stm.setBoolean(2, gioiTinh);
             rs = stm.executeQuery();
 
             if (rs.next()) {

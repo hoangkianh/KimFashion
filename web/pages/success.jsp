@@ -67,6 +67,18 @@
     <c:set var="thongBao" value="Cập nhật thành công!"/>
     <c:set var="moTa" value="Thương hiệu đã được cập nhật thành công. <br/> <a href='admin-brand.do'>Quay lại danh sách thương hiệu</a>"/>
 </c:if>
+<c:if test="${s eq 17}">
+    <c:set var="thongBao" value="Cập nhật thành công!"/>
+    <c:set var="moTa" value="Size đã được cập nhật thành công. <br/> <a href='admin-size.do'>Quay lại danh sách size</a>"/>
+</c:if>
+<c:if test="${s eq 18}">
+    <c:set var="thongBao" value="Cập nhật thành công!"/>
+    <c:set var="moTa" value="Hóa đơn đã được cập nhật thành công. <br/> <a href='all-order.do'>Quay lại danh sách hóa đơn</a>"/>
+</c:if>
+<c:if test="${s eq 19}">
+    <c:set var="thongBao" value="Cập nhật thành công!"/>
+    <c:set var="moTa" value="Bộ sưu tập đã được cập nhật thành công. <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

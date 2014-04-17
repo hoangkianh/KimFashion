@@ -118,7 +118,8 @@ public class SizeDAO {
         
         try {
             stm = conn.prepareStatement(query);
-            stm.setInt(1, s.getMaSize());
+            stm.setString(1, s.getTenSize());
+            stm.setInt(2, s.getMaSize());
             
             if (stm.executeUpdate() > 0) {
                 kq = true;

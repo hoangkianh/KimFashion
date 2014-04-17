@@ -115,18 +115,40 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script type="text/javascript">
-
+        // kiểm tra tên BST trùng lặp
+            $.validator.addMethod("checkTenBST", function(value, element) {
+                var exist;
+                $.ajax({
+                    type: 'POST',
+                    url: "service/checkexist/checkTenBST/" + value + "/" + $('input:radio[name=gioiTinh]:checked').val(),
+                    dataType: "text",
+                    async: false,
+                    success: function(data) {
+                        if (data === "true") {
+                            exist = true;
+                        } else {
+                            exist = false;
+                        }
+                    }
+                });
+                return this.optional(element) || exist;
+            }, "Bộ sưu tập này đã tồn tại. Bạn hãy điền tên BST khác.");
+            
             $('#formBST').validate({
                 errorClass: "text-danger text-xs",
                 rules: {
                     tenBST: {
                         required: true,
                         maxlength: 100,
-                        minlength: 6
+                        minlength: 6,
+                        checkTenBST: true
                     },
                     anhDaiDien: {
                         required: true
-                    }
+                    },
+                    gioiTinh: {
+                        checkTenBST: true
+                    },
                 },
                 messages: {
                     tenBST: {

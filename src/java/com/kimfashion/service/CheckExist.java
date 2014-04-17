@@ -5,6 +5,7 @@
  */
 package com.kimfashion.service;
 
+import com.kimfashion.dao.BoSuuTapDAO;
 import com.kimfashion.dao.LoaiSPDAO;
 import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.SizeDAO;
@@ -78,6 +79,16 @@ public class CheckExist {
     @Produces("text/plain")
     public String checkTenLoaiSP (@PathParam("tenLoai") String tenLoai,@PathParam("gioiTinh") boolean gioiTinh) {
         if (new LoaiSPDAO().getLoaiSPByTenLoai(tenLoai, gioiTinh) != null) {
+            return "false";
+        }
+        return "true";
+    }
+    
+    @POST
+    @Path("checkTenBST/{tenBST}/{gioiTinh}")
+    @Produces("text/plain")
+    public String checkTenBST (@PathParam("tenBST") String tenBST,@PathParam("gioiTinh") boolean gioiTinh) {
+        if (new BoSuuTapDAO().getBoSuuTapByTenBST(tenBST, gioiTinh) != null) {
             return "false";
         }
         return "true";
