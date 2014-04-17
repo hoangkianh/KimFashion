@@ -280,7 +280,15 @@
         </action>
         <action input="/" name="ThanhVienForm" path="/all-thanhvien" scope="session" type="com.kimfashion.struts.GetAllThanhVien" validate="false">
             <forward name="GetAllThanhVienOK" path="/admin/all-thanhvien.jsp"/>
-            <forward name="GetAllThanhVienNotOK" path="/error.do?e=1"/>            
+            <forward name="GetAllThanhVienNotOK" path="/error.do?e=1"/>
+        </action>
+        <action input="/" name="ThanhVienForm" path="/delete-admin" scope="session" type="com.kimfashion.struts.DeleteAdmin" validate="false">
+            <forward name="DeleteAdminOK" path="/success.do?s=22"/>
+            <forward name="DeleteAdminNotOK" path="/error.do?e=23"/>
+        </action>
+        <action input="/" name="ThanhVienForm" path="/add-admin" scope="session" type="com.kimfashion.struts.AddAdmin" validate="false">
+            <forward name="AddAdminOK" path="/success.do?s=23"/>
+            <forward name="AddAdminNotOK" path="/error.do?e=23"/>
         </action>
     </action-mappings>
     

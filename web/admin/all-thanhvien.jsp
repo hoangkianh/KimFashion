@@ -94,6 +94,14 @@
                                                     <c:if test="${tv.laAdmin eq true}">
                                                         <i class="iconfont-check-sign text-success"
                                                            rel="tooltip" data-toggle="tooltip" data-placement="top" title="Tài khoản admin"></i>
+                                                        <c:if test="${tv.maTV ne 1}">
+                                                            <a class="accent-color" href="delete-admin.do?id=<bean:write name="tv" property="maTV"/>">Hủy admin</a>
+                                                        </c:if>
+                                                    </c:if>
+                                                    <c:if test="${tv.laAdmin eq false}">
+                                                        <c:if test="${tv.xacNhan eq true}">
+                                                            <a class="accent-color" href="add-admin.do?id=<bean:write name="tv" property="maTV"/>">Tạo admin</a>
+                                                        </c:if>
                                                     </c:if>
                                                 </td>
                                             </tr>
