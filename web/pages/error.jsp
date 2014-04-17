@@ -53,7 +53,7 @@
 </c:if>
 <c:if test="${e eq 13}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Thêm mới sản phẩm không thành công, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Thêm mới sản phẩm không thành công, <br/> <a href='admin-product.do'>Quay lại danh sách sản phẩm</a>"/>
 </c:if>
 <c:if test="${e eq 14}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
@@ -66,23 +66,31 @@
 </c:if>
 <c:if test="${e eq 16}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Thêm mới loại sản phẩm không thành công, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Thêm mới loại sản phẩm không thành công, <br/> <a href='admin-category.do'>Quay lại danh sách loại sản phẩm</a>"/>
 </c:if>
 <c:if test="${e eq 17}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Thêm mới bộ sưu tập không thành công, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Thêm mới bộ sưu tập không thành công, <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
 </c:if>
 <c:if test="${e eq 18}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Thêm mới thương hiệu không thành công, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Thêm mới thương hiệu không thành công, <br/> <a href='admin-brand.do'>Quay lại danh sách thương hiệu</a>"/>
 </c:if>
 <c:if test="${e eq 19}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Thêm mới size không thành công, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Thêm mới size không thành công, <br/> <a href='admin-size.do'>Quay lại danh sách size</a>"/>
 </c:if>
 <c:if test="${e eq 20}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="Xóa hóa đơn không thành công, bạn hãy thử lại"/>
+    <c:set var="moTa" value="Xóa hóa đơn không thành công, <br/> <a href='all-order.do'>Quay lại danh sách hóa đơn</a>"/>
+</c:if>
+<c:if test="${e eq 21}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Sản phẩm này vẫn đang trong hóa đơn,<br/> <a href='all-order.do'>Bạn hãy xóa sản phẩm có trong hóa đơn trước</a> "/>
+</c:if>
+<c:if test="${e eq 22}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Xóa sản phẩm không thành công, <br/> <a href='admin-product.do'>Quay lại danh sách sản phẩm</a>"/>
 </c:if>
 <!DOCTYPE html>
 <html>

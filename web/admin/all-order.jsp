@@ -64,8 +64,8 @@
                                 <html:hidden styleId="maHD" name="HoaDonForm" property="maHD"/>
                                 <p>Bạn có muốn xóa hóa đơn này không?</p>
                                 <div class="modal-footer">
-                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa hóa đơn" />
-                                    <input type="reset" class="btn btn-default btn-round" value="Nhập lại" />
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Hủy" data-dismiss="modal"/>
                                 </div>
                             </div>
                         </div>

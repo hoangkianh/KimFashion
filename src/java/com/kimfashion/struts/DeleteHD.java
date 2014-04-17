@@ -17,7 +17,7 @@ import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author HKA
+ * @author Kim Hue
  */
 public class DeleteHD extends org.apache.struts.action.Action {
 

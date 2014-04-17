@@ -46,6 +46,33 @@ public class ChiTietHDDAO {
         }
         return list;
     }
+    
+    public List<ChiTietHD> getAllChiTietHDByMaSP (int maSP) {
+        List<ChiTietHD> list = new ArrayList<ChiTietHD>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM `tbl_chitiethd` WHERE `MaSP` = ?");
+            stm.setInt(1, maSP);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                ChiTietHD ct = new ChiTietHD();
+                ct.setMaHD(rs.getInt("MaHD"));
+                ct.setMaSP(rs.getInt("MaSP"));
+                ct.setMaSize(rs.getInt("MaSize"));
+                ct.setSoLuong(rs.getInt("SoLuong"));
+                ct.setDonGia(rs.getInt("DonGia"));
+                list.add(ct);
+            }
+        } catch (SQLException ex) {
+            System.err.printf(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
 
     public boolean addNewChiTietHD(ChiTietHD ct) {
         boolean kq = false;

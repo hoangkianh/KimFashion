@@ -144,19 +144,31 @@
             <forward name="GetSizeOK" path="/admin/product-size.jsp" />
             <forward name="GetSizeNotOK" path="/error.do?e=1" />
         </action>
-
         <action input="/" name="ThuongHieuForm" path="/admin-brand" scope="session" type="com.kimfashion.struts.GetAllThuongHieu" validate="false">
             <forward name="GetThuongHieuOK" path="/admin/product-brand.jsp" />
             <forward name="GetThuongHieuNotOK" path="/error.do?e=1" />
         </action>
+        
         <action input="/" name="SanPhamForm" path="/admin-product" scope="session" type="com.kimfashion.struts.GetAllSanPham" validate="false">
             <forward name="GetSanPhamOK" path="/admin/product.jsp" />
             <forward name="GetSanPhamNotOK" path="/error.do?e=1" />
         </action>
-        <!-- xem chi tiết sp -->
+        <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
+            <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
+        </action>
+          <action input="/" name="SanPhamForm" path="/product-brand" scope="session" type="com.kimfashion.struts.GetSPByThuongHieu" validate="false">
+            <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
+            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>
+        </action>
+        <!-- xem chi tiết -->
         <action input="/" name="SanPhamForm" path="/details-product" scope="session" type="com.kimfashion.struts.GetChiTietSPAdmin" validate="false">
             <forward name="GetChiTietSPOK" path="/admin/details-product.jsp"/>
             <forward name="GetChiTietSPNotOK" path="/error.do?e=1"/>
+        </action>
+        <action input="/" name="HoaDonForm" path="/details-order" scope="session" type="com.kimfashion.struts.GetChiTietHD" validate="false">
+            <forward name="GetChiTietHDOK" path="/admin/details-order.jsp"/>
+            <forward name="GetChiTietHDNotOK" path="/error.do?e=1"/>            
         </action>
         <!-- lấy chi tiết để sửa -->
         <action input="/" name="SanPhamForm" path="/edit-product" scope="request" type="com.kimfashion.struts.GetChiTietSPAdmin" validate="false">
@@ -178,6 +190,10 @@
         <action input="/" name="BoSuuTapForm" path="/edit-collection" scope="request" type="com.kimfashion.struts.GetChiTietBoSuuTapAdmin" validate="false">
             <forward name="GetChiTietBoSuuTapOK" path="/admin/edit-collection.jsp"/>
             <forward name="GetChiTietBoSuuTapNotOK" path="/error.do?e=1"/>
+        </action>
+        <action input="/" name="HoaDonForm" path="/edit-order" scope="request" type="com.kimfashion.struts.GetChiTietHD" validate="false">
+            <forward name="GetChiTietHDOK" path="/admin/edit-order.jsp"/>
+            <forward name="GetChiTietHDNotOK" path="/error.do?e=1"/>            
         </action>
         
         <!-- SỬA -->
@@ -213,7 +229,11 @@
             <forward name="CapNhatBoSuuTapOK" path="/success.do?s=19"/>
             <forward name="CapNhatBoSuuTapNotOK" path="/error.do?e=12"/>
         </action>
-
+        <action input="/edit-order.do" name="HoaDonForm" path="/SuaHD" scope="request" type="com.kimfashion.struts.SuaHD" validate="false">
+            <forward name="SuaHDOK" path="/success.do?s=18"/>
+            <forward name="SuaHDNotOK" path="/error.do?e=1"/>            
+        </action>
+        
         <!-- THÊM -->
         <action path="/add-product" forward="/admin/add-product.jsp"/>        
         <action input="/add-product.do" name="SanPhamForm" path="/ThemSanPham" scope="request" type="com.kimfashion.struts.ThemSanPham" >
@@ -241,35 +261,27 @@
             <forward name="ThemSizeOK" path="/success.do?s=14"/>
             <forward name="ThemSizeNotOK" path="/error.do?e=19"/>
         </action>
-          
-        <action input="/" name="SanPhamForm" path="/product-category" scope="session" type="com.kimfashion.struts.GetSPByLoaiSP" validate="false">
-            <forward name="GetSanPhamOK" path="/admin/product-category.jsp"/>
-            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>            
-        </action>
-          <action input="/" name="SanPhamForm" path="/product-brand" scope="session" type="com.kimfashion.struts.GetSPByThuongHieu" validate="false">
-            <forward name="GetSanPhamOK" path="/admin/product-brand.jsp"/>
-            <forward name="GetSanPhamNotOK" path="/error.do?e=1"/>
-        </action>
-        <action input="/" name="HoaDonForm" path="/all-order" scope="session" type="com.kimfashion.struts.GetAllOrder" validate="false">
-            <forward name="GetAllOrderOK" path="/admin/all-order.jsp"/>
-            <forward name="GetAllOrderNotOK" path="/error.do?e=1"/>            
-        </action>
-        <action input="/" name="HoaDonForm" path="/details-order" scope="session" type="com.kimfashion.struts.GetChiTietHD" validate="false">
-            <forward name="GetChiTietHDOK" path="/admin/details-order.jsp"/>
-            <forward name="GetChiTietHDNotOK" path="/error.do?e=1"/>            
-        </action>
-        <action input="/" name="HoaDonForm" path="/edit-order" scope="request" type="com.kimfashion.struts.GetChiTietHD" validate="false">
-            <forward name="GetChiTietHDOK" path="/admin/edit-order.jsp"/>
-            <forward name="GetChiTietHDNotOK" path="/error.do?e=1"/>            
-        </action>
-        <action input="/edit-order.do" name="HoaDonForm" path="/SuaHD" scope="request" type="com.kimfashion.struts.SuaHD" validate="false">
-            <forward name="SuaHDOK" path="/success.do?s=18"/>
-            <forward name="SuaHDNotOK" path="/error.do?e=1"/>            
-        </action>
+        
+        <!-- XÓA -->
         <action input="/" name="HoaDonForm" path="/DeleteHD" scope="session" type="com.kimfashion.struts.DeleteHD" validate="false">
             <forward name="DeleteHDOK" path="/success.do?s=20"/>
             <forward name="DeleteHDNotOK" path="/error.do?e=20"/>
         </action>
+        <action input="/" name="SanPhamForm" path="/DeleteSanPham" scope="session" type="com.kimfashion.struts.DeleteSanPham" validate="false">
+            <forward name="DeleteSanPhamOK" path="/success.do?s=21"/>
+            <forward name="DeleteSanPhamNotOK" path="/error.do?e=22"/>
+            <forward name="DeleteCTHoaDonNotOK" path="/error.do?e=21"/>
+        </action>
+        
+        <action input="/" name="HoaDonForm" path="/all-order" scope="session" type="com.kimfashion.struts.GetAllOrder" validate="false">
+            <forward name="GetAllOrderOK" path="/admin/all-order.jsp"/>
+            <forward name="GetAllOrderNotOK" path="/error.do?e=1"/>            
+        </action>
+        
+        
+        
+        
+        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

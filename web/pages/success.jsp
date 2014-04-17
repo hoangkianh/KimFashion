@@ -83,6 +83,10 @@
     <c:set var="thongBao" value="Xóa hóa đơn thành công!"/>
     <c:set var="moTa" value="Hóa đơn đã được xóa thành công. <br/> <a href='all-order.do'>Quay lại danh sách hóa đơn</a>"/>
 </c:if>
+<c:if test="${s eq 21}">
+    <c:set var="thongBao" value="Xóa sản phẩm thành công!"/>
+    <c:set var="moTa" value="Sản phẩm đã được xóa thành công. <br/> <a href='admin-product.do'>Quay lại danh sách sản phẩm</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

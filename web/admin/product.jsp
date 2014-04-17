@@ -51,6 +51,27 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="delete-confirm" class="modal fade">
+                <div class="modal-dialog">
+                    <html:form styleId="deleteForm" method="POST" action="/DeleteSanPham">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Xóa sản phẩm</h3>                    
+                            </div>
+                            <div class="modal-body">
+                                <html:hidden styleId="maSP" name="SanPhamForm" property="maSP"/>
+                                <p>Bạn có muốn xóa sản phẩm này không?</p>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Hủy" data-dismiss="modal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </html:form>
+                </div>
+            </div>
             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
@@ -65,7 +86,6 @@
                                     <caption class="uppercase text-bold"><h3>Danh sách sản phẩm</h3></caption>
                                     <thead>
                                         <tr>
-                                            <th class="sorting_disabled">&nbsp;</th>
                                             <th class="sorting_disabled">&nbsp;</th>
                                             <th class="sorting_disabled">&nbsp;</th>
                                             <th>Code</th>
@@ -88,25 +108,10 @@
                                                     </a>
                                                 </td>
                                                 <td align="center">
-                                                    <c:choose>
-                                                        <c:when  test="${sp.daAn eq true}">
-                                                            <a href="show-product.do?id=<bean:write name="sp" property="maSP"/>"
-                                                               rel="tooltip" data-toggle="tooltip" data-placement="top" title="Hiện sản phẩm">
-                                                                <i class="iconfont-eye-open text-info"></i>
-                                                            </a>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <a href="hide-product.do?id=<bean:write name="sp" property="maSP"/>"
-                                                               rel="tooltip" data-toggle="tooltip" data-placement="top" title="Ẩn sản phẩm này">
-                                                                <i class="iconfont-eye-close text-danger"></i>
-                                                            </a>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </td>
-                                                <td align="center">
-                                                    <a href="delete-product.do?id=<bean:write name="sp" property="maSP"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa sản phẩm">
-                                                        <i class="iconfont-trash"></i>
+                                                    <a href="#delete-confirm" class="delete"
+                                                       id="<bean:write name="sp" property="maSP"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                        <i class="iconfont-trash text-danger"></i>
                                                     </a>
                                                 </td>
                                                 <td>
@@ -167,7 +172,15 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[3, 'asc']] // sort theo tên sp
+                "aaSorting": [[2, 'asc']] // sort theo tên sp
+            });
+            
+            $("a.delete").click(function() {
+                $('#delete-confirm').modal();
+
+                var maSP = $(this).attr('id');
+                $("#maSP").val(maSP);
+                return false;
             });
         </script>
     </body>

@@ -166,4 +166,24 @@ public class HinhAnhDAO {
         }
         return kq;
     }
+
+    public boolean deleteHinhAnh(int maSP) {
+        boolean kq = false;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        String query = "DELETE FROM tbl_hinhanh WHERE MaSP=?";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, maSP);
+
+            if (stm.executeUpdate() > 0) {
+                kq = true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, null);
+        }
+        return kq;
+    }
 }

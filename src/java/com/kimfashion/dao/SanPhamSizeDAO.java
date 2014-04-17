@@ -110,4 +110,24 @@ public class SanPhamSizeDAO {
         }
         return kq;
     }
+    
+    public boolean deleteSanPhamSize(int maSP) {
+        boolean kq = false;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        String query = "DELETE FROM tbl_sanpham_size WHERE MaSP=?";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, maSP);
+            
+            if (stm.executeUpdate() > 0) {
+                kq = true;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, null);
+        }
+        return kq;
+    }
 }

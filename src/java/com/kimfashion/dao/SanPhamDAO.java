@@ -718,11 +718,32 @@ public class SanPhamDAO {
         return kq;
     }
 
-    public boolean deleteSanPham(int maSP) {
+    public boolean anSanPham(int maSP) {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
         String query = "UPDATE tbl_sanpham SET DaAn=True WHERE MaSP=?;";
+        try {
+            stm = conn.prepareStatement(query);
+            stm.setInt(1, maSP);
+
+            if (stm.executeUpdate() > 0) {
+                kq = true;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, null);
+        }
+
+        return kq;
+    }
+    
+    public boolean deleteSanPham(int maSP) {
+        boolean kq = false;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        String query = "DELETE FROM tbl_sanpham WHERE MaSP=?";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maSP);
