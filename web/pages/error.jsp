@@ -96,6 +96,10 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
 </c:if>
+<c:if test="${e eq 23}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
