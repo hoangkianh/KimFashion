@@ -6041,7 +6041,7 @@ a:hover {
 
 #site-menu {
     position: absolute;
-    right: 0;
+    left: 215px;
     bottom: 0;
 }
 

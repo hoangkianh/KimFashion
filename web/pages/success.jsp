@@ -87,6 +87,14 @@
     <c:set var="thongBao" value="Xóa sản phẩm thành công!"/>
     <c:set var="moTa" value="Sản phẩm đã được xóa thành công. <br/> <a href='admin-product.do'>Quay lại danh sách sản phẩm</a>"/>
 </c:if>
+<c:if test="${s eq 22}">
+    <c:set var="thongBao" value="Hủy quyền admin thành công"/>
+    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
+</c:if>
+<c:if test="${s eq 23}">
+    <c:set var="thongBao" value="Tạo admin mới thành công"/>
+    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>
