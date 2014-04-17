@@ -35,7 +35,7 @@
                 </div>
                 <!-- MENU CHO ADMIN -->
                 <c:if test="${s[2] eq true}">                    
-                    <nav id="site-menu-admin" role="navigation">
+                    <nav id="site-menu" role="navigation">
                         <ul class="main-menu hidden-sm hidden-xs">
                             <li>
                                 <a href="admin.do">
@@ -64,9 +64,7 @@
                                         <div class="col-md-4">
                                             <h4 class="menu-title">Quản lý thành viên</h4>
                                             <ul class="mega-sub">
-                                                <li><a href=".do"></a></li>
-                                                <li><a href=".do"></a></li>
-                                                <li><a href=".do"></a></li>
+                                                <li><a href="all-thanhvien.do">Danh sách thành viên</a></li>
                                             </ul>
                                         </div>
                                     </div>
