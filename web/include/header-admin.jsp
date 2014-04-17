@@ -35,10 +35,10 @@
                 </div>
                 <!-- MENU CHO ADMIN -->
                 <c:if test="${s[2] eq true}">                    
-                    <nav id="site-menu" role="navigation">
+                    <nav id="site-menu-admin" role="navigation">
                         <ul class="main-menu hidden-sm hidden-xs">
                             <li>
-                                <a href="admin-product.do">
+                                <a href="admin.do">
                                     <i class="iconfont-bookmark"></i>
                                 </a>
                                 <div class="mega-menu" data-col-lg="9" data-col-md="9">
@@ -57,8 +57,8 @@
                                             <h4 class="menu-title">quản lý hóa đơn</h4>
                                             <ul class="mega-sub">
                                                 <li><a href="all-order.do">Tất cả hóa đơn</a></li>
-                                                <li><a href=".do">Hóa đơn đã thanh toán</a></li>
-                                                <li><a href=".do">Hóa đơn chưa thanh toán</a></li>
+                                                <li><a href="all-tt.do">Hóa đơn đã thanh toán</a></li>
+                                                <li><a href="all-chuatt.do">Hóa đơn chưa thanh toán</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-md-4">

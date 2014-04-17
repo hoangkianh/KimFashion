@@ -270,6 +270,14 @@
             <forward name="DeleteHDOK" path="/success.do?s=20"/>
             <forward name="DeleteHDNotOK" path="/error.do?e=20"/>
         </action>
+        <action input="/" name="HoaDonForm" path="/all-tt" scope="session" type="com.kimfashion.struts.GetAllHDThanhToan" validate="false">
+            <forward name="GetAllOrderOK" path="/admin/all-tt.jsp"/>
+            <forward name="GetAllOrderNotOK" path="/error.do?e=1"/>
+        </action>
+        <action input="/" name="HoaDonForm" path="/all-chuatt" scope="session" type="com.kimfashion.struts.GetAllHDChuaThanhToan" validate="false">
+            <forward name="GetAllOrderOK" path="/admin/all-chuatt.jsp"/>
+            <forward name="GetAllOrderNotOK" path="/error.do?e=1"/>            
+        </action>
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

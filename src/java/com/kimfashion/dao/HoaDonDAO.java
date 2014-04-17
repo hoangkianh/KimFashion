@@ -60,6 +60,50 @@ public class HoaDonDAO {
         }
         return list;
     }
+    
+    public List<HoaDon> getAllHoaDon(boolean trangThai) {
+        List<HoaDon> list = new ArrayList<HoaDon>();
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            stm = conn.prepareStatement("SELECT * FROM tbl_hoadon WHERE TrangThai=?");
+            stm.setBoolean(1, trangThai);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                HoaDon hd = new HoaDon();
+                hd.setMaHD(rs.getInt("MaHD"));
+                hd.setMaTV(rs.getInt("MaTV"));
+                hd.setHoTenNguoiNhan(rs.getString("HoTenNguoiNhan"));
+                hd.setSdtNguoiMua(rs.getString("SDTNguoiMua"));
+                hd.setSdtNguoiNhan(rs.getString("SDTNguoiNhan"));
+                hd.setDiaChiGiaoHang(rs.getString("DiaChiGiaoHang"));
+                hd.setTrangThai(rs.getBoolean("TrangThai"));
+                hd.setGhiChu(rs.getString("GhiChu"));
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+                Timestamp ngayLapTimeStamp = rs.getTimestamp("NgayLapHD");
+                Timestamp ngayGiaoHangTimeStamp = rs.getTimestamp("NgayGiaoHang");
+
+                if (ngayLapTimeStamp != null) {
+                    hd.setNgayLapHD(sdf.format(ngayLapTimeStamp.getTime()));
+                }
+
+                if (ngayGiaoHangTimeStamp != null) {
+                    hd.setNgayGiaoHang(sdf2.format(ngayGiaoHangTimeStamp.getTime()));
+                }
+
+                list.add(hd);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return list;
+    }
 
     public HoaDon getHoaDonByMaHD(int maHD) {
         HoaDon hd = null;

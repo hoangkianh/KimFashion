@@ -6045,6 +6045,12 @@ a:hover {
     bottom: 0;
 }
 
+#site-menu-admin {
+    position: absolute;
+    left: 215px;
+    bottom: 0;
+}
+
 .main-menu {
     list-style: none;
     padding: 0;
