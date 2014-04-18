@@ -96,9 +96,17 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
 </c:if>
-<c:if test="${e eq 23}">
+<c:if test="${e eq 24}">
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
-    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
+    <c:set var="moTa" value="Xóa size không thành công, <br/> <a href='admin-size.do'>Quay lại danh sách size</a>"/>
+</c:if>
+<c:if test="${e eq 25}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Xóa thương hiệu không thành công, <br/> <a href='admin-brand.do'>Quay lại danh sách thương hiệu</a>"/>
+</c:if>
+<c:if test="${e eq 26}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Xóa bộ sưu tập không thành công, <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
 </c:if>
 <!DOCTYPE html>
 <html>

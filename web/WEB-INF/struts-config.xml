@@ -274,7 +274,19 @@
             <forward name="DeleteSanPhamNotOK" path="/error.do?e=22"/>
             <forward name="DeleteCTHoaDonNotOK" path="/error.do?e=21"/>
         </action>
-        
+        <action input="/" name="SizeForm" path="/DeleteSize" scope="session" type="com.kimfashion.struts.DeleteSize" validate="false">
+            <forward name="DeleteSizeOK" path="/success.do?s=24"/>
+            <forward name="DeleteSizeNotOK" path="/error.do?e=24"/>
+        </action>
+        <action input="/" name="ThuongHieuForm" path="/DeleteThuongHieu" scope="session" type="com.kimfashion.struts.DeleteThuongHieu" validate="false">
+            <forward name="DeleteThuongHieuOK" path="/success.do?s=25"/>
+            <forward name="DeleteThuongHieuNotOK" path="/error.do?e=25"/>
+        </action>
+        <action input="/" name="BoSuuTapForm" path="/DeleteBoSuuTap" scope="session" type="com.kimfashion.struts.DeleteBoSuuTap" validate="false">
+            <forward name="DeleteBoSuuTapOK" path="/success.do?s=26"/>
+            <forward name="DeleteBoSuuTapNotOK" path="/error.do?e=26"/>
+        </action>
+
         <action input="/" name="HoaDonForm" path="/all-order" scope="session" type="com.kimfashion.struts.GetAllOrder" validate="false">
             <forward name="GetAllOrderOK" path="/admin/all-order.jsp"/>
             <forward name="GetAllOrderNotOK" path="/error.do?e=1"/>            
@@ -315,6 +327,7 @@
             <forward name="AddAdminOK" path="/success.do?s=23"/>
             <forward name="AddAdminNotOK" path="/error.do?e=23"/>
         </action>
+        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

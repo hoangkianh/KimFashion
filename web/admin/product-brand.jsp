@@ -48,6 +48,27 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="delete-confirm" class="modal fade">
+                <div class="modal-dialog">
+                    <html:form styleId="deleteForm" method="POST" action="/DeleteThuongHieu">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Xóa thương hiệu</h3>                    
+                            </div>
+                            <div class="modal-body">
+                                <html:hidden styleId="maThuongHieu" name="ThuongHieuForm" property="maThuongHieu"/>
+                                <p>Bạn có muốn xóa thương hiệu này không?</p>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Hủy" data-dismiss="modal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </html:form>
+                </div>
+            </div>
             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
@@ -76,10 +97,11 @@
                                                         <i class="iconfont-edit"></i>
                                                     </a>
                                                 </td>
-                                                <td align="center">
-                                                    <a href="delete-brand.do?id=<bean:write name="th" property="maThuongHieu"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa thương hiệu">
-                                                        <i class="iconfont-trash"></i>
+                                                 <td align="center">
+                                                    <a href="#delete-confirm" class="delete"
+                                                       id="<bean:write name="th" property="maThuongHieu"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                        <i class="iconfont-trash text-danger"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="th" property="tenThuongHieu"/></td>
@@ -97,7 +119,15 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[1, 'asc']] // sort theo tên thương hiệu
+                "aaSorting": [[2, 'asc']] // sort theo tên thương hiệu
+            });
+            
+            $("a.delete").click(function() {
+                $('#delete-confirm').modal();
+
+                var maThuongHieu = $(this).attr('id');
+                $("#maThuongHieu").val(maThuongHieu);
+                return false;
             });
         </script>
     </body>

@@ -48,6 +48,27 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="delete-confirm" class="modal fade">
+                <div class="modal-dialog">
+                    <html:form styleId="deleteForm" method="POST" action="/DeleteBoSuuTap">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Xóa bộ sưu tập</h3>                    
+                            </div>
+                            <div class="modal-body">
+                                <html:hidden styleId="maBST" name="BoSuuTapForm" property="maBST"/>
+                                <p>Bạn có muốn xóa bộ sưu tập này không?</p>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Hủy" data-dismiss="modal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </html:form>
+                </div>
+            </div>
             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
@@ -79,9 +100,10 @@
                                                     </a>
                                                 </td>
                                                 <td align="center">
-                                                    <a href="delete-collection.do?id=<bean:write name="bst" property="maBST"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa bộ sưu tập">
-                                                        <i class="iconfont-trash"></i>
+                                                    <a href="#delete-confirm" class="delete"
+                                                       id="<bean:write name="bst" property="maBST"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                        <i class="iconfont-trash text-danger"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="bst" property="tenBST"/></td>
@@ -112,7 +134,15 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[1, 'asc']] // sort theo tên BST
+                "aaSorting": [[2, 'asc']] // sort theo tên BST
+            });
+            
+            $("a.delete").click(function() {
+                $('#delete-confirm').modal();
+
+                var maBST = $(this).attr('id');
+                $("#maBST").val(maBST);
+                return false;
             });
         </script>
     </body>

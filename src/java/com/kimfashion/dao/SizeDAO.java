@@ -26,7 +26,7 @@ public class SizeDAO {
         PreparedStatement stm = null;
         ResultSet rs = null;
         try {
-            stm = conn.prepareStatement("SELECT * FROM tbl_size");
+            stm = conn.prepareStatement("SELECT * FROM tbl_size ORDER BY TenSize");
             rs = stm.executeQuery();
 
             while (rs.next()) {

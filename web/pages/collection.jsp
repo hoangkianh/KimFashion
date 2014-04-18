@@ -266,12 +266,12 @@
                                                                 VND
                                                             </strong>
                                                         </logic:equal>
-                                                        <logic:equal name="sanPham" property="sanPhamMoi" value="true">
+                                                        <logic:notEqual name="sanPham" property="dangKM" value="true">
                                                             <strong class="price accent-color">
                                                                 <fmt:formatNumber value="${sanPham.giaBan}" type="NUMBER" maxFractionDigits="3" />
                                                                 VND
                                                             </strong>
-                                                        </logic:equal>
+                                                        </logic:notEqual>
                                                         <a href="cart.do" class="btn btn-round btn-default add-to-cart visible-list">Thêm vào giỏ</a>
                                                     </div>
                                                 </div>

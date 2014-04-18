@@ -44,7 +44,7 @@ public class SanPhamSizeDAO {
         return list;
     }
 
-    public List<SanPhamSize> getAllSanPhamBySize (int maSize) {
+    public List<SanPhamSize> getAllSanPhamByMaSize (int maSize) {
         List<SanPhamSize> list = new ArrayList<SanPhamSize>();
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
@@ -111,14 +111,14 @@ public class SanPhamSizeDAO {
         return kq;
     }
     
-    public boolean deleteSanPhamSize(int maSP) {
+    public boolean deleteSanPhamSize(int maSize) {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "DELETE FROM tbl_sanpham_size WHERE MaSP=?";
+        String query = "DELETE FROM tbl_sanpham_size WHERE MaSize=?";
         try {
             stm = conn.prepareStatement(query);
-            stm.setInt(1, maSP);
+            stm.setInt(1, maSize);
             
             if (stm.executeUpdate() > 0) {
                 kq = true;

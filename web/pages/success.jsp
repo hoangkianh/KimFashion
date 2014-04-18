@@ -95,6 +95,18 @@
     <c:set var="thongBao" value="Tạo admin mới thành công"/>
     <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách thành viên</a>"/>
 </c:if>
+<c:if test="${s eq 24}">
+    <c:set var="thongBao" value="Xóa size thành công!"/>
+    <c:set var="moTa" value="Size đã được xóa thành công. <br/> <a href='admin-size.do'>Quay lại danh sách size</a>"/>
+</c:if>
+<c:if test="${s eq 25}">
+    <c:set var="thongBao" value="Xóa thương hiệu thành công!"/>
+    <c:set var="moTa" value="Thương hiệu đã được xóa thành công. <br/> <a href='admin-brand.do'>Quay lại danh sách thương hiệu</a>"/>
+</c:if>
+<c:if test="${s eq 26}">
+    <c:set var="thongBao" value="Xóa bộ sưu tập thành công!"/>
+    <c:set var="moTa" value="Bộ sưu tập đã được xóa thành công. <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

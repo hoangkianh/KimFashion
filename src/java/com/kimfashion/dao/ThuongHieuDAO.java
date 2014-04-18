@@ -103,6 +103,7 @@ public class ThuongHieuDAO {
                 kq = true;
             }
         } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
         } finally {
             DBUtils.closeAll(conn, stm, null);
         }
@@ -123,6 +124,7 @@ public class ThuongHieuDAO {
                 kq = true;
             }
         } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
         } finally {
             DBUtils.closeAll(conn, stm, null);
         }
@@ -142,6 +144,7 @@ public class ThuongHieuDAO {
                 kq = true;
             }
         } catch (SQLException e) {
+            System.err.println(e.getErrorCode() + ":" + e.getMessage());
         } finally {
             DBUtils.closeAll(conn, stm, null);
         }

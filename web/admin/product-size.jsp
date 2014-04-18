@@ -48,6 +48,27 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="delete-confirm" class="modal fade">
+                <div class="modal-dialog">
+                    <html:form styleId="deleteForm" method="POST" action="/DeleteSize">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Xóa size</h3>                    
+                            </div>
+                            <div class="modal-body">
+                                <html:hidden styleId="maSize" name="SizeForm" property="maSize"/>
+                                <p>Bạn có muốn xóa size này không?</p>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Hủy" data-dismiss="modal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </html:form>
+                </div>
+            </div>
             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
@@ -76,10 +97,11 @@
                                                         <i class="iconfont-edit"></i>
                                                     </a>
                                                 </td>
-                                                <td align="center">
-                                                    <a href="delete-size.do?id=<bean:write name="si" property="maSize"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa size">
-                                                        <i class="iconfont-trash"></i>
+                                                 <td align="center">
+                                                    <a href="#delete-confirm" class="delete"
+                                                       id="<bean:write name="si" property="maSize"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                        <i class="iconfont-trash text-danger"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="si" property="tenSize"/></td>
@@ -97,7 +119,15 @@
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
             $('#myTable').dataTable({
-                "aaSorting": [[1, 'asc']] // sort theo tên size
+                "aaSorting": [[2, 'asc']] // sort theo tên size
+            });
+            
+            $("a.delete").click(function() {
+                $('#delete-confirm').modal();
+
+                var maSize = $(this).attr('id');
+                $("#maSize").val(maSize);
+                return false;
             });
         </script>
     </body>
