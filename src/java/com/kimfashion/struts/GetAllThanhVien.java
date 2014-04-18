@@ -43,10 +43,6 @@ public class GetAllThanhVien extends org.apache.struts.action.Action {
         
         thanhVienForm.setListThanhVien(list);
         
-        if (list.isEmpty()) {
-            return mapping.findForward("GetAllThanhVienNotOK");
-        }
-        
         return mapping.findForward("GetAllThanhVienOK");
     }
 }

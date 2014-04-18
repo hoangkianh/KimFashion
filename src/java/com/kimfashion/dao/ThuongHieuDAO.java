@@ -147,4 +147,24 @@ public class ThuongHieuDAO {
         }
         return kq;
     }
+
+    public int count() {
+        int soHD = -1;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT COUNT(*) AS SoTH FROM tbl_thuonghieu";
+        try {
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                soHD = rs.getInt("SoTH");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return soHD;
+    }
 }

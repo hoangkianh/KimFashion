@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="ThongKeForm" type="com.kimfashion.form.ThongKeForm"/>
         <form-bean name="CapNhatMatKhauForm" type="com.kimfashion.form.CapNhatMatKhauForm"/>
         <form-bean name="DangNhapForm" type="com.kimfashion.form.DangNhapForm"/>
         <form-bean name="ConfirmLaiForm" type="com.kimfashion.form.ConfirmLaiForm"/>
@@ -131,7 +132,8 @@
         <!--======================= 
         Admin
         ======================= -->
-        <action path="/admin" forward="/admin/dashboard.jsp"/>
+        <action path="/admin" name="ThongKeForm" forward="/admin/dashboard.jsp"/>
+            
         <action input="/" name="LoaiSPForm" path="/admin-category" scope="session" type="com.kimfashion.struts.GetAllLoaiSanPham" validate="false">
             <forward name="GetLoaiSPOK" path="/admin/product-category.jsp" />
             <forward name="GetLoaiSPNotOK" path="/error.do?e=1" />

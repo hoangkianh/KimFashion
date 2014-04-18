@@ -780,4 +780,25 @@ public class SanPhamDAO {
         }
         return maSP;
     }
+    
+    // đếm số SP
+    public int count() {
+        int soSP = -1;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT COUNT(*) AS SoSP FROM tbl_sanpham";
+        try {
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                soSP = rs.getInt("SoSP");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return soSP;
+    }
 }

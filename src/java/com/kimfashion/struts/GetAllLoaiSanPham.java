@@ -6,9 +6,7 @@
 package com.kimfashion.struts;
 
 import com.kimfashion.dao.LoaiSPDAO;
-import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dto.LoaiSP;
-import com.kimfashion.dto.SanPham;
 import com.kimfashion.form.LoaiSPForm;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -30,12 +28,7 @@ public class GetAllLoaiSanPham extends org.apache.struts.action.Action {
 
         LoaiSPForm loaiSPForm = (LoaiSPForm) form;
         List<LoaiSP> list = new LoaiSPDAO().getAllLoaiSP();
-
-        if (list.size() > 0) {
-            loaiSPForm.setListLoaiSP(list);
-            return mapping.findForward("GetLoaiSPOK");
-
-        }
-        return mapping.findForward("GetLoaiSPNotOK");
+        loaiSPForm.setListLoaiSP(list);
+        return mapping.findForward("GetLoaiSPOK");
     }
 }

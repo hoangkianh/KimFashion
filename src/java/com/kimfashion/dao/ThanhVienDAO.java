@@ -248,4 +248,24 @@ public class ThanhVienDAO {
         }
         return tv;
     }
+
+    public int count() {
+        int soHD = -1;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT COUNT(*) AS SoTV FROM tbl_thanhvien";
+        try {
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                soHD = rs.getInt("SoTV");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return soHD;
+    }
 }

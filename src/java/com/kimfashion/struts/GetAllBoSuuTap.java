@@ -27,12 +27,7 @@ public class GetAllBoSuuTap extends org.apache.struts.action.Action {
             throws Exception {
         BoSuuTapForm boSuuTapForm = (BoSuuTapForm) form;
         List<BoSuuTap> list = new BoSuuTapDAO().getAllBoSuuTap();
-
-        if (list.size() > 0) {
-            boSuuTapForm.setListBST(list);
-            return mapping.findForward("GetBoSuuTapOK");
-
-        }
-        return mapping.findForward("GetBoSuuTapNotOK");
+        boSuuTapForm.setListBST(list);
+        return mapping.findForward("GetBoSuuTapOK");
     }
 }

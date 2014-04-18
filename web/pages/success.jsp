@@ -89,11 +89,11 @@
 </c:if>
 <c:if test="${s eq 22}">
     <c:set var="thongBao" value="Hủy quyền admin thành công"/>
-    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
+    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách thành viên</a>"/>
 </c:if>
 <c:if test="${s eq 23}">
     <c:set var="thongBao" value="Tạo admin mới thành công"/>
-    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách hóa đơn</a>"/>
+    <c:set var="moTa" value="<a href='all-thanhvien.do'>Quay lại danh sách thành viên</a>"/>
 </c:if>
 <!DOCTYPE html>
 <html>

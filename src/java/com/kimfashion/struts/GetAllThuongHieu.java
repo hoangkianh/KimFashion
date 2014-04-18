@@ -30,11 +30,6 @@ public class GetAllThuongHieu extends org.apache.struts.action.Action {
         ThuongHieuForm thuongHieuForm = (ThuongHieuForm) form;
         List<ThuongHieu> list = new ThuongHieuDAO().getAllThuongHieu();
 
-        if (list.size() > 0) {
-            thuongHieuForm.setListThuongHieu(list);
-            return mapping.findForward("GetThuongHieuOK");
-
-        }
-        return mapping.findForward("GetThuongHieuNotOK");
+        return mapping.findForward("GetThuongHieuOK");
     }
 }

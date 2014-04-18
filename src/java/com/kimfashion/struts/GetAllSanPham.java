@@ -31,9 +31,6 @@ public class GetAllSanPham extends org.apache.struts.action.Action {
         List<SanPham> list = new SanPhamDAO().getAllSanPhamAdmin();
         sanPhamForm.setListSanPham(list);
         
-        if (list.isEmpty()) {
-            return mapping.findForward("GetSanPhamNotOK");            
-        }
         return mapping.findForward("GetSanPhamOK");
     }
 }

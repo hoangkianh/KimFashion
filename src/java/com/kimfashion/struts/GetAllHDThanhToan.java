@@ -41,10 +41,6 @@ public class GetAllHDThanhToan extends org.apache.struts.action.Action {
         List<HoaDon> list = hoaDonDAO.getAllHoaDon(true);
         
         hoaDonForm.setListHoaDon(list);
-        if (list.isEmpty()) {
-            return mapping.findForward("GetAllOrderNotOK");            
-        }
-        
         return mapping.findForward("GetAllOrderOK");
     }
 }

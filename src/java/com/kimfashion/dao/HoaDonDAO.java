@@ -60,7 +60,7 @@ public class HoaDonDAO {
         }
         return list;
     }
-    
+
     public List<HoaDon> getAllHoaDon(boolean trangThai) {
         List<HoaDon> list = new ArrayList<HoaDon>();
         Connection conn = DBUtils.getConnection();
@@ -254,5 +254,50 @@ public class HoaDonDAO {
             DBUtils.closeAll(conn, stm, rs);
         }
         return maHD;
+    }
+
+    public int count() {
+        int soHD = -1;
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT COUNT(*) AS SoHD FROM tbl_hoadon";
+        try {
+            stm = conn.prepareStatement(query);
+            rs = stm.executeQuery();
+            if (rs.next()) {
+                soHD = rs.getInt("SoHD");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return soHD;
+    }
+
+    public int[] tinhDoanhThu() {
+        int[] doanhThuTheoThang = new int[12];
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String query = "SELECT SUM(TongTien) AS DoanhThu FROM `vw_tongtien` WHERE MONTH(NgayLapHD) = ?";
+
+        try {
+            for (int i = 0; i < doanhThuTheoThang.length; i++) {
+                stm = conn.prepareStatement(query);
+                stm.setInt(1, (i+1));
+                rs = stm.executeQuery();
+                
+                if (rs.next()) {
+                    doanhThuTheoThang[i] = rs.getInt("DoanhThu");
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getErrorCode() + ":" + ex.getMessage());
+        } finally {
+            DBUtils.closeAll(conn, stm, rs);
+        }
+        return doanhThuTheoThang;
     }
 }

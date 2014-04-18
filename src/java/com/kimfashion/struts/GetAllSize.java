@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.kimfashion.struts;
 
 import com.kimfashion.dao.SizeDAO;
@@ -22,20 +21,15 @@ import org.apache.struts.action.ActionMapping;
  */
 public class GetAllSize extends org.apache.struts.action.Action {
 
-    
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        
+
         SizeForm sizeForm = (SizeForm) form;
         List<Size> list = new SizeDAO().getAllSize();
 
-        if (list.size() > 0) {
-            sizeForm.setListSize(list);
-            return mapping.findForward("GetSizeOK");
-
-        }
-        return mapping.findForward("GetSizeNotOK");
+        sizeForm.setListSize(list);
+        return mapping.findForward("GetSizeOK");
     }
 }
