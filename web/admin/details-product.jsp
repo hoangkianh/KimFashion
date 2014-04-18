@@ -118,7 +118,7 @@
                                                         <li>
                                                             <span class="key">Bộ sưu tập:</span>
                                                             <span class="value">
-                                                                <a href="product-collection.do?id=<bean:write name="SanPhamForm" property="maBST" />"><bean:write name="SanPhamForm" property="tenBST"/></a>
+                                                                <a href="collection.do?id=<bean:write name="SanPhamForm" property="maBST" />"><bean:write name="SanPhamForm" property="tenBST"/></a>
                                                             </span>
                                                         </li>
                                                     </c:if>

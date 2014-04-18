@@ -177,7 +177,7 @@ public class BoSuuTapDAO {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "DELETE FROM tbl_bosuutap WHERE `MaBST` = ?";
+        String query = "DELETE FROM tbl_bosuutap WHERE MaBST = ?";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maBST);
