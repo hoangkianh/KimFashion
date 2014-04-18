@@ -117,10 +117,7 @@
         </div>
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript">
-            $('[rel=tooltip]').tooltip();
-            $('#myTable').dataTable({
-                "aaSorting": [[2, 'asc']] // sort theo tên size
-            });
+            $('[rel=tooltip]').tooltip();;
             
             $("a.delete").click(function() {
                 $('#delete-confirm').modal();
@@ -129,6 +126,10 @@
                 $("#maSize").val(maSize);
                 return false;
             });
+            
+            $('#myTable').dataTable({
+                "aaSorting": [[2, 'asc']] // sort theo tên size
+            })
         </script>
     </body>
 </html>

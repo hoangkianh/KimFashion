@@ -108,6 +108,10 @@
     <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
     <c:set var="moTa" value="Xóa bộ sưu tập không thành công, <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
 </c:if>
+<c:if test="${e eq 27}">
+    <c:set var="tenLoi" value="Opps! Đã có lỗi xảy ra"/>
+    <c:set var="moTa" value="Xóa loại sản phẩm không thành công, <br/> <a href='admin-category.do'>Quay lại danh sách loại sản phẩm</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

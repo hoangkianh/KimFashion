@@ -133,10 +133,7 @@
         </div>
         <%@include file="../include/footer.jsp" %><script type="text/javascript">
             $('[rel=tooltip]').tooltip();
-            $('#myTable').dataTable({
-                "aaSorting": [[3, 'asc']] // sort theo mã HD
-            });
-
+            
             $("a.delete").click(function() {
                 $('#delete-confirm').modal();
 
@@ -144,6 +141,11 @@
                 $("#maHD").val(maHD);
                 return false;
             });
+            
+            $('#myTable').dataTable({
+                "aaSorting": [[3, 'asc']] // sort theo mã HD
+            });
+
         </script>
     </body>
 </html>

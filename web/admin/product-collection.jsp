@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div id="delete-confirm" class="modal fade">
                 <div class="modal-dialog">
                     <html:form styleId="deleteForm" method="POST" action="/DeleteBoSuuTap">
@@ -133,16 +133,17 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
-            $('#myTable').dataTable({
-                "aaSorting": [[2, 'asc']] // sort theo tên BST
-            });
-            
+
             $("a.delete").click(function() {
                 $('#delete-confirm').modal();
 
                 var maBST = $(this).attr('id');
                 $("#maBST").val(maBST);
                 return false;
+            });
+
+            $('#myTable').dataTable({
+                "aaSorting": [[2, 'asc']] // sort theo tên BST
             });
         </script>
     </body>

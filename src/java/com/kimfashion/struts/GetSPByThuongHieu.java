@@ -46,8 +46,6 @@ public class GetSPByThuongHieu extends org.apache.struts.action.Action {
         } catch (Exception e) {
             return mapping.findForward("GetSanPhamNotOK");
         }
-        
-        
         return mapping.findForward("GetSanPhamOK");
     }
 }

@@ -48,6 +48,27 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="delete-confirm" class="modal fade">
+                <div class="modal-dialog">
+                    <html:form styleId="deleteForm" method="POST" action="/DeleteLoaiSP">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h3>Xóa loại sản phẩm</h3>                    
+                            </div>
+                            <div class="modal-body">
+                                <html:hidden styleId="maLoai" name="LoaiSPForm" property="maLoai"/>
+                                <p>Bạn có muốn xóa loại sản phẩm này không?</p>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-primary btn-round" value="Xóa" />
+                                    <input type="reset" class="btn btn-default btn-round" value="Hủy" data-dismiss="modal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </html:form>
+                </div>
+            </div>
             <!-- SITE MAIN CONTENT -->
             <main id="main-content" role="main">
                 <div class="container">
@@ -79,9 +100,10 @@
                                                     </a>
                                                 </td>
                                                <td align="center">
-                                                    <a href="delete-category.do?id=<bean:write name="loaiSP" property="maLoai"/>"
-                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa loại sản phẩm">
-                                                        <i class="iconfont-trash"></i>
+                                                    <a href="#delete-confirm" class="delete"
+                                                       id="<bean:write name="loaiSP" property="maLoai"/>"
+                                                       rel="tooltip" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                                        <i class="iconfont-trash text-danger"></i>
                                                     </a>
                                                 </td>
                                                 <td><bean:write name="loaiSP" property="tenLoai"/></td>
@@ -107,6 +129,15 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
+            
+            $("a.delete").click(function() {
+                $('#delete-confirm').modal();
+
+                var maLoai = $(this).attr('id');
+                $("#maLoai").val(maLoai);
+                return false;
+            });
+            
             $('#myTable').dataTable({
                 "aaSorting": [[1, 'asc']] // sort theo tên loại sp
             });

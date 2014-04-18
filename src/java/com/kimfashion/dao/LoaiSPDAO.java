@@ -260,7 +260,7 @@ public class LoaiSPDAO {
         boolean kq = false;
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
-        String query = "DELETE FROM tbl_loaisp WHERE `MaLoai` = ?";
+        String query = "DELETE FROM tbl_loaisp WHERE MaLoai = ?";
         try {
             stm = conn.prepareStatement(query);
             stm.setInt(1, maLoai);

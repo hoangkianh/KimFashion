@@ -46,7 +46,8 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li class="active">Sản phẩm</li>
+                            <li><a href="admin-product.do">Sản phẩm</a></li>
+                            <li class="active">Loại <bean:write name="SanPhamForm" property="tenLoaiSP"/></li>
                         </ul>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold"><h3>Danh sách sản phẩm</h3></caption>
+                                    <caption class="uppercase text-bold"><h3>Danh sách sản phẩm loại <bean:write name="SanPhamForm" property="tenLoaiSP"/></h3></caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
@@ -171,17 +172,16 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
+            $('#myTable').dataTable({
+                "aaSorting": [[2, 'asc']] // sort theo tên sp
+            });
             
             $("a.delete").click(function() {
                 $('#delete-confirm').modal();
-                
+
                 var maSP = $(this).attr('id');
                 $("#maSP").val(maSP);
                 return false;
-            });
-            
-            $('#myTable').dataTable({
-                "aaSorting": [[2, 'asc']] // sort theo tên sp
             });
         </script>
     </body>

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.kimfashion.struts;
 
-import com.kimfashion.dao.BoSuuTapDAO;
-import com.kimfashion.form.BoSuuTapForm;
+import com.kimfashion.dao.LoaiSPDAO;
+import com.kimfashion.form.LoaiSPForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -17,22 +18,21 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author HKA
  */
-public class DeleteBoSuuTap extends org.apache.struts.action.Action {
+public class DeleteLoaiSP extends org.apache.struts.action.Action {
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        
+        LoaiSPForm loaiSPForm = (LoaiSPForm) form;
+        LoaiSPDAO loaiSPDAO = new LoaiSPDAO();
+        int maLoai = loaiSPForm.getMaLoai();
 
-        BoSuuTapForm boSuuTapForm = (BoSuuTapForm) form;
-        BoSuuTapDAO bstdao = new BoSuuTapDAO();
-        int maBST = boSuuTapForm.getMaBST();
-
-        // xóa bst
-        if (!bstdao.deleteBoSuuTap(maBST)) {
-            return mapping.findForward("DeleteBoSuuTapNotOK");
+        if (!loaiSPDAO.deleteLoaiSP(maLoai)) {
+            return mapping.findForward("DeleteLoaiSPNotOK");
         }
 
-        return mapping.findForward("DeleteBoSuuTapOK");
+        return mapping.findForward("DeleteLoaiSPOK");
     }
 }

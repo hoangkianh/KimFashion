@@ -46,7 +46,8 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="admin.do">Trang quản trị</a></li>
-                            <li class="active">Sản phẩm</li>
+                            <li><a href="admin-product.do">Sản phẩm</a></li>
+                            <li class="active">Thương hiệu <bean:write name="SanPhamForm" property="tenThuongHieu"/></li>
                         </ul>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                                 </p>
 
                                 <table id="myTable" class="table table-striped table-bordered table-hover table-condensed">
-                                    <caption class="uppercase text-bold"><h3>Danh sách sản phẩm</h3></caption>
+                                    <caption class="uppercase text-bold"><h3>Danh sách sản phẩm thương hiệu <bean:write name="SanPhamForm" property="tenThuongHieu" /></h3></caption>
                                     <thead>
                                         <tr>
                                             <th class="sorting_disabled">&nbsp;</th>
@@ -174,7 +175,7 @@
             
             $("a.delete").click(function() {
                 $('#delete-confirm').modal();
-                
+
                 var maSP = $(this).attr('id');
                 $("#maSP").val(maSP);
                 return false;

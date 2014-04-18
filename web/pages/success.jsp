@@ -107,6 +107,10 @@
     <c:set var="thongBao" value="Xóa bộ sưu tập thành công!"/>
     <c:set var="moTa" value="Bộ sưu tập đã được xóa thành công. <br/> <a href='admin-collection.do'>Quay lại danh sách bộ sưu tập</a>"/>
 </c:if>
+<c:if test="${s eq 27}">
+    <c:set var="thongBao" value="Xóa loại sản phẩm thành công!"/>
+    <c:set var="moTa" value="Loại sản phẩm đã được xóa thành công. <br/> <a href='admin-category.do'>Quay lại danh sách loại sản phẩm</a>"/>
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

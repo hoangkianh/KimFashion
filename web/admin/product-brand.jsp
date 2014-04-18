@@ -118,9 +118,6 @@
         <%@include file="../include/footer.jsp" %>
         <script type="text/javascript">
             $('[rel=tooltip]').tooltip();
-            $('#myTable').dataTable({
-                "aaSorting": [[2, 'asc']] // sort theo tên thương hiệu
-            });
             
             $("a.delete").click(function() {
                 $('#delete-confirm').modal();
@@ -128,6 +125,10 @@
                 var maThuongHieu = $(this).attr('id');
                 $("#maThuongHieu").val(maThuongHieu);
                 return false;
+            });
+            
+            $('#myTable').dataTable({
+                "aaSorting": [[2, 'asc']] // sort theo tên thương hiệu
             });
         </script>
     </body>
