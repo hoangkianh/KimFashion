@@ -60,7 +60,7 @@
                         <section class="section">
                             <section class="col-xs-12 col-sm-12 col-md-12">
                                 <p class="uppercase text-bold text-center">sửa hóa đơn số <bean:write name="HoaDonForm" property="maHD"/></p>
-                                <html:form action="/SuaHD" method="POST" styleClass="form-horizontal">
+                                <html:form action="/SuaHD" method="POST" styleClass="form-horizontal" styleId="formHoaDon">
                                     <html:hidden name="HoaDonForm" property="maHD"/>
                                     <html:hidden name="HoaDonForm" property="listChiTietHDString" styleId="listChiTietHDString"/>
                                     <div class="row">
@@ -85,7 +85,7 @@
                                                                     <span class="text-bold uppercase">ngày giao hàng:</span>
                                                                     <div class="input-group" id="datetimepicker1">
                                                                         <input type="text" class="form-control" name="ngayGiaoHang" id="ngayGiaoHang" 
-                                                                               data-format="dd/MM/yyyy hh:mm:ss" value="<bean:write name="HoaDonForm" property="ngayGiaoHang"/>" />
+                                                                               data-format="dd/MM/yyyy" value="<bean:write name="HoaDonForm" property="ngayGiaoHang"/>" />
                                                                         <span class="input-group-addon"><i data-time-icon="iconfont-time" data-date-icon="iconfont-calendar"></i></span>
                                                                     </div>
                                                                 </li>
@@ -155,7 +155,7 @@
                                                                         <label class="col-sm-4 control-label" for="hoTenNguoiNhan">Họ tên:</label>
                                                                         <div class="col-lg-7">
                                                                             <input type="text" name="hoTenNguoiNhan" class="form-control" 
-                                                                                   id="tenDangNhap" placeholder="Họ tên người nhận"
+                                                                                   id="hoTenNguoiNhan" placeholder="Họ tên người nhận"
                                                                                    value="<bean:write name="HoaDonForm" property="hoTenNguoiNhan"/>"/>
                                                                         </div>
                                                                     </div>
@@ -165,7 +165,7 @@
                                                                         <label class="col-sm-4 control-label" for="sdtNguoiNhan">SĐT:</label>
                                                                         <div class="col-lg-7">
                                                                             <input type="text" name="sdtNguoiNhan" class="form-control" 
-                                                                                   id="tenDangNhap" placeholder="SDT người nhận"
+                                                                                   id="sdtNguoiNhan" placeholder="SDT người nhận"
                                                                                    value="<bean:write name="HoaDonForm" property="sdtNguoiNhan"/>"/>
                                                                         </div>
                                                                     </div>
@@ -175,7 +175,7 @@
                                                                         <label class="col-sm-4 control-label" for="diaChiGiaoHang">Địa chỉ giao hàng:</label>
                                                                         <div class="col-lg-7">
                                                                             <input type="text" name="diaChiGiaoHang" class="form-control" 
-                                                                                   id="tenDangNhap" placeholder="Địa chỉ giao hàng"
+                                                                                   id="diaChiGiaoHang" placeholder="Địa chỉ giao hàng"
                                                                                    value="<bean:write name="HoaDonForm" property="diaChiGiaoHang"/>"/>
                                                                         </div>
                                                                     </div>
@@ -316,11 +316,81 @@
             </main>
         </div>
         <%@include file="../include/footer.jsp" %>
+        <script type="text/javascript" src="resource/js/jquery.validate.min.js"></script>
         <script src="resource/js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript">
             $('#datetimepicker1').datetimepicker({
                 language: 'vi-VN',
                 pickTime: false
+            });
+
+            // kiểm tra ngày giao hàng có trước ngày hôm nay k?
+            $.validator.addMethod("checkDate", function(value, element) {
+                var kq = false;
+                var dateString = value.split("/"); // cắt chuỗi theo dấu phân cách / VD: 30/12/2014 --> 30, 12, 2014
+
+                // chuyển lại thành 2014, 12, 30 để đúng định dạng Date trong javascript
+                // dateString[1] - 1 vì tháng tính từ 0 - 11. VD: dateString[1] = 12, ==> dateString[1] - 1= 11 (11 là tháng thứ 12 tính từ 0)
+                var ngayGiaoHang = new Date(dateString[2], dateString[1] - 1, dateString[0]).getTime();
+
+                var ngayHomNay = new Date().getTime(); // getTime() lấy ra timestamp của ngày
+
+                if (ngayGiaoHang >= ngayHomNay) { // so sánh, nếu ngày giao hàng >= ngày hôm nay --> OK
+                    kq = true;
+                }
+
+                return this.optional(element) || kq;
+            }, "Ngày giao hàng không thể trước ngày hôm nay");
+
+
+            $.validator.addMethod("checkPhone", function(value, element) {
+                var kq = false;
+                if (/^[0][1-9][0-9]{8,9}$/.test(value)) {
+                    kq = true;
+                }
+                return this.optional(element) || kq;
+            }, "Bạn cần điền số điện thoại hợp lệ");
+
+            $("#formHoaDon").validate({
+                errorClass: "text-danger",
+                rules: {
+                    ngayGiaoHang: {
+                        required: true,
+                        checkDate: true
+                    },
+                    hoTenNguoiNhan: {
+                        required: {
+                            depends: function() {
+                                return !$('#checkBoxGiaoHang').is(':checked');
+                            }
+                        }
+                    },
+                    diaChiGiaoHang: {
+                        required: {
+                            depends: function() {
+                                return !$('#checkBoxGiaoHang').is(':checked');
+                            }
+                        }
+                    },
+                    sdtNguoiNhan: {
+                        required: true,
+                        checkPhone: true
+                    }
+                },
+                messages: {
+                    hoTenNguoiNhan: {
+                        required: "Bạn cần điền họ tên người nhận"
+                    },
+                    ngayGiaoHang: {
+                        required: "Bạn cần chọn ngày giao hàng"
+                    },
+                    diaChiGiaoHang: {
+                        required: "Bạn cần điền địa chỉ giao hàng"
+                    },
+                    sdtNguoiNhan: {
+                        required: "Bạn cần điền số điện thoại người nhận"
+                    }
+                }
             });
         </script>
     </body>
