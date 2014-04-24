@@ -70,7 +70,7 @@ jQuery(function(e) {
         } else {
             var f = 0,
                     l = 0,
-                    giaSP, soLuong = 2;
+                    giaSP, soLuong = 2; 
             cookie = parseCookie(cookie);
             for (var sanPham in cookie) {
                 giaSP = cookie[sanPham].price;

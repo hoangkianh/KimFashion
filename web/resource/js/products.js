@@ -145,8 +145,8 @@ jQuery(function($) {
                 val = parseInt($input.val());
 
         val = ($this.hasClass('up')) ? ++val : --val;
-        if (isNaN(val) || val < 0)
-            val = 0;
+        if (isNaN(val) || val < 1)
+            val = 1;
 
         $input.val(val);
 
@@ -207,6 +207,8 @@ jQuery(function($) {
      | Setup Product Grid Layout
      | ----------------------------------------------------------------------------------
      */
+    
+    //Phân trang
     function phanTrang() {
         $.ajax({
             type: "GET",
@@ -254,7 +256,7 @@ jQuery(function($) {
 
 
     function setupProduct() {
-        var itemW = 270,
+        var itemW = 200,
                 productW = $product_layout.width();
 
         x = parseInt(productW / itemW);
@@ -318,7 +320,7 @@ jQuery(function($) {
 
     /*
      | ----------------------------------------------------------------------------------
-     | Isotope Filter - Filter by Category and Brands
+     | Tìm kiếm theo loại sp & thương hiệu
      | ----------------------------------------------------------------------------------
      */
     filterCheckbox($('#category-list'), 'category');
@@ -367,7 +369,7 @@ jQuery(function($) {
 
     /*
      | ----------------------------------------------------------------------------------
-     | Isotope Filter - Filter by Price
+     | Tìm kiếm theo giá
      | ----------------------------------------------------------------------------------
      */
     function priceSlider(value)
