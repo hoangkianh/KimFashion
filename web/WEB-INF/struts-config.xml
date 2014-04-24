@@ -105,8 +105,9 @@
             <forward name="GetThongTinNotOK" path="/error.do?e=7"/>
         </action>
         <action input="/" name="HoaDonForm" path="/thanhtoan" scope="session" type="com.kimfashion.struts.ThanhToan" validate="false">
+            <forward name="GuiMailNotOK" path="/error.do?e=3"  />
             <forward name="ThanhToanOK" path="/success.do?s=5" />
-            <forward name="ThanhToanNotOK" path="/error.do?e=6" />            
+            <forward name="ThanhToanNotOK" path="/error.do?e=6" />
         </action>
         <action input="/" name="ThanhVienForm" path="/CapNhatThongTinTV" scope="session" type="com.kimfashion.struts.CapNhatThongTinTV" validate="false">
             <forward name="GetThongTinNotOK" path="/error.do?e=7" />

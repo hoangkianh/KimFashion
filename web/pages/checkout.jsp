@@ -188,7 +188,7 @@
                                                                     <label for="ngayGiaoHang" class="col-sm-4 col-lg-4 control-label required">Ngày giao hàng</label>
                                                                     <div class="col-sm-8 col-lg-8 date input-group" id="datetimepicker1">
                                                                         <input type="text" class="form-control" name="ngayGiaoHang" id="ngayGiaoHang" 
-                                                                               data-format="dd/MM/yyyy hh:mm:ss" />
+                                                                               data-format="dd/MM/yyyy" />
                                                                         <span class="input-group-addon"><i data-time-icon="iconfont-time" data-date-icon="iconfont-calendar"></i></span>
                                                                     </div>
                                                                 </div>
@@ -303,6 +303,24 @@
                 }
                 return this.optional(element) || kq;
             }, "Bạn cần điền số điện thoại hợp lệ");
+            
+            // kiểm tra ngày giao hàng có trước ngày hôm nay k?
+            $.validator.addMethod("checkDate", function(value, element) {
+                var kq = false;
+                var dateString = value.split("/"); // cắt chuỗi theo dấu phân cách / VD: 30/12/2014 --> 30, 12, 2014
+                
+                // chuyển lại thành 2014, 12, 30 để đúng định dạng Date trong javascript
+                // dateString[1] - 1 vì tháng tính từ 0 - 11. VD: dateString[1] = 12, ==> dateString[1] - 1= 11 (11 là tháng thứ 12 tính từ 0)
+                var ngayGiaoHang = new Date(dateString[2], dateString[1] - 1, dateString[0]).getTime();
+                
+                var ngayHomNay = new Date().getTime(); // getTime() lấy ra timestamp của ngày
+                
+                if (ngayGiaoHang >= ngayHomNay) { // so sánh, nếu ngày giao hàng >= ngày hôm nay --> OK
+                    kq = true;
+                }
+                
+                return this.optional(element) || kq;
+            }, "Ngày giao hàng không thể trước ngày hôm nay");
 
             $("#formThanhToan").validate({
                 errorClass: "text-danger",
@@ -322,7 +340,8 @@
                         checkPhone: true
                     },
                     ngayGiaoHang: {
-                        required: true
+                        required: true,
+                        checkDate: true
                     },
                     hoTenNguoiNhan: {
                         required: {

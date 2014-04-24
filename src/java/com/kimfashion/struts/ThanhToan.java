@@ -7,11 +7,14 @@ package com.kimfashion.struts;
 
 import com.kimfashion.dao.ChiTietHDDAO;
 import com.kimfashion.dao.HoaDonDAO;
+import com.kimfashion.dao.SanPhamDAO;
 import com.kimfashion.dao.ThanhVienDAO;
 import com.kimfashion.dto.ChiTietHD;
 import com.kimfashion.dto.HoaDon;
+import com.kimfashion.dto.SanPham;
 import com.kimfashion.dto.ThanhVien;
 import com.kimfashion.form.HoaDonForm;
+import com.kimfashion.utils.GuiMail;
 import java.net.URLDecoder;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +51,7 @@ public class ThanhToan extends org.apache.struts.action.Action {
         HoaDonDAO hddao = new HoaDonDAO();
         ChiTietHDDAO chiTietHDDAO = new ChiTietHDDAO();
         HoaDon hd = new HoaDon();
+        SanPhamDAO spDAO = new SanPhamDAO();
         ThanhVien tv = new ThanhVienDAO().getThanhVienByMaTV(hoaDonForm.getMaTV());
 
         if (tv != null
@@ -81,6 +85,12 @@ public class ThanhToan extends org.apache.struts.action.Action {
                     JSONParser parser = new JSONParser();
                     JSONArray jsonArr = (JSONArray) parser.parse(json);
 
+                    // chuỗi cho email
+                    String strEmail = "";
+                    StringBuffer requestURL = request.getRequestURL();
+                    String link = requestURL.substring(0, requestURL.lastIndexOf("/")); // link tới website
+                    int tongTien = 0;
+
                     for (int i = 0; i < jsonArr.size(); i++) {
                         JSONObject obj = (JSONObject) jsonArr.get(i);
                         long maSP = (Long) obj.get("id");
@@ -96,16 +106,41 @@ public class ThanhToan extends org.apache.struts.action.Action {
                         chiTietHD.setMaSize((int) maSize);
                         chiTietHD.setSoLuong((int) soLuong);
                         chiTietHD.setDonGia(Integer.parseInt(donGia));
+                        tongTien += soLuong * Integer.parseInt(donGia);
 
                         if (!chiTietHDDAO.addNewChiTietHD(chiTietHD)) {
                             break;
                         }
+                        // lấy tên sp
+                        SanPham sp = spDAO.getSanPhamByMaSP((int) maSP);
+
+                        strEmail += "<li><a href='" + link + "/product-details.do?id="
+                                + sp.getMaSP() + "'>" + sp.getTenSP() + "-"
+                                + donGia + " VND x " + soLuong + "</a></li>";
                     }
 
                     // sau khi chèn thành công, xóa cookie giỏ hàng đi
                     gioHang.setMaxAge(0);
                     response.addCookie(gioHang);
+
+                    // gửi mail
+                    String subject = "Cảm ơn bạn đã mua hàng tại KimFashion";
+                    String noiDung = "Xin chào " + tv.getHoTen() + ",<br/><br/>"
+                            + subject + "<br/><br/>"
+                            + "Hóa đơn của bạn bao gồm: "
+                            + "<ul>" + strEmail + "</ul>"
+                            + "Thành tiền: <b>" + tongTien + " VND</b><br/>";
+                    if (tongTien < 1000000) {// hóa đơn < 1 tr thì + 50k vận chuyển
+                        noiDung += "Phí vận chuyển: <b>50000 VND</b>";
+                        tongTien += 50000;
+                        noiDung += "Tổng cộng: <b>" + tongTien + " VND</b>";
+                    }
+
+                    if (!GuiMail.sendEmail("kimhue1012.uct@gmail.com", "nhokyeuanh", tv.getEmail(), subject, noiDung)) {
+                        return mapping.findForward("GuiMailNotOK");
+                    }
                 }
+
                 // thêm vào bảng chi tiết hóa đơn
                 return mapping.findForward("ThanhToanOK");
             }
