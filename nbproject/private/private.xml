@@ -5,12 +5,12 @@
         <group>
             <file>file:/F:/GitHub/KimFashion/web/WEB-INF/struts-config.xml</file>
             <file>file:/F:/GitHub/KimFashion/web/pages/error.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/collection.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/admin/product-brand.jsp</file>
             <file>file:/F:/GitHub/KimFashion/web/pages/success.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/admin/details-product.jsp</file>
-            <file>file:/F:/GitHub/KimFashion/web/pages/products.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/admin/product-brand.jsp</file>
             <file>file:/F:/GitHub/KimFashion/web/admin/product-collection.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/admin/details-product.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/collection.jsp</file>
+            <file>file:/F:/GitHub/KimFashion/web/pages/products.jsp</file>
         </group>
     </open-files>
 </project-private>
