@@ -127,16 +127,16 @@
         <div id="page-wrapper">
             <c:if test="${not empty sessionScope.kimfashion or not empty cookie.kimfashion}">
                 <c:if test="${not empty sessionScope.kimfashion}">
-                    <c:set var="s" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
+                    <c:set var="str" value="${fn:split(sessionScope.kimfashion, '~')}"/>        
                 </c:if>
                 <c:if test="${not empty cookie.kimfashion}">
-                    <c:set var="s" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
+                    <c:set var="str" value="${fn:split(cookie.kimfashion.value, '%7E')}"/>
                 </c:if>
             </c:if>
-            <c:if test="${s[2] eq true}">
+            <c:if test="${str[2] eq true}">
                 <%@include file="../include/header-admin.jsp" %>
             </c:if>
-            <c:if test="${s[2] eq false}">
+            <c:if test="${str[2] eq false}">
                 <%@include file="../include/header.jsp" %>
             </c:if>
             <main id="main-content" role="main">
@@ -146,7 +146,7 @@
                             <section class="col-xs-12 col-sm-12 text-center text-success">
                                 <h1 class="text-bold"><i class="iconfont-check"></i> <c:out value="${thongBao}"/></h1>
                                 <h4><c:out value="${moTa}" escapeXml="false" /></h4>
-                                <c:if test="${s[2] eq false}">
+                                <c:if test="${str[2] eq false}">
                                     <h3><small>Bạn có thể <a href="mailto:kimfashion@gmail.com">liên hệ</a> với KimFashion nếu có thắc mắc</small></h3>
                                     <div id="sub-social">
                                         <ul class="social-list unstyled">
@@ -157,7 +157,7 @@
                                     </div>
                                 </c:if>
                             </section>
-                            <c:if test="${s[2] eq false}">
+                            <c:if test="${str[2] eq false}">
                                 <section class="section">
                                     <section class="col-xs-12 col-sm-12">
                                         <div id="gmap" class="gmap"></div>

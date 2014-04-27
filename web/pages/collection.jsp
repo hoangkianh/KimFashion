@@ -26,7 +26,8 @@
                     <div class="relative">
                         <ul class="bc unstyled clearfix">
                             <li><a href="/">Trang chủ</a></li>
-                            <li class="active">Bộ sưu tập </li>
+                            <li><a href="/collection.do">Bộ sưu tập</a></li>
+                            <li class="active"><bean:write name="SanPhamForm" property="tenBST"/> </li>
                         </ul>
                     </div>
                 </div>
